@@ -1,4 +1,10 @@
-[flack8]
-extend-ignore = E501, F401
-exclude = .git,__pycache__,docs/source/conf.py,old,build,dist
+[flake8]
+extend-ignore = E501, F401, F405, F841, E712, E711, E203
+exclude = .git,
+          __pycache__,
+          docs,
+          old,
+          build,
+          dist,
+          cairis/legacy/*
 max-complexity = 10
