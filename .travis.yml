@@ -1,49 +1,49 @@
 language: python
 python:
-- '3.8'
+ - '3.8'
 dist: bionic
 services:
-- mysql
+ - mysql
 addons:
-  apt:
-    packages:
-    - python3-dev
-    - build-essential
-    - mysql-server
-    - mysql-client
-    - graphviz
-    - python3-pip
-    - python3-numpy
-    - python3-mysqldb
-    - python3-pytest
-    - git
-    - libmysqlclient-dev
-    - default-libmysqlclient-dev
-    - docbook
-    - python3-apt
-    - dblatex
-    - texlive-latex-extra
-    - docbook-utils
-    - libxml2-dev
-    - libxslt1-dev
-    - python3-setuptools
-    - pandoc
+ apt:
+  packages:
+   - python3-dev
+   - build-essential
+   - mysql-server
+   - mysql-client
+   - graphviz
+   - python3-pip
+   - python3-numpy
+   - python3-mysqldb
+   - python3-pytest
+   - git
+   - libmysqlclient-dev
+   - default-libmysqlclient-dev
+   - docbook
+   - python3-apt
+   - dblatex
+   - texlive-latex-extra
+   - docbook-utils
+   - libxml2-dev
+   - libxslt1-dev
+   - python3-setuptools
+   - pandoc
 
 env:
-- PYTHONPATH=. CAIRIS_SRC=$PYTHONPATH/cairis CAIRIS_CFG=cairis_travis.cnf XML_CATALOG_FILES=$CAIRIS_SRC/config/catalog
-    $CAIRIS_CFG_DIR=./travisConfig
+ - PYTHONPATH=. CAIRIS_SRC=$PYTHONPATH/cairis CAIRIS_CFG=cairis_travis.cnf XML_CATALOG_FILES=$CAIRIS_SRC/config/catalog
+   $CAIRIS_CFG_DIR=./travisConfig
 
 before_install:
-- sudo cp $CAIRIS_CFG_DIR/mysqld.cnf /etc/mysql/mysql.conf.d/
-- sudo service mysql restart
+ - sudo cp $CAIRIS_CFG_DIR/mysqld.cnf /etc/mysql/mysql.conf.d/
+ - sudo service mysql restart
 
 install:
-- pip install -r test_requirements.txt
-- pip install -r travis_requirements.txt
+ - pip install -r test_requirements.txt
+ - pip install -r travis_requirements.txt
 
 script:
-- python3 -mpytest cairis/test --doctest-modules -v --cov cairis/core cairis/daemon cairis/controllers cairis/data cairis/tools --cov-report term-missing
+ - python3 -mpytest cairis/test --doctest-modules -v --cov cairis/core cairis/daemon cairis/controllers cairis/data cairis/tools --cov-report term-missing
 
 after_success:
-- coveralls
-- codecov
+ - coveralls
+ - codecov
