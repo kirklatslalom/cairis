@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 #  Licensed to the Apache Software Foundation (ASF) under one
 #  or more contributor license agreements.  See the NOTICE file
 #  distributed with this work for additional information
@@ -15,49 +16,116 @@
 #  specific language governing permissions and limitations
 #  under the License.
 
-__author__ = 'Shamal Faily'
+__author__ = "Shamal Faily"
 
 from . import ObjectCreationParameters
 
-class TemplateAssetParameters(ObjectCreationParameters.ObjectCreationParameters):
-  def __init__(self,assetName,shortCode,assetDesc,assetSig,assetType,sType,aRight,spValues,spRationale,tags,ifs):
-    ObjectCreationParameters.ObjectCreationParameters.__init__(self)
-    self.theName = assetName
-    self.theShortCode = shortCode
-    self.theDescription = assetDesc
-    self.theSignificance = assetSig
-    self.theProperties = spValues
-    self.theRationale = spRationale
-    self.theType = assetType
-    self.theSurfaceType = sType
-    self.theAccessRight = aRight
-    self.theTags = tags
-    self.theInterfaces = ifs
 
-  def name(self): return self.theName
-  def properties(self): return self.theProperties
-  def rationale(self): return self.theRationale
-  def shortCode(self): return self.theShortCode
-  def description(self): return self.theDescription
-  def significance(self): return self.theSignificance
-  def type(self): return self.theType
-  def surfaceType(self): return self.theSurfaceType
-  def accessRight(self): return self.theAccessRight
-  def confidentialityProperty(self): return self.theProperties[0]
-  def confidentialityRationale(self): return self.theRationale[0]
-  def integrityProperty(self): return self.theProperties[1]
-  def integrityRationale(self): return self.theRationale[1]
-  def availabilityProperty(self): return self.theProperties[2]
-  def availabilityRationale(self): return self.theRationale[2]
-  def accountabilityProperty(self): return self.theProperties[3]
-  def accountabilityRationale(self): return self.theRationale[3]
-  def anonymityProperty(self): return self.theProperties[4]
-  def anonymityRationale(self): return self.theRationale[4]
-  def pseudonymityProperty(self): return self.theProperties[5]
-  def pseudonymityRationale(self): return self.theRationale[5]
-  def unlinkabilityProperty(self): return self.theProperties[6]
-  def unlinkabilityRationale(self): return self.theRationale[6]
-  def unobservabilityProperty(self): return self.theProperties[7]
-  def unobservabilityRationale(self): return self.theRationale[7]
-  def interfaces(self): return self.theInterfaces
-  def tags(self): return self.theTags
+class TemplateAssetParameters(ObjectCreationParameters.ObjectCreationParameters):
+    def __init__(
+        self,
+        assetName,
+        shortCode,
+        assetDesc,
+        assetSig,
+        assetType,
+        sType,
+        aRight,
+        spValues,
+        spRationale,
+        tags,
+        ifs,
+    ):
+        ObjectCreationParameters.ObjectCreationParameters.__init__(self)
+        self.theName = assetName
+        self.theShortCode = shortCode
+        self.theDescription = assetDesc
+        self.theSignificance = assetSig
+        self.theProperties = spValues
+        self.theRationale = spRationale
+        self.theType = assetType
+        self.theSurfaceType = sType
+        self.theAccessRight = aRight
+        self.theTags = tags
+        self.theInterfaces = ifs
+
+    def name(self):
+        return self.theName
+
+    def properties(self):
+        return self.theProperties
+
+    def rationale(self):
+        return self.theRationale
+
+    def shortCode(self):
+        return self.theShortCode
+
+    def description(self):
+        return self.theDescription
+
+    def significance(self):
+        return self.theSignificance
+
+    def type(self):
+        return self.theType
+
+    def surfaceType(self):
+        return self.theSurfaceType
+
+    def accessRight(self):
+        return self.theAccessRight
+
+    def confidentialityProperty(self):
+        return self.theProperties[0]
+
+    def confidentialityRationale(self):
+        return self.theRationale[0]
+
+    def integrityProperty(self):
+        return self.theProperties[1]
+
+    def integrityRationale(self):
+        return self.theRationale[1]
+
+    def availabilityProperty(self):
+        return self.theProperties[2]
+
+    def availabilityRationale(self):
+        return self.theRationale[2]
+
+    def accountabilityProperty(self):
+        return self.theProperties[3]
+
+    def accountabilityRationale(self):
+        return self.theRationale[3]
+
+    def anonymityProperty(self):
+        return self.theProperties[4]
+
+    def anonymityRationale(self):
+        return self.theRationale[4]
+
+    def pseudonymityProperty(self):
+        return self.theProperties[5]
+
+    def pseudonymityRationale(self):
+        return self.theRationale[5]
+
+    def unlinkabilityProperty(self):
+        return self.theProperties[6]
+
+    def unlinkabilityRationale(self):
+        return self.theRationale[6]
+
+    def unobservabilityProperty(self):
+        return self.theProperties[7]
+
+    def unobservabilityRationale(self):
+        return self.theRationale[7]
+
+    def interfaces(self):
+        return self.theInterfaces
+
+    def tags(self):
+        return self.theTags

@@ -1,7 +1,7 @@
 Model Validation
 ================
 
-CAIRIS can validate models for a given environment based on potential security and privacy design problems.  
+CAIRIS can validate models for a given environment based on potential security and privacy design problems.
 
 To validate a current CAIRIS model, click on the Models/Validate menu and select the environment to check the CAIRIS model for.
 
@@ -23,7 +23,7 @@ Reserved characters                      Check object names for the presence of 
 Security design checks
 ----------------------
 
-The security design checks currently supported are as follows: 
+The security design checks currently supported are as follows:
 
 =======================================  ==================================================================================================================================
 Check                                    Description
@@ -59,7 +59,7 @@ Storage Limitation                      Unprocessed personal data  Personal data
 Integrity & Confidentiality             Unmitigated privacy risks  Personal information has confidentiality, integrity, and privacy properties that threats target are not exposed to unmitigated risks.
 ======================================  =========================  =================================================================================================================================================
 
-.. _ac_checks: 
+.. _ac_checks:
 
 Access control checks
 ---------------------
@@ -70,7 +70,7 @@ These checks occur only if access needs and policy statements have been defined.
 Check                                    Description
 =======================================  ===============================================================================================================================================
 Unauthorised access                      Subject needs access to a resource, but this access is denied in a policy statement.
-Absent policy statement                  Subject needs access to a resource, but no policy statement specifies this access. 
+Absent policy statement                  Subject needs access to a resource, but no policy statement specifies this access.
 Ambiguous policy statement               Subject needs access to a resource, but multiple policy statements specify this access.
 No read-up violation                     Subject needs access to a resource, but reading up when the Confidentiality value of the resource is higher than the subject is undesirable.
 No write-down violation                  Subject needs access to a resource, but writing down when the Confidentiality value of the subject is higher than the resource is undesirable.

@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 #  Licensed to the Apache Software Foundation (ASF) under one
 #  or more contributor license agreements.  See the NOTICE file
 #  distributed with this work for additional information
@@ -17,10 +18,11 @@
 
 import logging
 import sys
-if (sys.version_info > (3,)):
-  from urllib.parse import quote
+
+if sys.version_info > (3,):
+    from urllib.parse import quote
 else:
-  from urllib import quote
+    from urllib import quote
 from io import StringIO
 import os
 import jsonpickle
@@ -28,29 +30,33 @@ from cairis.test.CairisDaemonTestCase import CairisDaemonTestCase
 from cairis.mio.ModelImport import importModelFile
 import os
 
-__author__ = 'Shamal Faily'
+__author__ = "Shamal Faily"
+
 
 class FindAPITests(CairisDaemonTestCase):
+    @classmethod
+    def setUpClass(cls):
+        importModelFile(
+            os.environ["CAIRIS_SRC"] + "/../examples/exemplars/NeuroGrid/NeuroGrid.xml",
+            1,
+            "test",
+        )
 
-  @classmethod
-  def setUpClass(cls):
-    importModelFile(os.environ['CAIRIS_SRC'] + '/../examples/exemplars/NeuroGrid/NeuroGrid.xml',1,'test')
+    def setUp(self):
+        self.logger = logging.getLogger(__name__)
 
-  def setUp(self):
-    self.logger = logging.getLogger(__name__)
-
-  def test_find_objects(self):
-    method = 'test_find_objects'
-    url = '/api/find/%s?session_id=test' % quote('Claire')
-    self.logger.info('[%s] URL: %s', method, url)
-    rv = self.app.get(url)
-    self.assertIsNotNone(rv.data, 'No response')
-    if (sys.version_info > (3,)):
-      responseData = rv.data.decode('utf-8')
-    else:
-      responseData = rv.data
-    objts = jsonpickle.decode(responseData)
-    self.assertIsNotNone(objts, 'No results after deserialization')
-    self.assertEqual(objts[0]['theEnvironment'],'Psychosis')
-    self.assertEqual(objts[0]['theDimension'],'Persona')
-    self.assertEqual(objts[0]['theObject'],'Claire')
+    def test_find_objects(self):
+        method = "test_find_objects"
+        url = "/api/find/%s?session_id=test" % quote("Claire")
+        self.logger.info("[%s] URL: %s", method, url)
+        rv = self.app.get(url)
+        self.assertIsNotNone(rv.data, "No response")
+        if sys.version_info > (3,):
+            responseData = rv.data.decode("utf-8")
+        else:
+            responseData = rv.data
+        objts = jsonpickle.decode(responseData)
+        self.assertIsNotNone(objts, "No results after deserialization")
+        self.assertEqual(objts[0]["theEnvironment"], "Psychosis")
+        self.assertEqual(objts[0]["theDimension"], "Persona")
+        self.assertEqual(objts[0]["theObject"], "Claire")

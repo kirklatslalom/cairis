@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 #  Licensed to the Apache Software Foundation (ASF) under one
 #  or more contributor license agreements.  See the NOTICE file
 #  distributed with this work for additional information
@@ -15,23 +16,35 @@
 #  specific language governing permissions and limitations
 #  under the License.
 
-__author__ = 'Shamal Faily'
+__author__ = "Shamal Faily"
 
 from . import ObjectCreationParameters
 
-class TemplateRequirementParameters(ObjectCreationParameters.ObjectCreationParameters):
-  def __init__(self,reqName,assetName,reqType,reqDesc,reqRat,reqFC):
-    ObjectCreationParameters.ObjectCreationParameters.__init__(self)
-    self.theName = reqName
-    self.theAssetName = assetName
-    self.theType = reqType
-    self.theDescription= reqDesc
-    self.theRationale = reqRat
-    self.theFitCriterion = reqFC
 
-  def name(self): return self.theName
-  def asset(self): return self.theAssetName
-  def type(self): return self.theType
-  def description(self): return self.theDescription
-  def rationale(self): return self.theRationale
-  def fitCriterion(self): return self.theFitCriterion
+class TemplateRequirementParameters(ObjectCreationParameters.ObjectCreationParameters):
+    def __init__(self, reqName, assetName, reqType, reqDesc, reqRat, reqFC):
+        ObjectCreationParameters.ObjectCreationParameters.__init__(self)
+        self.theName = reqName
+        self.theAssetName = assetName
+        self.theType = reqType
+        self.theDescription = reqDesc
+        self.theRationale = reqRat
+        self.theFitCriterion = reqFC
+
+    def name(self):
+        return self.theName
+
+    def asset(self):
+        return self.theAssetName
+
+    def type(self):
+        return self.theType
+
+    def description(self):
+        return self.theDescription
+
+    def rationale(self):
+        return self.theRationale
+
+    def fitCriterion(self):
+        return self.theFitCriterion

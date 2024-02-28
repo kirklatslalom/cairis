@@ -202,7 +202,7 @@ Adding, updating, and deleting requirements
 -------------------------------------------
 
 .. figure:: RequirementForm.jpg
-   :alt: Requirements form 
+   :alt: Requirements form
 
 Requirements are accessible by selecting the Requirements/Requirements menu option. Each requirement is associated with an asset, or an
 environment. Requirements associated with assets may specify the asset,

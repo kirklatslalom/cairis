@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 #  Licensed to the Apache Software Foundation (ASF) under one
 #  or more contributor license agreements.  See the NOTICE file
 #  distributed with this work for additional information
@@ -15,24 +16,40 @@
 #  specific language governing permissions and limitations
 #  under the License.
 
-__author__ = 'Shamal Faily'
+__author__ = "Shamal Faily"
+
 
 class Component:
-  def __init__(self,cId,cName,cDesc,cIfs,cStruct,cReqs,cGoals,cAssocs):
-    self.theId = cId
-    self.theName = cName
-    self.theDescription = cDesc
-    self.theInterfaces = cIfs
-    self.theStructure = cStruct
-    self.theRequirements = cReqs
-    self.theGoals = cGoals
-    self.theGoalAssociations = cAssocs
+    def __init__(self, cId, cName, cDesc, cIfs, cStruct, cReqs, cGoals, cAssocs):
+        self.theId = cId
+        self.theName = cName
+        self.theDescription = cDesc
+        self.theInterfaces = cIfs
+        self.theStructure = cStruct
+        self.theRequirements = cReqs
+        self.theGoals = cGoals
+        self.theGoalAssociations = cAssocs
 
-  def id(self): return self.theId
-  def name(self): return self.theName
-  def description(self): return self.theDescription
-  def interfaces(self): return self.theInterfaces
-  def structure(self): return self.theStructure
-  def requirements(self): return self.theRequirements
-  def goals(self): return self.theGoals
-  def associations(self): return self.theGoalAssociations
+    def id(self):
+        return self.theId
+
+    def name(self):
+        return self.theName
+
+    def description(self):
+        return self.theDescription
+
+    def interfaces(self):
+        return self.theInterfaces
+
+    def structure(self):
+        return self.theStructure
+
+    def requirements(self):
+        return self.theRequirements
+
+    def goals(self):
+        return self.theGoals
+
+    def associations(self):
+        return self.theGoalAssociations

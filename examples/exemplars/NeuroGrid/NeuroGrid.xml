@@ -1244,7 +1244,7 @@ When you talk about assets, people tend to just think about data.</excerpt>
 
 This has been the one great driver for us as a lot of grid middleware started out as being about computational grids, and managing workflows and jobs for physicists.
 
-In SOMEPROJECT, we came to the conclusion that the middleware wasn't fit for purpose and our focus has always been data and about data.  
+In SOMEPROJECT, we came to the conclusion that the middleware wasn't fit for purpose and our focus has always been data and about data.
 
 That is why we abandoned GT3 and did our own thing, as we have very clear requirements with respect to security and interoperability and all these other things.</excerpt>
 </document_reference>
@@ -1265,9 +1265,9 @@ I4: That was using user certificate and encryption to sign all the messages.</ex
 <document_reference name="Technology and institutions constrain data transfers between universities." contributor="SF" document="Control sensitivity GT concept" >
   <excerpt>One of the problems with universities is trying to transfer data between universities can be pretty difficult.
 
-So, you've got large amount of information, scans which take up gigabytes of information, and you have to try and transfer that.  
+So, you've got large amount of information, scans which take up gigabytes of information, and you have to try and transfer that.
 
-You've got the restrictions of what may or may not be suitable and then you've got, in terms of technical limitations, how you can transfer data.  
+You've got the restrictions of what may or may not be suitable and then you've got, in terms of technical limitations, how you can transfer data.
 
 You then need to come up with methods that are secure, so if the data fell into someone else's hands then it wouldn't be useful for them.</excerpt>
 </document_reference>
@@ -1306,18 +1306,18 @@ In the beginning, it was an issue that lots of things didn't work, as the system
 
 When I first used the network I didn't know whether I was doing something wrong, or if the system was not working yet.
 
-Without any feedback there was nothing I could do.  
+Without any feedback there was nothing I could do.
 
-This is why I said earlier that the easiest solution was to try things out and then go on the phone and ask [A] to get feedback straight away.  
+This is why I said earlier that the easiest solution was to try things out and then go on the phone and ask [A] to get feedback straight away.
 
-For example, the data in Oxford is used in a compressed form, i.e. nii.gz format.  
+For example, the data in Oxford is used in a compressed form, i.e. nii.gz format.
 
-When I uploaded my data and it didn't work, I was told that I must use an uncompressed version.  
+When I uploaded my data and it didn't work, I was told that I must use an uncompressed version.
 
 Without asking anyone, how was I supposed to know this?</excerpt>
 </document_reference>
 <document_reference name="Policies are too complicated for users to write." contributor="SF" document="Control usability GT concept" >
-  <excerpt>There are the access control policies, which say what they can and can't see.  
+  <excerpt>There are the access control policies, which say what they can and can't see.
 
 We write those, or more precisely I write those, as they are too complicated for the users to write. </excerpt>
 </document_reference>
@@ -1346,7 +1346,7 @@ They appreciate it even if it takes an hour to get the data, but as a general ru
 <document_reference name="Users unaccustomed to installing certificates." contributor="SF" document="Control usability GT concept" >
   <excerpt>The problem is that people are not accustomed to installing certificates inside their browser.
 
-Usually, we see some people who are very eager to use the portal and after a while, when you ask them "what happened, I don't see you using the portal", as you can't see their usage from the log files, they say "well, I tried it but it didn't allow me to access it".  
+Usually, we see some people who are very eager to use the portal and after a while, when you ask them "what happened, I don't see you using the portal", as you can't see their usage from the log files, they say "well, I tried it but it didn't allow me to access it".
 
 Some people who go to the support page and see the screenshots explaining things step-by-step, showing how you have to download a file, upload it into your browser, etc - it seems a bit unfamiliar to people.</excerpt>
 </document_reference>
@@ -1448,7 +1448,7 @@ I've got 6 of them together for a workshop.
 Getting them to use it is a big issue, now people are saying: how sustainable is it?, how many people are actually using it?.</excerpt>
 </document_reference>
 <document_reference name="Technical terms confuse users." contributor="SF" document="Engagement artifact GT concept" >
-  <excerpt>In the beginning, we had a problem with the web folder, which was called WebDAV folder ; what is meant by _WebDAV_ folder?  
+  <excerpt>In the beginning, we had a problem with the web folder, which was called WebDAV folder ; what is meant by _WebDAV_ folder?
 
 When you explain that it is just a directory on the web, they go ah.
 
@@ -1484,7 +1484,7 @@ This needs to be pointed out.  It is difficult from a technical point of view, a
 <document_reference name="FLOSS versions checked to ensure system remains secure." contributor="SF" document="Environmental perception GT concept" >
   <excerpt>That certificate is used by some software.
 
-If there is a bug in security, this will be of concern.  
+If there is a bug in security, this will be of concern.
 
 We need to use the most update version of, for example, web services.
 
@@ -1552,7 +1552,7 @@ I said it doesn't matter, why is this at home and why is this not on a machine. 
 
 This organisation, [B], there are any number of trials which have nothing to do with NeuroGrid/the stroke exemplar, that are going on.
 
-So, there is an SOP for handling patient data.  
+So, there is an SOP for handling patient data.
 
 It touches on a lot of areas which are irrelevant for NeuroGrid, as we are focusing purely on the imaging data.
 
@@ -1907,7 +1907,7 @@ I guess that sort of idea of collaboration given more consideration, so data can
 <document_reference name="Getting work done is more important than security." contributor="SF" document="Security erosion GT concept" >
   <excerpt>When their workloads are so huge, the first thing they've got to do is make sure those patients get their results back.
 
-If there is anything standing in their way, they will try and by-pass it.  
+If there is anything standing in their way, they will try and by-pass it.
 
 It's not unknown for clinics, hospitals and GP practices for people to share user ids and get onto systems, as the first concern is to get things done.
 

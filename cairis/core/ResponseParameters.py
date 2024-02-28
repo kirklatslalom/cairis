@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 #  Licensed to the Apache Software Foundation (ASF) under one
 #  or more contributor license agreements.  See the NOTICE file
 #  distributed with this work for additional information
@@ -18,19 +19,29 @@
 
 from . import ObjectCreationParameters
 
-__author__ = 'Shamal Faily'
+__author__ = "Shamal Faily"
+
 
 class ResponseParameters(ObjectCreationParameters.ObjectCreationParameters):
-  def __init__(self,respName,respRisk,tags,cProps,rType):
-    ObjectCreationParameters.ObjectCreationParameters.__init__(self)
-    self.theName = respName
-    self.theTags = tags
-    self.theRisk = respRisk
-    self.theEnvironmentProperties = cProps
-    self.theResponseType = rType
+    def __init__(self, respName, respRisk, tags, cProps, rType):
+        ObjectCreationParameters.ObjectCreationParameters.__init__(self)
+        self.theName = respName
+        self.theTags = tags
+        self.theRisk = respRisk
+        self.theEnvironmentProperties = cProps
+        self.theResponseType = rType
 
-  def name(self): return self.theName
-  def tags(self): return self.theTags
-  def risk(self): return self.theRisk
-  def environmentProperties(self): return self.theEnvironmentProperties
-  def responseType(self): return self.theResponseType
+    def name(self):
+        return self.theName
+
+    def tags(self):
+        return self.theTags
+
+    def risk(self):
+        return self.theRisk
+
+    def environmentProperties(self):
+        return self.theEnvironmentProperties
+
+    def responseType(self):
+        return self.theResponseType

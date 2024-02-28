@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 #  Licensed to the Apache Software Foundation (ASF) under one
 #  or more contributor license agreements.  See the NOTICE file
 #  distributed with this work for additional information
@@ -18,21 +19,56 @@
 from cairis.core.ARM import *
 from cairis.daemon.CairisHTTPError import CairisHTTPError, ARMHTTPError
 from cairis.data.CairisDAO import CairisDAO
-__author__ = 'Shamal Faily'
+
+__author__ = "Shamal Faily"
 
 
 class FindDAO(CairisDAO):
+    def __init__(self, session_id):
+        CairisDAO.__init__(self, session_id)
 
-  def __init__(self, session_id):
-    CairisDAO.__init__(self, session_id)
-
-  def get_objects(self,search_string):
-    try:
-      objts = self.db_proxy.searchModel(search_string,[1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1])
-      new_props = []
-      for objt in objts:
-        new_props.append({'theEnvironment' : objt[0], 'theDimension' : objt[1], 'theObject' : objt[2]}) 
-      return new_props
-    except ARMException as ex:
-      self.close()
-      raise ARMHTTPError(ex)
+    def get_objects(self, search_string):
+        try:
+            objts = self.db_proxy.searchModel(
+                search_string,
+                [
+                    1,
+                    1,
+                    1,
+                    1,
+                    1,
+                    1,
+                    1,
+                    1,
+                    1,
+                    1,
+                    1,
+                    1,
+                    1,
+                    1,
+                    1,
+                    1,
+                    1,
+                    1,
+                    1,
+                    1,
+                    1,
+                    1,
+                    1,
+                    1,
+                    1,
+                ],
+            )
+            new_props = []
+            for objt in objts:
+                new_props.append(
+                    {
+                        "theEnvironment": objt[0],
+                        "theDimension": objt[1],
+                        "theObject": objt[2],
+                    }
+                )
+            return new_props
+        except ARMException as ex:
+            self.close()
+            raise ARMHTTPError(ex)

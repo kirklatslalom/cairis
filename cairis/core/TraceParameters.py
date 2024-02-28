@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 #  Licensed to the Apache Software Foundation (ASF) under one
 #  or more contributor license agreements.  See the NOTICE file
 #  distributed with this work for additional information
@@ -15,19 +16,27 @@
 #  specific language governing permissions and limitations
 #  under the License.
 
-__author__ = 'Shamal Faily'
+__author__ = "Shamal Faily"
 
 from . import ObjectCreationParameters
 
-class TraceParameters(ObjectCreationParameters.ObjectCreationParameters):
-  def __init__(self,fromObjt,fromName,toObjt,toName):
-    ObjectCreationParameters.ObjectCreationParameters.__init__(self)
-    self.theFromObject = fromObjt
-    self.theFromName = fromName
-    self.theToObject = toObjt
-    self.theToName = toName
 
-  def fromObject(self): return self.theFromObject
-  def fromName(self): return self.theFromName
-  def toObject(self): return self.theToObject
-  def toName(self): return self.theToName
+class TraceParameters(ObjectCreationParameters.ObjectCreationParameters):
+    def __init__(self, fromObjt, fromName, toObjt, toName):
+        ObjectCreationParameters.ObjectCreationParameters.__init__(self)
+        self.theFromObject = fromObjt
+        self.theFromName = fromName
+        self.theToObject = toObjt
+        self.theToName = toName
+
+    def fromObject(self):
+        return self.theFromObject
+
+    def fromName(self):
+        return self.theFromName
+
+    def toObject(self):
+        return self.theToObject
+
+    def toName(self):
+        return self.theToName

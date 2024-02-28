@@ -153,7 +153,7 @@ You can use `diagrams.net <https://diagrams.net>`_ to import DFDs into CAIRIS by
 .. figure:: dn_importedDfd.jpg
    :alt: dn_importedDfd.jpg
 
-.. note:: 
+.. note::
    We recommend you use the *cairis_dfd.xml* shape library when data flow diagramming, but you could - in theory - use any shape in diagrams.net to model DFD elements.  However, you must ensure that you use the Edit Data option to add a ``type`` property to the shape, which should be set to a valid DFD type (entity, process, datastore, or trustboundary).   You also need to set a name property for trust boundaries.  Similarly, you also use any line to link DFD elements, but you need to use the Edit Data option to add a ``assets`` property and define at least one asset as it value.
 
 

@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 #  Licensed to the Apache Software Foundation (ASF) under one
 #  or more contributor license agreements.  See the NOTICE file
 #  distributed with this work for additional information
@@ -16,50 +17,56 @@
 #  under the License.
 
 
-from xml.sax.handler import ContentHandler,EntityResolver
+from xml.sax.handler import ContentHandler, EntityResolver
 from cairis.core.ValueTypeParameters import ValueTypeParameters
 from cairis.core.Borg import Borg
 from xml.sax.saxutils import unescape
 
-__author__ = 'Shamal Faily'
-
-class TVTypeContentHandler(ContentHandler,EntityResolver):
-  def __init__(self):
-    self.theVulnerabilityTypes = []
-    self.theThreatTypes = []
-    self.resetAttributes()
-    b = Borg()
-    self.configDir = b.configDir
-
-  def resolveEntity(self,publicId,systemId):
-    return systemId
-
-  def types(self):
-    return (self.theVulnerabilityTypes,self.theThreatTypes)
-
-  def resetAttributes(self):
-    self.inDescription = 0
-    self.theTypeName = ''
-    self.theDescription = ''
+__author__ = "Shamal Faily"
 
 
-  def startElement(self,name,attrs):
-    if (name == 'vulnerability_type' or name == 'threat_type'):
-      self.theName = attrs['name']
-    elif (name == 'description'):
-      self.inDescription = 1
+class TVTypeContentHandler(ContentHandler, EntityResolver):
+    def __init__(self):
+        self.theVulnerabilityTypes = []
+        self.theThreatTypes = []
+        self.resetAttributes()
+        b = Borg()
+        self.configDir = b.configDir
 
-  def characters(self,data):
-    if self.inDescription:
-      self.theDescription = data
-      self.inDescription = 0
+    def resolveEntity(self, publicId, systemId):
+        return systemId
 
-  def endElement(self,name):
-    if (name == 'vulnerability_type'):
-      p = ValueTypeParameters(unescape(self.theName),unescape(self.theDescription),'vulnerability_type')
-      self.theVulnerabilityTypes.append(p)
-      self.resetAttributes() 
-    if name == 'threat_type':
-      p = ValueTypeParameters(unescape(self.theName),unescape(self.theDescription),'threat_type')
-      self.theThreatTypes.append(p)
-      self.resetAttributes() 
+    def types(self):
+        return (self.theVulnerabilityTypes, self.theThreatTypes)
+
+    def resetAttributes(self):
+        self.inDescription = 0
+        self.theTypeName = ""
+        self.theDescription = ""
+
+    def startElement(self, name, attrs):
+        if name == "vulnerability_type" or name == "threat_type":
+            self.theName = attrs["name"]
+        elif name == "description":
+            self.inDescription = 1
+
+    def characters(self, data):
+        if self.inDescription:
+            self.theDescription = data
+            self.inDescription = 0
+
+    def endElement(self, name):
+        if name == "vulnerability_type":
+            p = ValueTypeParameters(
+                unescape(self.theName),
+                unescape(self.theDescription),
+                "vulnerability_type",
+            )
+            self.theVulnerabilityTypes.append(p)
+            self.resetAttributes()
+        if name == "threat_type":
+            p = ValueTypeParameters(
+                unescape(self.theName), unescape(self.theDescription), "threat_type"
+            )
+            self.theThreatTypes.append(p)
+            self.resetAttributes()

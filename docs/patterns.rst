@@ -72,7 +72,7 @@ Create a security pattern
    Patterns table, and click on the Add button to open the Security
    Pattern dialog form.
 
--  Enter the security pattern name, and description of the context the security pattern is relevant for, 
+-  Enter the security pattern name, and description of the context the security pattern is relevant for,
 -  a problem description motivationg the security pattern, and the intrinsics of how the security pattern
    solves the pre-defined problem.
 
@@ -81,7 +81,7 @@ Create a security pattern
 -  Click on the Requirements tab, and the Add button in the requirements
    table to add names of template requirements needing to be satisfied to realise
    the pattern.
-   
+
 -  Click on the Create button to add the new security pattern.
 
 -  Existing security patterns can be modified by double clicking on the

@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 #  Licensed to the Apache Software Foundation (ASF) under one
 #  or more contributor license agreements.  See the NOTICE file
 #  distributed with this work for additional information
@@ -18,22 +19,32 @@
 from .Location import Location
 from .ObjectCreationParameters import ObjectCreationParameters
 
-__author__ = 'Shamal Faily'
+__author__ = "Shamal Faily"
+
 
 class LocationsParameters(ObjectCreationParameters):
-  def __init__(self,locsName,locsDiagram,locs,links = []):
-    ObjectCreationParameters.__init__(self)
-    self.theName = locsName
-    self.theDiagram = locsDiagram
-    self.theLocations = locs
-    self.theLinks = set(links)
-    if len(self.theLinks) == 0:
-      for loc in self.theLocations:
-        for link in loc.links():
-          if ((link,loc.name()) not in self.theLinks) and ((loc.name(),link) not in self.theLinks):
-            self.theLinks.add((link,loc.name()))
+    def __init__(self, locsName, locsDiagram, locs, links=[]):
+        ObjectCreationParameters.__init__(self)
+        self.theName = locsName
+        self.theDiagram = locsDiagram
+        self.theLocations = locs
+        self.theLinks = set(links)
+        if len(self.theLinks) == 0:
+            for loc in self.theLocations:
+                for link in loc.links():
+                    if ((link, loc.name()) not in self.theLinks) and (
+                        (loc.name(), link) not in self.theLinks
+                    ):
+                        self.theLinks.add((link, loc.name()))
 
-  def name(self): return self.theName
-  def diagram(self): return self.theDiagram
-  def locations(self): return self.theLocations
-  def links(self): return self.theLinks
+    def name(self):
+        return self.theName
+
+    def diagram(self):
+        return self.theDiagram
+
+    def locations(self):
+        return self.theLocations
+
+    def links(self):
+        return self.theLinks

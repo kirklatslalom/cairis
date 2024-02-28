@@ -41,7 +41,7 @@
 <characteristic_synopsis characteristic="Knows how to do business with his applications" synopsis="Grow business" dimension="softgoal" actor_type="persona" actor="Jimmy" />
 <characteristic_synopsis characteristic="Stays up-to-date on various technologies" synopsis="Maintain ecosystem awareness" dimension="softgoal" actor_type="persona" actor="Jimmy" />
 <characteristic_synopsis characteristic="Is fond of gadgets which interact on his home network" synopsis="Hacker" dimension="softgoal" actor_type="persona" actor="Jimmy" />
-<characteristic_synopsis characteristic="Is comfortable with developing low-level functional details" synopsis="Exploit device features" dimension="goal" actor_type="persona" actor="Jimmy" /> 
+<characteristic_synopsis characteristic="Is comfortable with developing low-level functional details" synopsis="Exploit device features" dimension="goal" actor_type="persona" actor="Jimmy" />
 
 <!-- David characteristics -->
 
@@ -251,13 +251,13 @@
 <reference_contribution source="Select device interfaces" destination="Select development toolchain" means_end="end" contribution="Help" />
 <reference_contribution source="Separate development environments" destination="Select development toolchain" means_end="means" contribution="Help" />
 <reference_contribution source="Source open-source options" destination="Prefer open source" means_end="end" contribution="Make" />
-<reference_contribution source="Experiment with designs" destination="Design pragmatically" means_end="means" contribution="Help" /> 
-<reference_contribution source="Use notations pragmatically" destination="Design pragmatically" means_end="means" contribution="Help" /> 
-<reference_contribution source="Obtain supplemental income" destination="Grow business" means_end="means" contribution="SomePositive" /> 
-<reference_contribution source="Control profit margins" destination="Grow business" means_end="means" contribution="SomePositive" /> 
-<reference_contribution source="Exploit technology advances" destination="Grow business" means_end="means" contribution="Help" /> 
-<reference_contribution source="Explore technical possibilities" destination="Maintain ecosystem awareness" means_end="means" contribution="Help" /> 
-<reference_contribution source="Track new FLOSS projects" destination="Maintain ecosystem awareness" means_end="means" contribution="Help" /> 
+<reference_contribution source="Experiment with designs" destination="Design pragmatically" means_end="means" contribution="Help" />
+<reference_contribution source="Use notations pragmatically" destination="Design pragmatically" means_end="means" contribution="Help" />
+<reference_contribution source="Obtain supplemental income" destination="Grow business" means_end="means" contribution="SomePositive" />
+<reference_contribution source="Control profit margins" destination="Grow business" means_end="means" contribution="SomePositive" />
+<reference_contribution source="Exploit technology advances" destination="Grow business" means_end="means" contribution="Help" />
+<reference_contribution source="Explore technical possibilities" destination="Maintain ecosystem awareness" means_end="means" contribution="Help" />
+<reference_contribution source="Track new FLOSS projects" destination="Maintain ecosystem awareness" means_end="means" contribution="Help" />
 <reference_contribution source="Unfamiliar with UPnP and DLNA" destination="Hacker" means_end="means" contribution="Help" />
 <reference_contribution source="Use device APIs" destination="Hacker" means_end="means" contribution="Help" />
 <reference_contribution source="Manage network infrastructure" destination="Hacker" means_end="end" contribution="Help" />

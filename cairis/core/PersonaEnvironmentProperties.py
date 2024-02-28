@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 #  Licensed to the Apache Software Foundation (ASF) under one
 #  or more contributor license agreements.  See the NOTICE file
 #  distributed with this work for additional information
@@ -18,22 +19,35 @@
 
 from .EnvironmentProperties import EnvironmentProperties
 
-__author__ = 'Shamal Faily'
+__author__ = "Shamal Faily"
+
 
 class PersonaEnvironmentProperties(EnvironmentProperties):
-  def __init__(self,environmentName,direct=False,description='',roles=[],pCodes={'narrative':{}}):
-    EnvironmentProperties.__init__(self,environmentName)
-    self.theDirectFlag = direct 
-    self.theNarrative = description
-    self.theRoles = roles
-    self.theCodes = pCodes
+    def __init__(
+        self,
+        environmentName,
+        direct=False,
+        description="",
+        roles=[],
+        pCodes={"narrative": {}},
+    ):
+        EnvironmentProperties.__init__(self, environmentName)
+        self.theDirectFlag = direct
+        self.theNarrative = description
+        self.theRoles = roles
+        self.theCodes = pCodes
 
-  def directFlag(self): return self.theDirectFlag
-  def narrative(self): return self.theNarrative
-  def roles(self): return self.theRoles
-  def codes(self,sectName = ''): 
-    if sectName == '':
-      return self.theCodes
-    else:
-      return self.theCodes[sectName]
+    def directFlag(self):
+        return self.theDirectFlag
 
+    def narrative(self):
+        return self.theNarrative
+
+    def roles(self):
+        return self.theRoles
+
+    def codes(self, sectName=""):
+        if sectName == "":
+            return self.theCodes
+        else:
+            return self.theCodes[sectName]

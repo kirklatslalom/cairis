@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 #  Licensed to the Apache Software Foundation (ASF) under one
 #  or more contributor license agreements.  See the NOTICE file
 #  distributed with this work for additional information
@@ -24,42 +25,48 @@ from cairis.core.Borg import Borg
 from cairis.core.InternalDocumentParameters import InternalDocumentParameters
 import sys
 
+
 class InternalDocumentTest(unittest.TestCase):
+    def setUp(self):
+        call([os.environ["CAIRIS_CFG_DIR"] + "/initdb.sh"])
+        cairis.core.BorgFactory.initialise()
+        f = open(os.environ["CAIRIS_SRC"] + "/test/processes.json")
+        d = json.load(f)
+        f.close()
+        self.iIntDocs = d["internaldocuments"]
 
-  def setUp(self):
-    call([os.environ['CAIRIS_CFG_DIR'] + "/initdb.sh"])
-    cairis.core.BorgFactory.initialise()
-    f = open(os.environ['CAIRIS_SRC'] + '/test/processes.json')
-    d = json.load(f)
-    f.close()
-    self.iIntDocs = d['internaldocuments']
-    
+    def testAddUpdateInternalDocument(self):
+        i = InternalDocumentParameters(
+            self.iIntDocs[0]["theName"],
+            self.iIntDocs[0]["theDescription"],
+            self.iIntDocs[0]["theContent"],
+            [],
+            [],
+        )
+        b = Borg()
+        b.dbProxy.addInternalDocument(i)
+        oIds = b.dbProxy.getInternalDocuments()
+        o = oIds[self.iIntDocs[0]["theName"]]
+        self.assertEqual(i.name(), o.name())
+        self.assertEqual(i.description(), o.description())
+        self.assertEqual(i.content(), o.content())
 
-  def testAddUpdateInternalDocument(self):
-    i = InternalDocumentParameters(self.iIntDocs[0]["theName"], self.iIntDocs[0]["theDescription"], self.iIntDocs[0]["theContent"], [],[])
-    b = Borg()
-    b.dbProxy.addInternalDocument(i)
-    oIds = b.dbProxy.getInternalDocuments()
-    o = oIds[self.iIntDocs[0]["theName"]]
-    self.assertEqual(i.name(), o.name())
-    self.assertEqual(i.description(),o.description())
-    self.assertEqual(i.content(),o.content())
+        o.theDescription = "Updated description"
+        b.dbProxy.updateInternalDocument(o)
 
-    o.theDescription = 'Updated description'
-    b.dbProxy.updateInternalDocument(o)
+        oIds2 = b.dbProxy.getInternalDocuments(o.id())
+        o2 = oIds[self.iIntDocs[0]["theName"]]
+        self.assertEqual(i.name(), o2.name())
+        self.assertEqual("Updated description", o2.description())
+        self.assertEqual(i.content(), o2.content())
 
-    oIds2 = b.dbProxy.getInternalDocuments(o.id())
-    o2 = oIds[self.iIntDocs[0]["theName"]]
-    self.assertEqual(i.name(), o2.name())
-    self.assertEqual('Updated description',o2.description())
-    self.assertEqual(i.content(),o2.content())
+        b.dbProxy.deleteInternalDocument(o.id())
 
-    b.dbProxy.deleteInternalDocument(o.id())
-  
-  def tearDown(self):
-    b = Borg()
-    b.dbProxy.close()
-    call([os.environ['CAIRIS_CFG_DIR'] + "/dropdb.sh"])
+    def tearDown(self):
+        b = Borg()
+        b.dbProxy.close()
+        call([os.environ["CAIRIS_CFG_DIR"] + "/dropdb.sh"])
 
-if __name__ == '__main__':
-  unittest.main()
+
+if __name__ == "__main__":
+    unittest.main()

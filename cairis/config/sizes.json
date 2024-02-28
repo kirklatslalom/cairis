@@ -80,7 +80,7 @@
   },
   "ComponentView" : {
     "theName" : 255,
-    "theSynopsis" : 255 
+    "theSynopsis" : 255
   },
   "ComponentViewParameters" : {
     "theName" : 255,
@@ -89,12 +89,12 @@
   "RoleParameters" : {
     "theName" : 255,
     "theShortCode" : 100,
-    "theDescription" : 1000 
+    "theDescription" : 1000
   },
   "Role" : {
     "theName" : 255,
     "theShortCode" : 100,
-    "theDescription" : 1000 
+    "theDescription" : 1000
   },
   "ClassAssociation" : {
     "theHeadRole" : 200,
@@ -106,27 +106,27 @@
   },
   "Attacker" : {
     "theName" : 50,
-    "theDescription" : 4000 
+    "theDescription" : 4000
   },
   "AttackerParameters" : {
     "theName" : 50,
-    "theDescription" : 4000 
+    "theDescription" : 4000
   },
   "Vulnerability" : {
     "theName" : 200,
-    "theDescription" : 4000 
+    "theDescription" : 4000
   },
   "VulnerabilityParameters" : {
     "theName" : 200,
-    "theDescription" : 4000 
+    "theDescription" : 4000
   },
   "Threat" : {
     "theThreatName" : 200,
-    "theMethod" : 4000 
+    "theMethod" : 4000
   },
   "ThreatParameters" : {
     "theName" : 200,
-    "theMethod" : 4000 
+    "theMethod" : 4000
   },
   "MisuseCase" : {
     "theName" : 200
@@ -151,11 +151,11 @@
   },
   "Countermeasure" : {
     "theName" : 100,
-    "theDescription" : 255 
+    "theDescription" : 255
   },
   "CountermeasureParameters" : {
     "theName" : 100,
-    "theDescription" : 255 
+    "theDescription" : 255
   },
   "CountermeasureEnvironmentProperties" : {
     "theRationale" : 400
@@ -173,6 +173,6 @@
     "theAuthor" : 200,
     "theRole" : 255,
     "theDescription" : 2000,
-    "theUserGoal" : 1000 
+    "theUserGoal" : 1000
   }
 }

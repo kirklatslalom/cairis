@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 #  Licensed to the Apache Software Foundation (ASF) under one
 #  or more contributor license agreements.  See the NOTICE file
 #  distributed with this work for additional information
@@ -20,37 +21,43 @@ from cairis.daemon.CairisHTTPError import ARMHTTPError
 import cairis.core.armid
 from cairis.data.CairisDAO import CairisDAO
 
-__author__ = 'Shamal Faily'
+__author__ = "Shamal Faily"
 
 
 class RiskLevelDAO(CairisDAO):
-  def __init__(self, session_id):
-    CairisDAO.__init__(self, session_id)
+    def __init__(self, session_id):
+        CairisDAO.__init__(self, session_id)
 
-  def get_risk_level(self,assetName, pathValues = []):
-    return self.get_risk_level_by_environment(assetName,'',pathValues)
+    def get_risk_level(self, assetName, pathValues=[]):
+        return self.get_risk_level_by_environment(assetName, "", pathValues)
 
-  def get_risk_level_by_environment(self,assetName,envName = '', pathValues = []):
-    try:
-      riskLevel = self.db_proxy.assetRiskLevel(assetName,envName)
-    except DatabaseProxyException as ex:
-      self.close()
-      raise ARMHTTPError(ex)
-    except ARMException as ex:
-      self.close()
-      raise ARMHTTPError(ex)
-    return riskLevel
+    def get_risk_level_by_environment(self, assetName, envName="", pathValues=[]):
+        try:
+            riskLevel = self.db_proxy.assetRiskLevel(assetName, envName)
+        except DatabaseProxyException as ex:
+            self.close()
+            raise ARMHTTPError(ex)
+        except ARMException as ex:
+            self.close()
+            raise ARMHTTPError(ex)
+        return riskLevel
 
-  def get_risk_threat_level(self,assetName,threatName,pathValues = []):
-    return self.get_risk_threat_level_by_environment(assetName,threatName,'',pathValues)
+    def get_risk_threat_level(self, assetName, threatName, pathValues=[]):
+        return self.get_risk_threat_level_by_environment(
+            assetName, threatName, "", pathValues
+        )
 
-  def get_risk_threat_level_by_environment(self,assetName,threatName,envName = '', pathValues = []):
-    try:
-      riskLevel = self.db_proxy.assetThreatRiskLevel(assetName,threatName,envName)
-    except DatabaseProxyException as ex:
-      self.close()
-      raise ARMHTTPError(ex)
-    except ARMException as ex:
-      self.close()
-      raise ARMHTTPError(ex)
-    return riskLevel
+    def get_risk_threat_level_by_environment(
+        self, assetName, threatName, envName="", pathValues=[]
+    ):
+        try:
+            riskLevel = self.db_proxy.assetThreatRiskLevel(
+                assetName, threatName, envName
+            )
+        except DatabaseProxyException as ex:
+            self.close()
+            raise ARMHTTPError(ex)
+        except ARMException as ex:
+            self.close()
+            raise ARMHTTPError(ex)
+        return riskLevel

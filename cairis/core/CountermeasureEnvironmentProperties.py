@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 #  Licensed to the Apache Software Foundation (ASF) under one
 #  or more contributor license agreements.  See the NOTICE file
 #  distributed with this work for additional information
@@ -19,23 +20,47 @@
 from .EnvironmentProperties import EnvironmentProperties
 from numpy import *
 
-__author__ = 'Shamal Faily'
+__author__ = "Shamal Faily"
+
 
 class CountermeasureEnvironmentProperties(EnvironmentProperties):
-  def __init__(self,environmentName,requirements = [],targets = [],properties = array((0,0,0,0,0,0,0,0)),rationale = ['None','None','None','None','None','None','None','None'],cost = '', roles = [], personas = {}):
-    EnvironmentProperties.__init__(self,environmentName)
-    self.theRequirements = requirements
-    self.theTargets = targets
-    self.theProperties = properties
-    self.theRationale = rationale
-    self.theCost = cost
-    self.theRoles = roles
-    self.thePersonas = personas
+    def __init__(
+        self,
+        environmentName,
+        requirements=[],
+        targets=[],
+        properties=array((0, 0, 0, 0, 0, 0, 0, 0)),
+        rationale=["None", "None", "None", "None", "None", "None", "None", "None"],
+        cost="",
+        roles=[],
+        personas={},
+    ):
+        EnvironmentProperties.__init__(self, environmentName)
+        self.theRequirements = requirements
+        self.theTargets = targets
+        self.theProperties = properties
+        self.theRationale = rationale
+        self.theCost = cost
+        self.theRoles = roles
+        self.thePersonas = personas
 
-  def requirements(self): return self.theRequirements
-  def targets(self): return self.theTargets
-  def properties(self): return self.theProperties
-  def rationale(self): return self.theRationale
-  def cost(self): return self.theCost
-  def roles(self): return self.theRoles
-  def personas(self): return self.thePersonas
+    def requirements(self):
+        return self.theRequirements
+
+    def targets(self):
+        return self.theTargets
+
+    def properties(self):
+        return self.theProperties
+
+    def rationale(self):
+        return self.theRationale
+
+    def cost(self):
+        return self.theCost
+
+    def roles(self):
+        return self.theRoles
+
+    def personas(self):
+        return self.thePersonas

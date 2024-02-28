@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 #  Licensed to the Apache Software Foundation (ASF) under one
 #  or more contributor license agreements.  See the NOTICE file
 #  distributed with this work for additional information
@@ -15,18 +16,28 @@
 #  specific language governing permissions and limitations
 #  under the License.
 
-__author__ = 'Shamal Faily'
+__author__ = "Shamal Faily"
+
 
 class Location:
-  def __init__(self,locId,locName,locAssets,locPersonas,locLinks):
-    self.theId = locId
-    self.theName = locName
-    self.theAssetInstances = locAssets
-    self.thePersonaInstances = locPersonas
-    self.theLinks = locLinks
+    def __init__(self, locId, locName, locAssets, locPersonas, locLinks):
+        self.theId = locId
+        self.theName = locName
+        self.theAssetInstances = locAssets
+        self.thePersonaInstances = locPersonas
+        self.theLinks = locLinks
 
-  def id(self): return self.theId
-  def name(self): return self.theName
-  def assetInstances(self): return self.theAssetInstances
-  def personaInstances(self): return self.thePersonaInstances
-  def links(self): return self.theLinks
+    def id(self):
+        return self.theId
+
+    def name(self):
+        return self.theName
+
+    def assetInstances(self):
+        return self.theAssetInstances
+
+    def personaInstances(self):
+        return self.thePersonaInstances
+
+    def links(self):
+        return self.theLinks

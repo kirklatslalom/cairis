@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 #  Licensed to the Apache Software Foundation (ASF) under one
 #  or more contributor license agreements.  See the NOTICE file
 #  distributed with this work for additional information
@@ -18,17 +19,25 @@
 
 from .ObjectCreationParameters import ObjectCreationParameters
 
-__author__ = 'Shamal Faily'
+__author__ = "Shamal Faily"
+
 
 class ConceptReferenceParameters(ObjectCreationParameters):
-  def __init__(self,refName,dimName,objtName,cDesc):
-    ObjectCreationParameters.__init__(self)
-    self.theName = refName
-    self.theDimName = dimName
-    self.theObjtName = objtName
-    self.theDescription = cDesc
+    def __init__(self, refName, dimName, objtName, cDesc):
+        ObjectCreationParameters.__init__(self)
+        self.theName = refName
+        self.theDimName = dimName
+        self.theObjtName = objtName
+        self.theDescription = cDesc
 
-  def name(self): return self.theName
-  def dimension(self): return self.theDimName
-  def objectName(self): return self.theObjtName
-  def description(self): return self.theDescription
+    def name(self):
+        return self.theName
+
+    def dimension(self):
+        return self.theDimName
+
+    def objectName(self):
+        return self.theObjtName
+
+    def description(self):
+        return self.theDescription

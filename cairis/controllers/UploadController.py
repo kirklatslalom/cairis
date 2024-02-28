@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 #  Licensed to the Apache Software Foundation (ASF) under one
 #  or more contributor license agreements.  See the NOTICE file
 #  distributed with this work for additional information
@@ -16,12 +17,13 @@
 #  under the License.
 
 import sys
-if (sys.version_info > (3,)):
-  import http.client
-  from http.client import BAD_REQUEST, CONFLICT, NOT_FOUND, OK
+
+if sys.version_info > (3,):
+    import http.client
+    from http.client import BAD_REQUEST, CONFLICT, NOT_FOUND, OK
 else:
-  import httplib
-  from httplib import BAD_REQUEST, CONFLICT, NOT_FOUND, OK
+    import httplib
+    from httplib import BAD_REQUEST, CONFLICT, NOT_FOUND, OK
 from flask import session, make_response, send_file
 from flask import request
 from flask_restful import Resource
@@ -31,39 +33,38 @@ from cairis.tools.JsonConverter import json_serialize
 from cairis.tools.SessionValidator import get_session_id
 from cairis.core.Borg import Borg
 
-__author__ = 'Robin Quetin, Shamal Faily'
+__author__ = "Robin Quetin, Shamal Faily"
 
 
 class UploadImageAPI(Resource):
+    def post(self):
+        session_id = get_session_id(session, request)
 
-  def post(self):
-    session_id = get_session_id(session, request)
+        if session_id is None:
+            raise CairisHTTPError(
+                status_code=BAD_REQUEST,
+                message="The session is neither started or no session ID is provided with the request.",
+            )
 
-    if session_id is None:
-      raise CairisHTTPError(
-        status_code=BAD_REQUEST,
-        message='The session is neither started or no session ID is provided with the request.'
-      )
+        content_length = request.content_length
+        max_length = 10 * 1024 * 1024
+        if content_length > max_length:
+            raise MissingParameterHTTPError(
+                exception=RuntimeError("File exceeded maximum size (10MB)")
+            )
 
-    content_length = request.content_length
-    max_length = 10*1024*1024
-    if content_length > max_length:
-      raise MissingParameterHTTPError(exception=RuntimeError('File exceeded maximum size (10MB)'))
+        try:
+            file = request.files["file"]
+        except LookupError as ex:
+            raise MissingParameterHTTPError(param_names=["file"])
+        except Exception as ex:
+            raise CairisHTTPError(
+                status_code=CONFLICT, message=str(ex.message), status="Unknown error"
+            )
 
-    try:
-      file = request.files['file']
-    except LookupError as ex:
-      raise MissingParameterHTTPError(param_names=['file'])
-    except Exception as ex:
-      raise CairisHTTPError(
-              status_code=CONFLICT,
-              message=str(ex.message),
-              status='Unknown error'
-      )
-
-    dao = UploadDAO(session_id)
-    dao.set_image(file.filename,file.stream.read(),file.mimetype)
-    resp_dict = {'message': 'File successfully uploaded', 'filename': file.filename}
-    resp = make_response(json_serialize(resp_dict, session_id=session_id), OK)
-    resp.contenttype = 'application/json'
-    return resp
+        dao = UploadDAO(session_id)
+        dao.set_image(file.filename, file.stream.read(), file.mimetype)
+        resp_dict = {"message": "File successfully uploaded", "filename": file.filename}
+        resp = make_response(json_serialize(resp_dict, session_id=session_id), OK)
+        resp.contenttype = "application/json"
+        return resp

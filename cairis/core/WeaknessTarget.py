@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 #  Licensed to the Apache Software Foundation (ASF) under one
 #  or more contributor license agreements.  See the NOTICE file
 #  distributed with this work for additional information
@@ -15,37 +16,55 @@
 #  specific language governing permissions and limitations
 #  under the License.
 
-__author__ = 'Shamal Faily'
+__author__ = "Shamal Faily"
 
 
 class WeaknessTarget:
-  def __init__(self,targetName):
-    self.theTargetName = targetName
-    self.theComponents = set([])
-    self.theTemplateAssets = set([])
-    self.theAssets = set([])
-    self.theTreatmentRequirement = ''
-    self.theTreatmentAsset = ''
-    self.theTreatmentEffectiveness = 'None'
-    self.theTreatmentRationale = ''
+    def __init__(self, targetName):
+        self.theTargetName = targetName
+        self.theComponents = set([])
+        self.theTemplateAssets = set([])
+        self.theAssets = set([])
+        self.theTreatmentRequirement = ""
+        self.theTreatmentAsset = ""
+        self.theTreatmentEffectiveness = "None"
+        self.theTreatmentRationale = ""
 
-  def name(self): return self.theTargetName
-  def components(self): return self.theComponents
-  def templateAssets(self): return self.theTemplateAssets
-  def assets(self): return self.theAssets
+    def name(self):
+        return self.theTargetName
 
-  def addComponent(self,cName): self.theComponents.add(cName)
-  def addAsset(self,aName): self.theAssets.add(aName)
-  def addTemplateAsset(self,taName): 
-    self.theTemplateAssets.add(taName)
+    def components(self):
+        return self.theComponents
 
-  def addTreatment(self,reqName,assetName,effValue,effRationale):
-    self.theTreatmentRequirement = reqName
-    self.theTreatmentAsset = assetName
-    self.theTreatmentEffectiveness = effValue
-    self.theTreatmentRationale = effRationale
+    def templateAssets(self):
+        return self.theTemplateAssets
 
-  def requirement(self): return self.theTreatmentRequirement
-  def asset(self): return self.theTreatmentAsset
-  def effectiveness(self): return self.theTreatmentEffectiveness
-  def rationale(self): return self.theTreatmentRationale
+    def assets(self):
+        return self.theAssets
+
+    def addComponent(self, cName):
+        self.theComponents.add(cName)
+
+    def addAsset(self, aName):
+        self.theAssets.add(aName)
+
+    def addTemplateAsset(self, taName):
+        self.theTemplateAssets.add(taName)
+
+    def addTreatment(self, reqName, assetName, effValue, effRationale):
+        self.theTreatmentRequirement = reqName
+        self.theTreatmentAsset = assetName
+        self.theTreatmentEffectiveness = effValue
+        self.theTreatmentRationale = effRationale
+
+    def requirement(self):
+        return self.theTreatmentRequirement
+
+    def asset(self):
+        return self.theTreatmentAsset
+
+    def effectiveness(self):
+        return self.theTreatmentEffectiveness
+
+    def rationale(self):
+        return self.theTreatmentRationale

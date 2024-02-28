@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 #  Licensed to the Apache Software Foundation (ASF) under one
 #  or more contributor license agreements.  See the NOTICE file
 #  distributed with this work for additional information
@@ -74,7 +75,7 @@ class KaosModel:
     elif (dimName == 'task'):
       objt = self.dbProxy.dimensionObject(objtName,'task')
       if (objt.assumption() == True):
-        objtLabel = "&lt;&lt;Assumption&gt;&gt;" + objtName 
+        objtLabel = "&lt;&lt;Assumption&gt;&gt;" + objtName
       else:
         objtLabel = objtName
       taskScore = self.dbProxy.taskUsabilityScore(objtName,self.theEnvironmentName)
@@ -98,9 +99,9 @@ class KaosModel:
     elif (dimName == 'persona'):
       objt = self.dbProxy.dimensionObject(objtName,'persona')
       if (objt.assumption() == True):
-        objtLabel = "&lt;&lt;Assumption&gt;&gt;" + objtName 
+        objtLabel = "&lt;&lt;Assumption&gt;&gt;" + objtName
         self.theGraph.add_node(pydot.Node(objtName,label=objtLabel,shape='circle',fontname=self.fontName,fontsize=self.fontSize,URL=objtUrl))
-      else: 
+      else:
         self.theGraph.add_node(pydot.Node(objtName,shape='circle',fontname=self.fontName,fontsize=self.fontSize,URL=objtUrl))
     elif (dimName == 'attacker'):
       self.theGraph.add_node(pydot.Node(objtName,shape='circle',style='filled',color='black',fontname=self.fontName,fontsize=self.fontSize,URL=objtUrl))
@@ -202,8 +203,8 @@ class KaosModel:
 #          modifiedRefNodeName = '\"' + refNodeName + '\"'
 #          refNode = self.theGraph.get_node(modifiedRefNodeName)
 #          refNode.set('label','?')
-     
-        
+
+
 
   def buildTaskModel(self):
     self.nodeNameSet = set([])
@@ -293,4 +294,3 @@ class KaosModel:
       return self.layout()
     except DatabaseProxyException, errTxt:
       raise ARMException(errTxt)
-

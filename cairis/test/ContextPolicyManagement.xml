@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <!DOCTYPE architectural_pattern PUBLIC "-//CAIRIS//DTD ARCHITECTURAL PATTERN 1.0//EN" "https://cairis.org/dtd/architectural_pattern.dtd">
 
-<!-- 
+<!--
   Licensed to the Apache Software Foundation (ASF) under one
   or more contributor license agreements.  See the NOTICE file
   distributed with this work for additional information
@@ -173,12 +173,12 @@
 <goal name="API control">
   <definition>Users and other stakeholders shall be able to control access by web applications to JavaScript APIs.  These APIs may allow access to local and remote resources.</definition>
   <rationale>None</rationale>
-  <concern name="Access Requestor" /> 
+  <concern name="Access Requestor" />
 </goal>
 <goal name="Device policy">
   <definition>Users shall be able to create both device-specific and device-agnostic policies.</definition>
   <rationale>None</rationale>
-  <concern name="Access Requestor" /> 
+  <concern name="Access Requestor" />
 </goal>
 <goal name="Policy synchronisation">
   <definition>The platform shall provide synchronisation for access control policies, so that policies can be desceibed on one platform and enforced on all.</definition>
@@ -193,7 +193,7 @@
 <goal name="Qualified data use">
   <definition>The platform shall protect user privacy: access requestors shall be able to qualify how they will use the data they are requesting, and users shall be able to express constraints about data disclosure.</definition>
   <rationale>None</rationale>
-  <concern name="Request Context" /> 
+  <concern name="Request Context" />
 </goal>
 <goal name="Usage Constraint">
   <definition>Users shall specify constraints about data disclosure.</definition>

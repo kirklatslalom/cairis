@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 #  Licensed to the Apache Software Foundation (ASF) under one
 #  or more contributor license agreements.  See the NOTICE file
 #  distributed with this work for additional information
@@ -18,16 +19,24 @@
 
 from .EnvironmentProperties import EnvironmentProperties
 
-__author__ = 'Shamal Faily'
+__author__ = "Shamal Faily"
+
 
 class MitigateEnvironmentProperties(EnvironmentProperties):
-  def __init__(self,environmentName,type='',detPoint='',detMechs=[]):
-    EnvironmentProperties.__init__(self,environmentName)
-    self.theType = type
-    self.theDetectionPoint = detPoint
-    self.theDetectionMechanisms = detMechs
+    def __init__(self, environmentName, type="", detPoint="", detMechs=[]):
+        EnvironmentProperties.__init__(self, environmentName)
+        self.theType = type
+        self.theDetectionPoint = detPoint
+        self.theDetectionMechanisms = detMechs
 
-  def type(self): return self.theType
-  def detectionPoint(self): return self.theDetectionPoint
-  def detectionMechanisms(self): return self.theDetectionMechanisms
-  def description(self): return ''
+    def type(self):
+        return self.theType
+
+    def detectionPoint(self):
+        return self.theDetectionPoint
+
+    def detectionMechanisms(self):
+        return self.theDetectionMechanisms
+
+    def description(self):
+        return ""

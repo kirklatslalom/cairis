@@ -1,4 +1,4 @@
-/* 
+/*
   Licensed to the Apache Software Foundation (ASF) under one
   or more contributor license agreements.  See the NOTICE file
   distributed with this work for additional information
@@ -453,35 +453,35 @@ CREATE TABLE project_revision (
   PRIMARY KEY (revision_no)
 ) ENGINE=INNODB;
 CREATE TABLE countermeasure_value (
-  id INT NOT NULL, 
-  name VARCHAR(50), 
-  description VARCHAR(4000), 
+  id INT NOT NULL,
+  name VARCHAR(50),
+  description VARCHAR(4000),
   PRIMARY KEY(id)
 ) ENGINE=INNODB;
 CREATE TABLE threat_value (
-  id INT NOT NULL, 
-  name VARCHAR(200), 
-  description VARCHAR(4000), 
+  id INT NOT NULL,
+  name VARCHAR(200),
+  description VARCHAR(4000),
   PRIMARY KEY(id)
 ) ENGINE=INNODB;
 CREATE TABLE environment(
-  id INT NOT NULL, 
-  name VARCHAR(100), 
-  description VARCHAR(4000), 
+  id INT NOT NULL,
+  name VARCHAR(100),
+  description VARCHAR(4000),
   short_code VARCHAR(100) NOT NULL,
   PRIMARY KEY(id)
 ) ENGINE=INNODB;
 CREATE TABLE tension (
-  id INT NOT NULL, 
-  name VARCHAR(50), 
-  description VARCHAR(4000), 
+  id INT NOT NULL,
+  name VARCHAR(50),
+  description VARCHAR(4000),
   short_code VARCHAR(100) NOT NULL,
   PRIMARY KEY(id)
 ) ENGINE=INNODB;
 CREATE TABLE asset_value (
-  id INT NOT NULL, 
-  name VARCHAR(100), 
-  description VARCHAR(4000), 
+  id INT NOT NULL,
+  name VARCHAR(100),
+  description VARCHAR(4000),
   environment_id INT NOT NULL,
   PRIMARY KEY(id,environment_id),
   FOREIGN KEY(environment_id) REFERENCES environment(id)
@@ -490,7 +490,7 @@ CREATE TABLE duplicate_property (
   id INT NOT NULL,
   name VARCHAR(50),
   PRIMARY KEY(id)
-) ENGINE=INNODB; 
+) ENGINE=INNODB;
 CREATE TABLE composite_environment_override (
   composite_environment_id INT NOT NULL,
   overriding_environment_id INT NOT NULL,
@@ -610,12 +610,12 @@ CREATE TABLE security_property_value (
   id INT NOT NULL,
   name VARCHAR(50) NOT NULL,
   PRIMARY KEY(id)
-) ENGINE=INNODB; 
+) ENGINE=INNODB;
 CREATE TABLE securityusability_property_value (
   id INT NOT NULL,
   name VARCHAR(50) NOT NULL,
   PRIMARY KEY(id)
-) ENGINE=INNODB; 
+) ENGINE=INNODB;
 CREATE TABLE asset_type (
   id INT NOT NULL,
   name VARCHAR(50) NOT NULL,
@@ -681,8 +681,8 @@ CREATE TABLE multiplicity_type (
   FOREIGN KEY(environment_id) REFERENCES environment(id),
   FOREIGN KEY(head_id) REFERENCES asset(id),
   FOREIGN KEY(head_association_type_id) REFERENCES association_type(id),
-  FOREIGN KEY(head_multiplicity_id) REFERENCES multiplicity_type(id), 
-  FOREIGN KEY(tail_multiplicity_id) REFERENCES multiplicity_type(id), 
+  FOREIGN KEY(head_multiplicity_id) REFERENCES multiplicity_type(id),
+  FOREIGN KEY(tail_multiplicity_id) REFERENCES multiplicity_type(id),
   FOREIGN KEY(tail_association_type_id) REFERENCES association_type(id),
   FOREIGN KEY(tail_id) REFERENCES asset(id)
 ) ENGINE=INNODB;
@@ -790,14 +790,14 @@ CREATE TABLE environment_vulnerability (
   PRIMARY KEY(vulnerability_id,environment_id),
   FOREIGN KEY(vulnerability_id) REFERENCES vulnerability(id),
   FOREIGN KEY(environment_id) REFERENCES environment(id)
-) ENGINE=INNODB; 
+) ENGINE=INNODB;
 CREATE TABLE requirement_vulnerability (
   requirement_id INT NOT NULL,
   vulnerability_id INT NOT NULL,
   PRIMARY KEY(requirement_id,vulnerability_id),
   FOREIGN KEY(requirement_id) REFERENCES requirement(id),
   FOREIGN KEY(vulnerability_id) REFERENCES vulnerability(id)
-) ENGINE=INNODB; 
+) ENGINE=INNODB;
 CREATE TABLE vulnerability_severity (
   vulnerability_id INT NOT NULL,
   severity_id INT NOT NULL,
@@ -815,7 +815,7 @@ CREATE TABLE asset_vulnerability (
   FOREIGN KEY(asset_id) REFERENCES asset(id),
   FOREIGN KEY(vulnerability_id) REFERENCES vulnerability(id),
   FOREIGN KEY(environment_id) REFERENCES environment(id)
-) ENGINE=INNODB; 
+) ENGINE=INNODB;
 CREATE TABLE persona_type (
   id INT NOT NULL,
   name VARCHAR(50) NOT NULL,
@@ -836,7 +836,7 @@ CREATE TABLE persona (
   persona_type_id INT NOT NULL,
   PRIMARY KEY(id),
   FOREIGN KEY(persona_type_id) REFERENCES persona_type(id)
-) ENGINE=INNODB; 
+) ENGINE=INNODB;
 CREATE TABLE behavioural_variable (
   id INT NOT NULL,
   name VARCHAR(50) NOT NULL,
@@ -911,7 +911,7 @@ CREATE TABLE role (
   description VARCHAR(1000),
   PRIMARY KEY(id),
   FOREIGN KEY(role_type_id) REFERENCES role_type(id)
-) ENGINE=INNODB; 
+) ENGINE=INNODB;
 CREATE TABLE persona_role (
   persona_id INT NOT NULL,
   role_id INT NOT NULL,
@@ -920,7 +920,7 @@ CREATE TABLE persona_role (
   FOREIGN KEY(persona_id) REFERENCES persona(id),
   FOREIGN KEY(role_id) REFERENCES role(id),
   FOREIGN KEY(environment_id) REFERENCES environment(id)
-) ENGINE=INNODB; 
+) ENGINE=INNODB;
 CREATE TABLE attacker_role (
   attacker_id INT NOT NULL,
   role_id INT NOT NULL,
@@ -929,7 +929,7 @@ CREATE TABLE attacker_role (
   FOREIGN KEY(attacker_id) REFERENCES attacker(id),
   FOREIGN KEY(role_id) REFERENCES role(id),
   FOREIGN KEY(environment_id) REFERENCES environment(id)
-) ENGINE=INNODB; 
+) ENGINE=INNODB;
 CREATE TABLE threat_attacker (
   threat_id INT NOT NULL,
   attacker_id INT NOT NULL,
@@ -1196,7 +1196,7 @@ CREATE TABLE mitigate_point_type (
   name VARCHAR(50) NOT NULL,
   PRIMARY KEY(id)
 ) ENGINE=INNODB;
-CREATE TABLE response ( 
+CREATE TABLE response (
   id INT NOT NULL,
   name VARCHAR(100) NOT NULL,
   goal_category_type_id INT NOT NULL,
@@ -1205,7 +1205,7 @@ CREATE TABLE response (
   FOREIGN KEY(goal_category_type_id) REFERENCES goal_category_type(id),
   FOREIGN KEY(risk_id) REFERENCES risk(id)
 ) ENGINE=INNODB;
-CREATE TABLE countermeasure ( 
+CREATE TABLE countermeasure (
   id INT NOT NULL,
   name VARCHAR(100) NOT NULL,
   description VARCHAR(255) NOT NULL,
@@ -1213,14 +1213,14 @@ CREATE TABLE countermeasure (
   PRIMARY KEY(id),
   FOREIGN KEY(countermeasure_type_id) REFERENCES asset_type(id)
 ) ENGINE=INNODB;
-CREATE TABLE countermeasure_asset ( 
+CREATE TABLE countermeasure_asset (
   countermeasure_id INT NOT NULL,
   asset_id INT NOT NULL,
   PRIMARY KEY(countermeasure_id,asset_id),
   FOREIGN KEY(countermeasure_id) REFERENCES countermeasure(id),
   FOREIGN KEY(asset_id) REFERENCES asset(id)
 ) ENGINE=INNODB;
-CREATE TABLE requirement_countermeasure ( 
+CREATE TABLE requirement_countermeasure (
   requirement_id INT NOT NULL,
   environment_id INT NOT NULL,
   countermeasure_id INT NOT NULL,
@@ -1274,7 +1274,7 @@ CREATE TABLE response_role (
   FOREIGN KEY(environment_id) REFERENCES environment(id),
   FOREIGN KEY(role_id) REFERENCES role(id),
   FOREIGN KEY(cost_id) REFERENCES cost(id)
-) ENGINE=INNODB; 
+) ENGINE=INNODB;
 CREATE TABLE reaction_detection_mechanism (
   response_id INT NOT NULL,
   environment_id INT NOT NULL,
@@ -1898,7 +1898,7 @@ CREATE TABLE goal_concernassociation (
   FOREIGN KEY(goal_id) REFERENCES goal(id),
   FOREIGN KEY(source_id) REFERENCES asset(id),
   FOREIGN KEY(target_id) REFERENCES asset(id),
-  FOREIGN KEY(source_multiplicity_id) REFERENCES multiplicity_type(id), 
+  FOREIGN KEY(source_multiplicity_id) REFERENCES multiplicity_type(id),
   FOREIGN KEY(target_multiplicity_id) REFERENCES multiplicity_type(id)
 ) ENGINE=INNODB;
 CREATE TABLE task_concernassociation (
@@ -1914,7 +1914,7 @@ CREATE TABLE task_concernassociation (
   FOREIGN KEY(task_id) REFERENCES task(id),
   FOREIGN KEY(source_id) REFERENCES asset(id),
   FOREIGN KEY(target_id) REFERENCES asset(id),
-  FOREIGN KEY(source_multiplicity_id) REFERENCES multiplicity_type(id), 
+  FOREIGN KEY(source_multiplicity_id) REFERENCES multiplicity_type(id),
   FOREIGN KEY(target_multiplicity_id) REFERENCES multiplicity_type(id)
 ) ENGINE=INNODB;
 CREATE TABLE goal_concern (
@@ -1930,7 +1930,7 @@ CREATE TABLE rolegoalrole_dependency (
   id INT NOT NULL,
   environment_id INT NOT NULL,
   depender_id INT NOT NULL,
-  dependency_id INT NOT NULL, 
+  dependency_id INT NOT NULL,
   dependee_id INT NOT NULL,
   rationale VARCHAR(1000) NOT NULL,
   PRIMARY KEY(id,environment_id,depender_id,dependency_id,dependee_id),
@@ -1943,7 +1943,7 @@ CREATE TABLE roletaskrole_dependency (
   id INT NOT NULL,
   environment_id INT NOT NULL,
   depender_id INT NOT NULL,
-  dependency_id INT NOT NULL, 
+  dependency_id INT NOT NULL,
   dependee_id INT NOT NULL,
   rationale VARCHAR(1000) NOT NULL,
   PRIMARY KEY(id,environment_id,depender_id,dependency_id,dependee_id),
@@ -2087,8 +2087,8 @@ CREATE TABLE securitypattern_classassociation (
   FOREIGN KEY(pattern_id) REFERENCES securitypattern(id),
   FOREIGN KEY(head_id) REFERENCES template_asset(id),
   FOREIGN KEY(head_association_type_id) REFERENCES association_type(id),
-  FOREIGN KEY(head_multiplicity_id) REFERENCES multiplicity_type(id), 
-  FOREIGN KEY(tail_multiplicity_id) REFERENCES multiplicity_type(id), 
+  FOREIGN KEY(head_multiplicity_id) REFERENCES multiplicity_type(id),
+  FOREIGN KEY(tail_multiplicity_id) REFERENCES multiplicity_type(id),
   FOREIGN KEY(tail_association_type_id) REFERENCES association_type(id),
   FOREIGN KEY(tail_id) REFERENCES template_asset(id)
 ) ENGINE=INNODB;
@@ -2101,7 +2101,7 @@ CREATE TABLE securitypattern_asset_template_asset (
   FOREIGN KEY(template_asset_id) REFERENCES template_asset(id),
   FOREIGN KEY(pattern_id) REFERENCES securitypattern(id)
 ) ENGINE=INNODB;
-CREATE TABLE countermeasure_securitypattern ( 
+CREATE TABLE countermeasure_securitypattern (
   countermeasure_id INT NOT NULL,
   pattern_id INT NOT NULL,
   PRIMARY KEY(countermeasure_id,pattern_id),
@@ -2119,7 +2119,7 @@ CREATE TABLE vulnerability_asset_countermeasure_effect (
   FOREIGN KEY(asset_id) REFERENCES asset(id),
   FOREIGN KEY(environment_id) REFERENCES environment(id),
   FOREIGN KEY(countermeasure_id) REFERENCES countermeasure(id),
-  FOREIGN KEY(effectiveness_id) REFERENCES target_effectiveness(id) 
+  FOREIGN KEY(effectiveness_id) REFERENCES target_effectiveness(id)
 ) ENGINE=INNODB;
 CREATE TABLE threat_asset_countermeasure_effect (
   threat_id INT NOT NULL,
@@ -2132,7 +2132,7 @@ CREATE TABLE threat_asset_countermeasure_effect (
   FOREIGN KEY(asset_id) REFERENCES asset(id),
   FOREIGN KEY(environment_id) REFERENCES environment(id),
   FOREIGN KEY(countermeasure_id) REFERENCES countermeasure(id),
-  FOREIGN KEY(effectiveness_id) REFERENCES target_effectiveness(id) 
+  FOREIGN KEY(effectiveness_id) REFERENCES target_effectiveness(id)
 ) ENGINE=INNODB;
 CREATE TABLE asset_reference (
   id INT NOT NULL,
@@ -2516,7 +2516,7 @@ CREATE TABLE value_tension (
   FOREIGN KEY(environment_id) REFERENCES environment(id),
   FOREIGN KEY(security_property_id) REFERENCES security_property(id),
   FOREIGN KEY(privacy_property_id) REFERENCES security_property(id),
-  FOREIGN KEY(tension_id) REFERENCES tension(id) 
+  FOREIGN KEY(tension_id) REFERENCES tension(id)
 ) ENGINE=INNODB;
 
 CREATE TABLE tag (
@@ -2529,7 +2529,7 @@ CREATE TABLE asset_tag (
   asset_id INT NOT NULL,
   tag_id INT NOT NULL,
   PRIMARY KEY(asset_id,tag_id),
-  FOREIGN KEY(asset_id) REFERENCES asset(id), 
+  FOREIGN KEY(asset_id) REFERENCES asset(id),
   FOREIGN KEY(tag_id) REFERENCES tag(id)
 ) ENGINE=INNODB;
 
@@ -2537,7 +2537,7 @@ CREATE TABLE template_asset_tag (
   template_asset_id INT NOT NULL,
   tag_id INT NOT NULL,
   PRIMARY KEY(template_asset_id,tag_id),
-  FOREIGN KEY(template_asset_id) REFERENCES template_asset(id), 
+  FOREIGN KEY(template_asset_id) REFERENCES template_asset(id),
   FOREIGN KEY(tag_id) REFERENCES tag(id)
 ) ENGINE=INNODB;
 
@@ -2545,7 +2545,7 @@ CREATE TABLE attacker_tag (
   attacker_id INT NOT NULL,
   tag_id INT NOT NULL,
   PRIMARY KEY(attacker_id,tag_id),
-  FOREIGN KEY(attacker_id) REFERENCES attacker(id), 
+  FOREIGN KEY(attacker_id) REFERENCES attacker(id),
   FOREIGN KEY(tag_id) REFERENCES tag(id)
 ) ENGINE=INNODB;
 
@@ -2553,7 +2553,7 @@ CREATE TABLE threat_tag (
   threat_id INT NOT NULL,
   tag_id INT NOT NULL,
   PRIMARY KEY(threat_id,tag_id),
-  FOREIGN KEY(threat_id) REFERENCES threat(id), 
+  FOREIGN KEY(threat_id) REFERENCES threat(id),
   FOREIGN KEY(tag_id) REFERENCES tag(id)
 ) ENGINE=INNODB;
 
@@ -2561,7 +2561,7 @@ CREATE TABLE vulnerability_tag (
   vulnerability_id INT NOT NULL,
   tag_id INT NOT NULL,
   PRIMARY KEY(vulnerability_id,tag_id),
-  FOREIGN KEY(vulnerability_id) REFERENCES vulnerability(id), 
+  FOREIGN KEY(vulnerability_id) REFERENCES vulnerability(id),
   FOREIGN KEY(tag_id) REFERENCES tag(id)
 ) ENGINE=INNODB;
 
@@ -2569,7 +2569,7 @@ CREATE TABLE risk_tag (
   risk_id INT NOT NULL,
   tag_id INT NOT NULL,
   PRIMARY KEY(risk_id,tag_id),
-  FOREIGN KEY(risk_id) REFERENCES risk(id), 
+  FOREIGN KEY(risk_id) REFERENCES risk(id),
   FOREIGN KEY(tag_id) REFERENCES tag(id)
 ) ENGINE=INNODB;
 
@@ -2577,7 +2577,7 @@ CREATE TABLE task_tag (
   task_id INT NOT NULL,
   tag_id INT NOT NULL,
   PRIMARY KEY(task_id,tag_id),
-  FOREIGN KEY(task_id) REFERENCES task(id), 
+  FOREIGN KEY(task_id) REFERENCES task(id),
   FOREIGN KEY(tag_id) REFERENCES tag(id)
 ) ENGINE=INNODB;
 
@@ -2585,7 +2585,7 @@ CREATE TABLE usecase_tag (
   usecase_id INT NOT NULL,
   tag_id INT NOT NULL,
   PRIMARY KEY(usecase_id,tag_id),
-  FOREIGN KEY(usecase_id) REFERENCES usecase(id), 
+  FOREIGN KEY(usecase_id) REFERENCES usecase(id),
   FOREIGN KEY(tag_id) REFERENCES tag(id)
 ) ENGINE=INNODB;
 
@@ -2604,7 +2604,7 @@ CREATE TABLE persona_tag (
   persona_id INT NOT NULL,
   tag_id INT NOT NULL,
   PRIMARY KEY(persona_id,tag_id),
-  FOREIGN KEY(persona_id) REFERENCES persona(id), 
+  FOREIGN KEY(persona_id) REFERENCES persona(id),
   FOREIGN KEY(tag_id) REFERENCES tag(id)
 ) ENGINE=INNODB;
 
@@ -2612,7 +2612,7 @@ CREATE TABLE goal_tag (
   goal_id INT NOT NULL,
   tag_id INT NOT NULL,
   PRIMARY KEY(goal_id,tag_id),
-  FOREIGN KEY(goal_id) REFERENCES goal(id), 
+  FOREIGN KEY(goal_id) REFERENCES goal(id),
   FOREIGN KEY(tag_id) REFERENCES tag(id)
 ) ENGINE=INNODB;
 
@@ -2620,7 +2620,7 @@ CREATE TABLE obstacle_tag (
   obstacle_id INT NOT NULL,
   tag_id INT NOT NULL,
   PRIMARY KEY(obstacle_id,tag_id),
-  FOREIGN KEY(obstacle_id) REFERENCES obstacle(id), 
+  FOREIGN KEY(obstacle_id) REFERENCES obstacle(id),
   FOREIGN KEY(tag_id) REFERENCES tag(id)
 ) ENGINE=INNODB;
 
@@ -2628,7 +2628,7 @@ CREATE TABLE domainproperty_tag (
   domainproperty_id INT NOT NULL,
   tag_id INT NOT NULL,
   PRIMARY KEY(domainproperty_id,tag_id),
-  FOREIGN KEY(domainproperty_id) REFERENCES domainproperty(id), 
+  FOREIGN KEY(domainproperty_id) REFERENCES domainproperty(id),
   FOREIGN KEY(tag_id) REFERENCES tag(id)
 ) ENGINE=INNODB;
 
@@ -2636,7 +2636,7 @@ CREATE TABLE countermeasure_tag (
   countermeasure_id INT NOT NULL,
   tag_id INT NOT NULL,
   PRIMARY KEY(countermeasure_id,tag_id),
-  FOREIGN KEY(countermeasure_id) REFERENCES countermeasure(id), 
+  FOREIGN KEY(countermeasure_id) REFERENCES countermeasure(id),
   FOREIGN KEY(tag_id) REFERENCES tag(id)
 ) ENGINE=INNODB;
 
@@ -2644,7 +2644,7 @@ CREATE TABLE response_tag (
   response_id INT NOT NULL,
   tag_id INT NOT NULL,
   PRIMARY KEY(response_id,tag_id),
-  FOREIGN KEY(response_id) REFERENCES response(id), 
+  FOREIGN KEY(response_id) REFERENCES response(id),
   FOREIGN KEY(tag_id) REFERENCES tag(id)
 ) ENGINE=INNODB;
 
@@ -2919,8 +2919,8 @@ CREATE TABLE component_classassociation (
   FOREIGN KEY(component_id) REFERENCES component(id),
   FOREIGN KEY(head_id) REFERENCES template_asset(id),
   FOREIGN KEY(head_association_type_id) REFERENCES association_type(id),
-  FOREIGN KEY(head_multiplicity_id) REFERENCES multiplicity_type(id), 
-  FOREIGN KEY(tail_multiplicity_id) REFERENCES multiplicity_type(id), 
+  FOREIGN KEY(head_multiplicity_id) REFERENCES multiplicity_type(id),
+  FOREIGN KEY(tail_multiplicity_id) REFERENCES multiplicity_type(id),
   FOREIGN KEY(tail_association_type_id) REFERENCES association_type(id),
   FOREIGN KEY(tail_id) REFERENCES template_asset(id)
 ) ENGINE=INNODB;
@@ -3061,7 +3061,7 @@ CREATE TABLE channel_parameter (
   channel_id INT NOT NULL,
   code_id INT NOT NULL,
   parameter_id INT NOT NULL,
-  PRIMARY KEY(channel_id,code_id,parameter_id),  
+  PRIMARY KEY(channel_id,code_id,parameter_id),
   FOREIGN KEY(channel_id) REFERENCES channel(id),
   FOREIGN KEY(code_id) REFERENCES code(id),
   FOREIGN KEY(parameter_id) REFERENCES parameter(id)
@@ -3372,7 +3372,7 @@ CREATE TABLE dataflow_tag (
   dataflow_id INT NOT NULL,
   tag_id INT NOT NULL,
   PRIMARY KEY(dataflow_id,tag_id),
-  FOREIGN KEY(dataflow_id) REFERENCES dataflow(id), 
+  FOREIGN KEY(dataflow_id) REFERENCES dataflow(id),
   FOREIGN KEY(tag_id) REFERENCES tag(id)
 ) ENGINE=INNODB;
 
@@ -3435,9 +3435,9 @@ CREATE TABLE trust_boundary_type (
 
 CREATE TABLE trust_boundary (
   id INT NOT NULL,
-  name VARCHAR(50), 
+  name VARCHAR(50),
   trust_boundary_type_id INT NOT NULL,
-  description VARCHAR(4000), 
+  description VARCHAR(4000),
   PRIMARY KEY(id),
   FOREIGN KEY(trust_boundary_type_id) REFERENCES trust_boundary_type(id)
 ) ENGINE=INNODB;
@@ -3475,7 +3475,7 @@ CREATE TABLE trust_boundary_tag (
   trust_boundary_id INT NOT NULL,
   tag_id INT NOT NULL,
   PRIMARY KEY(trust_boundary_id,tag_id),
-  FOREIGN KEY(trust_boundary_id) REFERENCES trust_boundary(id), 
+  FOREIGN KEY(trust_boundary_id) REFERENCES trust_boundary(id),
   FOREIGN KEY(tag_id) REFERENCES tag(id)
 ) ENGINE=INNODB;
 
@@ -3511,14 +3511,14 @@ CREATE TABLE task_goal_contribution (
   FOREIGN KEY(task_id) REFERENCES task(id),
   FOREIGN KEY(environment_id) REFERENCES environment(id)
 ) ENGINE=INNODB;
-  
+
 CREATE TABLE document_reference_vulnerability (
   document_reference_id INT NOT NULL,
   vulnerability_id INT NOT NULL,
   PRIMARY KEY(document_reference_id,vulnerability_id),
   FOREIGN KEY(document_reference_id) REFERENCES document_reference(id),
   FOREIGN KEY(vulnerability_id) REFERENCES vulnerability(id)
-) ENGINE=INNODB; 
+) ENGINE=INNODB;
 
 CREATE TABLE document_reference_obstacle (
   document_reference_id INT NOT NULL,
@@ -3526,7 +3526,7 @@ CREATE TABLE document_reference_obstacle (
   PRIMARY KEY(document_reference_id,obstacle_id),
   FOREIGN KEY(document_reference_id) REFERENCES document_reference(id),
   FOREIGN KEY(obstacle_id) REFERENCES obstacle(id)
-) ENGINE=INNODB; 
+) ENGINE=INNODB;
 
 CREATE TABLE userstory (
   id INT NOT NULL,
@@ -3551,7 +3551,7 @@ CREATE TABLE userstory_tag (
   userstory_id INT NOT NULL,
   tag_id INT NOT NULL,
   PRIMARY KEY(userstory_id,tag_id),
-  FOREIGN KEY(userstory_id) REFERENCES userstory(id), 
+  FOREIGN KEY(userstory_id) REFERENCES userstory(id),
   FOREIGN KEY(tag_id) REFERENCES tag(id)
 ) ENGINE=INNODB;
 
@@ -3577,19 +3577,19 @@ CREATE TABLE policy_statement (
   resource_id INT NOT NULL,
   permission_id INT NOT NULL,
   PRIMARY KEY(id),
-  FOREIGN KEY(goal_id) REFERENCES goal(id), 
-  FOREIGN KEY(environment_id) REFERENCES environment(id), 
-  FOREIGN KEY(subject_id) REFERENCES asset(id), 
-  FOREIGN KEY(resource_id) REFERENCES asset(id), 
-  FOREIGN KEY(access_id) REFERENCES access_type(id), 
+  FOREIGN KEY(goal_id) REFERENCES goal(id),
+  FOREIGN KEY(environment_id) REFERENCES environment(id),
+  FOREIGN KEY(subject_id) REFERENCES asset(id),
+  FOREIGN KEY(resource_id) REFERENCES asset(id),
+  FOREIGN KEY(access_id) REFERENCES access_type(id),
   FOREIGN KEY(permission_id) REFERENCES access_permission(id)
 ) ENGINE=INNODB;
 
 delimiter //
 
-create function internalDocumentQuotationString(idName text, startIdx int, endIdx int) 
+create function internalDocumentQuotationString(idName text, startIdx int, endIdx int)
 returns varchar(4000)
-deterministic 
+deterministic
 begin
   declare idId int;
   declare quote varchar(4000);
@@ -3599,9 +3599,9 @@ begin
 end
 //
 
-create function personaQuotationString(pName text, sectName text, envName text, startIdx int, endIdx int) 
+create function personaQuotationString(pName text, sectName text, envName text, startIdx int, endIdx int)
 returns varchar(4000)
-deterministic 
+deterministic
 begin
   declare pId int;
   declare envId int;
@@ -3638,7 +3638,7 @@ begin
 end
 //
 
-delimiter ; 
+delimiter ;
 
 CREATE VIEW value_type as
   select id, name from asset_type
@@ -3687,13 +3687,13 @@ CREATE VIEW object_name as
   select name from response
   union
   select name from countermeasure
-  union 
+  union
   select name from environment
   union
   select name from persona
   union
   select name from task
-  union 
+  union
   select name from locations
   union
   select name from location
@@ -3720,22 +3720,22 @@ CREATE VIEW dataflows as
   select d.name dataflow, dt.name dataflow_type, e.name environment, fp.name from_name, 'process' from_type, td.name to_name, 'datastore' to_type from dataflow d, dataflow_process_datastore dpd, usecase fp, asset td, environment e, dataflow_type dt where d.id = dpd.dataflow_id and d.environment_id = e.id and dpd.from_id = fp.id and dpd.to_id = td.id and d.dataflow_type_id = dt.id;
 
 
-CREATE VIEW countermeasure_vulnerability_response_target as 
+CREATE VIEW countermeasure_vulnerability_response_target as
   select distinct cvt.countermeasure_id,re.id response_id,cvt.vulnerability_id,cvt.environment_id from countermeasure_vulnerability_target cvt, environment_vulnerability ev, risk ri,response re where cvt.vulnerability_id = ev.vulnerability_id and cvt.environment_id = ev.environment_id and ev.vulnerability_id = ri.vulnerability_id and ri.id = re.risk_id;
 
-CREATE VIEW countermeasure_threat_response_target as 
+CREATE VIEW countermeasure_threat_response_target as
   select distinct ctt.countermeasure_id,re.id response_id,ctt.threat_id,ctt.environment_id from countermeasure_threat_target ctt, environment_threat et, risk ri,response re where ctt.threat_id = et.threat_id and ctt.environment_id = et.environment_id and et.threat_id = ri.threat_id and ri.id = re.risk_id;
 
 CREATE VIEW redmine_requirement as
   select o.name name,o.originator,o.priority priority,o.rationale comments, o.description description,rm.short_code environment_code,rm.name environment from requirement o, environment_requirement rmr, environment rm where o.version = (select max(i.version) from requirement i where i.id = o.id) and o.id = rmr.requirement_id and rmr.environment_id = rm.id;
 
 CREATE VIEW synopsis as
-  select characteristic_id id,synopsis,'persona' synopsis_type from persona_characteristic_synopsis 
-  union 
-  select characteristic_id id,synopsis,'task' synopsis_type from task_characteristic_synopsis 
-  union 
-  select id,synopsis,'document' synopsis_type from document_reference_synopsis 
-  union 
+  select characteristic_id id,synopsis,'persona' synopsis_type from persona_characteristic_synopsis
+  union
+  select characteristic_id id,synopsis,'task' synopsis_type from task_characteristic_synopsis
+  union
+  select id,synopsis,'document' synopsis_type from document_reference_synopsis
+  union
   select id,synopsis,'requirement' synopsis_type from requirement_reference_synopsis
   union
   select id,synopsis,'usecase' synopsis_type from usecase_step_synopsis
@@ -3787,7 +3787,7 @@ CREATE VIEW usecase_step_synopsis_actor as
 
 CREATE VIEW environment_risk as
   select r.id,et.environment_id from risk r, environment_threat et, environment_vulnerability ev where r.threat_id = et.threat_id and et.environment_id = ev.environment_id and ev.vulnerability_id = r.vulnerability_id
-  union 
+  union
   select r.id,ev.environment_id from risk r, environment_vulnerability ev, environment_threat et where r.vulnerability_id = ev.vulnerability_id and ev.environment_id = et.environment_id and et.threat_id = r.threat_id;
 
 CREATE VIEW environment_trust_boundary as
@@ -3925,19 +3925,19 @@ CREATE VIEW assumption_task_model as
   union
   select cr.name from_name, 'grounds' from_dim, concat('gwb_',pc.description) to_name, 'gwb' to_dim, p.name task_name,pc.description characteristic_name from task_characteristic pc, task_characteristic_document pcc, document_reference cr, task p where pc.id = pcc.characteristic_id and pcc.characteristic_reference_type_id = 0 and pcc.reference_id = cr.id and pc.task_id = p.id
   union
-  select cr.name from_name, 'grounds' from_dim, concat('gwb_',pc.description) to_name, 'gwb' to_dim, p.name task_name, pc.description characteristic_name from task_characteristic pc, task_characteristic_persona pcc, persona_reference cr, task p where pc.id = pcc.characteristic_id and pcc.characteristic_reference_type_id = 0 and pcc.reference_id = cr.id and pc.task_id = p.id 
+  select cr.name from_name, 'grounds' from_dim, concat('gwb_',pc.description) to_name, 'gwb' to_dim, p.name task_name, pc.description characteristic_name from task_characteristic pc, task_characteristic_persona pcc, persona_reference cr, task p where pc.id = pcc.characteristic_id and pcc.characteristic_reference_type_id = 0 and pcc.reference_id = cr.id and pc.task_id = p.id
   union
-  select cr.name from_name, 'grounds' from_dim, concat('gwb_',pc.description) to_name, 'gwb' to_dim, p.name task_name, pc.description characteristic_name from task_characteristic pc, task_characteristic_usecase pcc, usecase_reference cr, task p where pc.id = pcc.characteristic_id and pcc.characteristic_reference_type_id = 0 and pcc.reference_id = cr.id and pc.task_id = p.id 
+  select cr.name from_name, 'grounds' from_dim, concat('gwb_',pc.description) to_name, 'gwb' to_dim, p.name task_name, pc.description characteristic_name from task_characteristic pc, task_characteristic_usecase pcc, usecase_reference cr, task p where pc.id = pcc.characteristic_id and pcc.characteristic_reference_type_id = 0 and pcc.reference_id = cr.id and pc.task_id = p.id
   union
-  select cr.name from_name, 'grounds' from_dim, concat('gwb_',pc.description) to_name, 'gwb' to_dim, p.name task_name, pc.description characteristic_name from task_characteristic pc, task_characteristic_requirement pcc, requirement_reference cr, task p where pc.id = pcc.characteristic_id and pcc.characteristic_reference_type_id = 0 and pcc.reference_id = cr.id and pc.task_id = p.id 
+  select cr.name from_name, 'grounds' from_dim, concat('gwb_',pc.description) to_name, 'gwb' to_dim, p.name task_name, pc.description characteristic_name from task_characteristic pc, task_characteristic_requirement pcc, requirement_reference cr, task p where pc.id = pcc.characteristic_id and pcc.characteristic_reference_type_id = 0 and pcc.reference_id = cr.id and pc.task_id = p.id
   union
   select cr.name from_name, 'warrant' from_dim, concat('gwb_',pc.description) to_name, 'gwb' to_dim, p.name task_name,pc.description characteristic_name from task_characteristic pc, task_characteristic_document pcc, document_reference cr, task p where pc.id = pcc.characteristic_id and pcc.characteristic_reference_type_id = 1 and pcc.reference_id = cr.id and pc.task_id = p.id
   union
-  select cr.name from_name, 'warrant' from_dim, concat('gwb_',pc.description) to_name, 'gwb' to_dim, p.name task_name, pc.description characteristic_name from task_characteristic pc, task_characteristic_persona pcc, persona_reference cr, task p where pc.id = pcc.characteristic_id and pcc.characteristic_reference_type_id = 1 and pcc.reference_id = cr.id and pc.task_id = p.id 
+  select cr.name from_name, 'warrant' from_dim, concat('gwb_',pc.description) to_name, 'gwb' to_dim, p.name task_name, pc.description characteristic_name from task_characteristic pc, task_characteristic_persona pcc, persona_reference cr, task p where pc.id = pcc.characteristic_id and pcc.characteristic_reference_type_id = 1 and pcc.reference_id = cr.id and pc.task_id = p.id
   union
-  select cr.name from_name, 'warrant' from_dim, concat('gwb_',pc.description) to_name, 'gwb' to_dim, p.name task_name, pc.description characteristic_name from task_characteristic pc, task_characteristic_usecase pcc, usecase_reference cr, task p where pc.id = pcc.characteristic_id and pcc.characteristic_reference_type_id = 1 and pcc.reference_id = cr.id and pc.task_id = p.id 
+  select cr.name from_name, 'warrant' from_dim, concat('gwb_',pc.description) to_name, 'gwb' to_dim, p.name task_name, pc.description characteristic_name from task_characteristic pc, task_characteristic_usecase pcc, usecase_reference cr, task p where pc.id = pcc.characteristic_id and pcc.characteristic_reference_type_id = 1 and pcc.reference_id = cr.id and pc.task_id = p.id
   union
-  select cr.name from_name, 'warrant' from_dim, concat('gwb_',pc.description) to_name, 'gwb' to_dim, p.name task_name, pc.description characteristic_name from task_characteristic pc, task_characteristic_requirement pcc, requirement_reference cr, task p where pc.id = pcc.characteristic_id and pcc.characteristic_reference_type_id = 1 and pcc.reference_id = cr.id and pc.task_id = p.id 
+  select cr.name from_name, 'warrant' from_dim, concat('gwb_',pc.description) to_name, 'gwb' to_dim, p.name task_name, pc.description characteristic_name from task_characteristic pc, task_characteristic_requirement pcc, requirement_reference cr, task p where pc.id = pcc.characteristic_id and pcc.characteristic_reference_type_id = 1 and pcc.reference_id = cr.id and pc.task_id = p.id
   union
   select c.name from_name, 'backing' from_dim, cr.name to_name, 'warrant' to_dim, p.name task_name, pc.description characteristic_name from external_document c, document_reference cr, task_characteristic_document pcc, task_characteristic pc, task p where pcc.reference_id = cr.id and cr.document_id = c.id and pcc.characteristic_reference_type_id = 1 and pcc.characteristic_id = pc.id and pc.task_id = p.id
   union
@@ -4138,7 +4138,7 @@ CREATE VIEW assumption_persona_model as
   select ic.qualifier from_name, 'qualifier' from_dim, concat('qual_',ic.synopsis) to_name, 'qual' to_dim, p.name persona_name, bv.name bv_name, ic.synopsis characteristic_name from implied_characteristic ic, persona_code_network pcn, behavioural_variable bv, persona p where ic.variable_id = bv.id and ic.persona_code_network_id = pcn.id and pcn.persona_id = p.id;
 
 CREATE VIEW concept_map as
-  select fr.name from_name, tr.name to_name, rr.label from requirement fr, requirement tr, requirement_requirement rr where rr.from_id = fr.id and fr.version = (select max(i.version) from requirement i where i.id = fr.id) and rr.to_id = tr.id and tr.version = (select max(i.version) from requirement i where i.id = tr.id); 
+  select fr.name from_name, tr.name to_name, rr.label from requirement fr, requirement tr, requirement_requirement rr where rr.from_id = fr.id and fr.version = (select max(i.version) from requirement i where i.id = fr.id) and rr.to_id = tr.id and tr.version = (select max(i.version) from requirement i where i.id = tr.id);
 
 CREATE VIEW component_interfaces as
   select c.name component,i.name interface,ci.required_id from component c, interface i, component_interface ci where ci.component_id = c.id and ci.interface_id = i.id;

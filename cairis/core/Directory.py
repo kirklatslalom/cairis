@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 #  Licensed to the Apache Software Foundation (ASF) under one
 #  or more contributor license agreements.  See the NOTICE file
 #  distributed with this work for additional information
@@ -15,18 +16,28 @@
 #  specific language governing permissions and limitations
 #  under the License.
 
-__author__ = 'Shamal Faily'
+__author__ = "Shamal Faily"
+
 
 class Directory:
-  def __init__(self,dLabel,dName,dDesc,dType,dRef):
-    self.theLabel = dLabel
-    self.theName = dName
-    self.theDescription = dDesc
-    self.theType = dType
-    self.theReference = dRef
+    def __init__(self, dLabel, dName, dDesc, dType, dRef):
+        self.theLabel = dLabel
+        self.theName = dName
+        self.theDescription = dDesc
+        self.theType = dType
+        self.theReference = dRef
 
-  def label(self): return self.theLabel
-  def name(self): return self.theName
-  def description(self): return self.theDescription
-  def type(self): return self.theType
-  def reference(self): return self.theReference
+    def label(self):
+        return self.theLabel
+
+    def name(self):
+        return self.theName
+
+    def description(self):
+        return self.theDescription
+
+    def type(self):
+        return self.theType
+
+    def reference(self):
+        return self.theReference

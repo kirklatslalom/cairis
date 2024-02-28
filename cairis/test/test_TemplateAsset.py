@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 #  Licensed to the Apache Software Foundation (ASF) under one
 #  or more contributor license agreements.  See the NOTICE file
 #  distributed with this work for additional information
@@ -24,50 +25,90 @@ from cairis.core.Borg import Borg
 from cairis.core.TemplateAssetParameters import TemplateAssetParameters
 from cairis.core.ValueTypeParameters import ValueTypeParameters
 
-__author__ = 'Shamal Faily'
+__author__ = "Shamal Faily"
 
 
 class TemplateAssetTest(unittest.TestCase):
+    def setUp(self):
+        call([os.environ["CAIRIS_CFG_DIR"] + "/initdb.sh"])
+        cairis.core.BorgFactory.initialise()
+        f = open(os.environ["CAIRIS_SRC"] + "/test/templateassets.json")
+        d = json.load(f)
+        f.close()
+        iAccessRights = d["access_rights"]
+        iar1 = ValueTypeParameters(
+            iAccessRights[0]["theName"],
+            iAccessRights[0]["theDescription"],
+            "access_right",
+            "",
+            iAccessRights[0]["theValue"],
+            iAccessRights[0]["theRationale"],
+        )
+        iSurfaceTypes = d["surface_type"]
+        ist1 = ValueTypeParameters(
+            iSurfaceTypes[0]["theName"],
+            iSurfaceTypes[0]["theDescription"],
+            "surface_type",
+            "",
+            iSurfaceTypes[0]["theValue"],
+            iSurfaceTypes[0]["theRationale"],
+        )
+        iPrivileges = d["privileges"]
+        ist1 = ValueTypeParameters(
+            iSurfaceTypes[0]["theName"],
+            iSurfaceTypes[0]["theDescription"],
+            "surface_type",
+            "",
+            iSurfaceTypes[0]["theValue"],
+            iSurfaceTypes[0]["theRationale"],
+        )
+        ipr1 = ValueTypeParameters(
+            iPrivileges[0]["theName"],
+            iPrivileges[0]["theDescription"],
+            "privilege",
+            "",
+            iPrivileges[0]["theValue"],
+            iPrivileges[0]["theRationale"],
+        )
+        b = Borg()
+        b.dbProxy.addValueType(iar1)
+        b.dbProxy.addValueType(ist1)
+        b.dbProxy.addValueType(ipr1)
+        self.iTemplateAssets = d["template_assets"]
 
-  def setUp(self):
-    call([os.environ['CAIRIS_CFG_DIR'] + "/initdb.sh"])
-    cairis.core.BorgFactory.initialise()
-    f = open(os.environ['CAIRIS_SRC'] + '/test/templateassets.json')
-    d = json.load(f)
-    f.close()
-    iAccessRights = d['access_rights']
-    iar1 = ValueTypeParameters(iAccessRights[0]["theName"], iAccessRights[0]["theDescription"], 'access_right','',iAccessRights[0]["theValue"],iAccessRights[0]["theRationale"])
-    iSurfaceTypes = d['surface_type']
-    ist1 = ValueTypeParameters(iSurfaceTypes[0]["theName"], iSurfaceTypes[0]["theDescription"], 'surface_type','',iSurfaceTypes[0]["theValue"],iSurfaceTypes[0]["theRationale"])
-    iPrivileges = d['privileges']
-    ist1 = ValueTypeParameters(iSurfaceTypes[0]["theName"], iSurfaceTypes[0]["theDescription"], 'surface_type','',iSurfaceTypes[0]["theValue"],iSurfaceTypes[0]["theRationale"])
-    ipr1 = ValueTypeParameters(iPrivileges[0]["theName"], iPrivileges[0]["theDescription"], 'privilege','',iPrivileges[0]["theValue"],iPrivileges[0]["theRationale"])
-    b = Borg()
-    b.dbProxy.addValueType(iar1)
-    b.dbProxy.addValueType(ist1)
-    b.dbProxy.addValueType(ipr1)
-    self.iTemplateAssets = d['template_assets']
+    def testTemplateAsset(self):
+        spValues = [0, 0, 0, 0, 0, 0, 0, 0]
+        spRat = ["None", "None", "None", "None", "None", "None", "None", "None"]
+        iTap = TemplateAssetParameters(
+            self.iTemplateAssets[0]["theName"],
+            self.iTemplateAssets[0]["theShortCode"],
+            self.iTemplateAssets[0]["theDescription"],
+            self.iTemplateAssets[0]["theSignificance"],
+            self.iTemplateAssets[0]["theType"],
+            self.iTemplateAssets[0]["theSurfaceType"],
+            self.iTemplateAssets[0]["theAccessRight"],
+            spValues,
+            spRat,
+            [],
+            [("anInterface", "provided", "trusted", "privileged")],
+        )
+        b = Borg()
+        b.dbProxy.addTemplateAsset(iTap)
+        oTaps = b.dbProxy.getTemplateAssets()
+        oTap = oTaps[self.iTemplateAssets[0]["theName"]]
+        self.assertEqual(iTap.name(), oTap.name())
+        self.assertEqual(iTap.properties(), oTap.properties())
+        self.assertEqual(iTap.shortCode(), oTap.shortCode())
+        self.assertEqual(iTap.description(), oTap.description())
+        self.assertEqual(iTap.type(), oTap.type())
+        self.assertEqual(iTap.surfaceType(), oTap.surfaceType())
+        self.assertEqual(iTap.accessRight(), oTap.accessRight())
 
-  def testTemplateAsset(self):
-    spValues = [0,0,0,0,0,0,0,0]
-    spRat = ['None','None','None','None','None','None','None','None']
-    iTap = TemplateAssetParameters(self.iTemplateAssets[0]["theName"], self.iTemplateAssets[0]["theShortCode"], self.iTemplateAssets[0]["theDescription"], self.iTemplateAssets[0]["theSignificance"],self.iTemplateAssets[0]["theType"],self.iTemplateAssets[0]["theSurfaceType"],self.iTemplateAssets[0]["theAccessRight"],spValues,spRat,[],[("anInterface","provided","trusted","privileged")])
-    b = Borg()
-    b.dbProxy.addTemplateAsset(iTap)
-    oTaps = b.dbProxy.getTemplateAssets()
-    oTap = oTaps[self.iTemplateAssets[0]["theName"]]
-    self.assertEqual(iTap.name(), oTap.name())
-    self.assertEqual(iTap.properties(), oTap.properties())
-    self.assertEqual(iTap.shortCode(),oTap.shortCode())
-    self.assertEqual(iTap.description(),oTap.description())
-    self.assertEqual(iTap.type(),oTap.type())
-    self.assertEqual(iTap.surfaceType(),oTap.surfaceType())
-    self.assertEqual(iTap.accessRight(),oTap.accessRight())
+        b.dbProxy.deleteTemplateAsset(oTap.id())
 
-    b.dbProxy.deleteTemplateAsset(oTap.id())
-  
-  def tearDown(self):
-    pass
+    def tearDown(self):
+        pass
 
-if __name__ == '__main__':
-  unittest.main()
+
+if __name__ == "__main__":
+    unittest.main()

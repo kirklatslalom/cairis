@@ -1,5 +1,5 @@
 <?xml version="1.0"?>
-<!DOCTYPE cairis_model PUBLIC "-//CAIRIS//DTD MODEL 1.0//EN" "https://cairis.org/dtd/cairis_model.dtd"> 
+<!DOCTYPE cairis_model PUBLIC "-//CAIRIS//DTD MODEL 1.0//EN" "https://cairis.org/dtd/cairis_model.dtd">
 <cairis_model>
 
 
@@ -5607,7 +5607,7 @@ Peter quickly entered "vandal graffiti" into the text field  beside the photo, a
 In order to suggest appropriate gas stations the FuelEconomic constantly monitors the current position of the vehicle, consumption, range and next destination which is programmed into the in-car navigation system. If the service suggests a relevant gas station, Peter can request guidance to it on his in-car navigation system. The way how notifications are presented to Peter depends on the device he is currently using. When Peter is in his car, a selection menu of available gas stations is displayed on the central display and he can choose from one of the suggested stations. FuelEconomic adapts the layout of the selection list according to the input controls and the screen size of the IVI-system. When Peter transmits a new destination to his in-car navigation system using a different device, FuelEconomic checks the distance to the new destination and determines, if he has enough gas available to reach the destination or if a cheap gas station is along the way. In this case he already gets the information on his smartphone and can plan the trip accordingly.
 
 </narrative>
-    <consequences>* Users can be able traced by such background services. 
+    <consequences>* Users can be able traced by such background services.
 
 * For in-car scenarios it has to be verified that notifications and applications do not distract the driver. Certain rules and guidelines have to be followed. webinos might need to monitor what an application wants to display on the in-car screen and deny certain actions
 
@@ -5624,7 +5624,7 @@ In order to suggest appropriate gas stations the FuelEconomic constantly monitor
 In order to suggest appropriate gas stations the FuelEconomic constantly monitors the current position of the vehicle, consumption, range and next destination which is programmed into the in-car navigation system. If the service suggests a relevant gas station, Peter can request guidance to it on his in-car navigation system. The way how notifications are presented to Peter depends on the device he is currently using. When Peter is in his car, a selection menu of available gas stations is displayed on the central display and he can choose from one of the suggested stations. FuelEconomic adapts the layout of the selection list according to the input controls and the screen size of the IVI-system. When Peter transmits a new destination to his in-car navigation system using a different device, FuelEconomic checks the distance to the new destination and determines, if he has enough gas available to reach the destination or if a cheap gas station is along the way. In this case he already gets the information on his smartphone and can plan the trip accordingly.
 
 </narrative>
-    <consequences>* Users can be able traced by such background services. 
+    <consequences>* Users can be able traced by such background services.
 
 * For in-car scenarios it has to be verified that notifications and applications do not distract the driver. Certain rules and guidelines have to be followed. webinos might need to monitor what an application wants to display on the in-car screen and deny certain actions
 
@@ -5721,7 +5721,7 @@ Through the guide, Peter discovers that he can literally hold the phone close to
 
 Those videos comes with extra audio and subtitle streams for different languages. The videos has also a special stream for hearing impaired users where the environmental noise is reduced in order to make the actors speech clearer.
 
-It is a huge advantage for the friends that the movie has these different audio streams. Justin is not as good as Peter in understanding German and prefers video in the English language anyway. 
+It is a huge advantage for the friends that the movie has these different audio streams. Justin is not as good as Peter in understanding German and prefers video in the English language anyway.
 
 </narrative>
     <consequences>For some users it is uncomfortable to consume the same content together. Especially language or physical restrictions can influence the experience. One issue here is to provide the content in an appropriate format while using an appropriate device to the user’s private device in order to improve the user’s content consumption experience.
@@ -5751,7 +5751,7 @@ Through the guide, Peter discovers that he can literally hold the phone close to
 
 Those videos comes with extra audio and subtitle streams for different languages. The videos has also a special stream for hearing impaired users where the environmental noise is reduced in order to make the actors speech clearer.
 
-It is a huge advantage for the friends that the movie has these different audio streams. Justin is not as good as Peter in understanding German and prefers video in the English language anyway. 
+It is a huge advantage for the friends that the movie has these different audio streams. Justin is not as good as Peter in understanding German and prefers video in the English language anyway.
 
 </narrative>
     <consequences>For some users it is uncomfortable to consume the same content together. Especially language or physical restrictions can influence the experience. One issue here is to provide the content in an appropriate format while using an appropriate device to the user’s private device in order to improve the user’s content consumption experience.
@@ -5907,7 +5907,7 @@ The social community app offers upcoming events which are collected from differe
     <task_persona persona="Clara" duration="Minutes" frequency="Daily_-_Weekly" demands="Low" goal_conflict="Low" />
     <narrative>As the lifespan of people is growing, the number of people having at least one chronic disease is increasing. Personal medical sensors and mobile communication could play a big role for the treatment of chronically ill persons and also improve their quality of life. Furthermore, sensors and mobile communication makes remote monitoring possible, which is convenient for the patients and saves money for healthcare providers.
 
-In the following story, Clara is a teenager with diabetes. She uses her favorite blood glucose meter to measure her blood glucose levels. This meter is also able to communicate with internet connected computing devices such as her laptop and her mobile smart phone through a standardized local communication method (USB, Bluetooth, BLE, ANT+ etc). 
+In the following story, Clara is a teenager with diabetes. She uses her favorite blood glucose meter to measure her blood glucose levels. This meter is also able to communicate with internet connected computing devices such as her laptop and her mobile smart phone through a standardized local communication method (USB, Bluetooth, BLE, ANT+ etc).
 
 Clara has found several interesting cloud-based web applications for diabetics. These applications help Clara analyzing her blood glucose levels so that she can control her disease. The applications could for example display all her glucose levels for a certain time period, display diagrams showing average values throughout a day, show statistics on glucose levels within target/below target/above target, etc. She runs these web applications not only on her laptop but also on her mobile smart phone as well as on the family's internet connected TV. When she runs the applications they discover that there is connectivity with her blood glucose meter and all values stored in the meter are transferred to the computing device and are processed by the diabetes web application. Clara's blood glucose meter can be used by any diabetes web application that fulfills any standardized manner to retrieve values from the blood glucose meter.
 
@@ -5942,7 +5942,7 @@ Alternatively, Clara can make her results available when she visits her diabetes
     <task_persona persona="Clara" duration="Minutes" frequency="Daily_-_Weekly" demands="Low" goal_conflict="Low" />
     <narrative>As the lifespan of people is growing, the number of people having at least one chronic disease is increasing. Personal medical sensors and mobile communication could play a big role for the treatment of chronically ill persons and also improve their quality of life. Furthermore, sensors and mobile communication makes remote monitoring possible, which is convenient for the patients and saves money for healthcare providers.
 
-In the following story, Clara is a teenager with diabetes. She uses her favorite blood glucose meter to measure her blood glucose levels. This meter is also able to communicate with internet connected computing devices such as her laptop and her mobile smart phone through a standardized local communication method (USB, Bluetooth, BLE, ANT+ etc). 
+In the following story, Clara is a teenager with diabetes. She uses her favorite blood glucose meter to measure her blood glucose levels. This meter is also able to communicate with internet connected computing devices such as her laptop and her mobile smart phone through a standardized local communication method (USB, Bluetooth, BLE, ANT+ etc).
 
 Clara has found several interesting cloud-based web applications for diabetics. These applications help Clara analyzing her blood glucose levels so that she can control her disease. The applications could for example display all her glucose levels for a certain time period, display diagrams showing average values throughout a day, show statistics on glucose levels within target/below target/above target, etc. She runs these web applications not only on her laptop but also on her mobile smart phone as well as on the family's internet connected TV. When she runs the applications they discover that there is connectivity with her blood glucose meter and all values stored in the meter are transferred to the computing device and are processed by the diabetes web application. Clara's blood glucose meter can be used by any diabetes web application that fulfills any standardized manner to retrieve values from the blood glucose meter.
 

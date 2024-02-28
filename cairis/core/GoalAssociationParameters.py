@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 #  Licensed to the Apache Software Foundation (ASF) under one
 #  or more contributor license agreements.  See the NOTICE file
 #  distributed with this work for additional information
@@ -18,25 +19,51 @@
 
 from . import ObjectCreationParameters
 
-__author__ = 'Shamal Faily'
+__author__ = "Shamal Faily"
+
 
 class GoalAssociationParameters(ObjectCreationParameters.ObjectCreationParameters):
-  def __init__(self,envName,goalName,goalDimName,aType,subGoalName='',subGoalDimName='',alternativeId=0,rationale=''):
-    ObjectCreationParameters.ObjectCreationParameters.__init__(self)
-    self.theEnvironmentName = envName
-    self.theGoal = goalName
-    self.theGoalDimension = goalDimName
-    self.theAssociationType = aType
-    self.theSubGoal = subGoalName
-    self.theSubGoalDimension = subGoalDimName
-    self.theAlternativeId = alternativeId
-    self.theRationale = rationale
+    def __init__(
+        self,
+        envName,
+        goalName,
+        goalDimName,
+        aType,
+        subGoalName="",
+        subGoalDimName="",
+        alternativeId=0,
+        rationale="",
+    ):
+        ObjectCreationParameters.ObjectCreationParameters.__init__(self)
+        self.theEnvironmentName = envName
+        self.theGoal = goalName
+        self.theGoalDimension = goalDimName
+        self.theAssociationType = aType
+        self.theSubGoal = subGoalName
+        self.theSubGoalDimension = subGoalDimName
+        self.theAlternativeId = alternativeId
+        self.theRationale = rationale
 
-  def environment(self): return self.theEnvironmentName
-  def goal(self): return self.theGoal
-  def goalDimension(self): return self.theGoalDimension
-  def type(self): return self.theAssociationType
-  def subGoal(self): return self.theSubGoal
-  def subGoalDimension(self): return self.theSubGoalDimension
-  def alternative(self): return self.theAlternativeId
-  def rationale(self): return self.theRationale
+    def environment(self):
+        return self.theEnvironmentName
+
+    def goal(self):
+        return self.theGoal
+
+    def goalDimension(self):
+        return self.theGoalDimension
+
+    def type(self):
+        return self.theAssociationType
+
+    def subGoal(self):
+        return self.theSubGoal
+
+    def subGoalDimension(self):
+        return self.theSubGoalDimension
+
+    def alternative(self):
+        return self.theAlternativeId
+
+    def rationale(self):
+        return self.theRationale

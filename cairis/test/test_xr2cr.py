@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 #  Licensed to the Apache Software Foundation (ASF) under one
 #  or more contributor license agreements.  See the NOTICE file
 #  distributed with this work for additional information
@@ -18,29 +19,30 @@
 import unittest
 import os
 import logging
-from cairis.mio.ModelImport import importModelFile,importRequirementsFile
+from cairis.mio.ModelImport import importModelFile, importRequirementsFile
 from cairis.bin.xr2cr import convertRequirementSpreadsheet
 import cairis.core.BorgFactory
 from cairis.core.Borg import Borg
 
-__author__ = 'Shamal Faily'
+__author__ = "Shamal Faily"
 
 
 class ConvertRequirementSpreadsheetTests(unittest.TestCase):
+    @classmethod
+    def setUpClass(cls):
+        cairis.core.BorgFactory.initialise()
+        importModelFile(os.environ["CAIRIS_SRC"] + "/test/webinos.xml", 1)
 
-  @classmethod
-  def setUpClass(cls):
-    cairis.core.BorgFactory.initialise()
-    importModelFile(os.environ['CAIRIS_SRC'] + '/test/webinos.xml',1)
+    def setUp(self):
+        os.environ["OUTPUT_DIR"] = "/tmp"
 
-  def setUp(self):
-    os.environ['OUTPUT_DIR'] = '/tmp'
+    def tearDown(self):
+        pass
 
-  def tearDown(self):
-    pass
-
-  def testImportSpreadsheet(self):
-    outFile = '/tmp/convertedRequirements.xml'
-    convertRequirementSpreadsheet(os.environ['CAIRIS_SRC'] + '/test/TestRequirements.xlsx',outFile)
-    self.assertEqual(os.path.isfile(outFile),True)
-    importRequirementsFile(outFile)
+    def testImportSpreadsheet(self):
+        outFile = "/tmp/convertedRequirements.xml"
+        convertRequirementSpreadsheet(
+            os.environ["CAIRIS_SRC"] + "/test/TestRequirements.xlsx", outFile
+        )
+        self.assertEqual(os.path.isfile(outFile), True)
+        importRequirementsFile(outFile)

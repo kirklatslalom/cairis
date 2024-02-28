@@ -1,4 +1,5 @@
 #!/usr/bin/python3
+# -*- coding: utf-8 -*-
 #  Licensed to the Apache Software Foundation (ASF) under one
 #  or more contributor license agreements.  See the NOTICE file
 #  distributed with this work for additional information
@@ -22,18 +23,22 @@ from cairis.core.Borg import Borg
 import cairis.core.BorgFactory
 from cairis.core.dba import accounts
 
-__author__ = 'Shamal Faily'
+__author__ = "Shamal Faily"
+
 
 def main(args=None):
-  parser = argparse.ArgumentParser(description='Computer Aided Integration of Requirements and Information Security - CAIRIS users')
-  args = parser.parse_args() 
-  cairis.core.BorgFactory.initialise()
-  b = Borg()
-  print('\n'.join(accounts(b.rPasswd, b.dbHost, b.dbPort))) 
+    parser = argparse.ArgumentParser(
+        description="Computer Aided Integration of Requirements and Information Security - CAIRIS users"
+    )
+    args = parser.parse_args()
+    cairis.core.BorgFactory.initialise()
+    b = Borg()
+    print("\n".join(accounts(b.rPasswd, b.dbHost, b.dbPort)))
 
-if __name__ == '__main__':
-  try:
-    main()
-  except Exception as e:
-    print('Fatal cairis_users error: ' + str(e))
-    sys.exit(-1)
+
+if __name__ == "__main__":
+    try:
+        main()
+    except Exception as e:
+        print("Fatal cairis_users error: " + str(e))
+        sys.exit(-1)

@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 #  Licensed to the Apache Software Foundation (ASF) under one
 #  or more contributor license agreements.  See the NOTICE file
 #  distributed with this work for additional information
@@ -17,52 +18,69 @@
 
 from . import ObjectValidator
 
-__author__ = 'Shamal Faily'
+__author__ = "Shamal Faily"
+
 
 class Step(ObjectValidator.ObjectValidator):
-  def __init__(self,stepTxt = '',stepSyn = '',stepActor = '',stepActorType = '',stepTags = []):
-    ObjectValidator.ObjectValidator.__init__(self)
-    self.theExceptions = {}
-    self.theStepText = stepTxt
-    self.theSynopsis = stepSyn
-    self.theActor = stepActor
-    self.theActorType = stepActorType
-    self.theTags = stepTags
+    def __init__(
+        self, stepTxt="", stepSyn="", stepActor="", stepActorType="", stepTags=[]
+    ):
+        ObjectValidator.ObjectValidator.__init__(self)
+        self.theExceptions = {}
+        self.theStepText = stepTxt
+        self.theSynopsis = stepSyn
+        self.theActor = stepActor
+        self.theActorType = stepActorType
+        self.theTags = stepTags
 
-  def synopsis(self): return self.theSynopsis
+    def synopsis(self):
+        return self.theSynopsis
 
-  def actor(self): return self.theActor
+    def actor(self):
+        return self.theActor
 
-  def actorType(self): return self.theActorType
+    def actorType(self):
+        return self.theActorType
 
-  def tags(self): return self.theTags
+    def tags(self):
+        return self.theTags
 
-  def setSynopsis(self,s): self.theSynopsis = s
+    def setSynopsis(self, s):
+        self.theSynopsis = s
 
-  def setActor(self,a): self.theActor = a
+    def setActor(self, a):
+        self.theActor = a
 
-  def setActorType(self,at): self.theActorType = at
+    def setActorType(self, at):
+        self.theActorType = at
 
-  def setTags(self,t): self.theTags = t
+    def setTags(self, t):
+        self.theTags = t
 
-  def __str__(self): return self.theStepText
+    def __str__(self):
+        return self.theStepText
 
-  def addException(self,exc): self.theExceptions[exc[0]] = exc
+    def addException(self, exc):
+        self.theExceptions[exc[0]] = exc
 
-  def deleteException(self,excName): del self.theExceptions[excName]
-    
-  def text(self): return self.theStepText
+    def deleteException(self, excName):
+        del self.theExceptions[excName]
 
-  def setText(self,txt): self.theStepText = txt
+    def text(self):
+        return self.theStepText
 
-  def exceptions(self):
-    if len(self.theExceptions) > 0:
-      return list(self.theExceptions.keys())
-    else:
-      return []
+    def setText(self, txt):
+        self.theStepText = txt
 
-  def exception(self,excName): return self.theExceptions[excName]
+    def exceptions(self):
+        if len(self.theExceptions) > 0:
+            return list(self.theExceptions.keys())
+        else:
+            return []
 
-  def setException(self,oldExcName,exc):
-    del self.theExceptions[oldExcName] 
-    self.theExceptions[exc[0]] = exc
+    def exception(self, excName):
+        return self.theExceptions[excName]
+
+    def setException(self, oldExcName, exc):
+        del self.theExceptions[oldExcName]
+        self.theExceptions[exc[0]] = exc

@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 #  Licensed to the Apache Software Foundation (ASF) under one
 #  or more contributor license agreements.  See the NOTICE file
 #  distributed with this work for additional information
@@ -15,22 +16,36 @@
 #  specific language governing permissions and limitations
 #  under the License.
 
-__author__ = 'Shamal Faily'
+__author__ = "Shamal Faily"
+
 
 class TemplateRequirement:
-  def __init__(self,reqId,reqName,assetName,reqType,reqDesc,reqRat,reqFC):
-    self.theId = reqId
-    self.theName = reqName
-    self.theAssetName = assetName
-    self.theType = reqType
-    self.theDescription= reqDesc
-    self.theRationale = reqRat
-    self.theFitCriterion = reqFC
+    def __init__(self, reqId, reqName, assetName, reqType, reqDesc, reqRat, reqFC):
+        self.theId = reqId
+        self.theName = reqName
+        self.theAssetName = assetName
+        self.theType = reqType
+        self.theDescription = reqDesc
+        self.theRationale = reqRat
+        self.theFitCriterion = reqFC
 
-  def id(self): return self.theId
-  def name(self): return self.theName
-  def asset(self): return self.theAssetName
-  def type(self): return self.theType
-  def description(self): return self.theDescription
-  def rationale(self): return self.theRationale
-  def fitCriterion(self): return self.theFitCriterion
+    def id(self):
+        return self.theId
+
+    def name(self):
+        return self.theName
+
+    def asset(self):
+        return self.theAssetName
+
+    def type(self):
+        return self.theType
+
+    def description(self):
+        return self.theDescription
+
+    def rationale(self):
+        return self.theRationale
+
+    def fitCriterion(self):
+        return self.theFitCriterion

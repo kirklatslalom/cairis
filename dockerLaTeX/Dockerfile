@@ -1,6 +1,6 @@
 FROM python:3.6-slim
 
-RUN apt-get update 
+RUN apt-get update
 RUN apt-get install -y docbook
 RUN apt-get install -y docbook-utils
 RUN apt-get install -y dblatex

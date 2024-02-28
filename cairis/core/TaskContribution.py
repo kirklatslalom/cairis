@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 #  Licensed to the Apache Software Foundation (ASF) under one
 #  or more contributor license agreements.  See the NOTICE file
 #  distributed with this work for additional information
@@ -15,16 +16,24 @@
 #  specific language governing permissions and limitations
 #  under the License.
 
-__author__ = 'Shamal Faily'
+__author__ = "Shamal Faily"
+
 
 class TaskContribution:
-  def __init__(self,src,dest,env,cont):
-    self.theSource = src
-    self.theDestination = dest
-    self.theEnvironment = env
-    self.theContribution = cont
+    def __init__(self, src, dest, env, cont):
+        self.theSource = src
+        self.theDestination = dest
+        self.theEnvironment = env
+        self.theContribution = cont
 
-  def source(self): return self.theSource
-  def destination(self): return self.theDestination
-  def environment(self): return self.theEnvironment
-  def contribution(self): return self.theContribution
+    def source(self):
+        return self.theSource
+
+    def destination(self):
+        return self.theDestination
+
+    def environment(self):
+        return self.theEnvironment
+
+    def contribution(self):
+        return self.theContribution

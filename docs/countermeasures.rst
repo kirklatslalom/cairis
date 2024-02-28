@@ -61,7 +61,7 @@ the countermeasure helps mitigate.
 Assets can be generated directly based on the countermeasure properties,
 or on the basis of a pre-existing template asset. It is also possible to
 situate security patterns based on a countermeasure, rather than an
-asset. 
+asset.
 
 Security Patterns can be imported into the tool by selecting the System/Import Model menu option and, when selecting the XML model file to be imported, selecting Security Pattern option. An example catalogue file, schumacher_patterns.xml, which incorporates a number of patterns from the Security Patterns text book by Schumacher et al is included in the cairis/examples/architecture directory.
 

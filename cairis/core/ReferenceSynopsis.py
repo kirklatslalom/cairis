@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 #  Licensed to the Apache Software Foundation (ASF) under one
 #  or more contributor license agreements.  See the NOTICE file
 #  distributed with this work for additional information
@@ -15,28 +16,61 @@
 #  specific language governing permissions and limitations
 #  under the License.
 
-__author__ = 'Shamal Faily'
+__author__ = "Shamal Faily"
+
 
 class ReferenceSynopsis:
-  def __init__(self,rsId,refName,synName,dimName,aType,aName,synDim = 'document_reference',initialSatisfaction = 'None',goals=[]):
-    self.theId = rsId
-    self.theReference = refName
-    self.theSynopsis = synName
-    self.theDimension = dimName
-    self.theActorType = aType
-    self.theActor = aName
-    self.theSynopsisDimension = synDim
-    self.theInitialSatisfaction = initialSatisfaction
-    self.theRelatedGoals = goals
+    def __init__(
+        self,
+        rsId,
+        refName,
+        synName,
+        dimName,
+        aType,
+        aName,
+        synDim="document_reference",
+        initialSatisfaction="None",
+        goals=[],
+    ):
+        self.theId = rsId
+        self.theReference = refName
+        self.theSynopsis = synName
+        self.theDimension = dimName
+        self.theActorType = aType
+        self.theActor = aName
+        self.theSynopsisDimension = synDim
+        self.theInitialSatisfaction = initialSatisfaction
+        self.theRelatedGoals = goals
 
-  def id(self): return self.theId
-  def setId(self,newId): self.theId = newId
-  def reference(self): return self.theReference
-  def synopsis(self): return self.theSynopsis
-  def dimension(self): return self.theDimension
-  def actorType(self): return self.theActorType
-  def actor(self): return self.theActor 
-  def synopsisDimension(self): return self.theSynopsisDimension
-  def satisfaction(self): return self.theInitialSatisfaction
-  def goals(self): return self.theRelatedGoals
-  def name(self): return self.theSynopsis
+    def id(self):
+        return self.theId
+
+    def setId(self, newId):
+        self.theId = newId
+
+    def reference(self):
+        return self.theReference
+
+    def synopsis(self):
+        return self.theSynopsis
+
+    def dimension(self):
+        return self.theDimension
+
+    def actorType(self):
+        return self.theActorType
+
+    def actor(self):
+        return self.theActor
+
+    def synopsisDimension(self):
+        return self.theSynopsisDimension
+
+    def satisfaction(self):
+        return self.theInitialSatisfaction
+
+    def goals(self):
+        return self.theRelatedGoals
+
+    def name(self):
+        return self.theSynopsis

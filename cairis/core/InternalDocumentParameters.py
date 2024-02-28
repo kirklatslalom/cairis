@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 #  Licensed to the Apache Software Foundation (ASF) under one
 #  or more contributor license agreements.  See the NOTICE file
 #  distributed with this work for additional information
@@ -18,19 +19,29 @@
 
 from .ObjectCreationParameters import ObjectCreationParameters
 
-__author__ = 'Shamal Faily'
+__author__ = "Shamal Faily"
+
 
 class InternalDocumentParameters(ObjectCreationParameters):
-  def __init__(self,idName,idDesc,idContent,idCodes,idMemos):
-    ObjectCreationParameters.__init__(self)
-    self.theName = idName
-    self.theDescription = idDesc
-    self.theContent = idContent
-    self.theCodes = idCodes
-    self.theMemos = idMemos
+    def __init__(self, idName, idDesc, idContent, idCodes, idMemos):
+        ObjectCreationParameters.__init__(self)
+        self.theName = idName
+        self.theDescription = idDesc
+        self.theContent = idContent
+        self.theCodes = idCodes
+        self.theMemos = idMemos
 
-  def name(self): return self.theName
-  def description(self): return self.theDescription
-  def content(self): return self.theContent
-  def codes(self): return self.theCodes
-  def memos(self): return self.theMemos
+    def name(self):
+        return self.theName
+
+    def description(self):
+        return self.theDescription
+
+    def content(self):
+        return self.theContent
+
+    def codes(self):
+        return self.theCodes
+
+    def memos(self):
+        return self.theMemos

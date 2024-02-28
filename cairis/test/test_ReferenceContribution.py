@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 #  Licensed to the Apache Software Foundation (ASF) under one
 #  or more contributor license agreements.  See the NOTICE file
 #  distributed with this work for additional information
@@ -26,54 +27,81 @@ from cairis.core.ReferenceContribution import ReferenceContribution
 from cairis.core.ARM import DatabaseProxyException
 from cairis.mio.ModelImport import importModelFile
 
-__author__ = 'Shamal Faily'
+__author__ = "Shamal Faily"
 
 
 class ReferenceContributionTest(unittest.TestCase):
+    @classmethod
+    def setUpClass(cls):
+        cairis.core.BorgFactory.initialise()
+        importModelFile(
+            os.environ["CAIRIS_SRC"] + "/../examples/exemplars/NeuroGrid/NeuroGrid.xml",
+            1,
+        )
 
-  @classmethod
-  def setUpClass(cls):
-    cairis.core.BorgFactory.initialise()
-    importModelFile(os.environ['CAIRIS_SRC'] + '/../examples/exemplars/NeuroGrid/NeuroGrid.xml',1)
+    def setUp(self):
+        f = open(os.environ["CAIRIS_SRC"] + "/test/reference_contributions.json")
+        d = json.load(f)
+        f.close()
+        self.rsData = d["reference_synopses"][0]
+        self.csData = d["characteristic_synopses"][0]
+        self.rcData = d["reference_contributions"][0]
 
-  def setUp(self):
-    f = open(os.environ['CAIRIS_SRC'] + '/test/reference_contributions.json')
-    d = json.load(f)
-    f.close()
-    self.rsData = d['reference_synopses'][0]
-    self.csData = d['characteristic_synopses'][0]
-    self.rcData = d['reference_contributions'][0]
+    def tearDown(self):
+        pass
+
+    def testAddContribution(self):
+        irs = ReferenceSynopsis(
+            -1,
+            self.rsData["theReference"],
+            self.rsData["theSynopsis"],
+            self.rsData["theDimension"],
+            self.rsData["theActorType"],
+            self.rsData["theActor"],
+        )
+        b = Borg()
+        b.dbProxy.addReferenceSynopsis(irs)
+        ics = ReferenceSynopsis(
+            -1,
+            self.csData["theReference"],
+            self.csData["theSynopsis"],
+            self.csData["theDimension"],
+            self.csData["theActorType"],
+            self.csData["theActor"],
+        )
+        b.dbProxy.addCharacteristicSynopsis(ics)
+
+        irc = ReferenceContribution(
+            self.rcData["theSource"],
+            self.rcData["theDestination"],
+            self.rcData["theMeansEnd"],
+            self.rcData["theContribution"],
+        )
+        b.dbProxy.addReferenceContribution(irc)
+
+        orc = b.dbProxy.getReferenceContribution(
+            self.csData["theReference"], self.rsData["theReference"]
+        )
+        self.assertEqual(orc.source(), irc.source())
+        self.assertEqual(orc.destination(), irc.destination())
+        self.assertEqual(orc.meansEnd(), irc.meansEnd())
+        self.assertEqual(orc.contribution(), irc.contribution())
+
+    def testUpdateContribution(self):
+        b = Borg()
+        orc = b.dbProxy.getReferenceContribution(
+            self.csData["theReference"], self.rsData["theReference"]
+        )
+        orc.theContribution = "Break"
+        b.dbProxy.updateReferenceContribution(orc)
+        urc = b.dbProxy.getReferenceContribution(
+            self.csData["theReference"], self.rsData["theReference"]
+        )
+        self.assertEqual(orc.source(), urc.source())
+        self.assertEqual(orc.destination(), urc.destination())
+        self.assertEqual(orc.meansEnd(), urc.meansEnd())
+        self.assertEqual(orc.contribution(), urc.contribution())
 
 
-  def tearDown(self):
-    pass
-
-  def testAddContribution(self):
-    irs = ReferenceSynopsis(-1,self.rsData['theReference'],self.rsData['theSynopsis'],self.rsData['theDimension'],self.rsData['theActorType'],self.rsData['theActor'])
-    b = Borg()
-    b.dbProxy.addReferenceSynopsis(irs)
-    ics = ReferenceSynopsis(-1,self.csData['theReference'],self.csData['theSynopsis'],self.csData['theDimension'],self.csData['theActorType'],self.csData['theActor'])
-    b.dbProxy.addCharacteristicSynopsis(ics)
-
-    irc = ReferenceContribution(self.rcData['theSource'],self.rcData['theDestination'],self.rcData['theMeansEnd'],self.rcData['theContribution'])
-    b.dbProxy.addReferenceContribution(irc)
-
-    orc = b.dbProxy.getReferenceContribution(self.csData['theReference'],self.rsData['theReference'])
-    self.assertEqual(orc.source(), irc.source())
-    self.assertEqual(orc.destination(), irc.destination())
-    self.assertEqual(orc.meansEnd(), irc.meansEnd())
-    self.assertEqual(orc.contribution(), irc.contribution())
-
-  def testUpdateContribution(self):
-    b = Borg()
-    orc = b.dbProxy.getReferenceContribution(self.csData['theReference'],self.rsData['theReference'])
-    orc.theContribution = 'Break'
-    b.dbProxy.updateReferenceContribution(orc)
-    urc = b.dbProxy.getReferenceContribution(self.csData['theReference'],self.rsData['theReference'])
-    self.assertEqual(orc.source(), urc.source())
-    self.assertEqual(orc.destination(), urc.destination())
-    self.assertEqual(orc.meansEnd(), urc.meansEnd())
-    self.assertEqual(orc.contribution(), urc.contribution())
-
-if __name__ == '__main__':
-  unittest.main()
+if __name__ == "__main__":
+    unittest.main()

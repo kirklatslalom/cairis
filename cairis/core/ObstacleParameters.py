@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 #  Licensed to the Apache Software Foundation (ASF) under one
 #  or more contributor license agreements.  See the NOTICE file
 #  distributed with this work for additional information
@@ -18,17 +19,25 @@
 
 from . import ObjectCreationParameters
 
-__author__ = 'Shamal Faily'
+__author__ = "Shamal Faily"
+
 
 class ObstacleParameters(ObjectCreationParameters.ObjectCreationParameters):
-  def __init__(self,obsName,obsOrig,tags,properties):
-    ObjectCreationParameters.ObjectCreationParameters.__init__(self)
-    self.theName = obsName
-    self.theTags = tags
-    self.theOriginator = obsOrig
-    self.theEnvironmentProperties = properties
+    def __init__(self, obsName, obsOrig, tags, properties):
+        ObjectCreationParameters.ObjectCreationParameters.__init__(self)
+        self.theName = obsName
+        self.theTags = tags
+        self.theOriginator = obsOrig
+        self.theEnvironmentProperties = properties
 
-  def name(self): return self.theName
-  def tags(self): return self.theTags
-  def originator(self): return self.theOriginator
-  def environmentProperties(self): return self.theEnvironmentProperties
+    def name(self):
+        return self.theName
+
+    def tags(self):
+        return self.theTags
+
+    def originator(self):
+        return self.theOriginator
+
+    def environmentProperties(self):
+        return self.theEnvironmentProperties

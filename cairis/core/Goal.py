@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 #  Licensed to the Apache Software Foundation (ASF) under one
 #  or more contributor license agreements.  See the NOTICE file
 #  distributed with this work for additional information
@@ -18,116 +19,143 @@
 from . import ObjectValidator
 from .GoalEnvironmentProperties import GoalEnvironmentProperties
 
-__author__ = 'Shamal Faily'
+__author__ = "Shamal Faily"
+
 
 class Goal(ObjectValidator.ObjectValidator):
-  def __init__(self,goalId,goalName,goalOrig,tags,environmentProperties):
-    ObjectValidator.ObjectValidator.__init__(self)
-    self.theId = goalId
-    self.theName = goalName
-    self.theTags = tags
-    self.theOriginator = goalOrig
-    self.theColour = 'black'
-    self.theEnvironmentProperties = environmentProperties
-    self.theEnvironmentDictionary = {}
-    for p in self.theEnvironmentProperties:
-      environmentName = p.name()
-      self.theEnvironmentDictionary[environmentName] = p
+    def __init__(self, goalId, goalName, goalOrig, tags, environmentProperties):
+        ObjectValidator.ObjectValidator.__init__(self)
+        self.theId = goalId
+        self.theName = goalName
+        self.theTags = tags
+        self.theOriginator = goalOrig
+        self.theColour = "black"
+        self.theEnvironmentProperties = environmentProperties
+        self.theEnvironmentDictionary = {}
+        for p in self.theEnvironmentProperties:
+            environmentName = p.name()
+            self.theEnvironmentDictionary[environmentName] = p
 
-  def id(self): return self.theId
-  def setId(self,v): self.theId = v
-  def name(self): return self.theName
-  def tags(self): return self.theTags
-  def originator(self): return self.theOriginator
-  def environmentProperties(self): return self.theEnvironmentProperties
-  def environmentProperty(self,envName): return self.theEnvironmentDictionary[envName]
-  def setColour(self,c): self.theColour = c
-  def colour(self): return self.theColour
+    def id(self):
+        return self.theId
 
-  def label(self,environmentName):
-    return (self.theEnvironmentDictionary[environmentName]).label()
+    def setId(self, v):
+        self.theId = v
 
-  def definition(self,environmentName,dupProperty=''):
-    if (dupProperty == ''):
-      return (self.theEnvironmentDictionary[environmentName]).definition()
-    else:
-      workingAttr = ''
-      noOfEnvironments = len(self.theEnvironmentProperties)
-      for p in self.theEnvironmentProperties:
-        environmentName = p.name()
-        workingAttr += p.definition()
-        if (noOfEnvironments > 1):
-          workingAttr += ' [' + environmentName + '].  '
-      return workingAttr
+    def name(self):
+        return self.theName
 
-  def category(self,environmentName,dupProperty=''):
-    if (dupProperty == ''):
-      return (self.theEnvironmentDictionary[environmentName]).category()
-    else:
-      workingAttr = ''
-      noOfEnvironments = len(self.theEnvironmentProperties)
-      for p in self.theEnvironmentProperties:
-        environmentName = p.name()
-        workingAttr += p.category()
-        if (noOfEnvironments > 1):
-          workingAttr += ' [' + environmentName + '].  '
-      return workingAttr
+    def tags(self):
+        return self.theTags
 
-  def priority(self,environmentName,dupProperty=''):
-    if (dupProperty == ''):
-      return (self.theEnvironmentDictionary[environmentName]).priority()
-    else:
-      workingAttr = ''
-      noOfEnvironments = len(self.theEnvironmentProperties)
-      for p in self.theEnvironmentProperties:
-        environmentName = p.name()
-        workingAttr += p.priority()
-        if (noOfEnvironments > 1):
-          workingAttr += ' [' + environmentName + '].  '
-      return workingAttr
+    def originator(self):
+        return self.theOriginator
 
-  def fitCriterion(self,environmentName,dupProperty=''):
-    if (dupProperty == ''):
-      return (self.theEnvironmentDictionary[environmentName]).fitCriterion()
-    else:
-      workingAttr = ''
-      noOfEnvironments = len(self.theEnvironmentProperties)
-      for p in self.theEnvironmentProperties:
-        environmentName = p.name()
-        workingAttr += p.fitCriterion()
-        if (noOfEnvironments > 1):
-          workingAttr += ' [' + environmentName + '].  '
-      return workingAttr
+    def environmentProperties(self):
+        return self.theEnvironmentProperties
 
-  def issue(self,environmentName,dupProperty=''):
-    if (dupProperty == ''):
-      return (self.theEnvironmentDictionary[environmentName]).issue()
-    else:
-      workingAttr = ''
-      noOfEnvironments = len(self.theEnvironmentProperties)
-      for p in self.theEnvironmentProperties:
-        environmentName = p.name()
-        workingAttr += p.issue()
-        if (noOfEnvironments > 1):
-          workingAttr += ' [' + environmentName + '].  '
-      return workingAttr
+    def environmentProperty(self, envName):
+        return self.theEnvironmentDictionary[envName]
 
-  def setName(self, v): self.theName = v
+    def setColour(self, c):
+        self.theColour = c
 
-  def setOriginator(self, v):  self.theOriginator = v
+    def colour(self):
+        return self.theColour
 
-  def setDefinition(self,environmentName,v):  (self.theEnvironmentDictionary[environmentName]).setDefinition(v)
+    def label(self, environmentName):
+        return (self.theEnvironmentDictionary[environmentName]).label()
 
-  def setCategory(self,environmentName,v):  (self.theEnvironmentDictionary[environmentName]).setCategory(v)
+    def definition(self, environmentName, dupProperty=""):
+        if dupProperty == "":
+            return (self.theEnvironmentDictionary[environmentName]).definition()
+        else:
+            workingAttr = ""
+            noOfEnvironments = len(self.theEnvironmentProperties)
+            for p in self.theEnvironmentProperties:
+                environmentName = p.name()
+                workingAttr += p.definition()
+                if noOfEnvironments > 1:
+                    workingAttr += " [" + environmentName + "].  "
+            return workingAttr
 
-  def setPriority(self,environmentName,v):  (self.theEnvironmentDictionary[environmentName]).setPriority(v)
+    def category(self, environmentName, dupProperty=""):
+        if dupProperty == "":
+            return (self.theEnvironmentDictionary[environmentName]).category()
+        else:
+            workingAttr = ""
+            noOfEnvironments = len(self.theEnvironmentProperties)
+            for p in self.theEnvironmentProperties:
+                environmentName = p.name()
+                workingAttr += p.category()
+                if noOfEnvironments > 1:
+                    workingAttr += " [" + environmentName + "].  "
+            return workingAttr
 
-  def setFitCriterion(self,environmentName,v):  (self.theEnvironmentDictionary[environmentName]).setFitCriterion(v)
+    def priority(self, environmentName, dupProperty=""):
+        if dupProperty == "":
+            return (self.theEnvironmentDictionary[environmentName]).priority()
+        else:
+            workingAttr = ""
+            noOfEnvironments = len(self.theEnvironmentProperties)
+            for p in self.theEnvironmentProperties:
+                environmentName = p.name()
+                workingAttr += p.priority()
+                if noOfEnvironments > 1:
+                    workingAttr += " [" + environmentName + "].  "
+            return workingAttr
 
-  def setIssue(self,environmentName,v):  (self.theEnvironmentDictionary[environmentName]).setIssue(v)
+    def fitCriterion(self, environmentName, dupProperty=""):
+        if dupProperty == "":
+            return (self.theEnvironmentDictionary[environmentName]).fitCriterion()
+        else:
+            workingAttr = ""
+            noOfEnvironments = len(self.theEnvironmentProperties)
+            for p in self.theEnvironmentProperties:
+                environmentName = p.name()
+                workingAttr += p.fitCriterion()
+                if noOfEnvironments > 1:
+                    workingAttr += " [" + environmentName + "].  "
+            return workingAttr
 
-  def refinements(self,environmentName):
-    for assoc in ((self.theEnvironmentDictionary[environmentName]).subGoalRefinements()):
-      if assoc[1] == 'goal':
-        return True
-    return False
+    def issue(self, environmentName, dupProperty=""):
+        if dupProperty == "":
+            return (self.theEnvironmentDictionary[environmentName]).issue()
+        else:
+            workingAttr = ""
+            noOfEnvironments = len(self.theEnvironmentProperties)
+            for p in self.theEnvironmentProperties:
+                environmentName = p.name()
+                workingAttr += p.issue()
+                if noOfEnvironments > 1:
+                    workingAttr += " [" + environmentName + "].  "
+            return workingAttr
+
+    def setName(self, v):
+        self.theName = v
+
+    def setOriginator(self, v):
+        self.theOriginator = v
+
+    def setDefinition(self, environmentName, v):
+        (self.theEnvironmentDictionary[environmentName]).setDefinition(v)
+
+    def setCategory(self, environmentName, v):
+        (self.theEnvironmentDictionary[environmentName]).setCategory(v)
+
+    def setPriority(self, environmentName, v):
+        (self.theEnvironmentDictionary[environmentName]).setPriority(v)
+
+    def setFitCriterion(self, environmentName, v):
+        (self.theEnvironmentDictionary[environmentName]).setFitCriterion(v)
+
+    def setIssue(self, environmentName, v):
+        (self.theEnvironmentDictionary[environmentName]).setIssue(v)
+
+    def refinements(self, environmentName):
+        for assoc in (
+            self.theEnvironmentDictionary[environmentName]
+        ).subGoalRefinements():
+            if assoc[1] == "goal":
+                return True
+        return False

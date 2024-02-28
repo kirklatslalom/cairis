@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 #  Licensed to the Apache Software Foundation (ASF) under one
 #  or more contributor license agreements.  See the NOTICE file
 #  distributed with this work for additional information
@@ -22,21 +23,28 @@ import cairis.core.BorgFactory
 from cairis.core.Borg import Borg
 import cairis.core.MisuseCaseFactory
 
-__author__ = 'Shamal Faily'
+__author__ = "Shamal Faily"
 
 
 class MisuseCaseFactoryTests(unittest.TestCase):
+    def setUp(self):
+        cairis.core.BorgFactory.initialise()
+        importModelFile(
+            os.environ["CAIRIS_SRC"] + "/../examples/exemplars/NeuroGrid/NeuroGrid.xml",
+            1,
+            "test",
+        )
 
-  def setUp(self):
-    cairis.core.BorgFactory.initialise()
-    importModelFile(os.environ['CAIRIS_SRC'] + '/../examples/exemplars/NeuroGrid/NeuroGrid.xml',1,'test')
-
-  def testBuildMisuseCase(self):
-    mc = cairis.core.MisuseCaseFactory.build('Social Engineering','Certificate ubiquity')
-    mcEnv = mc.theEnvironmentProperties[0]
-    self.assertEqual(mcEnv.theEnvironmentName,'Psychosis')
-    self.assertEqual(mcEnv.theLikelihood,'Occasional')
-    self.assertEqual(mcEnv.theSeverity,'Critical')
-    self.assertEqual(mcEnv.theRiskRating.rating,'Undesirable')
-    self.assertEqual(mcEnv.theObjective,'Exploit vulnerabilities in User certificate to threaten User certificate,Client workstation.')
-
+    def testBuildMisuseCase(self):
+        mc = cairis.core.MisuseCaseFactory.build(
+            "Social Engineering", "Certificate ubiquity"
+        )
+        mcEnv = mc.theEnvironmentProperties[0]
+        self.assertEqual(mcEnv.theEnvironmentName, "Psychosis")
+        self.assertEqual(mcEnv.theLikelihood, "Occasional")
+        self.assertEqual(mcEnv.theSeverity, "Critical")
+        self.assertEqual(mcEnv.theRiskRating.rating, "Undesirable")
+        self.assertEqual(
+            mcEnv.theObjective,
+            "Exploit vulnerabilities in User certificate to threaten User certificate,Client workstation.",
+        )

@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 #  Licensed to the Apache Software Foundation (ASF) under one
 #  or more contributor license agreements.  See the NOTICE file
 #  distributed with this work for additional information
@@ -18,34 +19,70 @@
 
 from .ObjectCreationParameters import ObjectCreationParameters
 
-__author__ = 'Shamal Faily'
+__author__ = "Shamal Faily"
+
 
 class ImpliedCharacteristicParameters(ObjectCreationParameters):
-  def __init__(self,pName,fromCode,toCode,rtName,charName,qualName,lhsCodes,rhsCodes,charType):
-    ObjectCreationParameters.__init__(self)
-    self.thePersonaName = pName
-    self.theFromCode = fromCode
-    self.theToCode = toCode
-    self.theRelationshipType = rtName
-    self.theCharacteristicName = charName
-    self.theQualifierName = qualName
-    self.theLhsCodes = lhsCodes
-    self.theRhsCodes = rhsCodes
-    self.theCharacteristicType = charType
-    self.theIntention = ''
-    self.theIntentionType = ''
+    def __init__(
+        self,
+        pName,
+        fromCode,
+        toCode,
+        rtName,
+        charName,
+        qualName,
+        lhsCodes,
+        rhsCodes,
+        charType,
+    ):
+        ObjectCreationParameters.__init__(self)
+        self.thePersonaName = pName
+        self.theFromCode = fromCode
+        self.theToCode = toCode
+        self.theRelationshipType = rtName
+        self.theCharacteristicName = charName
+        self.theQualifierName = qualName
+        self.theLhsCodes = lhsCodes
+        self.theRhsCodes = rhsCodes
+        self.theCharacteristicType = charType
+        self.theIntention = ""
+        self.theIntentionType = ""
 
-  def setIntention(self,v): self.theIntention = v
-  def setIntentionType(self,v): self.theIntentionType = v
+    def setIntention(self, v):
+        self.theIntention = v
 
-  def persona(self): return self.thePersonaName
-  def fromCode(self): return self.theFromCode
-  def toCode(self): return self.theToCode
-  def relationshipType(self): return self.theRelationshipType
-  def characteristic(self): return self.theCharacteristicName
-  def qualifier(self): return self.theQualifierName
-  def lhsCodes(self): return self.theLhsCodes
-  def rhsCodes(self): return self.theRhsCodes
-  def characteristicType(self): return self.theCharacteristicType
-  def intention(self): return self.theIntention
-  def intentionType(self): return self.theIntentionType
+    def setIntentionType(self, v):
+        self.theIntentionType = v
+
+    def persona(self):
+        return self.thePersonaName
+
+    def fromCode(self):
+        return self.theFromCode
+
+    def toCode(self):
+        return self.theToCode
+
+    def relationshipType(self):
+        return self.theRelationshipType
+
+    def characteristic(self):
+        return self.theCharacteristicName
+
+    def qualifier(self):
+        return self.theQualifierName
+
+    def lhsCodes(self):
+        return self.theLhsCodes
+
+    def rhsCodes(self):
+        return self.theRhsCodes
+
+    def characteristicType(self):
+        return self.theCharacteristicType
+
+    def intention(self):
+        return self.theIntention
+
+    def intentionType(self):
+        return self.theIntentionType

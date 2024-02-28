@@ -1,7 +1,7 @@
 User goals and user goal models
 ===============================
 
-CAIRIS supports the specification, modelling, and validation of user goal models.  These models are based on a subset of the `Goal-oriented Requirements Language (GRL) <https://en.wikipedia.org/wiki/Goal-oriented_Requirements_Language>`_ : a language for modelling intentional relationships between goals.  
+CAIRIS supports the specification, modelling, and validation of user goal models.  These models are based on a subset of the `Goal-oriented Requirements Language (GRL) <https://en.wikipedia.org/wiki/Goal-oriented_Requirements_Language>`_ : a language for modelling intentional relationships between goals.
 
 There are several reasons why you might find working with user goals useful.
 
@@ -35,7 +35,7 @@ Before you can create a user goal, you first need to create a document reference
 
 * Select the Reference grounding the user goal.  If this is a document reference, select *Document* as the element type and select the document reference name from the combo box.  If the user goal is based on a persona characteristic, select *Persona* as the element type.  To help you phrase the user goal, details of the document reference or persona characteristic are displayed.
 
-* If you wish, you can override the calculated satisfaction score with an initial satisfaction value.  The available values are Satisfied (100), Weakly Satisfied (50), None (0), Weakly Denied (-50), Denied (50). 
+* If you wish, you can override the calculated satisfaction score with an initial satisfaction value.  The available values are Satisfied (100), Weakly Satisfied (50), None (0), Weakly Denied (-50), Denied (50).
 
 * If you wish to associate the user goal with a KAOS goal, click on the Add button in the System Goal table to select the goal.
 
@@ -75,7 +75,7 @@ Task contributions
 
 In addition to adding an initial satisfaction level for user goals, you can also set the contribution level that a task has on one or more user goals.
 
-* To add such a contribution link, in the appropriate task, click on the Add button in the User Goal Contribution table in the Concerns folder for the appropriate task environment.  
+* To add such a contribution link, in the appropriate task, click on the Add button in the User Goal Contribution table in the Concerns folder for the appropriate task environment.
 
 * From the Task Contribution dialog box, select the user goal concerned with the task in this environment and click Ok.  The task-goal contribution link will be added when the task is created or updated.
 

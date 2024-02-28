@@ -1,5 +1,5 @@
 <?xml version="1.0"?>
-<!DOCTYPE cairis_model PUBLIC "-//CAIRIS//DTD MODEL 1.0//EN" "https://cairis.org/dtd/cairis_model.dtd"> 
+<!DOCTYPE cairis_model PUBLIC "-//CAIRIS//DTD MODEL 1.0//EN" "https://cairis.org/dtd/cairis_model.dtd">
 <cairis_model>
 
 
@@ -1012,7 +1012,7 @@ Ben promptly installs a keylogger onto this PC before logging out.</narrative>
 <asset_association environment="Day"  head_name="Router" head_nav="0" head_adornment="Association" head_nry="a" head_role="" tail_role="" tail_nry="1" tail_adornment="Association" tail_nav="0" tail_name="Telemetry Network">
   <rationale>Routers mediate access to the telemetry network.</rationale>
 </asset_association>
-<asset_association environment="Day"  head_name="ICT PC" head_nav="0" head_adornment="Association" head_nry="a" head_role="" tail_role="" tail_nry="1" tail_adornment="Association" tail_nav="0" tail_name="Telemetry Network"> 
+<asset_association environment="Day"  head_name="ICT PC" head_nav="0" head_adornment="Association" head_nry="a" head_role="" tail_role="" tail_nry="1" tail_adornment="Association" tail_nav="0" tail_name="Telemetry Network">
   <rationale>Some ICT PC applications interact with the telemetry network.</rationale>
 </asset_association>
 <asset_association environment="Day"  head_name="SCADA Workstation" head_nav="0" head_adornment="Association" head_nry="a" head_role="" tail_role="" tail_nry="1" tail_adornment="Association" tail_nav="0" tail_name="Works Network">

@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 #  Licensed to the Apache Software Foundation (ASF) under one
 #  or more contributor license agreements.  See the NOTICE file
 #  distributed with this work for additional information
@@ -15,18 +16,28 @@
 #  specific language governing permissions and limitations
 #  under the License.
 
-__author__ = 'Shamal Faily'
+__author__ = "Shamal Faily"
+
 
 class DocumentReference:
-  def __init__(self,refId,refName,docName,cName,docExc):
-    self.theId = refId
-    self.theName = refName
-    self.theDocName = docName
-    self.theContributor = cName
-    self.theExcerpt = docExc
+    def __init__(self, refId, refName, docName, cName, docExc):
+        self.theId = refId
+        self.theName = refName
+        self.theDocName = docName
+        self.theContributor = cName
+        self.theExcerpt = docExc
 
-  def id(self): return self.theId
-  def name(self): return self.theName
-  def contributor(self): return self.theContributor
-  def document(self): return self.theDocName
-  def excerpt(self): return self.theExcerpt
+    def id(self):
+        return self.theId
+
+    def name(self):
+        return self.theName
+
+    def contributor(self):
+        return self.theContributor
+
+    def document(self):
+        return self.theDocName
+
+    def excerpt(self):
+        return self.theExcerpt

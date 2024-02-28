@@ -104,7 +104,7 @@
             "theTailNry" : "1",
             "theTailNav" : "1",
             "theTailAdornment" : "Association",
-            "theTailAsset" : "Access Request"} 
+            "theTailAsset" : "Access Request"}
          ],
          "theRequirements" : [],
          "theGoals" : ["Qualified data use","Usage Request"],
@@ -134,7 +134,7 @@
             "theTailNry" : "1",
             "theTailNav" : "1",
             "theTailAdornment" : "Association",
-            "theTailAsset" : "Access Request"} 
+            "theTailAsset" : "Access Request"}
          ],
          "theRequirements" : [],
          "theGoals" : [],

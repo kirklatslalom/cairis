@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 #  Licensed to the Apache Software Foundation (ASF) under one
 #  or more contributor license agreements.  See the NOTICE file
 #  distributed with this work for additional information
@@ -15,16 +16,20 @@
 #  specific language governing permissions and limitations
 #  under the License.
 
-__author__ = 'Shamal Faily'
+__author__ = "Shamal Faily"
 
 
 from .EnvironmentProperties import EnvironmentProperties
 
-class AcceptEnvironmentProperties(EnvironmentProperties):
-  def __init__(self,environmentName,cost = '',rationale = ''):
-    EnvironmentProperties.__init__(self,environmentName)
-    self.theCost = cost
-    self.theRationale = rationale
 
-  def cost(self): return self.theCost
-  def description(self): return self.theRationale
+class AcceptEnvironmentProperties(EnvironmentProperties):
+    def __init__(self, environmentName, cost="", rationale=""):
+        EnvironmentProperties.__init__(self, environmentName)
+        self.theCost = cost
+        self.theRationale = rationale
+
+    def cost(self):
+        return self.theCost
+
+    def description(self):
+        return self.theRationale

@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 #  Licensed to the Apache Software Foundation (ASF) under one
 #  or more contributor license agreements.  See the NOTICE file
 #  distributed with this work for additional information
@@ -18,25 +19,43 @@
 
 from .ObjectCreationParameters import ObjectCreationParameters
 
-__author__ = 'Shamal Faily'
+__author__ = "Shamal Faily"
+
 
 class PersonaCharacteristicParameters(ObjectCreationParameters):
-  def __init__(self,pName,modQual,vName,cDesc,pcGrounds,pcWarrant,pcBacking,pcRebuttal):
-    ObjectCreationParameters.__init__(self)
-    self.thePersonaName = pName
-    self.theModQual = modQual
-    self.theVariable = vName
-    self.theName = cDesc
-    self.theGrounds = pcGrounds
-    self.theWarrant = pcWarrant
-    self.theBacking = pcBacking
-    self.theRebuttal = pcRebuttal
+    def __init__(
+        self, pName, modQual, vName, cDesc, pcGrounds, pcWarrant, pcBacking, pcRebuttal
+    ):
+        ObjectCreationParameters.__init__(self)
+        self.thePersonaName = pName
+        self.theModQual = modQual
+        self.theVariable = vName
+        self.theName = cDesc
+        self.theGrounds = pcGrounds
+        self.theWarrant = pcWarrant
+        self.theBacking = pcBacking
+        self.theRebuttal = pcRebuttal
 
-  def persona(self): return self.thePersonaName
-  def qualifier(self): return self.theModQual
-  def behaviouralVariable(self): return self.theVariable
-  def characteristic(self): return self.theName
-  def grounds(self): return self.theGrounds
-  def warrant(self): return self.theWarrant
-  def backing(self): return self.theBacking
-  def rebuttal(self): return self.theRebuttal
+    def persona(self):
+        return self.thePersonaName
+
+    def qualifier(self):
+        return self.theModQual
+
+    def behaviouralVariable(self):
+        return self.theVariable
+
+    def characteristic(self):
+        return self.theName
+
+    def grounds(self):
+        return self.theGrounds
+
+    def warrant(self):
+        return self.theWarrant
+
+    def backing(self):
+        return self.theBacking
+
+    def rebuttal(self):
+        return self.theRebuttal

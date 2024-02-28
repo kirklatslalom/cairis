@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 #  Licensed to the Apache Software Foundation (ASF) under one
 #  or more contributor license agreements.  See the NOTICE file
 #  distributed with this work for additional information
@@ -16,67 +17,82 @@
 #  under the License.
 
 import os
-from xml.sax.handler import ContentHandler,EntityResolver
+from xml.sax.handler import ContentHandler, EntityResolver
 from cairis.core.EnvironmentParameters import EnvironmentParameters
 from cairis.core.ValueTypeParameters import ValueTypeParameters
 from cairis.core.Location import Location
 from cairis.core.LocationsParameters import LocationsParameters
 from cairis.core.Borg import Borg
 
-__author__ = 'Shamal Faily'
-
-class LocationsContentHandler(ContentHandler,EntityResolver):
-  def __init__(self):
-    b = Borg()
-    self.configDir = b.configDir
-    self.allLocations = []
-
-    self.resetLocationsAttributes()
-    self.resetLocationAttributes()
-
-  def resolveEntity(self,publicId,systemId):
-    return systemId
-
-  def name(self): return self.theLocationsName
-  def diagram(self): return self.theDiagram
-
-  def locations(self):
-    return self.allLocations
-
-  def links(self):
-    return self.theLinks
-
-  def resetLocationAttributes(self):
-    self.theName = ''
-    self.theAssetInstances = []
-    self.thePersonaInstances = []
-    self.theLinks = []
-
-  def resetLocationsAttributes(self):
-    self.theLocationsName = ''
-    self.theDiagram = ''
-    self.theLocations = []
+__author__ = "Shamal Faily"
 
 
-  def startElement(self,name,attrs):
-    self.currentElementName = name
-    if name == 'locations':
-      self.theLocationsName = attrs['name']
-      self.theDiagram = attrs['diagram']
-    elif name == 'location':
-      self.theName = attrs['name']
-    elif name == 'asset_instance':
-      self.theAssetInstances.append((attrs['name'],attrs['asset']))
-    elif name == 'persona_instance':
-      self.thePersonaInstances.append((attrs['name'],attrs['persona']))
-    elif name == 'link':
-      toName = attrs['name']
-      self.theLinks.append(toName)
+class LocationsContentHandler(ContentHandler, EntityResolver):
+    def __init__(self):
+        b = Borg()
+        self.configDir = b.configDir
+        self.allLocations = []
 
-  def endElement(self,name):
-    if name == 'location':
-      self.theLocations.append(Location(-1,self.theName,self.theAssetInstances,self.thePersonaInstances,self.theLinks))
-      self.resetLocationAttributes()
-    elif name == 'locations':
-      self.allLocations.append(LocationsParameters(self.theLocationsName,self.theDiagram,self.theLocations))
-      self.resetLocationsAttributes()
+        self.resetLocationsAttributes()
+        self.resetLocationAttributes()
+
+    def resolveEntity(self, publicId, systemId):
+        return systemId
+
+    def name(self):
+        return self.theLocationsName
+
+    def diagram(self):
+        return self.theDiagram
+
+    def locations(self):
+        return self.allLocations
+
+    def links(self):
+        return self.theLinks
+
+    def resetLocationAttributes(self):
+        self.theName = ""
+        self.theAssetInstances = []
+        self.thePersonaInstances = []
+        self.theLinks = []
+
+    def resetLocationsAttributes(self):
+        self.theLocationsName = ""
+        self.theDiagram = ""
+        self.theLocations = []
+
+    def startElement(self, name, attrs):
+        self.currentElementName = name
+        if name == "locations":
+            self.theLocationsName = attrs["name"]
+            self.theDiagram = attrs["diagram"]
+        elif name == "location":
+            self.theName = attrs["name"]
+        elif name == "asset_instance":
+            self.theAssetInstances.append((attrs["name"], attrs["asset"]))
+        elif name == "persona_instance":
+            self.thePersonaInstances.append((attrs["name"], attrs["persona"]))
+        elif name == "link":
+            toName = attrs["name"]
+            self.theLinks.append(toName)
+
+    def endElement(self, name):
+        if name == "location":
+            self.theLocations.append(
+                Location(
+                    -1,
+                    self.theName,
+                    self.theAssetInstances,
+                    self.thePersonaInstances,
+                    self.theLinks,
+                )
+            )
+            self.resetLocationAttributes()
+        elif name == "locations":
+            self.allLocations.append(
+                LocationsParameters(
+                    self.theLocationsName, self.theDiagram, self.theLocations
+                )
+            )
+            self.resetLocationsAttributes()

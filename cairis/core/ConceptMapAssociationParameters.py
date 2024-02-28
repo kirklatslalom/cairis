@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 #  Licensed to the Apache Software Foundation (ASF) under one
 #  or more contributor license agreements.  See the NOTICE file
 #  distributed with this work for additional information
@@ -18,19 +19,31 @@
 
 from . import ObjectCreationParameters
 
-__author__ = 'Shamal Faily'
+__author__ = "Shamal Faily"
 
-class ConceptMapAssociationParameters(ObjectCreationParameters.ObjectCreationParameters):
-  def __init__(self,fromName,toName,lbl,fromEnv,toEnv):
-    ObjectCreationParameters.ObjectCreationParameters.__init__(self)
-    self.theFromName = fromName
-    self.theToName = toName
-    self.theLabel = lbl
-    self.theFromEnvironmentName = fromEnv
-    self.theToEnvironmentName = toEnv
 
-  def fromEnvironment(self): return self.theFromEnvironmentName
-  def toEnvironment(self): return self.theToEnvironmentName
-  def fromName(self): return self.theFromName
-  def toName(self): return self.theToName
-  def label(self): return self.theLabel
+class ConceptMapAssociationParameters(
+    ObjectCreationParameters.ObjectCreationParameters
+):
+    def __init__(self, fromName, toName, lbl, fromEnv, toEnv):
+        ObjectCreationParameters.ObjectCreationParameters.__init__(self)
+        self.theFromName = fromName
+        self.theToName = toName
+        self.theLabel = lbl
+        self.theFromEnvironmentName = fromEnv
+        self.theToEnvironmentName = toEnv
+
+    def fromEnvironment(self):
+        return self.theFromEnvironmentName
+
+    def toEnvironment(self):
+        return self.theToEnvironmentName
+
+    def fromName(self):
+        return self.theFromName
+
+    def toName(self):
+        return self.theToName
+
+    def label(self):
+        return self.theLabel

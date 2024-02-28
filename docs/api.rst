@@ -4,13 +4,13 @@ Using the CAIRIS API
 API documentation
 -----------------
 
-API documentation can be found on `SwaggerHub <https://app.swaggerhub.com/apis/failys/CAIRIS>`_. 
+API documentation can be found on `SwaggerHub <https://app.swaggerhub.com/apis/failys/CAIRIS>`_.
 
 SwaggerHub provides a virtual server at https://virtserver.swaggerhub.com/failys/CAIRIS you can use to quickly test get/post/put/delete methods on end-points without setting up CAIRIS, authenticating, etc.
 
 
 .. code-block:: bash
- 
+
    curl https://virtserver.swaggerhub.com/failys/CAIRIS/1.0.9/api/attackers
    [ {
   "theName" : "Carol",

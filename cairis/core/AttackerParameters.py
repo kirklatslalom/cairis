@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 #  Licensed to the Apache Software Foundation (ASF) under one
 #  or more contributor license agreements.  See the NOTICE file
 #  distributed with this work for additional information
@@ -15,25 +16,36 @@
 #  specific language governing permissions and limitations
 #  under the License.
 
-__author__ = 'Shamal Faily'
+__author__ = "Shamal Faily"
 
 
 from .ObjectCreationParameters import ObjectCreationParameters
 
+
 class AttackerParameters(ObjectCreationParameters):
-  def __init__(self,name,desc,image,tags,properties):
-    ObjectCreationParameters.__init__(self)
-    self.theName = name
-    self.theDescription = desc
-    self.theImage = image
-    self.theTags = tags
-    self.theEnvironmentProperties = properties
-    self.isPersona = False
+    def __init__(self, name, desc, image, tags, properties):
+        ObjectCreationParameters.__init__(self)
+        self.theName = name
+        self.theDescription = desc
+        self.theImage = image
+        self.theTags = tags
+        self.theEnvironmentProperties = properties
+        self.isPersona = False
 
+    def name(self):
+        return self.theName
 
-  def name(self): return self.theName
-  def description(self): return self.theDescription
-  def image(self): return self.theImage
-  def tags(self): return self.theTags
-  def environmentProperties(self): return self.theEnvironmentProperties
-  def persona(self): return self.isPersona
+    def description(self):
+        return self.theDescription
+
+    def image(self):
+        return self.theImage
+
+    def tags(self):
+        return self.theTags
+
+    def environmentProperties(self):
+        return self.theEnvironmentProperties
+
+    def persona(self):
+        return self.isPersona

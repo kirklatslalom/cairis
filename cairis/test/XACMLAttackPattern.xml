@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <!DOCTYPE attack_pattern PUBLIC "-//CAIRIS//DTD ATTACKPATTERN 1.0//EN" "https://cairis.org/dtd/attack_pattern.dtd">
 
-<!-- 
+<!--
   Licensed to the Apache Software Foundation (ASF) under one
   or more contributor license agreements.  See the NOTICE file
   distributed with this work for additional information
@@ -21,7 +21,7 @@
 -->
 
 
-<attack_pattern name="Request footprinting" likelihood="Occasional" severity="Critical"> 
+<attack_pattern name="Request footprinting" likelihood="Occasional" severity="Critical">
 
   <obstacle name="Eavesdrop access requests" category="Confidentiality_Threat" >
     <definition>Eavesdrop access requests</definition>
@@ -59,12 +59,12 @@
     <responsibility name="Developer of webinos Platform" />
   </obstacle>
 
-  <intent>Glean an understanding of what resources are available on a device by eavesdropping on requests.</intent> 
-  <motivation goal="confidentiality" value="Low"> 
+  <intent>Glean an understanding of what resources are available on a device by eavesdropping on requests.</intent>
+  <motivation goal="confidentiality" value="Low">
     <description>Ethan wants to get a better understanding of what resources are under policy control.</description>
   </motivation>
   <applicability environment="Complete" />
-  <structure attack="Network Eavesdropping" attack_obstacle="Eavesdrop request enforcement channel" exploit="Missing XML Validation" exploit_obstacle="Missing XML document validation" /> 
+  <structure attack="Network Eavesdropping" attack_obstacle="Eavesdrop request enforcement channel" exploit="Missing XML Validation" exploit_obstacle="Missing XML document validation" />
   <participant name="Ethan">
     <motive name="System resource theft" />
     <capability name="Technology" value="Medium" />
@@ -72,7 +72,7 @@
     <capability name="Knowledge/Methods" value="Medium" />
   </participant>
   <collaboration>
-    <target name="Application Data" /> 
+    <target name="Application Data" />
     <exploit name="Application Data" />
   </collaboration>
   <consequences>Impact of attack</consequences>

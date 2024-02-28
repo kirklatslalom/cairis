@@ -4,7 +4,7 @@ Quick Start
 Live Demo
 ---------
 
-A live demo of CAIRIS is available to use on https://demo.cairis.org.  
+A live demo of CAIRIS is available to use on https://demo.cairis.org.
 
 The demo has a test account (user: *test@test.com*, password: test) with two example databases you can explore: `NeuroGrid <https://cairis.readthedocs.io/en/latest/examples.html#neurogrid>`_ , `ACME Water <https://cairis.readthedocs.io/en/latest/examples.html#acme-water>`_.
 You are also free to create your account to explore CAIRIS' capabilities on your own.
@@ -30,7 +30,7 @@ How you use CAIRIS depends on how you approach the early stages of your design. 
 Save early and often
 ----------------------
 
-You should :doc:`save </io>` your working model early and often.  Saving a model in CAIRIS entails exporting it.  CAIRIS models are XML, so easy to edit using other tools and easy to version control. 
+You should :doc:`save </io>` your working model early and often.  Saving a model in CAIRIS entails exporting it.  CAIRIS models are XML, so easy to edit using other tools and easy to version control.
 
 Supporting UX
 -------------

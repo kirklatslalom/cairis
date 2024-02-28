@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 #  Licensed to the Apache Software Foundation (ASF) under one
 #  or more contributor license agreements.  See the NOTICE file
 #  distributed with this work for additional information
@@ -15,28 +16,43 @@
 #  specific language governing permissions and limitations
 #  under the License.
 
-__author__ = 'Shamal Faily'
+__author__ = "Shamal Faily"
 
 
 from .ObjectCreationParameters import ObjectCreationParameters
 
+
 class UseCaseParameters(ObjectCreationParameters):
-  def __init__(self,ucName,ucAuth,ucCode,ucActors,ucDesc,tags,cProps):
-    ObjectCreationParameters.__init__(self)
-    self.theName = ucName
-    self.theTags = tags
-    self.theAuthor = ucAuth
-    self.theCode = ucCode
-    self.theActors = ucActors
-    self.theDescription = ucDesc
-    self.theEnvironmentProperties = cProps
+    def __init__(self, ucName, ucAuth, ucCode, ucActors, ucDesc, tags, cProps):
+        ObjectCreationParameters.__init__(self)
+        self.theName = ucName
+        self.theTags = tags
+        self.theAuthor = ucAuth
+        self.theCode = ucCode
+        self.theActors = ucActors
+        self.theDescription = ucDesc
+        self.theEnvironmentProperties = cProps
 
+    def name(self):
+        return self.theName
 
-  def name(self): return self.theName
-  def tags(self): return self.theTags
-  def author(self): return self.theAuthor
-  def code(self): return self.theCode
-  def actors(self): return self.theActors
-  def description(self): return self.theDescription
-  def author(self): return self.theAuthor
-  def environmentProperties(self): return self.theEnvironmentProperties
+    def tags(self):
+        return self.theTags
+
+    def author(self):
+        return self.theAuthor
+
+    def code(self):
+        return self.theCode
+
+    def actors(self):
+        return self.theActors
+
+    def description(self):
+        return self.theDescription
+
+    def author(self):
+        return self.theAuthor
+
+    def environmentProperties(self):
+        return self.theEnvironmentProperties

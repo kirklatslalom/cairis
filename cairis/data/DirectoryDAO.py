@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 #  Licensed to the Apache Software Foundation (ASF) under one
 #  or more contributor license agreements.  See the NOTICE file
 #  distributed with this work for additional information
@@ -16,47 +17,51 @@
 #  under the License.
 
 from cairis.core.ARM import *
-from cairis.daemon.CairisHTTPError import ARMHTTPError, ObjectNotFoundHTTPError, MalformedJSONHTTPError, MissingParameterHTTPError, \
-    OverwriteNotAllowedHTTPError
+from cairis.daemon.CairisHTTPError import (
+    ARMHTTPError,
+    ObjectNotFoundHTTPError,
+    MalformedJSONHTTPError,
+    MissingParameterHTTPError,
+    OverwriteNotAllowedHTTPError,
+)
 from cairis.core.Directory import Directory
 from cairis.data.CairisDAO import CairisDAO
 
 
-__author__ = 'Shamal Faily'
+__author__ = "Shamal Faily"
 
 
 class DirectoryDAO(CairisDAO):
+    def __init__(self, session_id):
+        CairisDAO.__init__(self, session_id)
 
-  def __init__(self, session_id):
-    CairisDAO.__init__(self, session_id)
+    def get_threat_directory(self, directory_entry, pathValues=[]):
+        if directory_entry == "all":
+            directory_entry = ""
+        try:
+            tds = self.db_proxy.getThreatDirectory(directory_entry)
+            tdObjts = []
+            for td in tds:
+                tdObjts.append(Directory(td[0], td[1], td[2], td[3], td[4]))
+            return tdObjts
+        except DatabaseProxyException as ex:
+            self.close()
+            raise ARMHTTPError(ex)
+        except ARMException as ex:
+            self.close()
+            raise ARMHTTPError(ex)
 
-  def get_threat_directory(self, directory_entry, pathValues = []):
-    if directory_entry == 'all':
-      directory_entry = '' 
-    try:
-      tds = self.db_proxy.getThreatDirectory(directory_entry)
-      tdObjts = []
-      for td in tds:
-        tdObjts.append(Directory(td[0],td[1],td[2],td[3],td[4]))
-      return tdObjts
-    except DatabaseProxyException as ex:
-      self.close()
-      raise ARMHTTPError(ex)
-    except ARMException as ex:
-      self.close()
-      raise ARMHTTPError(ex)
-
-  def get_vulnerability_directory(self, directory_entry, pathValues = []):
-    if directory_entry == 'all':
-      directory_entry = '' 
-    try:
-      vds = self.db_proxy.getVulnerabilityDirectory(directory_entry)
-      vdObjts = []
-      for vd in vds:
-        vdObjts.append(Directory(vd[0],vd[1],vd[2],vd[3],vd[4]))
-      return vdObjts
-    except DatabaseProxyException as ex:
-      self.close()
-      raise ARMHTTPError(ex)
-    except ARMException as ex:
-      self.close()
+    def get_vulnerability_directory(self, directory_entry, pathValues=[]):
+        if directory_entry == "all":
+            directory_entry = ""
+        try:
+            vds = self.db_proxy.getVulnerabilityDirectory(directory_entry)
+            vdObjts = []
+            for vd in vds:
+                vdObjts.append(Directory(vd[0], vd[1], vd[2], vd[3], vd[4]))
+            return vdObjts
+        except DatabaseProxyException as ex:
+            self.close()
+            raise ARMHTTPError(ex)
+        except ARMException as ex:
+            self.close()

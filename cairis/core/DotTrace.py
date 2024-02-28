@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 #  Licensed to the Apache Software Foundation (ASF) under one
 #  or more contributor license agreements.  See the NOTICE file
 #  distributed with this work for additional information
@@ -18,8 +19,9 @@
 
 from . import Trace
 
-__author__ = 'Shamal Faily'
+__author__ = "Shamal Faily"
+
 
 class DotTrace(Trace.Trace):
-  def __init__(self,fObjt,fName,tObjt,tName):
-    Trace.Trace.__init__(self,fObjt,fName,tObjt,tName)
+    def __init__(self, fObjt, fName, tObjt, tName):
+        Trace.Trace.__init__(self, fObjt, fName, tObjt, tName)

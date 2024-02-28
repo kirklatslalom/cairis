@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 #  Licensed to the Apache Software Foundation (ASF) under one
 #  or more contributor license agreements.  See the NOTICE file
 #  distributed with this work for additional information
@@ -132,7 +133,7 @@ class PersonaShape(xdot.Shape):
 class RequiredInterfaceShape(xdot.EllipseShape):
     def __init__(self, pen, x0, y0, w, h, objtName, filled=False):
       xdot.EllipseShape.__init__(self,pen,x0,y0,w,h,filled)
-      self.theInterfaceName = objtName 
+      self.theInterfaceName = objtName
 
     def draw(self, cr, highlight=False,zoom_ratio=-1):
       cr.save()
@@ -167,7 +168,7 @@ class MisuseCaseShape(xdot.EllipseShape):
       if (zoom_ratio == -1) or (zoom_ratio > HIGH_ZOOM_RATIO):
         xdot.EllipseShape.draw(self,cr,highlight,-1)
 
-   
+
 class RoleShape(xdot.Shape):
     def __init__(self, pen, x0, y0, w, h, filled=False):
         xdot.Shape.__init__(self)
@@ -185,7 +186,7 @@ class RoleShape(xdot.Shape):
         cr.scale(self.w, self.h)
 
         cr.move_to(-0.5,-0.25)
-        cr.rectangle(-0.25,-0.25,0.5,0.75) 
+        cr.rectangle(-0.25,-0.25,0.5,0.75)
         cr.move_to(0.0,-0.5)
         cr.new_sub_path()
         cr.arc(0.0,-0.5,0.25,0,2.0 * math.pi)
@@ -313,14 +314,14 @@ class ComponentPolygonShape(xdot.PolygonShape):
       width = self.points[3][0] - self.points[0][0]
       height = self.points[0][1] - self.points[1][1]
       iconPath = b.iconDir + '/roleNode.png'
-      roleSurface = cairo.ImageSurface.create_from_png(iconPath)      
+      roleSurface = cairo.ImageSurface.create_from_png(iconPath)
       imageWidth = roleSurface.get_width()
       imageHeight = roleSurface.get_height()
       cr.save()
       cr.set_source_surface(roleSurface,xs + (width/4),ys - height)
       cr.paint()
-      cr.restore() 
-      
+      cr.restore()
+
 
     def decorateAssetNode(self,cr,zoom_ratio):
      if (zoom_ratio == -1) or (zoom_ratio > HIGH_ZOOM_RATIO):
@@ -336,33 +337,33 @@ class ComponentPolygonShape(xdot.PolygonShape):
       asset = self.dbProxy.dimensionObject(self.objt,self.dim)
       syProps = asset.securityProperties(self.environment.name(),self.environment.duplicateProperty(),self.environment.overridingEnvironment())
       cx = xs
-      cy = ys + 10 
+      cy = ys + 10
       cr.set_line_width(0.1)
       cr.set_source_rgb(0,0,0)
       cr.rectangle(cx,cy,syProps[0] * 10,3)
       cr.fill()
 
       ix = xs
-      iy = cy + 6 
+      iy = cy + 6
       cr.set_line_width(0.1)
       cr.set_source_rgb(1,0,0)
       cr.rectangle(ix,iy,syProps[1] * 10,3)
       cr.fill()
 
       ax = xs
-      ay = iy + 6 
+      ay = iy + 6
       cr.set_line_width(0.1)
       cr.set_source_rgb(0,1,0)
       cr.rectangle(ax,ay,syProps[2] * 10,3)
       cr.fill()
 
       avx = xs
-      avy = ay + 6 
+      avy = ay + 6
       cr.set_line_width(0.1)
       cr.set_source_rgb(0,0,1)
       cr.rectangle(avx,avy,syProps[3] * 10,3)
       cr.fill()
- 
+
     def decorateThreatNode(self,cr,zoom_ratio):
      if (zoom_ratio > LOW_ZOOM_RATIO) and (zoom_ratio < HIGH_ZOOM_RATIO):
       threat = self.dbProxy.dimensionObject(self.objt,self.dim)
@@ -414,35 +415,35 @@ class ComponentPolygonShape(xdot.PolygonShape):
         lhoodScore = OCCASIONAL_COLOUR
       else:
         lhoodScore = FREQUENT_COLOUR
-      
+
       cr.set_source_rgb(lhoodScore[0],lhoodScore[1],lhoodScore[2])
       cr.rectangle(lx,ly,w,h)
       cr.fill()
 
       cLength = syProps[0] * 10
       cx = xe - cLength
-      cy = ys + 10 
+      cy = ys + 10
       cr.set_line_width(0.1)
       cr.set_source_rgb(0,0,0)
       cr.rectangle(cx,cy,cLength,3)
       cr.fill()
       iLength = syProps[1] * 10
       ix = xe - iLength
-      iy = cy + 6 
+      iy = cy + 6
       cr.set_line_width(0.1)
       cr.set_source_rgb(1,0,0)
       cr.rectangle(ix,iy,iLength,3)
       cr.fill()
       avLength = syProps[2] * 10
       avx = xe - avLength
-      avy = iy + 6 
+      avy = iy + 6
       cr.set_line_width(0.1)
       cr.set_source_rgb(0,1,0)
       cr.rectangle(avx,avy,avLength,3)
       cr.fill()
       acLength = syProps[3] * 10
       acx = xe - acLength
-      acy = avy + 6 
+      acy = avy + 6
       cr.set_line_width(0.1)
       cr.set_source_rgb(0,0,1)
       cr.rectangle(acx,acy,acLength,3)
@@ -491,7 +492,7 @@ class ComponentPolygonShape(xdot.PolygonShape):
         sevCol = CRITICAL_COLOUR
       else:
         sevCol = CATASTROPHIC_COLOUR
-      
+
       cr.set_source_rgb(sevCol[0],sevCol[1],sevCol[2])
       cr.rectangle(sx,sy,w,h)
       cr.fill()
@@ -507,7 +508,7 @@ class XDotAttrParser(xdot.XDotAttrParser):
 
     def handle_text(self,x,y,j,w,t):
       self.shapes.append(ComponentTextShape(self.pen, x, y, j, w, t,self.dim))
-    
+
     def handle_ellipse(self, x0, y0, w, h, filled=False):
       if (self.dim == 'required_interface'):
         if filled:
@@ -555,7 +556,7 @@ class ComponentXDotParser(xdot.XDotParser):
         xdot.XDotParser.__init__(self,xdotcode)
         b = Borg()
         self.dbProxy = b.dbProxy
-        
+
     def handle_node(self, id, attrs):
         try:
             pos = attrs['pos']
@@ -742,7 +743,7 @@ class ComponentDotWindow(gtk.Window):
     def refreshModel(self):
       try:
         proxy = self.dbProxy
-        
+
         self.traceModel = ComponentModel(b.dbProxy.componentView(self.theViewName))
         self.set_xdotcode(self.traceModel.graph())
         self.widget.zoom_to_fit()
@@ -774,6 +775,6 @@ class ComponentDotWindow(gtk.Window):
             dlg.run()
             dlg.destroy()
         else:
-          self.widget.printToFile(fileName,fileType)  
+          self.widget.printToFile(fileName,fileType)
       else:
         chooser.destroy()

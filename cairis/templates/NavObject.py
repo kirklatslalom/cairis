@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 #  Licensed to the Apache Software Foundation (ASF) under one
 #  or more contributor license agreements.  See the NOTICE file
 #  distributed with this work for additional information
@@ -15,7 +16,9 @@
 #  specific language governing permissions and limitations
 #  under the License.
 
-__author__ = 'Raf'
+__author__ = "Raf"
+
+
 class NavObject:
     def __init__(self, href, text):
         self.href = href
@@ -27,15 +30,11 @@ class NavObject:
     def setIcon(self, icon):
         self.icon = icon
 
-
     def printNav(self):
-        """"glazed with {} water beside the {} chickens".format("rain", "white")"""
-
+        """ "glazed with {} water beside the {} chickens".format("rain", "white")"""
 
     def getmultilevelHTML(self):
         """for nav in range(len(self.navObjects)):
-            if hasattr(nav, 'navObjects'):
+        if hasattr(nav, 'navObjects'):
 
-            else:"""
-
-
+        else:"""

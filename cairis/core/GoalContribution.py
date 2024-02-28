@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 #  Licensed to the Apache Software Foundation (ASF) under one
 #  or more contributor license agreements.  See the NOTICE file
 #  distributed with this work for additional information
@@ -15,21 +16,35 @@
 #  specific language governing permissions and limitations
 #  under the License.
 
-__author__ = 'Shamal Faily'
+__author__ = "Shamal Faily"
+
 
 class GoalContribution:
-  def __init__(self,src,srcType,dest,destType,me,cont):
-    self.theSource = src
-    self.theSourceType = srcType
-    self.theDestination = dest
-    self.theDestinationType = destType
-    self.theMeansEnd = me
-    self.theContribution = cont
+    def __init__(self, src, srcType, dest, destType, me, cont):
+        self.theSource = src
+        self.theSourceType = srcType
+        self.theDestination = dest
+        self.theDestinationType = destType
+        self.theMeansEnd = me
+        self.theContribution = cont
 
-  def source(self): return self.theSource
-  def sourceType(self): return self.theSourceType
-  def destination(self): return self.theDestination
-  def destinationType(self): return self.theDestinationType
-  def meansEnd(self): return self.theMeansEnd
-  def contribution(self): return self.theContribution
-  def name(self): return self.theSource + ' / ' + self.theDestination
+    def source(self):
+        return self.theSource
+
+    def sourceType(self):
+        return self.theSourceType
+
+    def destination(self):
+        return self.theDestination
+
+    def destinationType(self):
+        return self.theDestinationType
+
+    def meansEnd(self):
+        return self.theMeansEnd
+
+    def contribution(self):
+        return self.theContribution
+
+    def name(self):
+        return self.theSource + " / " + self.theDestination

@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 #  Licensed to the Apache Software Foundation (ASF) under one
 #  or more contributor license agreements.  See the NOTICE file
 #  distributed with this work for additional information
@@ -15,41 +16,52 @@
 #  specific language governing permissions and limitations
 #  under the License.
 
-__author__ = 'Shamal Faily'
+__author__ = "Shamal Faily"
 
 from . import ObjectValidator
 
+
 class MisuseCase(ObjectValidator.ObjectValidator):
-  def __init__(self,mcId,mcName,cProps,riskName):
-    ObjectValidator.ObjectValidator.__init__(self)
-    self.theId = mcId
-    self.theName = mcName
-    self.theEnvironmentProperties = cProps
-    self.theRiskName = riskName
-    self.theThreatName = ''
-    self.theVulnerabilityName = ''
-    self.theEnvironmentDictionary = {}
-    for p in self.theEnvironmentProperties:
-      environmentName = p.name()
-      self.theEnvironmentDictionary[environmentName] = p
+    def __init__(self, mcId, mcName, cProps, riskName):
+        ObjectValidator.ObjectValidator.__init__(self)
+        self.theId = mcId
+        self.theName = mcName
+        self.theEnvironmentProperties = cProps
+        self.theRiskName = riskName
+        self.theThreatName = ""
+        self.theVulnerabilityName = ""
+        self.theEnvironmentDictionary = {}
+        for p in self.theEnvironmentProperties:
+            environmentName = p.name()
+            self.theEnvironmentDictionary[environmentName] = p
 
-  def environmentProperties(self): return self.theEnvironmentProperties
+    def environmentProperties(self):
+        return self.theEnvironmentProperties
 
-  def id(self): return self.theId
-  def name(self): return self.theName
-  def risk(self): return self.theRiskName
-  def threat(self): return self.theThreatName
-  def vulnerability(self): return self.theVulnerabilityName
+    def id(self):
+        return self.theId
 
-  def narrative(self,environmentName,dupProperty): 
-    if (dupProperty == ''):
-      return (self.theEnvironmentDictionary[environmentName]).narrative()
-    else:
-      workingNarrative = ''
-      noOfEnvironments = len(self.theEnvironmentProperties)
-      for p in self.theEnvironmentProperties:
-        environmentName = p.name()
-        workingNarrative += p.narrative()
-        if (noOfEnvironments > 1):
-          workingNarrative += ' [' + environmentName + '].  '
-      return workingNarrative
+    def name(self):
+        return self.theName
+
+    def risk(self):
+        return self.theRiskName
+
+    def threat(self):
+        return self.theThreatName
+
+    def vulnerability(self):
+        return self.theVulnerabilityName
+
+    def narrative(self, environmentName, dupProperty):
+        if dupProperty == "":
+            return (self.theEnvironmentDictionary[environmentName]).narrative()
+        else:
+            workingNarrative = ""
+            noOfEnvironments = len(self.theEnvironmentProperties)
+            for p in self.theEnvironmentProperties:
+                environmentName = p.name()
+                workingNarrative += p.narrative()
+                if noOfEnvironments > 1:
+                    workingNarrative += " [" + environmentName + "].  "
+            return workingNarrative

@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 #  Licensed to the Apache Software Foundation (ASF) under one
 #  or more contributor license agreements.  See the NOTICE file
 #  distributed with this work for additional information
@@ -24,38 +25,44 @@ from cairis.core.Borg import Borg
 from cairis.core.RoleParameters import RoleParameters
 import sys
 
+
 class RoleTest(unittest.TestCase):
+    def setUp(self):
+        call([os.environ["CAIRIS_CFG_DIR"] + "/initdb.sh"])
+        cairis.core.BorgFactory.initialise()
+        f = open(os.environ["CAIRIS_SRC"] + "/test/roles.json")
+        d = json.load(f)
+        f.close()
+        self.iRoles = d["roles"]
 
-  def setUp(self):
-    call([os.environ['CAIRIS_CFG_DIR'] + "/initdb.sh"])
-    cairis.core.BorgFactory.initialise()
-    f = open(os.environ['CAIRIS_SRC'] + '/test/roles.json')
-    d = json.load(f)
-    f.close()
-    self.iRoles = d['roles']
-    
+    def testRole(self):
+        irp = RoleParameters(
+            self.iRoles[0]["theName"],
+            self.iRoles[0]["theType"],
+            self.iRoles[0]["theShortCode"],
+            self.iRoles[0]["theDescription"],
+            [],
+        )
+        b = Borg()
+        b.dbProxy.addRole(irp)
+        oRoles = b.dbProxy.getRoles()
+        o = oRoles[self.iRoles[0]["theName"]]
+        self.assertEqual(irp.name(), o.name())
+        self.assertEqual(irp.shortCode(), o.shortCode())
+        self.assertEqual(irp.description(), o.description())
 
-  def testRole(self):
-    irp = RoleParameters(self.iRoles[0]["theName"], self.iRoles[0]["theType"], self.iRoles[0]["theShortCode"], self.iRoles[0]["theDescription"],[])
-    b = Borg()
-    b.dbProxy.addRole(irp)
-    oRoles = b.dbProxy.getRoles()
-    o = oRoles[self.iRoles[0]["theName"]]
-    self.assertEqual(irp.name(), o.name())
-    self.assertEqual(irp.shortCode(),o.shortCode())
-    self.assertEqual(irp.description(),o.description())
+        o.theShortCode = "TESTROLE"
+        b.dbProxy.updateRole(o)
 
-    o.theShortCode = 'TESTROLE'
-    b.dbProxy.updateRole(o)
+        oRoles2 = b.dbProxy.getRoles(o.id())
+        o2 = oRoles[self.iRoles[0]["theName"]]
+        self.assertEqual(o2.shortCode(), "TESTROLE")
 
-    oRoles2 = b.dbProxy.getRoles(o.id())
-    o2 = oRoles[self.iRoles[0]["theName"]]
-    self.assertEqual(o2.shortCode(),"TESTROLE")
+        b.dbProxy.deleteRole(o.id())
 
-    b.dbProxy.deleteRole(o.id())
-  
-  def tearDown(self):
-    pass
+    def tearDown(self):
+        pass
 
-if __name__ == '__main__':
-  unittest.main()
+
+if __name__ == "__main__":
+    unittest.main()

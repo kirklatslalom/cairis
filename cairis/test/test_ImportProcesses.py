@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 #  Licensed to the Apache Software Foundation (ASF) under one
 #  or more contributor license agreements.  See the NOTICE file
 #  distributed with this work for additional information
@@ -20,14 +21,15 @@ import os
 from cairis.mio.ModelImport import importModelFile, importProcessesFile
 import cairis.core.BorgFactory
 
-__author__ = 'Shamal Faily'
+__author__ = "Shamal Faily"
 
 
 class ImportProcessesTests(unittest.TestCase):
+    def setUp(self):
+        cairis.core.BorgFactory.initialise()
+        importModelFile(os.environ["CAIRIS_SRC"] + "/test/webinos.xml", 1)
 
-  def setUp(self):
-    cairis.core.BorgFactory.initialise()
-    importModelFile(os.environ['CAIRIS_SRC'] + '/test/webinos.xml',1)
-
-  def testImportProcesses(self):
-    importProcessesFile(os.environ['CAIRIS_SRC'] + '/test/helen_impliedCharacteristics.xml',0)
+    def testImportProcesses(self):
+        importProcessesFile(
+            os.environ["CAIRIS_SRC"] + "/test/helen_impliedCharacteristics.xml", 0
+        )

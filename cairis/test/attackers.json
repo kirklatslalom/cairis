@@ -21,7 +21,7 @@
          {"theName" : "Day",
           "theRoles" : ["Vendor"],
           "theMotives" : ["Revenge"],
-	  "theCapabilities" : 
+	  "theCapabilities" :
 	   [
             ["Technology","Medium"]
 	   ]
@@ -29,7 +29,7 @@
          {"theName" : "Night",
           "theRoles" : ["Vendor"],
           "theMotives" : ["Revenge"],
-	  "theCapabilities" : 
+	  "theCapabilities" :
 	   [
             ["Technology","Medium"]
 	   ]

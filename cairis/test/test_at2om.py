@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 #  Licensed to the Apache Software Foundation (ASF) under one
 #  or more contributor license agreements.  See the NOTICE file
 #  distributed with this work for additional information
@@ -19,28 +20,29 @@ import unittest
 import pydot
 import os
 import logging
-from cairis.mio.ModelImport import importModelFile,importAttackTreeString
+from cairis.mio.ModelImport import importModelFile, importAttackTreeString
 from cairis.bin.at2om import dotToObstacleModel
 import cairis.core.BorgFactory
 from cairis.core.Borg import Borg
 
-__author__ = 'Shamal Faily'
+__author__ = "Shamal Faily"
 
 
 class AttackTreeToObstacleModelTests(unittest.TestCase):
+    @classmethod
+    def setUpClass(cls):
+        cairis.core.BorgFactory.initialise()
+        importModelFile(os.environ["CAIRIS_SRC"] + "/test/webinos.xml", 1)
 
-  @classmethod
-  def setUpClass(cls):
-    cairis.core.BorgFactory.initialise()
-    importModelFile(os.environ['CAIRIS_SRC'] + '/test/webinos.xml',1)
+    def setUp(self):
+        pass
 
-  def setUp(self):
-    pass
+    def tearDown(self):
+        pass
 
-  def tearDown(self):
-    pass
-
-  def testxImportSpreadsheet(self):
-    dotInstance = pydot.graph_from_dot_file(os.environ['CAIRIS_SRC'] + '/test/Exploit_vsftpd_backdoor_graphviz.dot')
-    xmlBuf = dotToObstacleModel(dotInstance[0],'Complete','Anon')
-    importAttackTreeString(xmlBuf)
+    def testxImportSpreadsheet(self):
+        dotInstance = pydot.graph_from_dot_file(
+            os.environ["CAIRIS_SRC"] + "/test/Exploit_vsftpd_backdoor_graphviz.dot"
+        )
+        xmlBuf = dotToObstacleModel(dotInstance[0], "Complete", "Anon")
+        importAttackTreeString(xmlBuf)

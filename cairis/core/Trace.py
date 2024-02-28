@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 #  Licensed to the Apache Software Foundation (ASF) under one
 #  or more contributor license agreements.  See the NOTICE file
 #  distributed with this work for additional information
@@ -15,19 +16,31 @@
 #  specific language governing permissions and limitations
 #  under the License.
 
-__author__ = 'Shamal Faily'
+__author__ = "Shamal Faily"
+
 
 class Trace:
-  def __init__(self,fObjt,fName,tObjt,tName,lbl = 'supports'):
-    self.theFromObject = fObjt
-    self.theFromName = fName
-    self.theToObject = tObjt
-    self.theToName = tName
-    self.theLabel = lbl
+    def __init__(self, fObjt, fName, tObjt, tName, lbl="supports"):
+        self.theFromObject = fObjt
+        self.theFromName = fName
+        self.theToObject = tObjt
+        self.theToName = tName
+        self.theLabel = lbl
 
-  def fromObject(self): return self.theFromObject
-  def fromName(self): return self.theFromName
-  def toObject(self): return self.theToObject
-  def toName(self): return self.theToName
-  def label(self): return self.theLabel
-  def name(self): return self.theFromName + ' / ' + self.theToName
+    def fromObject(self):
+        return self.theFromObject
+
+    def fromName(self):
+        return self.theFromName
+
+    def toObject(self):
+        return self.theToObject
+
+    def toName(self):
+        return self.theToName
+
+    def label(self):
+        return self.theLabel
+
+    def name(self):
+        return self.theFromName + " / " + self.theToName

@@ -57,9 +57,9 @@
       ]
     }
   ],
-  "tasks" : [ 
+  "tasks" : [
      {"theName" : "Upload data",
-      "theShortCode" : "UD", 
+      "theShortCode" : "UD",
       "theObjective" : "Upload data",
       "theAuthor" : "Shamal Faily",
       "isAssumption" : "0",

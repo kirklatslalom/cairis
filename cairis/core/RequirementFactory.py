@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 #  Licensed to the Apache Software Foundation (ASF) under one
 #  or more contributor license agreements.  See the NOTICE file
 #  distributed with this work for additional information
@@ -18,8 +19,34 @@
 
 from .Requirement import Requirement
 
-__author__ = 'Shamal Faily'
+__author__ = "Shamal Faily"
 
-def build(id,label,name,description,priority,rationale,fitCriterion,originator,type,asset,dType,version=-1):
-  return Requirement(id,label,name,description,priority,rationale,fitCriterion,originator,type,asset,dType,version)
 
+def build(
+    id,
+    label,
+    name,
+    description,
+    priority,
+    rationale,
+    fitCriterion,
+    originator,
+    type,
+    asset,
+    dType,
+    version=-1,
+):
+    return Requirement(
+        id,
+        label,
+        name,
+        description,
+        priority,
+        rationale,
+        fitCriterion,
+        originator,
+        type,
+        asset,
+        dType,
+        version,
+    )

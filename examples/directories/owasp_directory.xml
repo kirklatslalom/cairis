@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <!DOCTYPE directory PUBLIC "-//CAIRIS/DTD DIRECTORY 1.0//EN" "https://cairis.org/dtd/directory.dtd">
 
-<!-- 
+<!--
   Licensed to the Apache Software Foundation (ASF) under one
   or more contributor license agreements.  See the NOTICE file
   distributed with this work for additional information
@@ -135,7 +135,7 @@ To successfully carry out such an attack, an attacker:
     * Finds the vulnerable service code, which allows them to fill the HTTP header field with many headers.
     * Forces the cache server to flush its actual cache content, which we want to be cached by the servers.
     * Sends a specially crafted request, which will be stored in cache.
-    * Sends the next request. The previously injected content stored in cache will be the response to this request. 
+    * Sends the next request. The previously injected content stored in cache will be the response to this request.
 
 This attack is rather difficult to carry out in a real environment. The list of conditions is long and hard to accomplish by the attacker. However it is easier to use this technique than Cross-User Defacement.
 
@@ -178,13 +178,13 @@ The following conditions must be met to conduct successful attack:
     * The application uses environment variables.
     * The environment variable exposed to the user is vulnerable to a buffer overflow.
     * The vulnerable environment variable uses untrusted data.
-    * Tainted data used in the environment variables is not properly validated. For instance boundary checking is not done before copying 
+    * Tainted data used in the environment variables is not properly validated. For instance boundary checking is not done before copying
 
 the input data to a buffer.
 
 The attacker performs the following steps:
 
-    * The attacker tries to find an environment variable which can be overwritten, by gathering information about the target 
+    * The attacker tries to find an environment variable which can be overwritten, by gathering information about the target
 
 host (error pages, software version number, hostname, etc.).
 
@@ -255,7 +255,7 @@ More information may be found in the article dedicated to XPATH Injection. Using
     * class of allowed characters (standard regular expressions classes or custom)
     * data format
     * amount of expected data
-    * for numerical input, its values 
+    * for numerical input, its values
 
 Code Injection and Command Injection are measures used to achive simmilar goals. The concept of Code Injection is to add malicious code into an application, which then will be executed. Added code is a part of the application itself. It is not external code which is executed, like it would be in Command Injection.</description>
 </threat>
@@ -355,7 +355,7 @@ Because there is no level access control it is possible to get the entire docume
     * Total Break - Finding the secret key.
     * Gobal Deduction - Finding a functionally equivalent algorithm for encryption and decryption that does not require knowledge of the secret key.
     * Information Deduction - Gaining some information about plaintexts or ciphertexts that was not previously known.
-    * Distinguishing Algorithm - The attacker has the ability to distinguish the output of the encryption (ciphertext) from a random permutation of bits. 
+    * Distinguishing Algorithm - The attacker has the ability to distinguish the output of the encryption (ciphertext) from a random permutation of bits.
 
 The goal of the attacker performing cryptanalysis will depend on the specific needs of the attacker in a given attack context. In most cases, if cryptanalysis is successful at all, an attacker will not be able to go past being able to deduce some information about the plaintext (goal 3). However, that may be sufficient for an attacker, depending on the context.</description>
 </threat>
@@ -377,7 +377,7 @@ Basically the attack consists of submitting an HTTP request that encapsulates a 
   <description>HTTP response splitting occurs when:
 
     * Data enters a web application through an untrusted source, most frequently an HTTP request.
-    * The data is included in an HTTP response header sent to a web user without being validated for malicious characters. 
+    * The data is included in an HTTP response header sent to a web user without being validated for malicious characters.
 
 HTTP response splitting is a means to an end, not an end in itself. At its root, the attack is straightforward: an attacker passes malicious data to a vulnerable application, and the application includes the data in an HTTP response header.
 
@@ -409,9 +409,9 @@ There are some common characters sets that are used in Web applications attacks.
 
 For example, “..\/” (dot-dot-slash) characters represent %2E%2E%2f in hexadecimal representation. When the % symbol is encoded again, its representation in hexadecimal code is %25. The result from the double encoding process ”..\/”(dot-dot-slash) would be %252E%252E%252F:
 
-    * The hexadecimal encoding of “..\/” represents "%2E%2E%2f" 
+    * The hexadecimal encoding of “..\/” represents "%2E%2E%2f"
 
-    * Then encoding the “%” represents "%25" 
+    * Then encoding the “%” represents "%25"
 
     * Double encoding of “..\/” represents "%252E%252E%252F"</description>
 </threat>
@@ -468,14 +468,14 @@ In this case, to make a network sniff it is necessary that the evil system becom
 Network Eavesdropping is a passive attack which is very difficult to discover. It could be identified by the effect of the preliminary condition or, in some cases, by inducing the evil system to respond a fake request directed to the evil system IP but with the MAC address of a different system.</description>
 </threat>
 <threat label="MITM" name="Man-in-the-middle attack" type="Spoofing" reference="OWASP">
-  <description>The man-in-the middle attack intercepts a communication between two systems. For example, in an http transaction the target is the TCP connection between client and server. Using different techniques, the attacker splits the original TCP connection into 2 new connections, one between the client and the attacker and the other between the attacker and the server. Once the TCP connection is intercepted, the attacker acts as a proxy, being able to read, insert and modify the data in the intercepted communication. 
+  <description>The man-in-the middle attack intercepts a communication between two systems. For example, in an http transaction the target is the TCP connection between client and server. Using different techniques, the attacker splits the original TCP connection into 2 new connections, one between the client and the attacker and the other between the attacker and the server. Once the TCP connection is intercepted, the attacker acts as a proxy, being able to read, insert and modify the data in the intercepted communication.
 
 The MITM attack is very effective because of the nature of the http protocol and data transfer which are all ASCII based. In this way, it’s possible to view and interview within the http protocol and also in the data transferred. So, for example, it’s possible to capture a session cookie reading the http header, but it’s also possible to change an amount of money transaction inside the application context.
 
 The MITM attack could also be done over an https connection by using the same technique; the only difference consists in the establishment of two independent SSL sessions, one over each TCP connection. The browser sets a SSL connection with the attacker, and the attacker establishes another SSL connection with the web server. In general the browser warns the user that the digital certificate used is not valid, but the user may ignore the warning because he doesn’t understand the threat. In some specific contexts it’s possible that the warning doesn’t appear, as for example, when the Server certificate is compromised by the attacker or when the attacker certificate is signed by a trusted CA and the CN is the same of the original web site.
 
 MITM is not only an attack technique, but is also usually used during the development step of a web application or is still used for Web Vulnerability assessments.</description>
-</threat> 
+</threat>
 <threat label="XSS" name="Cross-Site Scripting (XSS)" type="Injection" reference="OWASP">
   <description>Cross-Site Scripting attacks are a type of injection problem, in which malicious scripts are injected into the otherwise benign and trusted web sites. Cross-site scripting (XSS) attacks occur when an attacker uses a web application to send malicious code, generally in the form of a browser side script, to a different end user. Flaws that allow these attacks to succeed are quite widespread and occur anywhere a web application uses input from a user in the output it generates without validating or encoding it.
 An attacker can use XSS to send a malicious script to an unsuspecting user. The end user’s browser has no way to know that the script should not be trusted, and will execute the script. Because it thinks the script came from a trusted source, the malicious script can access any cookies, session tokens, or other sensitive information retained by your browser and used with that site. These scripts can even rewrite the content of the HTML page.</description>

@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 #  Licensed to the Apache Software Foundation (ASF) under one
 #  or more contributor license agreements.  See the NOTICE file
 #  distributed with this work for additional information
@@ -15,21 +16,33 @@
 #  specific language governing permissions and limitations
 #  under the License.
 
-__author__ = 'Shamal Faily'
+__author__ = "Shamal Faily"
 
 from .EnvironmentProperties import EnvironmentProperties
 
-class ThreatEnvironmentProperties(EnvironmentProperties):
-  def __init__(self,environmentName,lhood,assets,attackers,syProperties,pRationale):
-    EnvironmentProperties.__init__(self,environmentName)
-    self.theLikelihood = lhood
-    self.theAssets = assets
-    self.theAttackers = attackers
-    self.theProperties = syProperties
-    self.theRationale = pRationale
 
-  def likelihood(self): return self.theLikelihood
-  def assets(self): return self.theAssets
-  def attackers(self): return self.theAttackers
-  def properties(self): return self.theProperties
-  def rationale(self): return self.theRationale
+class ThreatEnvironmentProperties(EnvironmentProperties):
+    def __init__(
+        self, environmentName, lhood, assets, attackers, syProperties, pRationale
+    ):
+        EnvironmentProperties.__init__(self, environmentName)
+        self.theLikelihood = lhood
+        self.theAssets = assets
+        self.theAttackers = attackers
+        self.theProperties = syProperties
+        self.theRationale = pRationale
+
+    def likelihood(self):
+        return self.theLikelihood
+
+    def assets(self):
+        return self.theAssets
+
+    def attackers(self):
+        return self.theAttackers
+
+    def properties(self):
+        return self.theProperties
+
+    def rationale(self):
+        return self.theRationale

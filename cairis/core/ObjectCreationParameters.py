@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 #  Licensed to the Apache Software Foundation (ASF) under one
 #  or more contributor license agreements.  See the NOTICE file
 #  distributed with this work for additional information
@@ -16,16 +17,18 @@
 #  under the License.
 
 from . import ObjectValidator
-__author__ = 'Shamal Faily'
+
+__author__ = "Shamal Faily"
+
 
 class ObjectCreationParameters(ObjectValidator.ObjectValidator):
-  def __init__(self):
-    ObjectValidator.ObjectValidator.__init__(self)
-    self.theId = -1
-    pass
+    def __init__(self):
+        ObjectValidator.ObjectValidator.__init__(self)
+        self.theId = -1
+        pass
 
-  def setId(self,anId):
-    self.theId = anId
+    def setId(self, anId):
+        self.theId = anId
 
-  def id(self):
-    return self.theId
+    def id(self):
+        return self.theId

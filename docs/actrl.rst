@@ -27,7 +27,7 @@ Indicating the need *subjects* have for accessing *resources* is captured in ass
 
 Asset models visually model desired access between subjects and resources, and the ends of asset associations can capture access control information.
 
-Possible adornments for access needs are one or more of read (r), write (w), and interact (x).  The choice of *x* is inspired by the execute permission used in unix, but the use of the term *interact* allows for a wider range of interaction affordances than execution.  Where r, w, or x adornment are not shown on the end of an association, it is assumed no access needs to take place.  
+Possible adornments for access needs are one or more of read (r), write (w), and interact (x).  The choice of *x* is inspired by the execute permission used in unix, but the use of the term *interact* allows for a wider range of interaction affordances than execution.  Where r, w, or x adornment are not shown on the end of an association, it is assumed no access needs to take place.
 
 .. figure:: adornEg.jpg
    :alt: Access control adornment example
@@ -40,8 +40,8 @@ Modelling access control policies with policy statements
 --------------------------------------------------------
 
 An access control policy captures the set of authorised and unauthorised interactions between assets.  These interactions are captured using *policy statements*, where  statement is defined as *Subject* X *Access* X *Resource* X *Permission*, where *Access* = {*read, write, interact*} and *Permission* = {*allow,deny*}.
-	
-A single KAOS goal is associated with a single policy statement.  The goal needs to specify concern links to both the subject and resource assets.  The goal should be precise enough to specify the conditions or capabilities the system needs to satisfy for the policy statement to hold.  Where this is not possible, the goal needs to be refined.  Consequently, a complete access control policy should correspond with a complete specification describing the intent the system needs to satisfy for compliance with the policy.  
+
+A single KAOS goal is associated with a single policy statement.  The goal needs to specify concern links to both the subject and resource assets.  The goal should be precise enough to specify the conditions or capabilities the system needs to satisfy for the policy statement to hold.  Where this is not possible, the goal needs to be refined.  Consequently, a complete access control policy should correspond with a complete specification describing the intent the system needs to satisfy for compliance with the policy.
 
 Access needs should correspond with goals and policy statements, but the absence of needs do not, i.e. adding deny policy statements.  There are other means for capturing the rationale for non-inclusion, and goals may not be within the scope of analysis.  This approach does not preclude the addition of goals and policy statements if they are.
 

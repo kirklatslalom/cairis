@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 #  Licensed to the Apache Software Foundation (ASF) under one
 #  or more contributor license agreements.  See the NOTICE file
 #  distributed with this work for additional information
@@ -15,7 +16,7 @@
 #  specific language governing permissions and limitations
 #  under the License.
 
-__author__ = 'Shamal Faily'
+__author__ = "Shamal Faily"
 
 import os
 from flask import Blueprint
@@ -23,9 +24,13 @@ from flask_restful import Api
 from cairis.core.Borg import Borg
 
 b = Borg()
-main = Blueprint('main',__name__,template_folder=os.path.join(b.cairisRoot, 'templates'),static_folder=b.staticDir,static_url_path='')
+main = Blueprint(
+    "main",
+    __name__,
+    template_folder=os.path.join(b.cairisRoot, "templates"),
+    static_folder=b.staticDir,
+    static_url_path="",
+)
 api = Api(main)
 
 from cairis.daemon.main import views, errors
-
-

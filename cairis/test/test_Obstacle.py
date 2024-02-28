@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 #  Licensed to the Apache Software Foundation (ASF) under one
 #  or more contributor license agreements.  See the NOTICE file
 #  distributed with this work for additional information
@@ -26,48 +27,59 @@ from cairis.core.ObstacleParameters import ObstacleParameters
 from cairis.core.ObstacleEnvironmentProperties import ObstacleEnvironmentProperties
 from cairis.core.ARM import DatabaseProxyException
 
-__author__ = 'Rachel Larcombe, Shamal Faily'
+__author__ = "Rachel Larcombe, Shamal Faily"
+
 
 class ObstacleTest(unittest.TestCase):
+    def setUp(self):
+        call([os.environ["CAIRIS_CFG_DIR"] + "/initdb.sh"])
+        cairis.core.BorgFactory.initialise()
+        f = open(os.environ["CAIRIS_SRC"] + "/test/obstacles.json")
+        d = json.load(f)
+        f.close()
+        ienvs = d["environments"]
+        iep1 = EnvironmentParameters(
+            ienvs[0]["theName"], ienvs[0]["theShortCode"], ienvs[0]["theDescription"]
+        )
+        b = Borg()
+        b.dbProxy.addEnvironment(iep1)
+        self.iObstacle = d["obstacles"]
 
-  def setUp(self):
-    call([os.environ['CAIRIS_CFG_DIR'] + "/initdb.sh"])
-    cairis.core.BorgFactory.initialise()
-    f = open(os.environ['CAIRIS_SRC'] + '/test/obstacles.json')
-    d = json.load(f)
-    f.close()
-    ienvs = d['environments']
-    iep1 = EnvironmentParameters(ienvs[0]["theName"],ienvs[0]["theShortCode"],ienvs[0]["theDescription"])
-    b = Borg()
-    b.dbProxy.addEnvironment(iep1)
-    self.iObstacle = d['obstacles']
+    def testObstacle(self):
+        b = Borg()
+        igep1 = ObstacleEnvironmentProperties(
+            self.iObstacle[0]["theEnvironmentProperties"][0],
+            self.iObstacle[0]["theEnvironmentProperties"][1],
+            self.iObstacle[0]["theEnvironmentProperties"][2],
+            self.iObstacle[0]["theEnvironmentProperties"][3],
+        )
 
-  def testObstacle(self):
-    b = Borg()
-    igep1 = ObstacleEnvironmentProperties(self.iObstacle[0]["theEnvironmentProperties"][0],self.iObstacle[0]["theEnvironmentProperties"][1],self.iObstacle[0]["theEnvironmentProperties"][2],self.iObstacle[0]["theEnvironmentProperties"][3])
-   
+        igp1 = ObstacleParameters(
+            self.iObstacle[0]["theName"],
+            self.iObstacle[0]["theOriginator"],
+            [],
+            [igep1],
+        )
 
-    igp1 = ObstacleParameters(self.iObstacle[0]["theName"],self.iObstacle[0]["theOriginator"],[],[igep1])
-   
-    b.dbProxy.addObstacle(igp1)
-  
-    b.dbProxy.relabelObstacles(igep1.name())
-    oObstacle = b.dbProxy.getObstacles()
-    og1 = oObstacle[self.iObstacle[0]["theName"]]
-    self.assertEqual(igp1.name(), og1.name())
-    self.assertEqual(igp1.originator(), og1.originator())
-    ogep1 = og1.environmentProperty(igep1.name())
-    self.assertEqual(igep1.definition(), ogep1.definition())
-    self.assertEqual(igep1.category(), ogep1.category())
+        b.dbProxy.addObstacle(igp1)
 
-    igp1.setId(og1.id())
-    b.dbProxy.updateObstacle(igp1)
+        b.dbProxy.relabelObstacles(igep1.name())
+        oObstacle = b.dbProxy.getObstacles()
+        og1 = oObstacle[self.iObstacle[0]["theName"]]
+        self.assertEqual(igp1.name(), og1.name())
+        self.assertEqual(igp1.originator(), og1.originator())
+        ogep1 = og1.environmentProperty(igep1.name())
+        self.assertEqual(igep1.definition(), ogep1.definition())
+        self.assertEqual(igep1.category(), ogep1.category())
+
+        igp1.setId(og1.id())
+        b.dbProxy.updateObstacle(igp1)
+
+        b.dbProxy.deleteObstacle(og1.id())
+
+    def tearDown(self):
+        pass
 
 
-    b.dbProxy.deleteObstacle(og1.id())
- 
-  def tearDown(self):
-    pass
-
-if __name__ == '__main__':
-  unittest.main()
+if __name__ == "__main__":
+    unittest.main()

@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 #  Licensed to the Apache Software Foundation (ASF) under one
 #  or more contributor license agreements.  See the NOTICE file
 #  distributed with this work for additional information
@@ -15,20 +16,32 @@
 #  specific language governing permissions and limitations
 #  under the License.
 
-__author__ = 'Shamal Faily'
+__author__ = "Shamal Faily"
+
 
 class ExternalDocument:
-  def __init__(self,edId,edName,edVersion,edDate,edAuths,edDesc):
-    self.theId = edId
-    self.theName = edName
-    self.theVersion = edVersion
-    self.thePublicationDate = edDate
-    self.theAuthors = edAuths
-    self.theDescription = edDesc
+    def __init__(self, edId, edName, edVersion, edDate, edAuths, edDesc):
+        self.theId = edId
+        self.theName = edName
+        self.theVersion = edVersion
+        self.thePublicationDate = edDate
+        self.theAuthors = edAuths
+        self.theDescription = edDesc
 
-  def id(self): return self.theId
-  def name(self): return self.theName
-  def version(self): return self.theVersion
-  def date(self): return self.thePublicationDate
-  def authors(self): return self.theAuthors
-  def description(self): return self.theDescription
+    def id(self):
+        return self.theId
+
+    def name(self):
+        return self.theName
+
+    def version(self):
+        return self.theVersion
+
+    def date(self):
+        return self.thePublicationDate
+
+    def authors(self):
+        return self.theAuthors
+
+    def description(self):
+        return self.theDescription

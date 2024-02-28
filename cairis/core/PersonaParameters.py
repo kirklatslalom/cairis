@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 #  Licensed to the Apache Software Foundation (ASF) under one
 #  or more contributor license agreements.  See the NOTICE file
 #  distributed with this work for additional information
@@ -18,37 +19,81 @@
 
 from . import ObjectCreationParameters
 
-__author__ = 'Shamal Faily'
+__author__ = "Shamal Faily"
+
 
 class PersonaParameters(ObjectCreationParameters.ObjectCreationParameters):
-  def __init__(self,name,activities,attitudes,aptitudes,motivations,skills,intrinsic,contextual,image,isAssumption,pType,tags,properties,pCodes):
-    ObjectCreationParameters.ObjectCreationParameters.__init__(self)
-    self.theName = name
-    self.theTags = tags
-    self.theActivities = activities
-    self.theAttitudes = attitudes
-    self.theAptitudes = aptitudes
-    self.theMotivations = motivations
-    self.theSkills = skills
-    self.theIntrinsic = intrinsic
-    self.theContextual = contextual
-    self.theImage = image
-    self.isAssumption = isAssumption
-    self.thePersonaType = pType
-    self.theEnvironmentProperties = properties
-    self.theCodes = pCodes
+    def __init__(
+        self,
+        name,
+        activities,
+        attitudes,
+        aptitudes,
+        motivations,
+        skills,
+        intrinsic,
+        contextual,
+        image,
+        isAssumption,
+        pType,
+        tags,
+        properties,
+        pCodes,
+    ):
+        ObjectCreationParameters.ObjectCreationParameters.__init__(self)
+        self.theName = name
+        self.theTags = tags
+        self.theActivities = activities
+        self.theAttitudes = attitudes
+        self.theAptitudes = aptitudes
+        self.theMotivations = motivations
+        self.theSkills = skills
+        self.theIntrinsic = intrinsic
+        self.theContextual = contextual
+        self.theImage = image
+        self.isAssumption = isAssumption
+        self.thePersonaType = pType
+        self.theEnvironmentProperties = properties
+        self.theCodes = pCodes
 
-  def name(self): return self.theName
-  def tags(self): return self.theTags
-  def attitudes(self): return self.theAttitudes
-  def activities(self): return self.theActivities
-  def aptitudes(self): return self.theAptitudes
-  def motivations(self): return self.theMotivations
-  def skills(self): return self.theSkills
-  def intrinsic(self): return self.theIntrinsic
-  def contextual(self): return self.theContextual
-  def image(self): return self.theImage
-  def assumption(self): return self.isAssumption
-  def type(self): return self.thePersonaType
-  def environmentProperties(self): return self.theEnvironmentProperties
-  def codes(self): return self.theCodes
+    def name(self):
+        return self.theName
+
+    def tags(self):
+        return self.theTags
+
+    def attitudes(self):
+        return self.theAttitudes
+
+    def activities(self):
+        return self.theActivities
+
+    def aptitudes(self):
+        return self.theAptitudes
+
+    def motivations(self):
+        return self.theMotivations
+
+    def skills(self):
+        return self.theSkills
+
+    def intrinsic(self):
+        return self.theIntrinsic
+
+    def contextual(self):
+        return self.theContextual
+
+    def image(self):
+        return self.theImage
+
+    def assumption(self):
+        return self.isAssumption
+
+    def type(self):
+        return self.thePersonaType
+
+    def environmentProperties(self):
+        return self.theEnvironmentProperties
+
+    def codes(self):
+        return self.theCodes

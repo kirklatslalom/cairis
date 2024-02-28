@@ -1,4 +1,5 @@
 #!/usr/bin/python3
+# -*- coding: utf-8 -*-
 #  Licensed to the Apache Software Foundation (ASF) under one
 #  or more contributor license agreements.  See the NOTICE file
 #  distributed with this work for additional information
@@ -22,38 +23,44 @@ from cairis.core.Borg import Borg
 import cairis.core.BorgFactory
 from cairis.core.dba import grantDatabaseAccess, revokeDatabaseAccess
 
-__author__ = 'Shamal Faily'
+__author__ = "Shamal Faily"
+
 
 def main(args=None):
-  parser = argparse.ArgumentParser(description='Computer Aided Integration of Requirements and Information Security - Update database privileges')
-  parser.add_argument('--database',dest='db',default='', help='Database name')
-  parser.add_argument('--user',dest='userName',default='',help='CAIRIS user id')
-  parser.add_argument('--privilege',dest='permission',default='',help='grant or revoke')
-  args = parser.parse_args() 
+    parser = argparse.ArgumentParser(
+        description="Computer Aided Integration of Requirements and Information Security - Update database privileges"
+    )
+    parser.add_argument("--database", dest="db", default="", help="Database name")
+    parser.add_argument("--user", dest="userName", default="", help="CAIRIS user id")
+    parser.add_argument(
+        "--privilege", dest="permission", default="", help="grant or revoke"
+    )
+    args = parser.parse_args()
 
-  if (args.db == ''):
-    raise Exception('Database name not set')
+    if args.db == "":
+        raise Exception("Database name not set")
 
-  if (args.userName == ''):
-    raise Exception('User id not set')
+    if args.userName == "":
+        raise Exception("User id not set")
 
-  if (args.permission == ''):
-    raise Exception('Privilege not set')
+    if args.permission == "":
+        raise Exception("Privilege not set")
 
-  if (args.permission != 'grant' and args.permission != 'revoke'):
-    raise Exception('Invalid privilege')
+    if args.permission != "grant" and args.permission != "revoke":
+        raise Exception("Invalid privilege")
 
-  cairis.core.BorgFactory.dInitialise()
-  b = Borg()
-  
-  if (args.permission == 'grant'):
-    grantDatabaseAccess(b.rPasswd, b.dbHost, b.dbPort, args.db, args.userName) 
-  else:
-    revokeDatabaseAccess(b.rPasswd, b.dbHost, b.dbPort, args.db, args.userName) 
+    cairis.core.BorgFactory.dInitialise()
+    b = Borg()
 
-if __name__ == '__main__':
-  try:
-    main()
-  except Exception as e:
-    print('Fatal dbctl error: ' + str(e))
-    sys.exit(-1)
+    if args.permission == "grant":
+        grantDatabaseAccess(b.rPasswd, b.dbHost, b.dbPort, args.db, args.userName)
+    else:
+        revokeDatabaseAccess(b.rPasswd, b.dbHost, b.dbPort, args.db, args.userName)
+
+
+if __name__ == "__main__":
+    try:
+        main()
+    except Exception as e:
+        print("Fatal dbctl error: " + str(e))
+        sys.exit(-1)

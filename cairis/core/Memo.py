@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 #  Licensed to the Apache Software Foundation (ASF) under one
 #  or more contributor license agreements.  See the NOTICE file
 #  distributed with this work for additional information
@@ -15,14 +16,20 @@
 #  specific language governing permissions and limitations
 #  under the License.
 
-__author__ = 'Shamal Faily'
+__author__ = "Shamal Faily"
+
 
 class Memo:
-  def __init__(self,memoId,memoName,memoDesc):
-    self.theId = memoId
-    self.theName = memoName
-    self.theDescription = memoDesc
+    def __init__(self, memoId, memoName, memoDesc):
+        self.theId = memoId
+        self.theName = memoName
+        self.theDescription = memoDesc
 
-  def id(self): return self.theId
-  def name(self): return self.theName
-  def description(self): return self.theDescription
+    def id(self):
+        return self.theId
+
+    def name(self):
+        return self.theName
+
+    def description(self):
+        return self.theDescription

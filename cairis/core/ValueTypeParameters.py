@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 #  Licensed to the Apache Software Foundation (ASF) under one
 #  or more contributor license agreements.  See the NOTICE file
 #  distributed with this work for additional information
@@ -18,21 +19,33 @@
 
 from . import ObjectCreationParameters
 
-__author__ = 'Shamal Faily'
+__author__ = "Shamal Faily"
+
 
 class ValueTypeParameters(ObjectCreationParameters.ObjectCreationParameters):
-  def __init__(self,vtName,vtDesc,vType,envName = '',vtScore = -1,vtRat = ''):
-    ObjectCreationParameters.ObjectCreationParameters.__init__(self)
-    self.theName = vtName
-    self.theDescription = vtDesc
-    self.theType = vType
-    self.theEnvironmentName = envName
-    self.theScore = vtScore
-    self.theRationale = vtRat
+    def __init__(self, vtName, vtDesc, vType, envName="", vtScore=-1, vtRat=""):
+        ObjectCreationParameters.ObjectCreationParameters.__init__(self)
+        self.theName = vtName
+        self.theDescription = vtDesc
+        self.theType = vType
+        self.theEnvironmentName = envName
+        self.theScore = vtScore
+        self.theRationale = vtRat
 
-  def name(self): return self.theName
-  def description(self): return self.theDescription
-  def type(self): return self.theType
-  def environment(self): return self.theEnvironmentName
-  def score(self): return self.theScore
-  def rationale(self): return self.theRationale
+    def name(self):
+        return self.theName
+
+    def description(self):
+        return self.theDescription
+
+    def type(self):
+        return self.theType
+
+    def environment(self):
+        return self.theEnvironmentName
+
+    def score(self):
+        return self.theScore
+
+    def rationale(self):
+        return self.theRationale

@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 #  Licensed to the Apache Software Foundation (ASF) under one
 #  or more contributor license agreements.  See the NOTICE file
 #  distributed with this work for additional information
@@ -15,16 +16,28 @@
 #  specific language governing permissions and limitations
 #  under the License.
 
-__author__ = 'Shamal Faily'
+__author__ = "Shamal Faily"
+
 
 class ObjectSummary:
-  def __init__(self,name, type='N/A', description='N/A', originator='N/A', status='N/A',vulnerability='N/A',threat='N/A',variable='N/A',characteristic='N/A'):
-    self.theName = name
-    self.theType = type
-    self.theDescription = description
-    self.theOriginator = originator
-    self.theStatus = status
-    self.theVulnerability = vulnerability
-    self.theThreat = threat
-    self.theVariable = variable
-    self.theCharacteristic = characteristic
+    def __init__(
+        self,
+        name,
+        type="N/A",
+        description="N/A",
+        originator="N/A",
+        status="N/A",
+        vulnerability="N/A",
+        threat="N/A",
+        variable="N/A",
+        characteristic="N/A",
+    ):
+        self.theName = name
+        self.theType = type
+        self.theDescription = description
+        self.theOriginator = originator
+        self.theStatus = status
+        self.theVulnerability = vulnerability
+        self.theThreat = threat
+        self.theVariable = variable
+        self.theCharacteristic = characteristic

@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 #  Licensed to the Apache Software Foundation (ASF) under one
 #  or more contributor license agreements.  See the NOTICE file
 #  distributed with this work for additional information
@@ -18,15 +19,21 @@
 
 from . import ObjectCreationParameters
 
-__author__ = 'Shamal Faily'
+__author__ = "Shamal Faily"
+
 
 class MisuseCaseParameters(ObjectCreationParameters.ObjectCreationParameters):
-  def __init__(self,scName,cProps,risk):
-    ObjectCreationParameters.ObjectCreationParameters.__init__(self)
-    self.theName = scName
-    self.theRiskName = risk
-    self.theEnvironmentProperties = cProps
+    def __init__(self, scName, cProps, risk):
+        ObjectCreationParameters.ObjectCreationParameters.__init__(self)
+        self.theName = scName
+        self.theRiskName = risk
+        self.theEnvironmentProperties = cProps
 
-  def name(self): return self.theName
-  def risk(self): return self.theRiskName
-  def environmentProperties(self): return self.theEnvironmentProperties
+    def name(self):
+        return self.theName
+
+    def risk(self):
+        return self.theRiskName
+
+    def environmentProperties(self):
+        return self.theEnvironmentProperties

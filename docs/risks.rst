@@ -28,7 +28,7 @@ Adding, updating, and deleting a risk
 
 -  Clicking on the environment name in the environment card populates the risk details card.
    The impact folder shows qualitative risk rating, and the mitigated and un-mitigated risk
-   score associated with each risk response. 
+   score associated with each risk response.
 
 -  Before a risk can be created, an associated Misuse Case needs to be
    defined. To do this, click on the Misuse Case folder.

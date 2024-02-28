@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 #  Licensed to the Apache Software Foundation (ASF) under one
 #  or more contributor license agreements.  See the NOTICE file
 #  distributed with this work for additional information
@@ -19,73 +20,88 @@
 from .ObstacleEnvironmentProperties import ObstacleEnvironmentProperties
 from . import ObjectValidator
 
-__author__ = 'Shamal Faily'
+__author__ = "Shamal Faily"
+
 
 class Obstacle(ObjectValidator.ObjectValidator):
-  def __init__(self,obsId,obsName,obsOrig,tags,environmentProperties):
-    ObjectValidator.ObjectValidator.__init__(self)
-    self.theId = obsId
-    self.theName = obsName
-    self.theTags = tags
-    self.theOriginator = obsOrig
-    self.theEnvironmentProperties = environmentProperties
-    self.theEnvironmentDictionary = {}
-    for p in environmentProperties:
-      environmentName = p.name()
-      self.theEnvironmentDictionary[environmentName] = p
+    def __init__(self, obsId, obsName, obsOrig, tags, environmentProperties):
+        ObjectValidator.ObjectValidator.__init__(self)
+        self.theId = obsId
+        self.theName = obsName
+        self.theTags = tags
+        self.theOriginator = obsOrig
+        self.theEnvironmentProperties = environmentProperties
+        self.theEnvironmentDictionary = {}
+        for p in environmentProperties:
+            environmentName = p.name()
+            self.theEnvironmentDictionary[environmentName] = p
 
-  def id(self): return self.theId
-  def setId(self,v): self.theId = v
-  def name(self): return self.theName
-  def tags(self): return self.theTags
-  def originator(self): return self.theOriginator
-  def environmentProperties(self): return self.theEnvironmentProperties
-  def environmentProperty(self,envName): return self.theEnvironmentDictionary[envName]
+    def id(self):
+        return self.theId
 
-  def label(self,environmentName):
-    return (self.theEnvironmentDictionary[environmentName]).label()
+    def setId(self, v):
+        self.theId = v
 
-  def definition(self,environmentName,dupProperty=''):
-    if (dupProperty == ''):
-      return (self.theEnvironmentDictionary[environmentName]).definition()
-    else:
-      workingAttr = ''
-      noOfEnvironments = len(self.theEnvironmentProperties)
-      for p in self.theEnvironmentProperties:
-        environmentName = p.name()
-        workingAttr += p.definition()
-        if (noOfEnvironments > 1):
-          workingAttr += ' [' + environmentName + '].  '
-      return workingAttr
+    def name(self):
+        return self.theName
 
-  def category(self,environmentName,dupProperty=''):
-    if (dupProperty == ''):
-      return (self.theEnvironmentDictionary[environmentName]).category()
-    else:
-      workingAttr = ''
-      noOfEnvironments = len(self.theEnvironmentProperties)
-      for p in self.theEnvironmentProperties:
-        environmentName = p.name()
-        workingAttr += p.category()
-        if (noOfEnvironments > 1):
-          workingAttr += ' [' + environmentName + '].  '
-      return workingAttr
+    def tags(self):
+        return self.theTags
 
-  def setName(self, v):
-    self.theName = v
+    def originator(self):
+        return self.theOriginator
 
-  def setOriginator(self, v):
-    self.theOriginator = v
+    def environmentProperties(self):
+        return self.theEnvironmentProperties
 
-  def setDefinition(self,environmentName,v):
-    (self.theEnvironmentDictionary[environmentName]).setDefinition(v)
+    def environmentProperty(self, envName):
+        return self.theEnvironmentDictionary[envName]
 
-  def setCategory(self,environmentName,v):
-    (self.theEnvironmentDictionary[environmentName]).setCategory(v)
+    def label(self, environmentName):
+        return (self.theEnvironmentDictionary[environmentName]).label()
 
-  def refinements(self,environmentName):
-    for assoc in ((self.theEnvironmentDictionary[environmentName]).subGoalRefinements()):
-      if assoc[1] == 'obstacle':
-        return True
-    return False
+    def definition(self, environmentName, dupProperty=""):
+        if dupProperty == "":
+            return (self.theEnvironmentDictionary[environmentName]).definition()
+        else:
+            workingAttr = ""
+            noOfEnvironments = len(self.theEnvironmentProperties)
+            for p in self.theEnvironmentProperties:
+                environmentName = p.name()
+                workingAttr += p.definition()
+                if noOfEnvironments > 1:
+                    workingAttr += " [" + environmentName + "].  "
+            return workingAttr
 
+    def category(self, environmentName, dupProperty=""):
+        if dupProperty == "":
+            return (self.theEnvironmentDictionary[environmentName]).category()
+        else:
+            workingAttr = ""
+            noOfEnvironments = len(self.theEnvironmentProperties)
+            for p in self.theEnvironmentProperties:
+                environmentName = p.name()
+                workingAttr += p.category()
+                if noOfEnvironments > 1:
+                    workingAttr += " [" + environmentName + "].  "
+            return workingAttr
+
+    def setName(self, v):
+        self.theName = v
+
+    def setOriginator(self, v):
+        self.theOriginator = v
+
+    def setDefinition(self, environmentName, v):
+        (self.theEnvironmentDictionary[environmentName]).setDefinition(v)
+
+    def setCategory(self, environmentName, v):
+        (self.theEnvironmentDictionary[environmentName]).setCategory(v)
+
+    def refinements(self, environmentName):
+        for assoc in (
+            self.theEnvironmentDictionary[environmentName]
+        ).subGoalRefinements():
+            if assoc[1] == "obstacle":
+                return True
+        return False

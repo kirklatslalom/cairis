@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 #  Licensed to the Apache Software Foundation (ASF) under one
 #  or more contributor license agreements.  See the NOTICE file
 #  distributed with this work for additional information
@@ -16,19 +17,25 @@
 #  under the License.
 
 
-__author__ = 'Shamal Faily'
+__author__ = "Shamal Faily"
 
 
 from .EnvironmentProperties import EnvironmentProperties
 from .Steps import Steps
 
-class UseCaseEnvironmentProperties(EnvironmentProperties):
-  def __init__(self,environmentName,preCond='',steps = None,postCond=''):
-    EnvironmentProperties.__init__(self,environmentName)
-    self.thePreCond = preCond
-    self.theSteps = steps
-    self.thePostCond = postCond
 
-  def preconditions(self): return self.thePreCond
-  def steps(self): return self.theSteps
-  def postconditions(self): return self.thePostCond
+class UseCaseEnvironmentProperties(EnvironmentProperties):
+    def __init__(self, environmentName, preCond="", steps=None, postCond=""):
+        EnvironmentProperties.__init__(self, environmentName)
+        self.thePreCond = preCond
+        self.theSteps = steps
+        self.thePostCond = postCond
+
+    def preconditions(self):
+        return self.thePreCond
+
+    def steps(self):
+        return self.theSteps
+
+    def postconditions(self):
+        return self.thePostCond

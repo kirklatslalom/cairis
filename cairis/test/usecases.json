@@ -16,7 +16,7 @@
      "theAuthor" : "Christian Fuhrhop",
      "theDescription" : "The system needs to be able to adapt the presentation of content to the capabilities of the system the content is presented on.  Based on D2.1 use case WOS-UC-TA6-003.",
      "theActor" : "User",
-     "theCode" : "UC-1", 
+     "theCode" : "UC-1",
      "theEnvironments" : [
        {"theName" : "Negotiation and Compatibility",
         "thePreconditions" : "An application is showing a user interface that benefits from adapting to the capabilities of the device.",

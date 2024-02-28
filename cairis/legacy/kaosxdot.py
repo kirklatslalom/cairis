@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 #  Licensed to the Apache Software Foundation (ASF) under one
 #  or more contributor license agreements.  See the NOTICE file
 #  distributed with this work for additional information
@@ -61,7 +62,7 @@ class KaosLineShape(xdot.LineShape):
         self.toDim = toDim
         self.assocType = assocType
 
-    def draw(self,cr,highlight=False,zoom_ratio=-1): 
+    def draw(self,cr,highlight=False,zoom_ratio=-1):
         if (((self.fromDim == 'comment') or (self.fromDim == 'goalconcern') or (self.fromDim == 'obstacleconcern') or (self.fromDim == 'taskconcern') ) and (zoom_ratio < MEDKAOS_ZOOM_RATIO)) :
           pass
         else:
@@ -91,7 +92,7 @@ class KaosEllipseShape(xdot.EllipseShape):
 
     def draw(self, cr, highlight=False,zoom_ratio=-1):
       xdot.EllipseShape.draw(self,cr,highlight,-1)
-    
+
 
 class AttackerShape(xdot.Shape):
     def __init__(self, pen, x0, y0, w, h, filled=False):
@@ -490,7 +491,7 @@ class KaosDotWidget(xdot.DotWidget):
     parser = KaosXDotParser(modelType,xdotcode)
     if (modelType == 'conceptmap'):
       parser.cfSet = self.cfSet
-   
+
     self.graph = parser.parse()
     self.zoom_image(self.zoom_ratio, center=True)
 
@@ -618,25 +619,25 @@ class KaosDotWindow(gtk.Window):
           cBox.pack_start(sgFrame)
           self.caseCombo = gtk.ComboBoxEntry()
           sgFrame.add(self.caseCombo)
-        
+
 
         #Allow concerns to be hidden for asset models
         if (self.theModelType == 'class'):
-          self.hideCheck = gtk.CheckButton("Hide concerns") 
+          self.hideCheck = gtk.CheckButton("Hide concerns")
           self.hideCheck.connect("toggled",self.onHideConcerns)
           cBox.pack_start(self.hideCheck)
         elif (self.theModelType == 'goal'):
-          self.hideCheck = gtk.CheckButton("Top Level Goals") 
+          self.hideCheck = gtk.CheckButton("Top Level Goals")
           self.hideCheck.connect("toggled",self.onHideConcerns)
           self.hideCheck.set_sensitive(False)
           cBox.pack_start(self.hideCheck)
         elif (self.theModelType == 'obstacle'):
-          self.hideCheck = gtk.CheckButton("Top Level Obstacles") 
+          self.hideCheck = gtk.CheckButton("Top Level Obstacles")
           self.hideCheck.connect("toggled",self.onHideConcerns)
           self.hideCheck.set_sensitive(False)
           cBox.pack_start(self.hideCheck)
         elif (self.theModelType == 'conceptmap'):
-          self.hideCheck = gtk.CheckButton("Show Chernoff Faces") 
+          self.hideCheck = gtk.CheckButton("Show Chernoff Faces")
           self.hideCheck.connect("toggled",self.onHideConcerns)
           cBox.pack_start(self.hideCheck)
 
@@ -681,7 +682,7 @@ class KaosDotWindow(gtk.Window):
     def loadFilters(self, environments,goals=[],cs=[]):
       environmentModel = gtk.ListStore(str)
       for environment in environments:
-        environmentModel.append([environment]) 
+        environmentModel.append([environment])
       self.environmentCombo.set_model(environmentModel)
       self.environmentCombo.set_text_column(0)
       self.environmentHandlerId = self.environmentCombo.connect('changed',self.onEnvironmentChange)
@@ -690,7 +691,7 @@ class KaosDotWindow(gtk.Window):
         goals = [''] + goals
         goalModel = gtk.ListStore(str)
         for goal in goals:
-          goalModel.append([goal]) 
+          goalModel.append([goal])
         self.goalCombo.set_model(goalModel)
         self.goalCombo.set_text_column(0)
         self.goalHandlerId = self.goalCombo.connect('changed',self.onGoalChange)
@@ -699,11 +700,11 @@ class KaosDotWindow(gtk.Window):
         cs = [''] + cs
         caseModel = gtk.ListStore(str)
         for case in cs:
-          caseModel.append([case]) 
+          caseModel.append([case])
         self.caseCombo.set_model(caseModel)
         self.caseCombo.set_text_column(0)
         self.caseHandlerId = self.caseCombo.connect('changed',self.onCaseChange)
- 
+
 
     def blockHandlers(self):
       self.environmentCombo.handler_block(self.environmentHandlerId)
@@ -754,7 +755,7 @@ class KaosDotWindow(gtk.Window):
       self.blockHandlers()
       self.refreshModel()
       self.unblockHandlers()
-      
+
     def onLayoutChange(self,action):
       layoutName = self.layoutCombo.get_active_text()
       renderer = 'fdp'
@@ -764,7 +765,7 @@ class KaosDotWindow(gtk.Window):
         renderer = 'twopi'
       elif (layoutName == 'Circular'):
         renderer = 'circo'
-  
+
       self.set_xdotcode(self.canonicalModel.layout(renderer))
 
     def set_filter(self, filter):
@@ -819,7 +820,7 @@ class KaosDotWindow(gtk.Window):
             goalName = self.caseCombo.get_active_text()
             self.goalCombo.set_text_column(0)
             caseFilter = True
-        
+
       try:
         b = Borg()
         proxy = b.dbProxy

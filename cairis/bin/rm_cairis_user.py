@@ -1,4 +1,5 @@
 #!/usr/bin/python3
+# -*- coding: utf-8 -*-
 #  Licensed to the Apache Software Foundation (ASF) under one
 #  or more contributor license agreements.  See the NOTICE file
 #  distributed with this work for additional information
@@ -20,29 +21,33 @@ import argparse
 import sys
 from cairis.core.Borg import Borg
 import cairis.core.BorgFactory
-from cairis.core.dba import dropUser,accounts
+from cairis.core.dba import dropUser, accounts
 
-__author__ = 'Shamal Faily'
+__author__ = "Shamal Faily"
 
 
 def main():
-  parser = argparse.ArgumentParser(description='Computer Aided Integration of Requirements and Information Security - Remove CAIRIS user')
-  parser.add_argument('user',help='Account (email) name.  "all" removes all accounts')
-  args = parser.parse_args()
+    parser = argparse.ArgumentParser(
+        description="Computer Aided Integration of Requirements and Information Security - Remove CAIRIS user"
+    )
+    parser.add_argument(
+        "user", help='Account (email) name.  "all" removes all accounts'
+    )
+    args = parser.parse_args()
 
-  cairis.core.BorgFactory.dInitialise()
-  b = Borg()
-  if (args.user.upper() == 'ALL'):
-    for user in accounts(b.rPasswd, b.dbHost, b.dbPort):
-      dropUser(b.rPasswd, b.dbHost, b.dbPort, user)
+    cairis.core.BorgFactory.dInitialise()
+    b = Borg()
+    if args.user.upper() == "ALL":
+        for user in accounts(b.rPasswd, b.dbHost, b.dbPort):
+            dropUser(b.rPasswd, b.dbHost, b.dbPort, user)
 
-  else:
-    dropUser(b.rPasswd, b.dbHost, b.dbPort, args.user)
+    else:
+        dropUser(b.rPasswd, b.dbHost, b.dbPort, args.user)
 
-if __name__ == '__main__':
-  try:
-    main()
-  except Exception as e:
-    print('Fatal rm_cairis_user error: ' + str(e))
-    sys.exit(-1)
 
+if __name__ == "__main__":
+    try:
+        main()
+    except Exception as e:
+        print("Fatal rm_cairis_user error: " + str(e))
+        sys.exit(-1)

@@ -92,6 +92,6 @@ Situating a pattern
 
 -  To introduce an architectural pattern into the working project.
 
--  Click on the situate button next to the desired architectural pattern in the architectural patterns table, followed by the environment to situate the pattern in.  A weakness analysis dialog is displayed, which summarises the threats and vulnerabilities that will become associated with the pattern, the impact to persona task scores, and obstacles mitigated by goals introduced by the pattern.  
+-  Click on the situate button next to the desired architectural pattern in the architectural patterns table, followed by the environment to situate the pattern in.  A weakness analysis dialog is displayed, which summarises the threats and vulnerabilities that will become associated with the pattern, the impact to persona task scores, and obstacles mitigated by goals introduced by the pattern.
 
 -  Click on the Ok button introduces the patterns template goals, requirements, and assets as standard goals, requirements, and assets respectively.

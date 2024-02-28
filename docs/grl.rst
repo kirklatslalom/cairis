@@ -8,7 +8,7 @@ Generating Goal-oriented Requirements Language models
 * GRL models provide an alternative way of contextualising personas, tasks, and use cases. This might make it possible to identify new requirements, threats, or vulnerabilities that results from cross-cutting concepts.
 
 `This paper <https://www.researchgate.net/publication/221215412_Bridging_User-Centered_Design_and_Requirements_Engineering_with_GRL_and_Persona_Cases>`_ explains the alignment between GRL and CAIRIS concepts, which are summarised in the figure below:
- 
+
 .. figure:: pcToGrlMetaModel.jpg
    :alt: Conceptual model of CAIRIS and GRL elements
 

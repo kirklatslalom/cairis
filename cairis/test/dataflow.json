@@ -70,7 +70,7 @@
      "theAuthor" : "SF",
      "theDescription" : "Verify researcher identity",
      "theActor" : "Data Consumer",
-     "theCode" : "UC-1", 
+     "theCode" : "UC-1",
      "theEnvironments" : [
        {"theName" : "Psychosis",
         "thePreconditions" : "Researcher holds credentials",

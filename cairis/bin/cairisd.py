@@ -1,4 +1,5 @@
 #!/usr/bin/python3
+# -*- coding: utf-8 -*-
 #  Licensed to the Apache Software Foundation (ASF) under one
 #  or more contributor license agreements.  See the NOTICE file
 #  distributed with this work for additional information
@@ -16,7 +17,7 @@
 #  specific language governing permissions and limitations
 #  under the License.
 
-__author__ = 'Shamal Faily'
+__author__ = "Shamal Faily"
 
 import os
 import sys
@@ -29,29 +30,35 @@ from cairis.core.Borg import Borg
 
 app = create_app()
 manager = Manager(app)
-manager.add_command('runserver', Server(host='0.0.0.0', port=7071))
+manager.add_command("runserver", Server(host="0.0.0.0", port=7071))
+
 
 @app.after_request
 def apply_caching(response):
-  response.headers["X-Frame-Options"] = "SAMEORIGIN"
-  return response
+    response.headers["X-Frame-Options"] = "SAMEORIGIN"
+    return response
+
 
 @user_registered.connect_via(app)
-def enroll(sender, user, confirm_token,form_data):
-  addAdditionalUserData(user.email,user.password)
+def enroll(sender, user, confirm_token, form_data):
+    addAdditionalUserData(user.email, user.password)
+
 
 class TestClient(Command):
-  def run(self):
-    app.test_client()
+    def run(self):
+        app.test_client()
 
-manager.add_command('testclient', TestClient())
+
+manager.add_command("testclient", TestClient())
+
 
 def main(args):
-  manager.run()
+    manager.run()
 
-if __name__ == '__main__':
-  try:
-    main(sys.argv)
-  except CairisHTTPError as e:
-    print('Fatal CAIRIS error: ' + str(e))
-    sys.exit(-1)
+
+if __name__ == "__main__":
+    try:
+        main(sys.argv)
+    except CairisHTTPError as e:
+        print("Fatal CAIRIS error: " + str(e))
+        sys.exit(-1)

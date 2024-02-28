@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 #  Licensed to the Apache Software Foundation (ASF) under one
 #  or more contributor license agreements.  See the NOTICE file
 #  distributed with this work for additional information
@@ -17,11 +18,13 @@
 
 from . import ObjectValidator
 
-__author__ = 'Shamal Faily'
+__author__ = "Shamal Faily"
+
 
 class EnvironmentProperties(ObjectValidator.ObjectValidator):
-  def __init__(self,name):
-    ObjectValidator.ObjectValidator.__init__(self)
-    self.theEnvironmentName = name
+    def __init__(self, name):
+        ObjectValidator.ObjectValidator.__init__(self)
+        self.theEnvironmentName = name
 
-  def name(self): return self.theEnvironmentName
+    def name(self):
+        return self.theEnvironmentName

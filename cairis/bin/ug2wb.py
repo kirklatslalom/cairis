@@ -1,4 +1,5 @@
 #!/usr/bin/python3
+# -*- coding: utf-8 -*-
 #  Licensed to the Apache Software Foundation (ASF) under one
 #  or more contributor license agreements.  See the NOTICE file
 #  distributed with this work for additional information
@@ -22,15 +23,24 @@ from cairis.core.Borg import Borg
 from cairis.mio.ModelExport import exportUserGoalWorkbook
 
 
-__author__ = 'Shamal Faily'
+__author__ = "Shamal Faily"
+
 
 def main(args=None):
-  parser = argparse.ArgumentParser(description='Computer Aided Integration of Requirements and Information Security - Persona characteristics To Workbook converter')
-  parser.add_argument('xlsxFile',help='Workbook to create')
-  parser.add_argument('--user',dest='userName',help='user name', default='cairis_test')
-  parser.add_argument('--database',dest='dbName',help='database name',default='cairis_test')
-  args = parser.parse_args()
-  cairis.core.BorgFactory.initialise(user=args.userName,db=args.dbName)
-  exportUserGoalWorkbook(args.xlsxFile)
-if __name__ == '__main__':
-  main()
+    parser = argparse.ArgumentParser(
+        description="Computer Aided Integration of Requirements and Information Security - Persona characteristics To Workbook converter"
+    )
+    parser.add_argument("xlsxFile", help="Workbook to create")
+    parser.add_argument(
+        "--user", dest="userName", help="user name", default="cairis_test"
+    )
+    parser.add_argument(
+        "--database", dest="dbName", help="database name", default="cairis_test"
+    )
+    args = parser.parse_args()
+    cairis.core.BorgFactory.initialise(user=args.userName, db=args.dbName)
+    exportUserGoalWorkbook(args.xlsxFile)
+
+
+if __name__ == "__main__":
+    main()

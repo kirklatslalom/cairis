@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 #  Licensed to the Apache Software Foundation (ASF) under one
 #  or more contributor license agreements.  See the NOTICE file
 #  distributed with this work for additional information
@@ -22,23 +23,23 @@ import cairis.core.armid
 from cairis.data.CairisDAO import CairisDAO
 from cairis.tools.ModelDefinitions import SummaryModel
 
-__author__ = 'Shamal Faily'
+__author__ = "Shamal Faily"
 
 
 class SummaryDAO(CairisDAO):
-  def __init__(self, session_id):
-    CairisDAO.__init__(self, session_id)
+    def __init__(self, session_id):
+        CairisDAO.__init__(self, session_id)
 
-  def get_summary(self,dimension_name,environment_name, pathValues = []):
-    try:
-      sumRows = self.db_proxy.dimensionSummary(dimension_name,environment_name)
-    except DatabaseProxyException as ex:
-      self.close()
-      raise ARMHTTPError(ex)
-    except ARMException as ex:
-      self.close()
-      raise ARMHTTPError(ex)
-    smRows = []
-    for sumRow in sumRows:
-      smRows.append(SummaryModel(sumRow[0],sumRow[1]))
-    return smRows
+    def get_summary(self, dimension_name, environment_name, pathValues=[]):
+        try:
+            sumRows = self.db_proxy.dimensionSummary(dimension_name, environment_name)
+        except DatabaseProxyException as ex:
+            self.close()
+            raise ARMHTTPError(ex)
+        except ARMException as ex:
+            self.close()
+            raise ARMHTTPError(ex)
+        smRows = []
+        for sumRow in sumRows:
+            smRows.append(SummaryModel(sumRow[0], sumRow[1]))
+        return smRows

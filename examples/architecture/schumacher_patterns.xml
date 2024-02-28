@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <!DOCTYPE security_patterns PUBLIC "-//CAIRIS//DTD SECURITYPATTERN 1.0//EN" "https://cairis.org/dtd/securitypattern.dtd">
 
-<!-- 
+<!--
   Licensed to the Apache Software Foundation (ASF) under one
   or more contributor license agreements.  See the NOTICE file
   distributed with this work for additional information
@@ -243,12 +243,12 @@
   <requirement name="Policy rules" asset="Rule" type="Security">
     <description>The Organisational Security Policy shall be modelled as a set of access rules.</description>
     <rationale>Defines organisational policy for network access.</rationale>
-    <fit_criterion>None</fit_criterion> 
+    <fit_criterion>None</fit_criterion>
   </requirement>
   <requirement name="Standard Packet Filter Firewall" asset="PFFirewall" type="Security">
     <description>The Packet Filter Firewall shall be configured according to a standard security architecture.</description>
     <rationale>Avoids introduction of vulnerabilities due to inappropriate firewall application.</rationale>
-    <fit_criterion>Design documentation of deployment should closely match a reference security architecture.</fit_criterion> 
+    <fit_criterion>Design documentation of deployment should closely match a reference security architecture.</fit_criterion>
   </requirement>
 </pattern>
 <pattern name="Proxy-Based Firewall">
@@ -264,22 +264,22 @@
   <requirement name="Service proxies" asset="Proxy" type="Security">
     <description>A Proxy shall be defined for each service made available to clients of the network.</description>
     <rationale>None</rationale>
-    <fit_criterion>None</fit_criterion> 
+    <fit_criterion>None</fit_criterion>
   </requirement>
   <requirement name="Proxy location" asset="Proxy" type="Security">
     <description>A location shall be assigned to each implemented proxy.</description>
     <rationale></rationale>
-    <fit_criterion>None</fit_criterion> 
+    <fit_criterion>None</fit_criterion>
   </requirement>
   <requirement name="Service policy" asset="Service" type="Security">
     <description>A policy for each service shall define which users can access the service.</description>
     <rationale></rationale>
-    <fit_criterion>None</fit_criterion> 
+    <fit_criterion>None</fit_criterion>
   </requirement>
   <requirement name="Service type policy" asset="Service" type="Security">
     <description>A policy for each service shall define the type of access authorised users to a service can have.</description>
     <rationale></rationale>
-    <fit_criterion>None</fit_criterion> 
+    <fit_criterion>None</fit_criterion>
   </requirement>
 </pattern>
 <pattern name="Stateful Firewall">

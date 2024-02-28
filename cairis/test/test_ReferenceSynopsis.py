@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 #  Licensed to the Apache Software Foundation (ASF) under one
 #  or more contributor license agreements.  See the NOTICE file
 #  distributed with this work for additional information
@@ -25,51 +26,61 @@ from cairis.core.ReferenceSynopsis import ReferenceSynopsis
 from cairis.core.ARM import DatabaseProxyException
 from cairis.mio.ModelImport import importModelFile
 
-__author__ = 'Shamal Faily'
+__author__ = "Shamal Faily"
 
 
 class ReferenceSynopsisTest(unittest.TestCase):
+    @classmethod
+    def setUpClass(cls):
+        cairis.core.BorgFactory.initialise()
+        importModelFile(
+            os.environ["CAIRIS_SRC"] + "/../examples/exemplars/NeuroGrid/NeuroGrid.xml",
+            1,
+        )
 
-  @classmethod
-  def setUpClass(cls):
-    cairis.core.BorgFactory.initialise()
-    importModelFile(os.environ['CAIRIS_SRC'] + '/../examples/exemplars/NeuroGrid/NeuroGrid.xml',1)
+    def setUp(self):
+        f = open(os.environ["CAIRIS_SRC"] + "/test/reference_synopses.json")
+        d = json.load(f)
+        f.close()
+        self.rsData = d["reference_synopses"][0]
 
-  def setUp(self):
-    f = open(os.environ['CAIRIS_SRC'] + '/test/reference_synopses.json')
-    d = json.load(f)
-    f.close()
-    self.rsData = d['reference_synopses'][0]
+    def tearDown(self):
+        pass
 
-  def tearDown(self):
-    pass
+    def testAddSynopsis(self):
+        irs = ReferenceSynopsis(
+            -1,
+            self.rsData["theReference"],
+            self.rsData["theSynopsis"],
+            self.rsData["theDimension"],
+            self.rsData["theActorType"],
+            self.rsData["theActor"],
+            self.rsData["theInitialSatisfaction"],
+        )
+        b = Borg()
+        b.dbProxy.addReferenceSynopsis(irs)
 
-  def testAddSynopsis(self):
-    irs = ReferenceSynopsis(-1,self.rsData['theReference'],self.rsData['theSynopsis'],self.rsData['theDimension'],self.rsData['theActorType'],self.rsData['theActor'],self.rsData['theInitialSatisfaction'])
-    b = Borg()
-    b.dbProxy.addReferenceSynopsis(irs)
+        ors = b.dbProxy.getReferenceSynopsis(self.rsData["theReference"])
+        self.assertEqual(irs.reference(), ors.reference())
+        self.assertEqual(irs.synopsis(), ors.synopsis())
+        self.assertEqual(irs.dimension(), ors.dimension())
+        self.assertEqual(irs.actorType(), ors.actorType())
+        self.assertEqual(irs.actor(), ors.actor())
+        self.assertEqual(irs.satisfaction(), ors.satisfaction())
 
-    ors = b.dbProxy.getReferenceSynopsis(self.rsData['theReference'])
-    self.assertEqual(irs.reference(), ors.reference())
-    self.assertEqual(irs.synopsis(), ors.synopsis())
-    self.assertEqual(irs.dimension(), ors.dimension())
-    self.assertEqual(irs.actorType(), ors.actorType())
-    self.assertEqual(irs.actor(), ors.actor())
-    self.assertEqual(irs.satisfaction(), ors.satisfaction())
-
-  def testUpdateSynopsis(self):
-    b = Borg()
-    ors = b.dbProxy.getReferenceSynopsis(self.rsData['theReference'])
-    ors.theSynopsis = 'Updated synopsis'
-    b.dbProxy.updateReferenceSynopsis(ors)
-    urs = b.dbProxy.getReferenceSynopsis(self.rsData['theReference'])
-    self.assertEqual(ors.reference(), urs.reference())
-    self.assertEqual(ors.synopsis(), urs.synopsis())
-    self.assertEqual(ors.dimension(), urs.dimension())
-    self.assertEqual(ors.actorType(), urs.actorType())
-    self.assertEqual(ors.actor(), urs.actor())
-    self.assertEqual(ors.satisfaction(), urs.satisfaction())
+    def testUpdateSynopsis(self):
+        b = Borg()
+        ors = b.dbProxy.getReferenceSynopsis(self.rsData["theReference"])
+        ors.theSynopsis = "Updated synopsis"
+        b.dbProxy.updateReferenceSynopsis(ors)
+        urs = b.dbProxy.getReferenceSynopsis(self.rsData["theReference"])
+        self.assertEqual(ors.reference(), urs.reference())
+        self.assertEqual(ors.synopsis(), urs.synopsis())
+        self.assertEqual(ors.dimension(), urs.dimension())
+        self.assertEqual(ors.actorType(), urs.actorType())
+        self.assertEqual(ors.actor(), urs.actor())
+        self.assertEqual(ors.satisfaction(), urs.satisfaction())
 
 
-if __name__ == '__main__':
-  unittest.main()
+if __name__ == "__main__":
+    unittest.main()

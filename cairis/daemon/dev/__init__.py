@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 #  Licensed to the Apache Software Foundation (ASF) under one
 #  or more contributor license agreements.  See the NOTICE file
 #  distributed with this work for additional information
@@ -15,15 +16,16 @@
 #  specific language governing permissions and limitations
 #  under the License.
 
-__author__ = 'Robin Quetin, Shamal Faily'
+__author__ = "Robin Quetin, Shamal Faily"
 
 import logging
 import os
 import sys
-if (sys.version_info > (3,)):
-  import http.client
+
+if sys.version_info > (3,):
+    import http.client
 else:
-  import httplib
+    import httplib
 from flask import Flask
 from flask_mail import Mail
 from flask_security import Security, SQLAlchemyUserDatastore, user_registered
@@ -37,79 +39,86 @@ from .models import User, Role
 
 app = Flask(__name__)
 
+
 @user_registered.connect_via(app)
-def enroll(sender, user, confirm_token,confirmation_token=None,form_data = {}):
-  addAdditionalUserData(user.email, user.password)
+def enroll(sender, user, confirm_token, confirmation_token=None, form_data={}):
+    addAdditionalUserData(user.email, user.password)
 
 
 def create_app():
-  options = {
-    'port' : 0,
-    'unitTesting': False
-  }
-  WebConfig.config(options)
+    options = {"port": 0, "unitTesting": False}
+    WebConfig.config(options)
 
-  b = Borg()
-  app.config['DEBUG'] = True
-  app.config['SECRET_KEY'] = b.secretKey
-  app.config['SECURITY_PASSWORD_SALT'] = 'None'
-  app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
-  app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql://root:' + b.rPasswd + '@' + b.dbHost + '/cairis_user'
+    b = Borg()
+    app.config["DEBUG"] = True
+    app.config["SECRET_KEY"] = b.secretKey
+    app.config["SECURITY_PASSWORD_SALT"] = "None"
+    app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
+    app.config["SQLALCHEMY_DATABASE_URI"] = (
+        "mysql://root:" + b.rPasswd + "@" + b.dbHost + "/cairis_user"
+    )
 
-  if (b.mailServer != '' and b.mailPort != '' and b.mailUser != '' and b.mailPasswd != ''):
-    app.config['SECURITY_REGISTERABLE'] = True
-    app.config['SECURITY_RECOVERABLE'] = True
-    app.config['MAIL_SERVER'] = b.mailServer
-    app.config['MAIL_PORT'] = b.mailPort
-    app.config['MAIL_USE_SSL'] = True
-    app.config['MAIL_USERNAME'] = b.mailUser
-    app.config['MAIL_PASSWORD'] = b.mailPasswd
-    app.config['SECURITY_EMAIL_SENDER'] = b.mailUser
+    if (
+        b.mailServer != ""
+        and b.mailPort != ""
+        and b.mailUser != ""
+        and b.mailPasswd != ""
+    ):
+        app.config["SECURITY_REGISTERABLE"] = True
+        app.config["SECURITY_RECOVERABLE"] = True
+        app.config["MAIL_SERVER"] = b.mailServer
+        app.config["MAIL_PORT"] = b.mailPort
+        app.config["MAIL_USE_SSL"] = True
+        app.config["MAIL_USERNAME"] = b.mailUser
+        app.config["MAIL_PASSWORD"] = b.mailPasswd
+        app.config["SECURITY_EMAIL_SENDER"] = b.mailUser
 
-  b.logger.setLevel(b.logLevel)
-  b.logger.debug('Error handlers: {0}'.format(app.error_handler_spec))
-  app.secret_key = os.urandom(24)
-  logger = logging.getLogger('werkzeug')
-  logger.setLevel(b.logLevel)
-  enable_debug = b.logLevel = logging.DEBUG
+    b.logger.setLevel(b.logLevel)
+    b.logger.debug("Error handlers: {0}".format(app.error_handler_spec))
+    app.secret_key = os.urandom(24)
+    logger = logging.getLogger("werkzeug")
+    logger.setLevel(b.logLevel)
+    enable_debug = b.logLevel = logging.DEBUG
 
-  mail = Mail(app)
-  cors = CORS(app)
-  with app.app_context():
-    db.init_app(app)
-    user_datastore = SQLAlchemyUserDatastore(db,User, Role)
-    security = Security(app, user_datastore)
+    mail = Mail(app)
+    cors = CORS(app)
+    with app.app_context():
+        db.init_app(app)
+        user_datastore = SQLAlchemyUserDatastore(db, User, Role)
+        security = Security(app, user_datastore)
 
-    from .main import main as main_blueprint 
-    app.register_blueprint(main_blueprint)
-    db.create_all()
-  return app
+        from .main import main as main_blueprint
+
+        app.register_blueprint(main_blueprint)
+        db.create_all()
+    return app
+
 
 def create_test_app():
-  options = {
-    'port' : 0,
-    'unitTesting': True
-  }
-  WebConfig.config(options)
+    options = {"port": 0, "unitTesting": True}
+    WebConfig.config(options)
 
-  b = Borg()
-  app = Flask(__name__)
-  app.config['DEBUG'] = True
-  app.config['SECRET_KEY'] = b.secretKey
-  app.config['SECURITY_PASSWORD_SALT'] = 'None'
-  app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
-  app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql://root:' + b.rPasswd + '@' + b.dbHost + '/cairis_user'
-  b.logger.setLevel(b.logLevel)
-  b.logger.debug('Error handlers: {0}'.format(app.error_handler_spec))
-  app.secret_key = os.urandom(24)
-  logger = logging.getLogger('werkzeug')
-  logger.setLevel(b.logLevel)
-  enable_debug = b.logLevel = logging.DEBUG
-  db.init_app(app)
-  user_datastore = SQLAlchemyUserDatastore(db,User, Role)
-  security = Security(app, user_datastore)
-  from .main import main as main_blueprint 
-  app.register_blueprint(main_blueprint)
-  with app.app_context():
-    db.create_all()
-  return app
+    b = Borg()
+    app = Flask(__name__)
+    app.config["DEBUG"] = True
+    app.config["SECRET_KEY"] = b.secretKey
+    app.config["SECURITY_PASSWORD_SALT"] = "None"
+    app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
+    app.config["SQLALCHEMY_DATABASE_URI"] = (
+        "mysql://root:" + b.rPasswd + "@" + b.dbHost + "/cairis_user"
+    )
+    b.logger.setLevel(b.logLevel)
+    b.logger.debug("Error handlers: {0}".format(app.error_handler_spec))
+    app.secret_key = os.urandom(24)
+    logger = logging.getLogger("werkzeug")
+    logger.setLevel(b.logLevel)
+    enable_debug = b.logLevel = logging.DEBUG
+    db.init_app(app)
+    user_datastore = SQLAlchemyUserDatastore(db, User, Role)
+    security = Security(app, user_datastore)
+    from .main import main as main_blueprint
+
+    app.register_blueprint(main_blueprint)
+    with app.app_context():
+        db.create_all()
+    return app

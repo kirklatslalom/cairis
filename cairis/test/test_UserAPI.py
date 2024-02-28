@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 #  Licensed to the Apache Software Foundation (ASF) under one
 #  or more contributor license agreements.  See the NOTICE file
 #  distributed with this work for additional information
@@ -17,10 +18,11 @@
 
 import logging
 import sys
-if (sys.version_info > (3,)):
-  from urllib.parse import quote
+
+if sys.version_info > (3,):
+    from urllib.parse import quote
 else:
-  from urllib import quote
+    from urllib import quote
 from io import StringIO
 import os
 import jsonpickle
@@ -28,28 +30,28 @@ from cairis.test.CairisDaemonTestCase import CairisDaemonTestCase
 from cairis.mio.ModelImport import importModelFile
 import os
 
-__author__ = 'Shamal Faily'
+__author__ = "Shamal Faily"
+
 
 class UserAPITests(CairisDaemonTestCase):
+    @classmethod
+    def setUpClass(cls):
+        pass
 
-  @classmethod
-  def setUpClass(cls):
-    pass
+    def setUp(self):
+        self.logger = logging.getLogger(__name__)
 
-  def setUp(self):
-    self.logger = logging.getLogger(__name__)
-
-  def test_user(self):
-    method = 'test_version'
-    url = '/api/user?session_id=test'
-    self.logger.info('[%s] URL: %s', method, url)
-    rv = self.app.get(url)
-    self.assertIsNotNone(rv.data, 'No response')
-    if (sys.version_info > (3,)):
-      responseData = rv.data.decode('utf-8')
-    else:
-      responseData = rv.data
-    objt = jsonpickle.decode(responseData)
-    self.assertIsNotNone(objt, 'No results after deserialization')
-    self.assertEqual(objt['name'],'CAIRIS test user account')
-    self.assertEqual(objt['email'],'cairis_test')
+    def test_user(self):
+        method = "test_version"
+        url = "/api/user?session_id=test"
+        self.logger.info("[%s] URL: %s", method, url)
+        rv = self.app.get(url)
+        self.assertIsNotNone(rv.data, "No response")
+        if sys.version_info > (3,):
+            responseData = rv.data.decode("utf-8")
+        else:
+            responseData = rv.data
+        objt = jsonpickle.decode(responseData)
+        self.assertIsNotNone(objt, "No results after deserialization")
+        self.assertEqual(objt["name"], "CAIRIS test user account")
+        self.assertEqual(objt["email"], "cairis_test")

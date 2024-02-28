@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 #  Licensed to the Apache Software Foundation (ASF) under one
 #  or more contributor license agreements.  See the NOTICE file
 #  distributed with this work for additional information
@@ -15,21 +16,31 @@
 #  specific language governing permissions and limitations
 #  under the License.
 
-__author__ = 'Shamal Faily'
+__author__ = "Shamal Faily"
 
 from .ObjectCreationParameters import ObjectCreationParameters
 
-class RoleParameters(ObjectCreationParameters):
-  def __init__(self,name,rType,sCode,desc,cProperties):
-    ObjectCreationParameters.__init__(self)
-    self.theName = name
-    self.theShortCode = sCode
-    self.theDescription = desc
-    self.theType = rType
-    self.theEnvironmentProperties = cProperties
 
-  def name(self): return self.theName
-  def type(self): return self.theType
-  def shortCode(self): return self.theShortCode
-  def description(self): return self.theDescription
-  def environmentProperties(self): return self.theEnvironmentProperties
+class RoleParameters(ObjectCreationParameters):
+    def __init__(self, name, rType, sCode, desc, cProperties):
+        ObjectCreationParameters.__init__(self)
+        self.theName = name
+        self.theShortCode = sCode
+        self.theDescription = desc
+        self.theType = rType
+        self.theEnvironmentProperties = cProperties
+
+    def name(self):
+        return self.theName
+
+    def type(self):
+        return self.theType
+
+    def shortCode(self):
+        return self.theShortCode
+
+    def description(self):
+        return self.theDescription
+
+    def environmentProperties(self):
+        return self.theEnvironmentProperties

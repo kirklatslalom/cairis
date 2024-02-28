@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 #  Licensed to the Apache Software Foundation (ASF) under one
 #  or more contributor license agreements.  See the NOTICE file
 #  distributed with this work for additional information
@@ -21,24 +22,25 @@ import os
 from subprocess import call
 from cairis.core.Borg import Borg
 
-__author__ = 'Shamal Faily'
+__author__ = "Shamal Faily"
+
 
 class BorgFactoryTest(unittest.TestCase):
+    def setUp(self):
+        call([os.environ["CAIRIS_CFG_DIR"] + "/initdb.sh"])
+        cairis.core.BorgFactory.initialise()
 
-  def setUp(self):
-    call([os.environ['CAIRIS_CFG_DIR'] + "/initdb.sh"])
-    cairis.core.BorgFactory.initialise()
+    def testProjectSettings(self):
+        b = Borg()
+        self.assertEqual(b.fontName, "Times New Roman")
+        self.assertEqual(b.fontSize, "7.5")
+        self.assertEqual(b.apFontSize, "13")
 
-  def testProjectSettings(self):
-    b = Borg()
-    self.assertEqual(b.fontName,'Times New Roman')
-    self.assertEqual(b.fontSize,'7.5')
-    self.assertEqual(b.apFontSize,'13')
+    def tearDown(self):
+        b = Borg()
+        b.dbProxy.close()
+        call([os.environ["CAIRIS_CFG_DIR"] + "/dropdb.sh"])
 
-  def tearDown(self):
-    b = Borg()
-    b.dbProxy.close()
-    call([os.environ['CAIRIS_CFG_DIR'] + "/dropdb.sh"])
 
-if __name__ == '__main__':
-  unittest.main()
+if __name__ == "__main__":
+    unittest.main()

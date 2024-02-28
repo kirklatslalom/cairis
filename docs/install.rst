@@ -17,8 +17,8 @@ Once in the root directory of the repository type:
 
    vagrant up
 
-This will create and start a CAIRIS virtual machine in VirtualBox and, once complete, this is accessbile via your web browser at http://localhost:7071. 
-The default username and password is *test@test.com* and *test*, but you can change this by editing *vagrant_conf.yaml*.  
+This will create and start a CAIRIS virtual machine in VirtualBox and, once complete, this is accessbile via your web browser at http://localhost:7071.
+The default username and password is *test@test.com* and *test*, but you can change this by editing *vagrant_conf.yaml*.
 
 To shutdown the virtual machine:
 
@@ -34,7 +34,7 @@ To restart the virtual machine:
 
 If you need to login to the virtual machine, i.e. to check the log files, use the *vagrant* account (password: *vagrant*).
 
-.. note:: 
+.. note::
    The Vagrantfile is a simplified version of Ben Coleman's `Cairis_vagrant <https://github.com/nebloc/Cairis-vagrant>`_ repository.
 
 
@@ -48,7 +48,7 @@ There are two options for running the container, a full install of everything or
 For the full install (with pdf export functionality) download and run the container, the documentation container, and its linked mysql container:
 
 .. code-block:: bash
- 
+
    sudo docker run --name cairis-mysql -e MYSQL_ROOT_PASSWORD=my-secret-pw -d mysql:latest --thread_stack=256K --max_sp_recursion_depth=255 --log_bin_trust_function_creators=1
    sudo docker run --name cairis-docs -d -v cairisDocumentation:/tmpDocker -v cairisImage:/images -t shamalfaily/cairis-docs
    sudo docker run --name CAIRIS -d --link cairis-mysql:mysql --link cairis-docs:docs -P -p 80:8000 --net=bridge -v cairisDocumentation:/tmpDocker -v cairisImage:/images shamalfaily/cairis
@@ -56,14 +56,14 @@ For the full install (with pdf export functionality) download and run the contai
 For the smaller install (without pdf export functionality) download and run the container, and its linked mysql container:
 
 .. code-block:: bash
- 
+
    sudo docker run --name cairis-mysql -e MYSQL_ROOT_PASSWORD=my-secret-pw -d mysql:latest --thread_stack=256K --max_sp_recursion_depth=255 --log_bin_trust_function_creators=1
    sudo docker run --name CAIRIS --link cairis-mysql:mysql -d -P -p 80:8000 --net=bridge shamalfaily/cairis
 
 If you run the above commands on macOS (and possibly other non-Linux platformns), you might get the error *links are only supported for user-defined networks*.  If so, you should instead run the below commands to download and run your containers:
 
 .. code-block:: bash
-   
+
    NET=cairisnet
    docker network create -d bridge $NET
    docker run --name cairis-mysql -e MYSQL_ROOT_PASSWORD=my-secret-pw -d mysql:latest --thread_stack=256K --max_sp_recursion_depth=255 --log_bin_trust_function_creators=1
@@ -76,7 +76,7 @@ If you want to use the containers to support account self-registration and revoc
 
    docker run --name CAIRIS --env MAIL_SERVER=mymailserver.com --env MAIL_PORT=465 --env MAIL_USER=admin@mymailserver.com --env MAIL_PASSWD=mypassword -d -P -p 80:8000 --net=$NET shamalfaily/cairis
 
-The *docker run* commands will create and start-up CAIRIS.  If you haven't setup account self-registration then you will need to create an account before you can use it.  To do this, run the below command - replacing test@test.com and test with your desired username and password. 
+The *docker run* commands will create and start-up CAIRIS.  If you haven't setup account self-registration then you will need to create an account before you can use it.  To do this, run the below command - replacing test@test.com and test with your desired username and password.
 
 .. code-block:: bash
 
@@ -92,8 +92,8 @@ If you are using PowerSheell on Windows to run the above command then this might
 Once the containers have been installed then, in the future, you should use *docker start* rather than *docker run* to start up the already downloaded containers.
 
 .. code-block:: bash
- 
-   sudo docker start cairis-mysql 
+
+   sudo docker start cairis-mysql
    sudo docker start CAIRIS
 
 The containers can be stopped using *docker stop*, i.e.
@@ -193,11 +193,11 @@ Run the CAIRIS quick setup initialisation script (which can be found in cairis/)
 .. figure:: quick_setup_db.jpg
    :alt: Quick setup script
 
-You can accept many of these defaults, except for the database root password, an initial username and password which need to be supplied.  Please note that the username *root* is reserved, so you should not use this.  
+You can accept many of these defaults, except for the database root password, an initial username and password which need to be supplied.  Please note that the username *root* is reserved, so you should not use this.
 
 Details for the mail server only need to be set if you intend to provide self-service registration and reset of accounts.  This is typically only necessary if you plan to install CAIRIS to a server for multiple users.  When these settings are set, the mail server and port should be for out-going SSL traffic.
 
-If you want more diagnostic information logged, you find it useful to change the Log Level from *warning* to *debug*.  
+If you want more diagnostic information logged, you find it useful to change the Log Level from *warning* to *debug*.
 
 The static and directory and asset directory will point to the location of UI code, but these directories will not be created during this step. If you don't plan to customise your web server setup, you should retain these default values.
 

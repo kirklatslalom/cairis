@@ -25,7 +25,7 @@ Adding a new environment
 
 -  If this environment is to be a composite environment, i.e. encompass
    artifacts of other environments, then click on the Add button the environment table, and select the environment to add.
-   
+
 -  It is possible an artifact may appear in multiple environments within a
    composite environment. It is, therefore, necessary to set duplication
    properties for composite environments. If the maximise radio button

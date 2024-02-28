@@ -28,12 +28,12 @@ addons:
     - libxslt1-dev
     - python3-setuptools
     - pandoc
- 
+
 env:
 - PYTHONPATH=. CAIRIS_SRC=$PYTHONPATH/cairis CAIRIS_CFG=cairis_travis.cnf XML_CATALOG_FILES=$CAIRIS_SRC/config/catalog
     $CAIRIS_CFG_DIR=./travisConfig
 
-before_install: 
+before_install:
 - sudo cp $CAIRIS_CFG_DIR/mysqld.cnf /etc/mysql/mysql.conf.d/
 - sudo service mysql restart
 

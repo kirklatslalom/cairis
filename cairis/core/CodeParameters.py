@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 #  Licensed to the Apache Software Foundation (ASF) under one
 #  or more contributor license agreements.  See the NOTICE file
 #  distributed with this work for additional information
@@ -18,19 +19,29 @@
 
 from .ObjectCreationParameters import ObjectCreationParameters
 
-__author__ = 'Shamal Faily'
+__author__ = "Shamal Faily"
+
 
 class CodeParameters(ObjectCreationParameters):
-  def __init__(self,codeName,cType,codeDesc,incCriteria,codeEg):
-    ObjectCreationParameters.__init__(self)
-    self.theName = codeName
-    self.theType = cType
-    self.theDescription = codeDesc
-    self.theInclusionCriteria = incCriteria
-    self.theExample = codeEg
+    def __init__(self, codeName, cType, codeDesc, incCriteria, codeEg):
+        ObjectCreationParameters.__init__(self)
+        self.theName = codeName
+        self.theType = cType
+        self.theDescription = codeDesc
+        self.theInclusionCriteria = incCriteria
+        self.theExample = codeEg
 
-  def name(self): return self.theName
-  def type(self): return self.theType
-  def description(self): return self.theDescription
-  def inclusionCriteria(self): return self.theInclusionCriteria
-  def example(self): return self.theExample
+    def name(self):
+        return self.theName
+
+    def type(self):
+        return self.theType
+
+    def description(self):
+        return self.theDescription
+
+    def inclusionCriteria(self):
+        return self.theInclusionCriteria
+
+    def example(self):
+        return self.theExample

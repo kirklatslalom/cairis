@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 #  Licensed to the Apache Software Foundation (ASF) under one
 #  or more contributor license agreements.  See the NOTICE file
 #  distributed with this work for additional information
@@ -17,26 +18,41 @@
 
 from . import ObjectValidator
 
-__author__ = 'Shamal Faily'
+__author__ = "Shamal Faily"
 
 
 class UserStory(ObjectValidator.ObjectValidator):
-  def __init__(self,usId,usName,usAuth,usRole,usDesc,ugName,ac,usTags = []):
-    ObjectValidator.ObjectValidator.__init__(self)
-    self.theId = usId
-    self.theName = usName
-    self.theAuthor = usAuth
-    self.theRole = usRole
-    self.theDescription = usDesc
-    self.theUserGoal = ugName
-    self.theAcceptanceCriteria = ac
-    self.theTags = usTags
+    def __init__(self, usId, usName, usAuth, usRole, usDesc, ugName, ac, usTags=[]):
+        ObjectValidator.ObjectValidator.__init__(self)
+        self.theId = usId
+        self.theName = usName
+        self.theAuthor = usAuth
+        self.theRole = usRole
+        self.theDescription = usDesc
+        self.theUserGoal = ugName
+        self.theAcceptanceCriteria = ac
+        self.theTags = usTags
 
-  def id(self): return self.theId
-  def name(self): return self.theName
-  def author(self): return self.theAuthor
-  def role(self): return self.theRole
-  def description(self): return self.theDescription
-  def userGoal(self): return self.theUserGoal
-  def acceptanceCriteria(self): return self.theAcceptanceCriteria
-  def tags(self): return self.theTags
+    def id(self):
+        return self.theId
+
+    def name(self):
+        return self.theName
+
+    def author(self):
+        return self.theAuthor
+
+    def role(self):
+        return self.theRole
+
+    def description(self):
+        return self.theDescription
+
+    def userGoal(self):
+        return self.theUserGoal
+
+    def acceptanceCriteria(self):
+        return self.theAcceptanceCriteria
+
+    def tags(self):
+        return self.theTags

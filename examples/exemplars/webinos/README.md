@@ -2,4 +2,4 @@ The contents of webinos.cairis is drawn from the webinos design data repository 
 
 The regeneration script was used to create the model, but the architectural patterns have not been automatically situated.  You'll need to do this manually within the model if you want to see the impact of these patterns on the different environments.
 
-Goals that mitigate some of the obstacles have not been added to this model, but you can add them to the model by importing pattern_mitigation.xml. 
+Goals that mitigate some of the obstacles have not been added to this model, but you can add them to the model by importing pattern_mitigation.xml.

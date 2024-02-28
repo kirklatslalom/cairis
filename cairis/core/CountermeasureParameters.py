@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 #  Licensed to the Apache Software Foundation (ASF) under one
 #  or more contributor license agreements.  See the NOTICE file
 #  distributed with this work for additional information
@@ -18,19 +19,29 @@
 
 from . import ObjectCreationParameters
 
-__author__ = 'Shamal Faily'
+__author__ = "Shamal Faily"
+
 
 class CountermeasureParameters(ObjectCreationParameters.ObjectCreationParameters):
-  def __init__(self,cmName,cmDesc,cmType,tags,cProps):
-    ObjectCreationParameters.ObjectCreationParameters.__init__(self)
-    self.theName = cmName
-    self.theTags = tags
-    self.theDescription = cmDesc
-    self.theType = cmType
-    self.theEnvironmentProperties = cProps
+    def __init__(self, cmName, cmDesc, cmType, tags, cProps):
+        ObjectCreationParameters.ObjectCreationParameters.__init__(self)
+        self.theName = cmName
+        self.theTags = tags
+        self.theDescription = cmDesc
+        self.theType = cmType
+        self.theEnvironmentProperties = cProps
 
-  def name(self): return self.theName
-  def tags(self): return self.theTags
-  def type(self): return self.theType
-  def description(self): return self.theDescription
-  def environmentProperties(self): return self.theEnvironmentProperties
+    def name(self):
+        return self.theName
+
+    def tags(self):
+        return self.theTags
+
+    def type(self):
+        return self.theType
+
+    def description(self):
+        return self.theDescription
+
+    def environmentProperties(self):
+        return self.theEnvironmentProperties

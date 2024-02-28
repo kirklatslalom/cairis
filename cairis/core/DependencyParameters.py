@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 #  Licensed to the Apache Software Foundation (ASF) under one
 #  or more contributor license agreements.  See the NOTICE file
 #  distributed with this work for additional information
@@ -18,21 +19,35 @@
 
 from . import ObjectCreationParameters
 
-__author__ = 'Shamal Faily'
+__author__ = "Shamal Faily"
+
 
 class DependencyParameters(ObjectCreationParameters.ObjectCreationParameters):
-  def __init__(self,envName,depender,dependee,dependencyType,dependency,rationale):
-    ObjectCreationParameters.ObjectCreationParameters.__init__(self)
-    self.theEnvironmentName = envName
-    self.theDepender = depender
-    self.theDependee = dependee
-    self.theDependencyType = dependencyType
-    self.theDependency = dependency
-    self.theRationale = rationale
+    def __init__(
+        self, envName, depender, dependee, dependencyType, dependency, rationale
+    ):
+        ObjectCreationParameters.ObjectCreationParameters.__init__(self)
+        self.theEnvironmentName = envName
+        self.theDepender = depender
+        self.theDependee = dependee
+        self.theDependencyType = dependencyType
+        self.theDependency = dependency
+        self.theRationale = rationale
 
-  def environment(self): return self.theEnvironmentName
-  def depender(self): return self.theDepender
-  def dependee(self): return self.theDependee
-  def dependencyType(self): return self.theDependencyType
-  def dependency(self): return self.theDependency
-  def rationale(self): return self.theRationale
+    def environment(self):
+        return self.theEnvironmentName
+
+    def depender(self):
+        return self.theDepender
+
+    def dependee(self):
+        return self.theDependee
+
+    def dependencyType(self):
+        return self.theDependencyType
+
+    def dependency(self):
+        return self.theDependency
+
+    def rationale(self):
+        return self.theRationale

@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 #  Licensed to the Apache Software Foundation (ASF) under one
 #  or more contributor license agreements.  See the NOTICE file
 #  distributed with this work for additional information
@@ -16,10 +17,11 @@
 #  under the License.
 
 import sys
-if (sys.version_info > (3,)):
-  import http.client
+
+if sys.version_info > (3,):
+    import http.client
 else:
-  import httplib
+    import httplib
 import imghdr
 import os
 import io
@@ -29,29 +31,28 @@ from cairis.core.Borg import Borg
 from cairis.daemon.CairisHTTPError import CairisHTTPError
 from cairis.data.CairisDAO import CairisDAO
 
-__author__ = 'Robin Quetin, Shamal Faily'
+__author__ = "Robin Quetin, Shamal Faily"
 
 
 class UploadDAO(CairisDAO):
-  accepted_image_types = ['jpg', 'jpeg', 'png', 'bmp', 'gif']
+    accepted_image_types = ["jpg", "jpeg", "png", "bmp", "gif"]
 
-  def __init__(self, session_id):
-    CairisDAO.__init__(self, session_id)
-    b = Borg()
+    def __init__(self, session_id):
+        CairisDAO.__init__(self, session_id)
+        b = Borg()
 
-  def set_image(self,name,content,mimeType):
+    def set_image(self, name, content, mimeType):
+        extension = os.path.splitext(name)
+        img_format = imghdr.what(io.BytesIO(content))
+        if not img_format or img_format not in self.accepted_image_types:
+            raise CairisHTTPError(
+                status_code=http.client.CONFLICT,
+                status="Unsupported file type",
+                message="The provided image file is not supported by CAIRIS",
+            )
 
-    extension = os.path.splitext(name)
-    img_format = imghdr.what(io.BytesIO(content))
-    if not img_format or img_format not in self.accepted_image_types:
-      raise CairisHTTPError(
-              status_code=http.client.CONFLICT,
-              status='Unsupported file type',
-              message='The provided image file is not supported by CAIRIS'
-      )
-
-    try:
-      self.db_proxy.setImage(name,content,mimeType)
-    except ARMException as ex:
-      self.close()
-      raise ARMHTTPError(ex)
+        try:
+            self.db_proxy.setImage(name, content, mimeType)
+        except ARMException as ex:
+            self.close()
+            raise ARMHTTPError(ex)

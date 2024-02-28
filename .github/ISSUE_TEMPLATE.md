@@ -11,5 +11,3 @@
 
 
 ### Details of browser or, if applicable, details of the OS used to host CAIRIS
-
-

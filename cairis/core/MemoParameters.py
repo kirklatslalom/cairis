@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 #  Licensed to the Apache Software Foundation (ASF) under one
 #  or more contributor license agreements.  See the NOTICE file
 #  distributed with this work for additional information
@@ -18,13 +19,17 @@
 
 from .ObjectCreationParameters import ObjectCreationParameters
 
-__author__ = 'Shamal Faily'
+__author__ = "Shamal Faily"
+
 
 class MemoParameters(ObjectCreationParameters):
-  def __init__(self,memoName,memoDesc):
-    ObjectCreationParameters.__init__(self)
-    self.theName = memoName
-    self.theDescription = memoDesc
+    def __init__(self, memoName, memoDesc):
+        ObjectCreationParameters.__init__(self)
+        self.theName = memoName
+        self.theDescription = memoDesc
 
-  def name(self): return self.theName
-  def description(self): return self.theDescription
+    def name(self):
+        return self.theName
+
+    def description(self):
+        return self.theDescription

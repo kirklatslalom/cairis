@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 #  Licensed to the Apache Software Foundation (ASF) under one
 #  or more contributor license agreements.  See the NOTICE file
 #  distributed with this work for additional information
@@ -18,21 +19,33 @@
 
 from . import ObjectCreationParameters
 
-__author__ = 'Shamal Faily'
+__author__ = "Shamal Faily"
+
 
 class RiskParameters(ObjectCreationParameters.ObjectCreationParameters):
-  def __init__(self,riskName,threatName,vulName,mc,rTags,inTxt = ''):
-    ObjectCreationParameters.ObjectCreationParameters.__init__(self)
-    self.theRiskName = riskName
-    self.theThreatName = threatName
-    self.theVulnerabilityName = vulName
-    self.theMisuseCase = mc
-    self.theTags = rTags
-    self.theIntent = inTxt
+    def __init__(self, riskName, threatName, vulName, mc, rTags, inTxt=""):
+        ObjectCreationParameters.ObjectCreationParameters.__init__(self)
+        self.theRiskName = riskName
+        self.theThreatName = threatName
+        self.theVulnerabilityName = vulName
+        self.theMisuseCase = mc
+        self.theTags = rTags
+        self.theIntent = inTxt
 
-  def name(self): return self.theRiskName
-  def threat(self): return self.theThreatName
-  def vulnerability(self): return self.theVulnerabilityName
-  def misuseCase(self): return self.theMisuseCase
-  def tags(self): return self.theTags
-  def intent(self): return self.theIntent
+    def name(self):
+        return self.theRiskName
+
+    def threat(self):
+        return self.theThreatName
+
+    def vulnerability(self):
+        return self.theVulnerabilityName
+
+    def misuseCase(self):
+        return self.theMisuseCase
+
+    def tags(self):
+        return self.theTags
+
+    def intent(self):
+        return self.theIntent

@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 #  Licensed to the Apache Software Foundation (ASF) under one
 #  or more contributor license agreements.  See the NOTICE file
 #  distributed with this work for additional information
@@ -15,20 +16,32 @@
 #  specific language governing permissions and limitations
 #  under the License.
 
-__author__ = 'Shamal Faily'
+__author__ = "Shamal Faily"
+
 
 class TemplateGoal:
-  def __init__(self,goalId,goalName,goalDef,goalRat,goalConcerns,goalResp):
-    self.theId = goalId
-    self.theName = goalName
-    self.theDefinition= goalDef
-    self.theRationale = goalRat
-    self.theConcerns = goalConcerns
-    self.theResponsibilities = goalResp
+    def __init__(self, goalId, goalName, goalDef, goalRat, goalConcerns, goalResp):
+        self.theId = goalId
+        self.theName = goalName
+        self.theDefinition = goalDef
+        self.theRationale = goalRat
+        self.theConcerns = goalConcerns
+        self.theResponsibilities = goalResp
 
-  def id(self): return self.theId
-  def name(self): return self.theName
-  def definition(self): return self.theDefinition
-  def rationale(self): return self.theRationale
-  def concerns(self): return self.theConcerns
-  def responsibilities(self): return self.theResponsibilities
+    def id(self):
+        return self.theId
+
+    def name(self):
+        return self.theName
+
+    def definition(self):
+        return self.theDefinition
+
+    def rationale(self):
+        return self.theRationale
+
+    def concerns(self):
+        return self.theConcerns
+
+    def responsibilities(self):
+        return self.theResponsibilities

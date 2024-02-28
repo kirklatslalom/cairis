@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 #  Licensed to the Apache Software Foundation (ASF) under one
 #  or more contributor license agreements.  See the NOTICE file
 #  distributed with this work for additional information
@@ -15,23 +16,35 @@
 #  specific language governing permissions and limitations
 #  under the License.
 
-__author__ = 'Shamal Faily'
+__author__ = "Shamal Faily"
 
 from . import ObjectValidator
 
-class ComponentView(ObjectValidator.ObjectValidator):
-  def __init__(self,cvId,cvName,cvSyn,cvComs,cvCons,asm = [0,0,0]):
-    ObjectValidator.ObjectValidator.__init__(self)
-    self.theId = cvId
-    self.theName = cvName
-    self.theSynopsis = cvSyn
-    self.theComponents = cvComs
-    self.theConnectors = cvCons
-    self.theAttackSurfaceMetric = asm
 
-  def id(self): return self.theId
-  def name(self): return self.theName
-  def synopsis(self): return self.theSynopsis
-  def components(self): return self.theComponents
-  def connectors(self): return self.theConnectors
-  def attackSurfaceMetric(self): return self.theAttackSurfaceMetric
+class ComponentView(ObjectValidator.ObjectValidator):
+    def __init__(self, cvId, cvName, cvSyn, cvComs, cvCons, asm=[0, 0, 0]):
+        ObjectValidator.ObjectValidator.__init__(self)
+        self.theId = cvId
+        self.theName = cvName
+        self.theSynopsis = cvSyn
+        self.theComponents = cvComs
+        self.theConnectors = cvCons
+        self.theAttackSurfaceMetric = asm
+
+    def id(self):
+        return self.theId
+
+    def name(self):
+        return self.theName
+
+    def synopsis(self):
+        return self.theSynopsis
+
+    def components(self):
+        return self.theComponents
+
+    def connectors(self):
+        return self.theConnectors
+
+    def attackSurfaceMetric(self):
+        return self.theAttackSurfaceMetric

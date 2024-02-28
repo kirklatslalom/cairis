@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 #  Licensed to the Apache Software Foundation (ASF) under one
 #  or more contributor license agreements.  See the NOTICE file
 #  distributed with this work for additional information
@@ -24,40 +25,40 @@ from cairis.core.Borg import Borg
 from cairis.core.MemoParameters import MemoParameters
 import sys
 
+
 class MemoTest(unittest.TestCase):
+    def setUp(self):
+        call([os.environ["CAIRIS_CFG_DIR"] + "/initdb.sh"])
+        cairis.core.BorgFactory.initialise()
+        f = open(os.environ["CAIRIS_SRC"] + "/test/processes.json")
+        d = json.load(f)
+        f.close()
+        self.iMemos = d["memos"]
 
-  def setUp(self):
-    call([os.environ['CAIRIS_CFG_DIR'] + "/initdb.sh"])
-    cairis.core.BorgFactory.initialise()
-    f = open(os.environ['CAIRIS_SRC'] + '/test/processes.json')
-    d = json.load(f)
-    f.close()
-    self.iMemos = d['memos']
-    
+    def testAddUpdateMemo(self):
+        i = MemoParameters(self.iMemos[0]["theName"], self.iMemos[0]["theDescription"])
+        b = Borg()
+        b.dbProxy.addMemo(i)
+        oms = b.dbProxy.getMemos()
+        o = oms[self.iMemos[0]["theName"]]
+        self.assertEqual(i.name(), o.name())
+        self.assertEqual(i.description(), o.description())
 
-  def testAddUpdateMemo(self):
-    i = MemoParameters(self.iMemos[0]["theName"], self.iMemos[0]["theDescription"])
-    b = Borg()
-    b.dbProxy.addMemo(i)
-    oms = b.dbProxy.getMemos()
-    o = oms[self.iMemos[0]["theName"]]
-    self.assertEqual(i.name(), o.name())
-    self.assertEqual(i.description(),o.description())
+        o.theDescription = "Updated description"
+        b.dbProxy.updateMemo(o)
 
-    o.theDescription = 'Updated description'
-    b.dbProxy.updateMemo(o)
+        oms2 = b.dbProxy.getMemos(o.id())
+        o2 = oms2[self.iMemos[0]["theName"]]
+        self.assertEqual(i.name(), o2.name())
+        self.assertEqual("Updated description", o2.description())
 
-    oms2 = b.dbProxy.getMemos(o.id())
-    o2 = oms2[self.iMemos[0]["theName"]]
-    self.assertEqual(i.name(), o2.name())
-    self.assertEqual('Updated description',o2.description())
+        b.dbProxy.deleteMemo(o.id())
 
-    b.dbProxy.deleteMemo(o.id())
-  
-  def tearDown(self):
-    b = Borg()
-    b.dbProxy.close()
-    call([os.environ['CAIRIS_CFG_DIR'] + "/dropdb.sh"])
+    def tearDown(self):
+        b = Borg()
+        b.dbProxy.close()
+        call([os.environ["CAIRIS_CFG_DIR"] + "/dropdb.sh"])
 
-if __name__ == '__main__':
-  unittest.main()
+
+if __name__ == "__main__":
+    unittest.main()

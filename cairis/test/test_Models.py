@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 #  Licensed to the Apache Software Foundation (ASF) under one
 #  or more contributor license agreements.  See the NOTICE file
 #  distributed with this work for additional information
@@ -21,36 +22,50 @@ from cairis.mio.ModelImport import importModelFile, importLocationsFile
 import cairis.core.BorgFactory
 from cairis.core.Borg import Borg
 
-__author__ = 'Shamal Faily'
+__author__ = "Shamal Faily"
 
 
 class ModelTests(unittest.TestCase):
+    def setUp(self):
+        cairis.core.BorgFactory.initialise()
+        importModelFile(
+            os.environ["CAIRIS_SRC"] + "/../examples/exemplars/NeuroGrid/NeuroGrid.xml",
+            1,
+            "test",
+        )
 
-  def setUp(self):
-    cairis.core.BorgFactory.initialise()
-    importModelFile(os.environ['CAIRIS_SRC'] + '/../examples/exemplars/NeuroGrid/NeuroGrid.xml',1,'test')
+    def testModelCreation(self):
+        b = Borg()
+        b.get_dbproxy().classModel("Psychosis")
+        b.get_dbproxy().classModel("Psychosis", "", True)
+        b.get_dbproxy().classModel("Psychosis", "Clinical data", True)
+        b.get_dbproxy().goalModel("Psychosis")
+        b.get_dbproxy().goalModel("Psychosis", "Process clinical data on NeuroGrid")
+        b.get_dbproxy().responsibilityModel("Psychosis")
+        b.get_dbproxy().responsibilityModel("Psychosis", "Data Consumer")
+        b.get_dbproxy().obstacleModel("Psychosis")
+        b.get_dbproxy().obstacleModel("Psychosis", "Unauthorised portal access")
+        b.get_dbproxy().taskModel("Psychosis")
+        b.get_dbproxy().taskModel("Psychosis", "Upload data")
+        b.get_dbproxy().riskAnalysisModel("Psychosis")
+        b.get_dbproxy().riskAnalysisModel(
+            "Psychosis", "risk", "Unauthorised Certificate Access"
+        )
+        b.get_dbproxy().riskObstacleModel(
+            "Unauthorised Certificate Access", "Psychosis"
+        )
+        b.get_dbproxy().assumptionPersonaModel("Claire")
+        b.get_dbproxy().textualArgumentationModel("Claire", "Activities")
 
-  def testModelCreation(self):
-    b = Borg()  
-    b.get_dbproxy().classModel('Psychosis')
-    b.get_dbproxy().classModel('Psychosis','',True)
-    b.get_dbproxy().classModel('Psychosis','Clinical data',True)
-    b.get_dbproxy().goalModel('Psychosis')
-    b.get_dbproxy().goalModel('Psychosis','Process clinical data on NeuroGrid')
-    b.get_dbproxy().responsibilityModel('Psychosis')
-    b.get_dbproxy().responsibilityModel('Psychosis','Data Consumer')
-    b.get_dbproxy().obstacleModel('Psychosis')
-    b.get_dbproxy().obstacleModel('Psychosis','Unauthorised portal access')
-    b.get_dbproxy().taskModel('Psychosis')
-    b.get_dbproxy().taskModel('Psychosis','Upload data')
-    b.get_dbproxy().riskAnalysisModel('Psychosis')
-    b.get_dbproxy().riskAnalysisModel('Psychosis','risk','Unauthorised Certificate Access')
-    b.get_dbproxy().riskObstacleModel('Unauthorised Certificate Access','Psychosis')
-    b.get_dbproxy().assumptionPersonaModel('Claire')
-    b.get_dbproxy().textualArgumentationModel('Claire','Activities')
-    
-    importModelFile(os.environ['CAIRIS_SRC'] + '/../examples/exemplars/ACME_Water/ACME_Water.xml',1,'test')
-    importLocationsFile(os.environ['CAIRIS_SRC'] + '/../examples/exemplars/ACME_Water/PooleWWTW.xml','test')
-    b.get_dbproxy().locationsRiskModel('PooleWWTW','Day')
-
-
+        importModelFile(
+            os.environ["CAIRIS_SRC"]
+            + "/../examples/exemplars/ACME_Water/ACME_Water.xml",
+            1,
+            "test",
+        )
+        importLocationsFile(
+            os.environ["CAIRIS_SRC"]
+            + "/../examples/exemplars/ACME_Water/PooleWWTW.xml",
+            "test",
+        )
+        b.get_dbproxy().locationsRiskModel("PooleWWTW", "Day")

@@ -22,15 +22,15 @@
      "theEnvironmentProperties" :
       [
         ["Psychosis",
-         [3,0,2,0,0,0,0,0], 
+         [3,0,2,0,0,0,0,0],
          ["Researchers very worried about the disclosure of partially anonymised patient data.","None","Availability of NeuroGrid is quite important, but prepared to sacrifice this if doing so safeguards clinical data.","None","None","None","None","None"]
         ],
         ["Stroke",
-         [1,0,3,0,0,0,0,0], 
+         [1,0,3,0,0,0,0,0],
          ["Clinical data is fully anonymised","None","NeuroGrid availability important for clinical trials","None","None","None","None","None"]
         ],
         ["Core Technology",
-         [0,0,0,3,0,0,0,0], 
+         [0,0,0,3,0,0,0,0],
          ["None","None","None","Important for CA to know who is allowed to access what data items.","None","None","None","None"]
         ]
       ]

@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 #  Licensed to the Apache Software Foundation (ASF) under one
 #  or more contributor license agreements.  See the NOTICE file
 #  distributed with this work for additional information
@@ -15,61 +16,108 @@
 #  specific language governing permissions and limitations
 #  under the License.
 
-__author__ = 'Shamal Faily'
+__author__ = "Shamal Faily"
 
 
 class ARMException(Exception):
-  def __init__(self,value): self.value = value
-  def __str__(self): return repr(self.value)
+    def __init__(self, value):
+        self.value = value
+
+    def __str__(self):
+        return repr(self.value)
+
 
 class EnvironmentValidationError(ARMException):
-  def __init__(self,value): ARMException.__init__(self,value)
+    def __init__(self, value):
+        ARMException.__init__(self, value)
+
 
 class ObjectNotFound(ARMException):
-  def __init__(self,value): ARMException.__init__(self,value)
+    def __init__(self, value):
+        ARMException.__init__(self, value)
+
 
 class DatabaseProxyException(ARMException):
-  def __init__(self,value): ARMException.__init__(self,value)
+    def __init__(self, value):
+        ARMException.__init__(self, value)
+
 
 class IntegrityException(DatabaseProxyException):
-  def __init__(self,value): ARMException.__init__(self,value)
+    def __init__(self, value):
+        ARMException.__init__(self, value)
+
 
 class RequirementDoesNotExist(ARMException):
-  def __init__(self,value): ARMException.__init__(self,value)
+    def __init__(self, value):
+        ARMException.__init__(self, value)
+
 
 class UnknownParameterClass(ARMException):
-  def __init__(self,value): ARMException.__init__(self,value)
+    def __init__(self, value):
+        ARMException.__init__(self, value)
+
 
 class UnknownPanelClass(ARMException):
-  def __init__(self,value): ARMException.__init__(self,value)
+    def __init__(self, value):
+        ARMException.__init__(self, value)
+
 
 class UnknownNodeType(ARMException):
-  def __init__(self,value): ARMException.__init__(self,value)
+    def __init__(self, value):
+        ARMException.__init__(self, value)
+
 
 class UnknownDialogClass(ARMException):
-  def __init__(self,value): ARMException.__init__(self,value)
+    def __init__(self, value):
+        ARMException.__init__(self, value)
+
 
 class UnknownOperatingSystem(ARMException):
-  def __init__(self,value): ARMException.__init__(self,value)
+    def __init__(self, value):
+        ARMException.__init__(self, value)
+
 
 class ConflictingType(ARMException):
-  def __init__(self,value): ARMException.__init__(self,value)
+    def __init__(self, value):
+        ARMException.__init__(self, value)
+
 
 class SessionNotFound(ARMException):
-  def __init__(self,value): ARMException.__init__(self,'Session not found')
+    def __init__(self, value):
+        ARMException.__init__(self, "Session not found")
+
 
 class AttributeTooBig(ARMException):
-  def __init__(self,value): ARMException.__init__(self,value)
+    def __init__(self, value):
+        ARMException.__init__(self, value)
+
 
 class NoImpliedCharacteristic(Exception):
-  def __init__(self,pName,fromCode,toCode,rtName):
-    self.thePersonaName = pName
-    self.theFromCode = fromCode
-    self.theToCode = toCode
-    self.theRTName = rtName
+    def __init__(self, pName, fromCode, toCode, rtName):
+        self.thePersonaName = pName
+        self.theFromCode = fromCode
+        self.theToCode = toCode
+        self.theRTName = rtName
 
-  def persona(self): return self.thePersonaName
-  def fromCode(self): return self.theFromCode
-  def toCode(self): return self.theToCode
-  def rType(self): return self.theRTName
-  def __str__(self):  return repr(self.thePersonaName + '/' + self.theFromCode + '/' + self.theToCode + '/' + self.theRTName)
+    def persona(self):
+        return self.thePersonaName
+
+    def fromCode(self):
+        return self.theFromCode
+
+    def toCode(self):
+        return self.theToCode
+
+    def rType(self):
+        return self.theRTName
+
+    def __str__(self):
+        return repr(
+            self.thePersonaName
+            + "/"
+            + self.theFromCode
+            + "/"
+            + self.theToCode
+            + "/"
+            + self.theRTName
+        )

@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 #  Licensed to the Apache Software Foundation (ASF) under one
 #  or more contributor license agreements.  See the NOTICE file
 #  distributed with this work for additional information
@@ -15,18 +16,24 @@
 #  specific language governing permissions and limitations
 #  under the License.
 
-__author__ = 'Shamal Faily'
+__author__ = "Shamal Faily"
 
 
 from .EnvironmentProperties import EnvironmentProperties
 
-class AttackerEnvironmentProperties(EnvironmentProperties):
-  def __init__(self,environmentName,roles,motives,capabilities):
-    EnvironmentProperties.__init__(self,environmentName)
-    self.theRoles = roles
-    self.theMotives = motives
-    self.theCapabilities = capabilities 
 
-  def roles(self): return self.theRoles
-  def motives(self): return self.theMotives
-  def capabilities(self): return self.theCapabilities
+class AttackerEnvironmentProperties(EnvironmentProperties):
+    def __init__(self, environmentName, roles, motives, capabilities):
+        EnvironmentProperties.__init__(self, environmentName)
+        self.theRoles = roles
+        self.theMotives = motives
+        self.theCapabilities = capabilities
+
+    def roles(self):
+        return self.theRoles
+
+    def motives(self):
+        return self.theMotives
+
+    def capabilities(self):
+        return self.theCapabilities

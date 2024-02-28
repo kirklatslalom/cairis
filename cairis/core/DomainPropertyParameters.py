@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 #  Licensed to the Apache Software Foundation (ASF) under one
 #  or more contributor license agreements.  See the NOTICE file
 #  distributed with this work for additional information
@@ -18,19 +19,29 @@
 
 from .ObjectCreationParameters import ObjectCreationParameters
 
-__author__ = 'Shamal Faily'
+__author__ = "Shamal Faily"
+
 
 class DomainPropertyParameters(ObjectCreationParameters):
-  def __init__(self,name,desc,dpType,dpOrig,tags):
-    ObjectCreationParameters.__init__(self)
-    self.theName = name
-    self.theTags = tags
-    self.theDescription = desc
-    self.theType = dpType
-    self.theOriginator = dpOrig
+    def __init__(self, name, desc, dpType, dpOrig, tags):
+        ObjectCreationParameters.__init__(self)
+        self.theName = name
+        self.theTags = tags
+        self.theDescription = desc
+        self.theType = dpType
+        self.theOriginator = dpOrig
 
-  def name(self): return self.theName
-  def tags(self): return self.theTags
-  def description(self): return self.theDescription
-  def type(self): return self.theType
-  def originator(self): return self.theOriginator
+    def name(self):
+        return self.theName
+
+    def tags(self):
+        return self.theTags
+
+    def description(self):
+        return self.theDescription
+
+    def type(self):
+        return self.theType
+
+    def originator(self):
+        return self.theOriginator

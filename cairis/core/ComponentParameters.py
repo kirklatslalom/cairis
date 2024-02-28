@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 #  Licensed to the Apache Software Foundation (ASF) under one
 #  or more contributor license agreements.  See the NOTICE file
 #  distributed with this work for additional information
@@ -18,23 +19,37 @@
 
 from . import ObjectCreationParameters
 
-__author__ = 'Shamal Faily'
+__author__ = "Shamal Faily"
+
 
 class ComponentParameters(ObjectCreationParameters.ObjectCreationParameters):
-  def __init__(self,cName,cDesc,cInterfaces,cStruct,cReq,cGoals,cAssocs):
-    ObjectCreationParameters.ObjectCreationParameters.__init__(self)
-    self.theName = cName
-    self.theDescription = cDesc
-    self.theInterfaces = cInterfaces
-    self.theStructure = cStruct
-    self.theRequirements = cReq
-    self.theGoals = cGoals
-    self.theGoalAssociations = cAssocs
+    def __init__(self, cName, cDesc, cInterfaces, cStruct, cReq, cGoals, cAssocs):
+        ObjectCreationParameters.ObjectCreationParameters.__init__(self)
+        self.theName = cName
+        self.theDescription = cDesc
+        self.theInterfaces = cInterfaces
+        self.theStructure = cStruct
+        self.theRequirements = cReq
+        self.theGoals = cGoals
+        self.theGoalAssociations = cAssocs
 
-  def name(self): return self.theName
-  def description(self): return self.theDescription
-  def interfaces(self): return self.theInterfaces
-  def structure(self): return self.theStructure
-  def requirements(self): return self.theRequirements
-  def goals(self): return self.theGoals
-  def associations(self): return self.theGoalAssociations
+    def name(self):
+        return self.theName
+
+    def description(self):
+        return self.theDescription
+
+    def interfaces(self):
+        return self.theInterfaces
+
+    def structure(self):
+        return self.theStructure
+
+    def requirements(self):
+        return self.theRequirements
+
+    def goals(self):
+        return self.theGoals
+
+    def associations(self):
+        return self.theGoalAssociations

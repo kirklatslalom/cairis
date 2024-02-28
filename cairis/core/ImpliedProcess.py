@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 #  Licensed to the Apache Software Foundation (ASF) under one
 #  or more contributor license agreements.  See the NOTICE file
 #  distributed with this work for additional information
@@ -15,23 +16,36 @@
 #  specific language governing permissions and limitations
 #  under the License.
 
-__author__ = 'Shamal Faily'
+__author__ = "Shamal Faily"
+
 
 class ImpliedProcess:
-  def __init__(self,ipId,ipName,ipDesc,pName,cNet,ipSpec,chs):
-    self.theId = ipId
-    self.theName = ipName
-    self.theDescription = ipDesc
-    self.thePersonaName = pName
-    self.theCodeNetwork = cNet
-    self.theSpecification = ipSpec
-    self.theChannels = chs
-  
-  def id(self): return self.theId
-  def name(self): return self.theName
-  def description(self): return self.theDescription
-  def persona(self): return self.thePersonaName
-  def network(self): return self.theCodeNetwork
-  def specification(self): return self.theSpecification
-  def channels(self): return self.theChannels
+    def __init__(self, ipId, ipName, ipDesc, pName, cNet, ipSpec, chs):
+        self.theId = ipId
+        self.theName = ipName
+        self.theDescription = ipDesc
+        self.thePersonaName = pName
+        self.theCodeNetwork = cNet
+        self.theSpecification = ipSpec
+        self.theChannels = chs
 
+    def id(self):
+        return self.theId
+
+    def name(self):
+        return self.theName
+
+    def description(self):
+        return self.theDescription
+
+    def persona(self):
+        return self.thePersonaName
+
+    def network(self):
+        return self.theCodeNetwork
+
+    def specification(self):
+        return self.theSpecification
+
+    def channels(self):
+        return self.theChannels

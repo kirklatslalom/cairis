@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 #  Licensed to the Apache Software Foundation (ASF) under one
 #  or more contributor license agreements.  See the NOTICE file
 #  distributed with this work for additional information
@@ -16,53 +17,69 @@
 #  under the License.
 
 
-from xml.sax.handler import ContentHandler,EntityResolver
+from xml.sax.handler import ContentHandler, EntityResolver
 from cairis.core.ValueTypeParameters import ValueTypeParameters
 from cairis.core.Borg import Borg
 
-__author__ = 'Shamal Faily'
-
-class DirectoryContentHandler(ContentHandler,EntityResolver):
-  def __init__(self):
-    self.theVulnerabilityDirectory = []
-    self.theThreatDirectory = []
-    b = Borg()
-    self.configDir = b.configDir
-    self.resetAttributes()
-
-  def resolveEntity(self,publicId,systemId):
-    return systemId
-
-  def directories(self):
-    return (self.theVulnerabilityDirectory,self.theThreatDirectory)
-
-  def resetAttributes(self):
-    self.inDescription = 0
-    self.theLabel = ''
-    self.theName = ''
-    self.theType = ''
-    self.theReference = ''
-    self.theDescription = ''
+__author__ = "Shamal Faily"
 
 
-  def startElement(self,name,attrs):
-    if (name == 'vulnerability' or name == 'threat'):
-      self.theLabel = attrs['label']
-      self.theName = attrs['name']
-      self.theType = attrs['type']
-      self.theReference = attrs['reference']
-    elif (name == 'description'):
-      self.inDescription = 1
+class DirectoryContentHandler(ContentHandler, EntityResolver):
+    def __init__(self):
+        self.theVulnerabilityDirectory = []
+        self.theThreatDirectory = []
+        b = Borg()
+        self.configDir = b.configDir
+        self.resetAttributes()
 
-  def characters(self,data):
-    if self.inDescription:
-      self.theDescription = data
-      self.inDescription = 0
+    def resolveEntity(self, publicId, systemId):
+        return systemId
 
-  def endElement(self,name):
-    if (name == 'vulnerability'):
-      self.theVulnerabilityDirectory.append((self.theLabel,self.theName,self.theDescription,self.theType,self.theReference))
-      self.resetAttributes() 
-    if name == 'threat':
-      self.theThreatDirectory.append((self.theLabel,self.theName,self.theDescription,self.theType,self.theReference))
-      self.resetAttributes() 
+    def directories(self):
+        return (self.theVulnerabilityDirectory, self.theThreatDirectory)
+
+    def resetAttributes(self):
+        self.inDescription = 0
+        self.theLabel = ""
+        self.theName = ""
+        self.theType = ""
+        self.theReference = ""
+        self.theDescription = ""
+
+    def startElement(self, name, attrs):
+        if name == "vulnerability" or name == "threat":
+            self.theLabel = attrs["label"]
+            self.theName = attrs["name"]
+            self.theType = attrs["type"]
+            self.theReference = attrs["reference"]
+        elif name == "description":
+            self.inDescription = 1
+
+    def characters(self, data):
+        if self.inDescription:
+            self.theDescription = data
+            self.inDescription = 0
+
+    def endElement(self, name):
+        if name == "vulnerability":
+            self.theVulnerabilityDirectory.append(
+                (
+                    self.theLabel,
+                    self.theName,
+                    self.theDescription,
+                    self.theType,
+                    self.theReference,
+                )
+            )
+            self.resetAttributes()
+        if name == "threat":
+            self.theThreatDirectory.append(
+                (
+                    self.theLabel,
+                    self.theName,
+                    self.theDescription,
+                    self.theType,
+                    self.theReference,
+                )
+            )
+            self.resetAttributes()

@@ -1,4 +1,5 @@
 #!/usr/bin/python3
+# -*- coding: utf-8 -*-
 #  Licensed to the Apache Software Foundation (ASF) under one
 #  or more contributor license agreements.  See the NOTICE file
 #  distributed with this work for additional information
@@ -16,7 +17,7 @@
 #  specific language governing permissions and limitations
 #  under the License.
 
-__author__ = 'Shamal Faily'
+__author__ = "Shamal Faily"
 
 import os
 import sys
@@ -28,18 +29,21 @@ from flask_security import user_registered
 
 application = create_app()
 
+
 @application.after_request
 def apply_caching(response):
-  response.headers["X-Frame-Options"] = "SAMEORIGIN"
-  return response
+    response.headers["X-Frame-Options"] = "SAMEORIGIN"
+    return response
+
 
 @user_registered.connect_via(application)
-def enroll(sender, user, confirm_token,confirmation_token=None,form_data = {}):
-  addAdditionalUserData(user.email, user.password)
+def enroll(sender, user, confirm_token, confirmation_token=None, form_data={}):
+    addAdditionalUserData(user.email, user.password)
 
-if __name__ == '__main__':
-  try:
-    application.run() 
-  except CairisHTTPError as e:
-    print('Fatal CAIRIS error: ' + str(e))
-    sys.exit(-1)
+
+if __name__ == "__main__":
+    try:
+        application.run()
+    except CairisHTTPError as e:
+        print("Fatal CAIRIS error: " + str(e))
+        sys.exit(-1)

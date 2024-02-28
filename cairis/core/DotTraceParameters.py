@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 #  Licensed to the Apache Software Foundation (ASF) under one
 #  or more contributor license agreements.  See the NOTICE file
 #  distributed with this work for additional information
@@ -18,8 +19,11 @@
 
 from . import TraceParameters
 
-__author__ = 'Shamal Faily'
+__author__ = "Shamal Faily"
+
 
 class DotTraceParameters(TraceParameters.TraceParameters):
-  def __init__(self,fromObjt,fromName,toObjt,toName):
-    TraceParameters.TraceParameters.__init__(self,fromObjt,fromName,toObjt,toName)
+    def __init__(self, fromObjt, fromName, toObjt, toName):
+        TraceParameters.TraceParameters.__init__(
+            self, fromObjt, fromName, toObjt, toName
+        )

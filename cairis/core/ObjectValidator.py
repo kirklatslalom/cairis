@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 #  Licensed to the Apache Software Foundation (ASF) under one
 #  or more contributor license agreements.  See the NOTICE file
 #  distributed with this work for additional information
@@ -15,22 +16,31 @@
 #  specific language governing permissions and limitations
 #  under the License.
 
-__author__ = 'Shamal Faily'
+__author__ = "Shamal Faily"
 
 from .Borg import Borg
 from .ARM import AttributeTooBig
 
-class ObjectValidator:
-  def __init__(self):
-    pass
 
-  def validate(self):
-    b = Borg()
-    if self.__class__.__name__ in b.objtSizes:
-      pSizes = b.objtSizes[self.__class__.__name__]
-      for pAttr in dir(self):
-        if pAttr in pSizes:
-          inAttrLen = len(getattr(self,pAttr))
-          if (inAttrLen > pSizes[pAttr]):
-            msg = self.__class__.__name__ + ' attribute ' + pAttr + ' length is ' + str(inAttrLen) + ', but the maximum allowable length is ' + str(pSizes[pAttr])
-            raise AttributeTooBig(msg)
+class ObjectValidator:
+    def __init__(self):
+        pass
+
+    def validate(self):
+        b = Borg()
+        if self.__class__.__name__ in b.objtSizes:
+            pSizes = b.objtSizes[self.__class__.__name__]
+            for pAttr in dir(self):
+                if pAttr in pSizes:
+                    inAttrLen = len(getattr(self, pAttr))
+                    if inAttrLen > pSizes[pAttr]:
+                        msg = (
+                            self.__class__.__name__
+                            + " attribute "
+                            + pAttr
+                            + " length is "
+                            + str(inAttrLen)
+                            + ", but the maximum allowable length is "
+                            + str(pSizes[pAttr])
+                        )
+                        raise AttributeTooBig(msg)

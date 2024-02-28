@@ -6,7 +6,7 @@ We welcome reports on any problems related the functionality, security, or gener
 
 ## Contributing new changes
 
-When contributing to CAIRIS, please first discuss the change you wish to make via issue (preferrable) or email before making a change. 
+When contributing to CAIRIS, please first discuss the change you wish to make via issue (preferrable) or email before making a change.
 
 Please note we have a code of conduct, please follow it in all your interactions with the project.
 

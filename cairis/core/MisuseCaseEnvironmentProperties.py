@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 #  Licensed to the Apache Software Foundation (ASF) under one
 #  or more contributor license agreements.  See the NOTICE file
 #  distributed with this work for additional information
@@ -18,11 +19,13 @@
 
 from .EnvironmentProperties import EnvironmentProperties
 
-__author__ = 'Shamal Faily'
+__author__ = "Shamal Faily"
+
 
 class MisuseCaseEnvironmentProperties(EnvironmentProperties):
-  def __init__(self,environmentName,narrative = ''):
-    EnvironmentProperties.__init__(self,environmentName)
-    self.theDescription = narrative
+    def __init__(self, environmentName, narrative=""):
+        EnvironmentProperties.__init__(self, environmentName)
+        self.theDescription = narrative
 
-  def narrative(self): return self.theDescription
+    def narrative(self):
+        return self.theDescription

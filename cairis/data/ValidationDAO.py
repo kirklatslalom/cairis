@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 #  Licensed to the Apache Software Foundation (ASF) under one
 #  or more contributor license agreements.  See the NOTICE file
 #  distributed with this work for additional information
@@ -18,17 +19,17 @@
 from cairis.core.ARM import *
 from cairis.daemon.CairisHTTPError import ARMHTTPError
 from cairis.data.CairisDAO import CairisDAO
-__author__ = 'Shamal Faily'
+
+__author__ = "Shamal Faily"
 
 
 class ValidationDAO(CairisDAO):
+    def __init__(self, session_id):
+        CairisDAO.__init__(self, session_id)
 
-  def __init__(self, session_id):
-    CairisDAO.__init__(self, session_id)
-
-  def model_validation(self,envName, pathValues = []):
-    try:
-      return self.db_proxy.modelValidation(envName)
-    except ARMException as ex:
-      self.close()
-      raise ARMHTTPError(ex)
+    def model_validation(self, envName, pathValues=[]):
+        try:
+            return self.db_proxy.modelValidation(envName)
+        except ARMException as ex:
+            self.close()
+            raise ARMHTTPError(ex)

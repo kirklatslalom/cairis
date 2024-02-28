@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 #  Licensed to the Apache Software Foundation (ASF) under one
 #  or more contributor license agreements.  See the NOTICE file
 #  distributed with this work for additional information
@@ -18,30 +19,62 @@
 
 from .EnvironmentProperties import EnvironmentProperties
 
-__author__ = 'Shamal Faily'
+__author__ = "Shamal Faily"
+
 
 class ObstacleEnvironmentProperties(EnvironmentProperties):
-  def __init__(self,environmentName,lbl='',definition='',category='',gRefs=[], sgRefs=[], concs=[]):
-    EnvironmentProperties.__init__(self,environmentName)
-    self.theLabel = lbl
-    self.theDefinition = definition
-    self.theCategory = category
-    self.theGoalRefinements = gRefs
-    self.theSubGoalRefinements = sgRefs
-    self.theConcerns = concs
-    self.theProbability = 0.0
-    self.theProbabilityRationale = 'None'
+    def __init__(
+        self,
+        environmentName,
+        lbl="",
+        definition="",
+        category="",
+        gRefs=[],
+        sgRefs=[],
+        concs=[],
+    ):
+        EnvironmentProperties.__init__(self, environmentName)
+        self.theLabel = lbl
+        self.theDefinition = definition
+        self.theCategory = category
+        self.theGoalRefinements = gRefs
+        self.theSubGoalRefinements = sgRefs
+        self.theConcerns = concs
+        self.theProbability = 0.0
+        self.theProbabilityRationale = "None"
 
-  def label(self): return self.theLabel
-  def definition(self): return self.theDefinition
-  def category(self): return self.theCategory
-  def goalRefinements(self): return self.theGoalRefinements
-  def subGoalRefinements(self): return self.theSubGoalRefinements
-  def concerns(self): return self.theConcerns
-  def probability(self): return self.theProbability
-  def probabilityRationale(self): return self.theProbabilityRationale
+    def label(self):
+        return self.theLabel
 
-  def setDefinition(self,v): self.theDefinition = v
-  def setCategory(self,v): self.theCategory = v
-  def setProbability(self,p): self.theProbability = p
-  def setProbabilityRationale(self,r): self.theProbabilityRationale = r
+    def definition(self):
+        return self.theDefinition
+
+    def category(self):
+        return self.theCategory
+
+    def goalRefinements(self):
+        return self.theGoalRefinements
+
+    def subGoalRefinements(self):
+        return self.theSubGoalRefinements
+
+    def concerns(self):
+        return self.theConcerns
+
+    def probability(self):
+        return self.theProbability
+
+    def probabilityRationale(self):
+        return self.theProbabilityRationale
+
+    def setDefinition(self, v):
+        self.theDefinition = v
+
+    def setCategory(self, v):
+        self.theCategory = v
+
+    def setProbability(self, p):
+        self.theProbability = p
+
+    def setProbabilityRationale(self, r):
+        self.theProbabilityRationale = r

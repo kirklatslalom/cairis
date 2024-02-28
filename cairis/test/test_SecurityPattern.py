@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 #  Licensed to the Apache Software Foundation (ASF) under one
 #  or more contributor license agreements.  See the NOTICE file
 #  distributed with this work for additional information
@@ -18,28 +19,33 @@
 import unittest
 import os
 import logging
-from cairis.mio.ModelImport import importModelFile,importSecurityPatternsFile
+from cairis.mio.ModelImport import importModelFile, importSecurityPatternsFile
 import cairis.core.BorgFactory
 from cairis.core.Borg import Borg
 
-__author__ = 'Shamal Faily'
+__author__ = "Shamal Faily"
 
 
 class SecurityPatternTests(unittest.TestCase):
+    @classmethod
+    def setUpClass(cls):
+        cairis.core.BorgFactory.initialise()
+        importModelFile(
+            os.environ["CAIRIS_SRC"] + "/../examples/exemplars/NeuroGrid/NeuroGrid.xml",
+            1,
+        )
+        importSecurityPatternsFile(
+            os.environ["CAIRIS_SRC"]
+            + "/../examples/architecture/schumacher_patterns.xml"
+        )
 
-  @classmethod
-  def setUpClass(cls):
-    cairis.core.BorgFactory.initialise()
-    importModelFile(os.environ['CAIRIS_SRC'] + '/../examples/exemplars/NeuroGrid/NeuroGrid.xml',1)
-    importSecurityPatternsFile(os.environ['CAIRIS_SRC'] + '/../examples/architecture/schumacher_patterns.xml')
+    def setUp(self):
+        pass
 
-  def setUp(self):
-    pass
+    def tearDown(self):
+        pass
 
-  def tearDown(self):
-    pass
-
-  def testGetSecurityPatterns(self):
-    b = Borg()
-    sps = b.dbProxy.getSecurityPatterns()
-    self.assertEqual(len(sps), 5)
+    def testGetSecurityPatterns(self):
+        b = Borg()
+        sps = b.dbProxy.getSecurityPatterns()
+        self.assertEqual(len(sps), 5)

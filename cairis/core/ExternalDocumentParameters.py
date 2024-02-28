@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 #  Licensed to the Apache Software Foundation (ASF) under one
 #  or more contributor license agreements.  See the NOTICE file
 #  distributed with this work for additional information
@@ -18,19 +19,29 @@
 
 from .ObjectCreationParameters import ObjectCreationParameters
 
-__author__ = 'Shamal Faily'
+__author__ = "Shamal Faily"
+
 
 class ExternalDocumentParameters(ObjectCreationParameters):
-  def __init__(self,edName,edVersion,edDate,edAuths,edDesc):
-    ObjectCreationParameters.__init__(self)
-    self.theName = edName
-    self.theVersion = edVersion
-    self.thePublicationDate = edDate
-    self.theAuthors = edAuths
-    self.theDescription = edDesc
+    def __init__(self, edName, edVersion, edDate, edAuths, edDesc):
+        ObjectCreationParameters.__init__(self)
+        self.theName = edName
+        self.theVersion = edVersion
+        self.thePublicationDate = edDate
+        self.theAuthors = edAuths
+        self.theDescription = edDesc
 
-  def name(self): return self.theName
-  def version(self): return self.theVersion
-  def date(self): return self.thePublicationDate
-  def authors(self): return self.theAuthors
-  def description(self): return self.theDescription
+    def name(self):
+        return self.theName
+
+    def version(self):
+        return self.theVersion
+
+    def date(self):
+        return self.thePublicationDate
+
+    def authors(self):
+        return self.theAuthors
+
+    def description(self):
+        return self.theDescription

@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 #  Licensed to the Apache Software Foundation (ASF) under one
 #  or more contributor license agreements.  See the NOTICE file
 #  distributed with this work for additional information
@@ -15,25 +16,39 @@
 #  specific language governing permissions and limitations
 #  under the License.
 
-__author__ = 'Shamal Faily'
+__author__ = "Shamal Faily"
 
 from . import ObjectCreationParameters
 
-class TaskParameters(ObjectCreationParameters.ObjectCreationParameters):
-  def __init__(self,tName,tSName,tObjt,isAssumption,tAuth,tags,cProps):
-    ObjectCreationParameters.ObjectCreationParameters.__init__(self)
-    self.theName = tName
-    self.theTags = tags
-    self.theShortCode = tSName
-    self.theObjective = tObjt
-    self.isAssumption = isAssumption
-    self.theAuthor = tAuth
-    self.theEnvironmentProperties = cProps
 
-  def name(self): return self.theName
-  def tags(self): return self.theTags
-  def shortCode(self): return self.theShortCode
-  def objective(self): return self.theObjective
-  def assumption(self): return self.isAssumption
-  def author(self): return self.theAuthor
-  def environmentProperties(self): return self.theEnvironmentProperties
+class TaskParameters(ObjectCreationParameters.ObjectCreationParameters):
+    def __init__(self, tName, tSName, tObjt, isAssumption, tAuth, tags, cProps):
+        ObjectCreationParameters.ObjectCreationParameters.__init__(self)
+        self.theName = tName
+        self.theTags = tags
+        self.theShortCode = tSName
+        self.theObjective = tObjt
+        self.isAssumption = isAssumption
+        self.theAuthor = tAuth
+        self.theEnvironmentProperties = cProps
+
+    def name(self):
+        return self.theName
+
+    def tags(self):
+        return self.theTags
+
+    def shortCode(self):
+        return self.theShortCode
+
+    def objective(self):
+        return self.theObjective
+
+    def assumption(self):
+        return self.isAssumption
+
+    def author(self):
+        return self.theAuthor
+
+    def environmentProperties(self):
+        return self.theEnvironmentProperties

@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 #  Licensed to the Apache Software Foundation (ASF) under one
 #  or more contributor license agreements.  See the NOTICE file
 #  distributed with this work for additional information
@@ -18,17 +19,25 @@
 
 from .ObjectCreationParameters import ObjectCreationParameters
 
-__author__ = 'Shamal Faily'
+__author__ = "Shamal Faily"
+
 
 class DocumentReferenceParameters(ObjectCreationParameters):
-  def __init__(self,refName,docName,cName,docExc):
-    ObjectCreationParameters.__init__(self)
-    self.theName = refName
-    self.theDocName = docName
-    self.theContributor = cName
-    self.theExcerpt = docExc
+    def __init__(self, refName, docName, cName, docExc):
+        ObjectCreationParameters.__init__(self)
+        self.theName = refName
+        self.theDocName = docName
+        self.theContributor = cName
+        self.theExcerpt = docExc
 
-  def name(self): return self.theName
-  def document(self): return self.theDocName
-  def contributor(self): return self.theContributor
-  def description(self): return self.theExcerpt
+    def name(self):
+        return self.theName
+
+    def document(self):
+        return self.theDocName
+
+    def contributor(self):
+        return self.theContributor
+
+    def description(self):
+        return self.theExcerpt

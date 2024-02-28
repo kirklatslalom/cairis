@@ -1,7 +1,7 @@
 Extending CAIRIS
 ================
 
-Over the years, CAIRIS has evolved to support new concepts and types of model.  Its architecture has also evolved to make it easy for its [sadly] small development team to effectively maintain several hundred thousand lines of code.  As a corollary, it is comparatively easy to extend CAIRIS, provided you follow the steps below. 
+Over the years, CAIRIS has evolved to support new concepts and types of model.  Its architecture has also evolved to make it easy for its [sadly] small development team to effectively maintain several hundred thousand lines of code.  As a corollary, it is comparatively easy to extend CAIRIS, provided you follow the steps below.
 
 1.  Define the database tables
 ------------------------------
@@ -21,7 +21,7 @@ You need to create stored procedures for manipulating with your model data.  The
 4.  Write your model object test case
 -------------------------------------
 
-Each model concept in CAIRIS should have its own test case in `cairis/test <https://github.com/cairis-platform/cairis/tree/master/cairis/test>`_.  This effectively tests your stored procedures and methods in `cairis/core/MySQLDatabaseProxy.py <https://github.com/cairis-platform/cairis/blob/master/cairis/core/MySQLDatabaseProxy.py>`_ work correctly.  The idiom used is to create test data in JSON, and to create a test case that retrieves, adds, updates and deletes model objects.   
+Each model concept in CAIRIS should have its own test case in `cairis/test <https://github.com/cairis-platform/cairis/tree/master/cairis/test>`_.  This effectively tests your stored procedures and methods in `cairis/core/MySQLDatabaseProxy.py <https://github.com/cairis-platform/cairis/blob/master/cairis/core/MySQLDatabaseProxy.py>`_ work correctly.  The idiom used is to create test data in JSON, and to create a test case that retrieves, adds, updates and deletes model objects.
 
 5.  Update the CAIRIS DTDs
 --------------------------

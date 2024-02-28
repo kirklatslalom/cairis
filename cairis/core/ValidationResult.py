@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 #  Licensed to the Apache Software Foundation (ASF) under one
 #  or more contributor license agreements.  See the NOTICE file
 #  distributed with this work for additional information
@@ -15,9 +16,10 @@
 #  specific language governing permissions and limitations
 #  under the License.
 
-__author__ = 'Shamal Faily'
+__author__ = "Shamal Faily"
+
 
 class ValidationResult:
-  def __init__(self,lbl = '',msg = ''):
-    self.theLabel= lbl
-    self.theMessage = msg
+    def __init__(self, lbl="", msg=""):
+        self.theLabel = lbl
+        self.theMessage = msg

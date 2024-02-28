@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 #  Licensed to the Apache Software Foundation (ASF) under one
 #  or more contributor license agreements.  See the NOTICE file
 #  distributed with this work for additional information
@@ -18,21 +19,33 @@
 
 from . import ObjectCreationParameters
 
-__author__ = 'Shamal Faily'
+__author__ = "Shamal Faily"
+
 
 class ImpliedProcessParameters(ObjectCreationParameters.ObjectCreationParameters):
-  def __init__(self,ipName,ipDesc,pName,cNet,ipSpec,chs):
-    ObjectCreationParameters.ObjectCreationParameters.__init__(self)
-    self.theName = ipName
-    self.theDescription = ipDesc
-    self.thePersonaName = pName
-    self.theCodeNetwork = cNet
-    self.theSpecification = ipSpec
-    self.theChannels = chs
+    def __init__(self, ipName, ipDesc, pName, cNet, ipSpec, chs):
+        ObjectCreationParameters.ObjectCreationParameters.__init__(self)
+        self.theName = ipName
+        self.theDescription = ipDesc
+        self.thePersonaName = pName
+        self.theCodeNetwork = cNet
+        self.theSpecification = ipSpec
+        self.theChannels = chs
 
-  def name(self): return self.theName
-  def description(self): return self.theDescription
-  def persona(self): return self.thePersonaName
-  def network(self): return self.theCodeNetwork
-  def specification(self): return self.theSpecification
-  def channels(self): return self.theChannels
+    def name(self):
+        return self.theName
+
+    def description(self):
+        return self.theDescription
+
+    def persona(self):
+        return self.thePersonaName
+
+    def network(self):
+        return self.theCodeNetwork
+
+    def specification(self):
+        return self.theSpecification
+
+    def channels(self):
+        return self.theChannels

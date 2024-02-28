@@ -55,7 +55,7 @@ Adding, updating, or deleting a persona
    information about persona roles, and an environment specific narrative.
 
 -  After ensuring the environment is selected in the environment window,
-   click on the Roles tab. Select the Direct User 
+   click on the Roles tab. Select the Direct User
    checkbox if the persona is a direct stakeholder with respect to the
    system being defined, and add roles fulfilled by the persona in the
    Roles list-box. These roles can be added by clicking on the add button in the role table,
@@ -88,11 +88,11 @@ Overview
 Persona specifications are necessary, but not sufficient for indicating the validity of a persona; you should also describe the basis for each part of the persona specification too.
 Personas might be created on the basis of some user research.  The results of this user research might be coded as a collection of factoids -- statements about the data that might be true or false -- before the user research makes sense of this data using an activity like affinity diagramming.  Clusters of factoids resulting from this exercise form the basis of each aspect of the persona.  Normally, however, this data and the results of the analysis are discarded once the persona is created, which means there is no rationale to justify the persona should questions of clarification of legitimacy be asked about them.
 
-To overcome this problem, CAIRIS supports the creation of *persona characteristics*.  These are argumentation models where the *argument* is an individual persona characteristic.   
+To overcome this problem, CAIRIS supports the creation of *persona characteristics*.  These are argumentation models where the *argument* is an individual persona characteristic.
 
 Justifying each characteristic is a one or more *grounds* that provide evidence to support the persona's validity, *warrants* that act as inference rules connecting the grounds to the characteristic, and *rebuttals* that act as counterarguments for the characteristic.  A *model qualifier* is also used to describe the confidence in the validity of the persona characteristic.
 
-This approach for structuring persona characteristic elements is based on Toulmin's model of argumentation [#]_ and can be visualised in CAIRIS using the persona model, accessible from the Models/Persona menu.  As shown in the persona model below, a link can be seen between grounds element and their *backing*, the originating source of the grounds. 
+This approach for structuring persona characteristic elements is based on Toulmin's model of argumentation [#]_ and can be visualised in CAIRIS using the persona model, accessible from the Models/Persona menu.  As shown in the persona model below, a link can be seen between grounds element and their *backing*, the originating source of the grounds.
 
 .. [#] Toulmin, S. The uses of argument, updated ed. Cambridge University Press, 2003.
 
@@ -144,9 +144,9 @@ In the ideal world, personas will be created by dedicated teams of research coll
 Working with persona characteristic workbooks
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-CAIRIS can generate an Excel workbook that makes it possible to add or update persona characteristic elements.  
+CAIRIS can generate an Excel workbook that makes it possible to add or update persona characteristic elements.
 
-To export a workbook, select the System/Export menu, click on the *Persona characteristics (Workbook)* radio button, enter the name of the workbook to be created, and click on the Export button.  The workbook name should be postfixed with .xlsx.  
+To export a workbook, select the System/Export menu, click on the *Persona characteristics (Workbook)* radio button, enter the name of the workbook to be created, and click on the Export button.  The workbook name should be postfixed with .xlsx.
 
 
 .. figure:: exportPCWorkbook.jpg
@@ -157,7 +157,7 @@ The generated spreadsheet contains three spreadsheets: External Documents, Docum
 .. figure:: ExternalDocuments_sheet.jpg
    :alt: External documents spreadsheet
 
-Pre-existing external documents will be added to the External Documents sheet.  Updating existing values will update the corresponding object when the spreadsheet is uploaded, but changing the name will create a new external document.  To add a new external document, add a row to the spreadsheet and complete the name, author, version, publication date, and description fields.  
+Pre-existing external documents will be added to the External Documents sheet.  Updating existing values will update the corresponding object when the spreadsheet is uploaded, but changing the name will create a new external document.  To add a new external document, add a row to the spreadsheet and complete the name, author, version, publication date, and description fields.
 
 .. figure:: DocumentReferences_sheet.jpg
    :alt: Document references spreadsheet
@@ -185,7 +185,7 @@ The `Persona Helper <https://chrome.google.com/webstore/detail/persona-helper/mh
 
 Once the extension has been installed, you need to connect to your CAIRIS server before use.  You can do this right clicking on the CAIRIS extension icon in Chrome and selecting 'Connect to CAIRIS'.  A dialog will open that will ask for the CAIRIS server URL, before a pop-up appears that allows you to login to your CAIRIS server.
 
-By default, any document references created will be added to the CAIRIS default database, but you can change this using the 'Change CAIRIS database' menu option.  
+By default, any document references created will be added to the CAIRIS default database, but you can change this using the 'Change CAIRIS database' menu option.
 
 From the extension menu, it also possible to set the *Author* and *Contributor* values.  Author is the author of the data source; this will become the author of the external document from which factoids from a website can be drawn.  Contributor is the person eliciting the factoid itself.  It is ok to set both author and contributor as the same person, but -- if different people are responsible for different data sources -- you might want to change the author value each time you draw from factoids from a different webpage.  If these values have not been previously defined, you will be prompted to provide them the first time you elicit a factoid.
 
@@ -199,7 +199,7 @@ We find some text that indicates that operators live close to work, so we highli
 .. figure:: DRExample.jpg
    :alt: Generated document reference
 
-If we look in CAIRIS, we will see the corresponding document reference as indicated above.  
+If we look in CAIRIS, we will see the corresponding document reference as indicated above.
 
 Please remember that CAIRIS is sensitive to reserved characters so, when naming factoids, these should avoided.  Colons in factoid names or names of external documents is known to cause particular problems when generating persona models.
 
@@ -228,7 +228,7 @@ The final step entails indicating the behavioural variable associated with the p
 .. figure:: FinalAffinityGroups.jpg
    :alt: Final affinity groups
 
-When you're ready, you can import this Trello board back into CAIRIS.  However, before you can do you need to create a persona object for each board you import.  For example, an empty persona called Bob will be created to represent a water treatment plant operator.  
+When you're ready, you can import this Trello board back into CAIRIS.  However, before you can do you need to create a persona object for each board you import.  For example, an empty persona called Bob will be created to represent a water treatment plant operator.
 
 To import the board, return to CAIRIS and select the System / Import from Trello menu.  From this form, you should select the Trello board you are exporting, select the persona associated with the persona characteristics that will be generated, and click on Import.
 
