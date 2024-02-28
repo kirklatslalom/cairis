@@ -226,11 +226,6 @@ class ArchitecturalPatternMessage(DefaultMessage):
     required = DefaultMessage.required
 
 
-class ValueTypeMessage(DefaultMessage):
-    resource_fields = gen_message_fields(ModelDefinitions.ValueTypeModel)
-    required = DefaultMessage.required
-
-
 class TemplateGoalMessage(DefaultMessage):
     resource_fields = gen_message_fields(ModelDefinitions.TemplateGoalModel)
     required = DefaultMessage.required

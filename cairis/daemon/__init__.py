@@ -22,6 +22,8 @@ import logging
 import os
 import sys
 
+from . import WebConfig
+
 if sys.version_info > (3,):
     import http.client
 else:

@@ -19,7 +19,8 @@
 
 import argparse
 import os
-from cairis.core.ARM import *
+
+from cairis.cairis.core.ARM import ARMException
 from openpyxl import load_workbook
 
 __author__ = "Shamal Faily"

@@ -52,15 +52,10 @@ def handle_asserterror(error):
 
 
 @main.errorhandler(KeyError)
+@main.errorhandler(DatabaseProxyException)
+@main.errorhandler(ARMException)
 def handle_keyerror(error):
     err = CairisHTTPError(BAD_REQUEST, str(error), "Missing attribute")
-    return handle_error(err)
-
-
-@main.errorhandler(ARMException)
-@main.errorhandler(DatabaseProxyException)
-def handle_keyerror(e):
-    err = ARMHTTPError(e)
     return handle_error(err)
 
 

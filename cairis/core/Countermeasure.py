@@ -18,7 +18,7 @@
 
 
 from .PropertyHolder import PropertyHolder
-from numpy import *
+from numpy import array
 from . import ObjectValidator
 
 __author__ = "Shamal Faily"

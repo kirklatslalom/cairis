@@ -18,9 +18,10 @@
 
 __author__ = "Shamal Faily"
 
+from numpy import array
+
 from . import ObjectValidator
 from .PropertyHolder import PropertyHolder
-from numpy import *
 
 
 class Asset(ObjectValidator.ObjectValidator):

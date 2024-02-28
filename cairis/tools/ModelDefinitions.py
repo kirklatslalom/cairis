@@ -16,71 +16,6 @@
 #  specific language governing permissions and limitations
 #  under the License.
 
-from flask_restful import fields
-from cairis.core.AcceptEnvironmentProperties import AcceptEnvironmentProperties
-
-from cairis.core.ObjectSummary import ObjectSummary
-from cairis.core.Asset import Asset
-from cairis.core.AssetEnvironmentProperties import AssetEnvironmentProperties
-from cairis.core.Attacker import Attacker
-from cairis.core.AttackerEnvironmentProperties import AttackerEnvironmentProperties
-from cairis.core.ClassAssociation import ClassAssociation
-from cairis.core.GoalAssociation import GoalAssociation
-from cairis.core.Dependency import Dependency
-from cairis.core.Directory import Directory
-from cairis.core.Goal import Goal
-from cairis.core.GoalEnvironmentProperties import GoalEnvironmentProperties
-from cairis.core.Obstacle import Obstacle
-from cairis.core.ObstacleEnvironmentProperties import ObstacleEnvironmentProperties
-from cairis.core.DomainProperty import DomainProperty
-from cairis.core.MisuseCase import MisuseCase
-from cairis.core.MisuseCaseEnvironmentProperties import MisuseCaseEnvironmentProperties
-from cairis.core.MitigateEnvironmentProperties import MitigateEnvironmentProperties
-from cairis.core.Persona import Persona
-from cairis.core.PersonaEnvironmentProperties import PersonaEnvironmentProperties
-from cairis.core.Requirement import Requirement
-from cairis.core.Risk import Risk
-from cairis.core.Role import Role
-from cairis.core.SecurityPattern import SecurityPattern
-from cairis.core.Target import Target
-from cairis.core.Task import Task
-from cairis.core.Trace import Trace
-from cairis.core.TrustBoundary import TrustBoundary
-from cairis.core.UseCase import UseCase
-from cairis.core.TaskEnvironmentProperties import TaskEnvironmentProperties
-from cairis.core.UseCaseEnvironmentProperties import UseCaseEnvironmentProperties
-from cairis.core.ThreatEnvironmentProperties import ThreatEnvironmentProperties
-from cairis.core.TransferEnvironmentProperties import TransferEnvironmentProperties
-from cairis.core.ValidationResult import ValidationResult
-from cairis.core.ValueType import ValueType
-from cairis.core.Vulnerability import Vulnerability
-from cairis.core.VulnerabilityEnvironmentProperties import (
-    VulnerabilityEnvironmentProperties,
-)
-from cairis.core.Countermeasure import Countermeasure
-from cairis.core.CountermeasureEnvironmentProperties import (
-    CountermeasureEnvironmentProperties,
-)
-from cairis.core.ClassAssociation import ClassAssociation
-from cairis.core.GoalAssociation import GoalAssociation
-from cairis.core.ExternalDocument import ExternalDocument
-from cairis.core.DocumentReference import DocumentReference
-from cairis.core.ReferenceSynopsis import ReferenceSynopsis
-from cairis.core.ReferenceContribution import ReferenceContribution
-from cairis.core.GoalContribution import GoalContribution
-from cairis.core.ConceptReference import ConceptReference
-from cairis.core.PersonaCharacteristic import PersonaCharacteristic
-from cairis.core.TaskCharacteristic import TaskCharacteristic
-from cairis.core.ComponentView import ComponentView
-from cairis.core.Component import Component
-from cairis.core.TemplateGoal import TemplateGoal
-from cairis.core.TemplateAsset import TemplateAsset
-from cairis.core.TemplateRequirement import TemplateRequirement
-from cairis.core.Location import Location
-from cairis.core.Locations import Locations
-from cairis.core.WeaknessTarget import WeaknessTarget
-from cairis.core.DataFlow import DataFlow
-from cairis.core.UserStory import UserStory
 from cairis.tools.PseudoClasses import (
     EnvironmentTensionModel,
     SecurityAttribute,
@@ -94,6 +29,7 @@ from cairis.tools.PseudoClasses import (
     CharacteristicReferenceSynopsis,
     CharacteristicReferenceContribution,
 )
+from flask_restful import fields
 
 __author__ = "Robin Quetin, Shamal Faily"
 
@@ -895,22 +831,6 @@ class AssetAssociationModel(object):
         "theTailType": fields.String,
         "theTailNavigation": fields.String,
         "theTailAsset": fields.String,
-        "theRationale": fields.String,
-    }
-    required = list(resource_fields.keys())
-    required.remove(obj_id_field)
-
-
-class GoalAssociationModel(object):
-    resource_fields = {
-        obj_id_field: fields.String,
-        "theEnvironmentName": fields.String,
-        "theGoal": fields.String,
-        "theGoalDimension": fields.String,
-        "theAssociationType": fields.String,
-        "theSubGoal": fields.String,
-        "theSubGoalDimension": fields.String,
-        "theAlternativeId": fields.String,
         "theRationale": fields.String,
     }
     required = list(resource_fields.keys())

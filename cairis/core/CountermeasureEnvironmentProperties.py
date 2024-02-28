@@ -18,7 +18,7 @@
 
 
 from .EnvironmentProperties import EnvironmentProperties
-from numpy import *
+from numpy import array
 
 __author__ = "Shamal Faily"
 

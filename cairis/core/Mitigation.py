@@ -18,7 +18,7 @@
 
 
 from .AssetParameters import AssetParameters
-from numpy import *
+from numpy import array
 
 __author__ = "Shamal Faily"
 

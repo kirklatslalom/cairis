@@ -219,7 +219,7 @@ def file_import(importFile, mFormat, overwriteFlag, session_id=None):
 
 if __name__ == "__main__":
     try:
-        from cairis.core.ARM import ARMException
+        from cairis.core.ARM import ARMException  # noqa: F811
 
         main()
     except ImportError as e:

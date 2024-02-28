@@ -26,7 +26,6 @@ else:
     from httplib import BAD_REQUEST, CONFLICT, NOT_FOUND, OK
 from flask import request, session, make_response
 from flask_restful import Resource
-from cairis.daemon.CairisHTTPError import ARMHTTPError
 from cairis.tools.JsonConverter import json_serialize
 from cairis.tools.SessionValidator import get_session_id, get_model_generator
 from cairis.core.ARM import ARMException, DatabaseProxyException

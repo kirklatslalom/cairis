@@ -29,7 +29,6 @@ else:
 from flask import Flask
 from flask_mail import Mail
 from flask_security import Security, SQLAlchemyUserDatastore, user_registered
-from flask_security import Security, SQLAlchemyUserDatastore
 from cairis.bin.add_cairis_user import addAdditionalUserData
 from flask_cors import CORS
 from cairis.core.Borg import Borg

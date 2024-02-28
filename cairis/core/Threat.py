@@ -20,7 +20,7 @@ __author__ = "Shamal Faily"
 
 from .PropertyHolder import PropertyHolder
 from . import ObjectValidator
-from numpy import *
+from numpy import array
 
 
 class Threat(ObjectValidator.ObjectValidator):

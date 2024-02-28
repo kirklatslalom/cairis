@@ -17,7 +17,7 @@
 #  under the License.
 
 
-from .ARM import *
+from .ARM import ConflictingType
 from .Borg import Borg
 from .GoalEnvironmentProperties import GoalEnvironmentProperties
 from .GoalParameters import GoalParameters

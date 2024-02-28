@@ -17,108 +17,88 @@
 #  under the License.
 
 
-from .Borg import Borg
-import MySQLdb
+import sys
+from base64 import b64encode
+
+from cairis.core.armid import *
+from cairis.tools.PseudoClasses import RiskRating
+from numpy import *
+from sqlalchemy import create_engine, text
 from sqlalchemy.exc import OperationalError, ProgrammingError, DataError, IntegrityError
+from sqlalchemy.orm import scoped_session, sessionmaker
+
+from . import ObjectFactory
 from . import RequirementFactory
-from .Environment import Environment
 from .ARM import *
-from MySQLdb._exceptions import DatabaseError, IntegrityError
-from . import Attacker
-from . import Asset
-from . import Threat
-from . import Vulnerability
-from . import Persona
-from . import MisuseCase
-from . import Task
-from . import Risk
-from . import Response
-from . import ClassAssociation
-from .ObjectSummary import ObjectSummary
-from .AttackerParameters import AttackerParameters
-from .PersonaParameters import PersonaParameters
-from .GoalParameters import GoalParameters
-from .ObstacleParameters import ObstacleParameters
+from .AcceptEnvironmentProperties import AcceptEnvironmentProperties
+from .AssetEnvironmentProperties import AssetEnvironmentProperties
 from .AssetParameters import AssetParameters
+from .AttackerEnvironmentProperties import AttackerEnvironmentProperties
+from .AttackerParameters import AttackerParameters
+from .Borg import Borg
+from .ClassAssociationParameters import ClassAssociationParameters
+from .CodeParameters import CodeParameters
+from .ComponentParameters import ComponentParameters
+from .ComponentViewParameters import ComponentViewParameters
+from .ConceptMapAssociationParameters import ConceptMapAssociationParameters
+from .ConceptReferenceParameters import ConceptReferenceParameters
+from .CountermeasureEnvironmentProperties import CountermeasureEnvironmentProperties
+from .CountermeasureParameters import CountermeasureParameters
+from .DataFlowParameters import DataFlowParameters
+from .DependencyParameters import DependencyParameters
+from .DocumentReferenceParameters import DocumentReferenceParameters
+from .DomainPropertyParameters import DomainPropertyParameters
+from .DotTraceParameters import DotTraceParameters
+from .EnvironmentParameters import EnvironmentParameters
+from .ExternalDocumentParameters import ExternalDocumentParameters
+from .GoalAssociationParameters import GoalAssociationParameters
+from .GoalContribution import GoalContribution
+from .GoalEnvironmentProperties import GoalEnvironmentProperties
+from .GoalParameters import GoalParameters
+from .InternalDocumentParameters import InternalDocumentParameters
+from .Location import Location
+from .LocationsParameters import LocationsParameters
+from .MemoParameters import MemoParameters
+from .MisuseCaseEnvironmentProperties import MisuseCaseEnvironmentProperties
+from .MisuseCaseParameters import MisuseCaseParameters
+from .MitigateEnvironmentProperties import MitigateEnvironmentProperties
+
+# from MySQLdb._exceptions import DatabaseError, IntegrityError
+from .ObjectSummary import ObjectSummary
+from .ObstacleEnvironmentProperties import ObstacleEnvironmentProperties
+from .ObstacleParameters import ObstacleParameters
+from .PersonaCharacteristicParameters import PersonaCharacteristicParameters
+from .PersonaEnvironmentProperties import PersonaEnvironmentProperties
+from .PersonaParameters import PersonaParameters
+from .PolicyStatement import PolicyStatement
+from .ReferenceContribution import ReferenceContribution
+from .ReferenceSynopsis import ReferenceSynopsis
+from .ResponseParameters import ResponseParameters
+from .RiskParameters import RiskParameters
+from .RoleEnvironmentProperties import RoleEnvironmentProperties
+from .RoleParameters import RoleParameters
+from .SecurityPatternParameters import SecurityPatternParameters
+from .Step import Step
+from .Steps import Steps
+from .TaskCharacteristicParameters import TaskCharacteristicParameters
+from .TaskContribution import TaskContribution
+from .TaskEnvironmentProperties import TaskEnvironmentProperties
+from .TaskParameters import TaskParameters
 from .TemplateAssetParameters import TemplateAssetParameters
 from .TemplateGoalParameters import TemplateGoalParameters
 from .TemplateRequirementParameters import TemplateRequirementParameters
-from .SecurityPatternParameters import SecurityPatternParameters
-from .ThreatParameters import ThreatParameters
-from .VulnerabilityParameters import VulnerabilityParameters
-from .RiskParameters import RiskParameters
-from .ResponseParameters import ResponseParameters
-from .RoleParameters import RoleParameters
-from . import ObjectFactory
-from .TaskParameters import TaskParameters
-from .MisuseCaseParameters import MisuseCaseParameters
-from .DomainPropertyParameters import DomainPropertyParameters
-from . import Trace
-from cairis.core.armid import *
-from .DotTraceParameters import DotTraceParameters
-from .EnvironmentParameters import EnvironmentParameters
-from .Target import Target
-from .AttackerEnvironmentProperties import AttackerEnvironmentProperties
-from .AssetEnvironmentProperties import AssetEnvironmentProperties
 from .ThreatEnvironmentProperties import ThreatEnvironmentProperties
-from .VulnerabilityEnvironmentProperties import VulnerabilityEnvironmentProperties
-from .AcceptEnvironmentProperties import AcceptEnvironmentProperties
+from .ThreatParameters import ThreatParameters
 from .TransferEnvironmentProperties import TransferEnvironmentProperties
-from .MitigateEnvironmentProperties import MitigateEnvironmentProperties
-from .CountermeasureEnvironmentProperties import CountermeasureEnvironmentProperties
-from .CountermeasureParameters import CountermeasureParameters
-from .PersonaEnvironmentProperties import PersonaEnvironmentProperties
-from .TaskEnvironmentProperties import TaskEnvironmentProperties
-from .MisuseCaseEnvironmentProperties import MisuseCaseEnvironmentProperties
-from .RoleEnvironmentProperties import RoleEnvironmentProperties
-from .ClassAssociationParameters import ClassAssociationParameters
-from .GoalAssociationParameters import GoalAssociationParameters
-from .DependencyParameters import DependencyParameters
-from .GoalEnvironmentProperties import GoalEnvironmentProperties
-from .ObstacleEnvironmentProperties import ObstacleEnvironmentProperties
-from .ValueTypeParameters import ValueTypeParameters
-from .ExternalDocumentParameters import ExternalDocumentParameters
-from .InternalDocumentParameters import InternalDocumentParameters
-from .CodeParameters import CodeParameters
-from .MemoParameters import MemoParameters
-from .DocumentReferenceParameters import DocumentReferenceParameters
-from .ConceptReferenceParameters import ConceptReferenceParameters
-from .PersonaCharacteristicParameters import PersonaCharacteristicParameters
-from .TaskCharacteristicParameters import TaskCharacteristicParameters
-from .UseCaseParameters import UseCaseParameters
-from .UseCase import UseCase
+from .TrustBoundary import TrustBoundary
 from .UseCaseEnvironmentProperties import UseCaseEnvironmentProperties
 from .UseCaseParameters import UseCaseParameters
-from .Step import Step
-from .Steps import Steps
-from .ReferenceSynopsis import ReferenceSynopsis
-from .ReferenceContribution import ReferenceContribution
-from .ConceptMapAssociationParameters import ConceptMapAssociationParameters
-from .ComponentViewParameters import ComponentViewParameters
-from .ComponentParameters import ComponentParameters
-from .ConnectorParameters import ConnectorParameters
-from .WeaknessTarget import WeaknessTarget
-from .ImpliedProcess import ImpliedProcess
-from .ImpliedProcessParameters import ImpliedProcessParameters
-from .Location import Location
-from .Locations import Locations
-from .LocationsParameters import LocationsParameters
-from .DataFlow import DataFlow
-from .DataFlowParameters import DataFlowParameters
-from .TrustBoundary import TrustBoundary
-from .ValidationResult import ValidationResult
-from .GoalContribution import GoalContribution
-from .TaskContribution import TaskContribution
 from .UserStory import UserStory
-from .PolicyStatement import PolicyStatement
-from cairis.tools.PseudoClasses import RiskRating
-import string
-import os
-from numpy import *
-from sqlalchemy import create_engine, text
-from sqlalchemy.orm import scoped_session, sessionmaker
-import sys
-from base64 import b64encode
+from .ValidationResult import ValidationResult
+from .ValueTypeParameters import ValueTypeParameters
+from .VulnerabilityEnvironmentProperties import VulnerabilityEnvironmentProperties
+from .VulnerabilityParameters import VulnerabilityParameters
+from .WeaknessTarget import WeaknessTarget
 from .dba import (
     canonicalDbUser,
     canonicalDbName,
@@ -8679,13 +8659,6 @@ class MySQLDatabaseProxy:
 
     def deleteTemplateGoal(self, tgId):
         self.deleteObject(tgId, "template_goal")
-
-    def componentViewGoals(self, cvName):
-        return self.responseList(
-            "call componentViewGoals(:cv)",
-            {"cv": cvName},
-            "MySQL error getting component view goals",
-        )
 
     def situateComponentViewGoals(self, cvName, envName):
         self.updateDatabase(

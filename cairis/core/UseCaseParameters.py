@@ -51,8 +51,5 @@ class UseCaseParameters(ObjectCreationParameters):
     def description(self):
         return self.theDescription
 
-    def author(self):
-        return self.theAuthor
-
     def environmentProperties(self):
         return self.theEnvironmentProperties
