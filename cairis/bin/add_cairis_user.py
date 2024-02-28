@@ -18,8 +18,11 @@
 #  under the License.
 
 import argparse
-from flask import Flask
-from flask_sqlalchemy import SQLAlchemy
+import string
+import sys
+from random import choice
+
+import cairis.core.BorgFactory
 from cairis.core.Borg import Borg
 from cairis.core.dba import (
     createDatabaseAccount,
@@ -29,6 +32,8 @@ from cairis.core.dba import (
     canonicalDbUser,
     existingAccount,
 )
+from flask import Flask
+from flask_cors import CORS
 from flask_security import (
     Security,
     SQLAlchemyUserDatastore,
@@ -36,12 +41,7 @@ from flask_security import (
     RoleMixin,
     hash_password,
 )
-from flask_cors import CORS
-import cairis.core.BorgFactory
-from cairis.core.Borg import Borg
-from random import choice
-import string
-import sys
+from flask_sqlalchemy import SQLAlchemy
 
 __author__ = "Shamal Faily"
 

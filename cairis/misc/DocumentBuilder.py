@@ -51,10 +51,10 @@ def dictToRows(dict):
     return rows
 
 
-def listToString(l):
+def listToString(list):
     s = ""
-    noRows = len(l)
-    for idx, row in enumerate(l):
+    noRows = len(list)
+    for idx, row in enumerate(list):
         s += row
         if idx != (noRows - 1):
             s += ", "
@@ -91,9 +91,9 @@ def paraText(txt):
     return paraTxt
 
 
-def listToRows(l):
+def listToRows(list):
     rows = []
-    for row in l:
+    for row in list:
         rows.append((row.name(), paraText(row.description())))
     return rows
 

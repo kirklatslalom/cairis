@@ -32,5 +32,3 @@ main = Blueprint(
     static_url_path="",
 )
 api = Api(main)
-
-from cairis.daemon.main import views, errors

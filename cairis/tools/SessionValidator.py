@@ -19,10 +19,8 @@
 import sys
 
 if sys.version_info > (3,):
-    import http.client
     from http.client import BAD_REQUEST, CONFLICT
 else:
-    import httplib
     from httplib import BAD_REQUEST, CONFLICT
 import logging
 from cairis.core.ARM import DatabaseProxyException
@@ -197,5 +195,6 @@ def check_environment(environment_name, session, session_id):
     db_proxy = validate_proxy(session, session_id)
 
     environment_names = db_proxy.getEnvironmentNames()
-    if not environment_name in environment_names:
-        raise ObjectNotFoundHTTPError("The specified environment")
+    if environment_name in environment_names:
+        return
+    raise ObjectNotFoundHTTPError("The specified environment")

@@ -30,12 +30,12 @@ from xlsxwriter import Workbook
 __author__ = "Shamal Faily"
 
 
-def listToString(l):
+def listToString(list):
     s = ""
-    listSize = len(l)
+    listSize = len(list)
     if listSize == 0:
         return "None"
-    for idx, v in enumerate(l):
+    for idx, v in enumerate(list):
         s += v
         if idx < (listSize - 1):
             s += ","

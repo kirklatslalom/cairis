@@ -18,6 +18,7 @@
 
 __author__ = "Shamal Faily"
 
+from .ARM import ARMException
 from .AssetParameters import AssetParameters
 from .AssetEnvironmentProperties import AssetEnvironmentProperties
 from .RoleParameters import RoleParameters

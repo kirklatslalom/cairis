@@ -93,7 +93,7 @@ class Role(ObjectValidator.ObjectValidator):
             cmDictionary = {}
             for p in self.theEnvironmentProperties:
                 environmentName = p.name()
-                for cm in p.countermeasures():
+                for cm, cost in p.countermeasures():
                     if cm in cmDictionary:
                         if dupProperty == "Override":
                             if environmentName != overridingEnvironment:

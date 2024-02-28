@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-from mako import runtime, filters, cache
+from mako import runtime
 
 UNDEFINED = runtime.UNDEFINED
 STOP_RENDERING = runtime.STOP_RENDERING

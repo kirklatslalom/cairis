@@ -17,18 +17,17 @@
 #  under the License.
 
 
-from . import Mitigation
 from .ARM import *
+from .Borg import Borg
 from .GoalEnvironmentProperties import GoalEnvironmentProperties
 from .GoalParameters import GoalParameters
-from .Borg import Borg
 
 __author__ = "Shamal Faily"
 
 
 def preventDeterText(response, dbProxy):
     genGoalDef = "Under normal operating conditions, the system shall "
-    if response.type("", "None", "") == "Prevent":
+    if response.type("", "None", "") == "Prevent":  # noqa: E721
         genGoalDef += "prevent "
         goalCat = "Prevent"
     else:

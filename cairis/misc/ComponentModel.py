@@ -17,11 +17,9 @@
 #  under the License.
 
 
-from cairis.core.Borg import Borg
-import cairis.core.DotTrace
 import pydot
-import os
 from cairis.core.ARM import *
+from cairis.core.Borg import Borg
 
 __author__ = "Shamal Faily"
 
@@ -115,7 +113,8 @@ class ComponentModel:
     def buildConnector(self, cnName, fromName, toName, protocolName, arName):
         fromObjtName = fromName
         toObjtName = toName
-        lbl = "\<<" + protocolName + "\>>"
+        # lbl = "\<<" + protocolName + "\>>"
+        lbl = "<<" + protocolName + ">>"
         urlName = "connector#" + toObjtName + "_" + fromObjtName
 
         self.theGraph.add_edge(
