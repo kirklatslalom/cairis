@@ -31,6 +31,10 @@ from cairis.core.colourcodes import obstacleColourCode
 
 __author__ = 'Shamal Faily'
 
+from cairis.cairis.core import ARM
+from cairis.cairis.core.ARM import ARMException, DatabaseProxyException
+
+
 class KaosModel:
   def __init__(self,associations,envName,kaosModelType = 'goal',goalName = ''):
     self.theAssociations = associations
@@ -263,9 +267,9 @@ class KaosModel:
 
 
       objtUrl = goalDimName + '#' + subGoalDimName + '#' + assocType
-      if ((subGoalName,goalName,assocLabel) not in edgeSet):
-	if assocLabel == '':
-	    assocLabel = ' '
+      if (subGoalName, goalName, assocLabel) not in edgeSet:
+        if assocLabel == '':
+          assocLabel = ' '
         self.theGraph.add_edge(pydot.Edge(subGoalName,goalName,style=edgeStyle,dir=assocDir,arrowhead=arrowHead,arrowtail=arrowTail,label=assocLabel,fontsize=fontSize,weight='1',fontcolor=fontColour,color=edgeColour,URL=objtUrl))
         edgeSet.add((subGoalName,goalName,assocLabel))
 
