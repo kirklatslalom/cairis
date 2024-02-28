@@ -136,9 +136,9 @@ class ObjectsByMethodAPI(Resource):
             if self.theGetMethod == "file_export" and pathValues[1] == "cairis":
                 resp.headers["Content-Type"] = "application/octet-stream"
             elif self.theGetMethod == "user_goals_export":
-                resp.headers[
-                    "Content-Type"
-                ] = "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"
+                resp.headers["Content-Type"] = (
+                    "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"
+                )
             else:
                 resp.headers["Content-Type"] = "application/xml"
 
