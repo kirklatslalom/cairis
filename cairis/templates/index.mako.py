@@ -1,5 +1,6 @@
 # -*- coding: utf-8 -*-
 from mako import runtime
+from pytz import unicode
 
 UNDEFINED = runtime.UNDEFINED
 STOP_RENDERING = runtime.STOP_RENDERING

@@ -36,6 +36,8 @@ from six import string_types
 
 __author__ = "Robin Quetin, Shamal Faily"
 
+from ..core.MisuseCaseParameters import MisuseCaseParameters
+
 conv_terms = {
     "py/object": "__python_obj__",
     "py/id": "__python_id__",

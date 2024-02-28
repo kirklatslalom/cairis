@@ -39,6 +39,8 @@ from cairis.core.Borg import Borg
 
 __author__ = "Shamal Faily"
 
+from cairis.cairis.core.ARM import ARMException
+
 
 def a2i(spLabel):
     if spLabel == "Low":

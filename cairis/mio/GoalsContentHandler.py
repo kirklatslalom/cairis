@@ -38,6 +38,8 @@ from xml.sax.saxutils import unescape
 
 __author__ = "Shamal Faily"
 
+from cairis.cairis.core.ARM import ARMException
+
 
 def a2s(aStr):
     if aStr == "a":

@@ -1,5 +1,6 @@
 # -*- coding: utf-8 -*-
 from mako import runtime, filters, cache
+from pytz import unicode
 
 UNDEFINED = runtime.UNDEFINED
 __M_dict_builtin = dict
