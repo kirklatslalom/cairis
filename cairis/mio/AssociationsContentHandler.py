@@ -18,12 +18,14 @@
 
 
 from xml.sax.handler import ContentHandler, EntityResolver
-from cairis.core.GoalAssociationParameters import GoalAssociationParameters
-from cairis.core.DependencyParameters import DependencyParameters
+
 from cairis.core.Borg import Borg
-from cairis.core.ARM import *
+from cairis.core.DependencyParameters import DependencyParameters
+from cairis.core.GoalAssociationParameters import GoalAssociationParameters
 
 __author__ = "Shamal Faily"
+
+from cairis.cairis.core.ARM import DatabaseProxyException
 
 
 def a2s(aStr):

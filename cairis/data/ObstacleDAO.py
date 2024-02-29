@@ -16,16 +16,16 @@
 #  specific language governing permissions and limitations
 #  under the License.
 
-from cairis.core.ARM import *
+from cairis.core.GoalAssociationParameters import GoalAssociationParameters
 from cairis.core.Obstacle import Obstacle
-from cairis.core.Vulnerability import Vulnerability
 from cairis.core.ObstacleEnvironmentProperties import ObstacleEnvironmentProperties
+from cairis.core.ObstacleParameters import ObstacleParameters
+from cairis.core.ValueType import ValueType
+from cairis.core.ValueTypeParameters import ValueTypeParameters
 from cairis.core.VulnerabilityEnvironmentProperties import (
     VulnerabilityEnvironmentProperties,
 )
-from cairis.core.ObstacleParameters import ObstacleParameters
 from cairis.core.VulnerabilityParameters import VulnerabilityParameters
-from cairis.core.GoalAssociationParameters import GoalAssociationParameters
 from cairis.daemon.CairisHTTPError import (
     ObjectNotFoundHTTPError,
     MalformedJSONHTTPError,
@@ -33,10 +33,8 @@ from cairis.daemon.CairisHTTPError import (
     MissingParameterHTTPError,
     OverwriteNotAllowedHTTPError,
 )
-from cairis.misc.KaosModel import KaosModel
-from cairis.core.ValueType import ValueType
-from cairis.core.ValueTypeParameters import ValueTypeParameters
 from cairis.data.CairisDAO import CairisDAO
+from cairis.misc.KaosModel import KaosModel
 from cairis.tools.JsonConverter import json_serialize, json_deserialize
 from cairis.tools.ModelDefinitions import (
     ObstacleEnvironmentPropertiesModel,
@@ -46,6 +44,8 @@ from cairis.tools.ModelDefinitions import (
 from cairis.tools.SessionValidator import check_required_keys, get_fonts
 
 __author__ = "Shamal Faily"
+
+from cairis.cairis.core.ARM import DatabaseProxyException, ARMException
 
 
 class ObstacleDAO(CairisDAO):

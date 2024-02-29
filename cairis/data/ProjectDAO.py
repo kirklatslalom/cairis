@@ -16,7 +16,8 @@
 #  specific language governing permissions and limitations
 #  under the License.
 
-from cairis.core.ARM import *
+from cairis.core.Borg import Borg
+from cairis.core.dba import createDefaults, dbOwner, dbExists, canonicalDbName
 from cairis.daemon.CairisHTTPError import (
     ARMHTTPError,
     MalformedJSONHTTPError,
@@ -25,18 +26,17 @@ from cairis.daemon.CairisHTTPError import (
     ObjectNotFoundHTTPError,
 )
 from cairis.data.CairisDAO import CairisDAO
-from cairis.core.Borg import Borg
-from cairis.core.dba import createDefaults, dbOwner, dbExists, canonicalDbName
 from cairis.tools.JsonConverter import json_deserialize
 from cairis.tools.PseudoClasses import (
     ProjectSettings,
     Contributor,
     Revision,
-    Definition,
 )
 from cairis.tools.SessionValidator import check_required_keys
 
 __author__ = "Robin Quetin, Shamal Faily"
+
+from cairis.cairis.core.ARM import DatabaseProxyException, ARMException, ObjectNotFound
 
 
 class ProjectDAO(CairisDAO):

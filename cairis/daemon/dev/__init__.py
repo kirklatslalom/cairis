@@ -22,17 +22,18 @@ import logging
 import os
 import sys
 
+from .. import WebConfig
+
 if sys.version_info > (3,):
-    import http.client
+    pass
 else:
-    import httplib
+    pass
 from flask import Flask
 from flask_mail import Mail
 from flask_security import Security, SQLAlchemyUserDatastore, user_registered
 from cairis.bin.add_cairis_user import addAdditionalUserData
 from flask_cors import CORS
 from cairis.core.Borg import Borg
-from cairis.daemon.WebConfig import *
 from .cdb import db
 from .models import User, Role
 

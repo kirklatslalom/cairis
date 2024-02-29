@@ -16,7 +16,6 @@
 #  specific language governing permissions and limitations
 #  under the License.
 
-from cairis.core.ARM import *
 from cairis.core.Location import Location
 from cairis.core.Locations import Locations
 from cairis.core.LocationsParameters import LocationsParameters
@@ -25,16 +24,16 @@ from cairis.daemon.CairisHTTPError import (
     MalformedJSONHTTPError,
     ARMHTTPError,
     MissingParameterHTTPError,
-    OverwriteNotAllowedHTTPError,
 )
-import cairis.core.armid
 from cairis.data.CairisDAO import CairisDAO
+from cairis.misc.LocationModel import LocationModel as GraphicalLocationModel
+from cairis.tools.JsonConverter import json_serialize, json_deserialize
 from cairis.tools.ModelDefinitions import LocationModel, LocationsModel
 from cairis.tools.SessionValidator import check_required_keys, get_fonts
-from cairis.tools.JsonConverter import json_serialize, json_deserialize
-from cairis.misc.LocationModel import LocationModel as GraphicalLocationModel
 
 __author__ = "Shamal Faily"
+
+from cairis.cairis.core.ARM import ARMException, DatabaseProxyException
 
 
 class LocationsDAO(CairisDAO):

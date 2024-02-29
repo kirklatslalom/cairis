@@ -16,7 +16,6 @@
 #  specific language governing permissions and limitations
 #  under the License.
 
-from cairis.core.ARM import *
 from cairis.core.AttackerEnvironmentProperties import AttackerEnvironmentProperties
 from cairis.daemon.CairisHTTPError import (
     ARMHTTPError,
@@ -38,6 +37,8 @@ from cairis.tools.ModelDefinitions import (
 from cairis.tools.SessionValidator import check_required_keys
 
 __author__ = "Robin Quetin, Shamal Faily"
+
+from cairis.cairis.core.ARM import ARMException, DatabaseProxyException
 
 
 class AttackerDAO(CairisDAO):

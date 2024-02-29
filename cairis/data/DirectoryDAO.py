@@ -16,19 +16,15 @@
 #  specific language governing permissions and limitations
 #  under the License.
 
-from cairis.core.ARM import *
+from cairis.core.Directory import Directory
 from cairis.daemon.CairisHTTPError import (
     ARMHTTPError,
-    ObjectNotFoundHTTPError,
-    MalformedJSONHTTPError,
-    MissingParameterHTTPError,
-    OverwriteNotAllowedHTTPError,
 )
-from cairis.core.Directory import Directory
 from cairis.data.CairisDAO import CairisDAO
 
-
 __author__ = "Shamal Faily"
+
+from cairis.cairis.core.ARM import ARMException, DatabaseProxyException
 
 
 class DirectoryDAO(CairisDAO):

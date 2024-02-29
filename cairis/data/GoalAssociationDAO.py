@@ -16,25 +16,23 @@
 #  specific language governing permissions and limitations
 #  under the License.
 
-from cairis.core.ARM import *
+import http.client
+
 from cairis.core.GoalAssociation import GoalAssociation
 from cairis.core.GoalAssociationParameters import GoalAssociationParameters
 from cairis.daemon.CairisHTTPError import (
     CairisHTTPError,
-    ObjectNotFoundHTTPError,
     MalformedJSONHTTPError,
     ARMHTTPError,
-    MissingParameterHTTPError,
-    OverwriteNotAllowedHTTPError,
 )
-import cairis.core.armid
 from cairis.data.CairisDAO import CairisDAO
+from cairis.tools.JsonConverter import json_serialize, json_deserialize
 from cairis.tools.ModelDefinitions import GoalAssociationModel
 from cairis.tools.SessionValidator import check_required_keys
-from cairis.tools.JsonConverter import json_serialize, json_deserialize
-import http.client
 
 __author__ = "Shamal Faily"
+
+from cairis.cairis.core.ARM import ARMException
 
 
 class GoalAssociationDAO(CairisDAO):

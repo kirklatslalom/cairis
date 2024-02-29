@@ -40,7 +40,9 @@ def canonicalDbName(dbUser):
 
 def dbtoken(rPasswd, dbHost, dbPort, dbUser):
     try:
-        rootConn = MySQLdb.connect(host=dbHost, port=int(dbPort), user="root", passwd=rPasswd)
+        rootConn = MySQLdb.connect(
+            host=dbHost, port=int(dbPort), user="root", passwd=rPasswd
+        )
         rootCursor = rootConn.cursor()
         sqlTxt = 'select token from cairis_user.db_token where email="' + dbUser + '"'
         rs = rootCursor.execute(sqlTxt)
@@ -63,11 +65,37 @@ def createDatabaseSchema(rootDir, dbHost, dbPort, dbUser, dbPasswd, dbName):
     procsSql = srcDir + "/procs.sql"
     dbUser = canonicalDbUser(dbUser)
     dbName = canonicalDbName(dbName)
-    cmd = ("/usr/bin/mysql -h " + dbHost + " --port=" + str(
-        dbPort) + " --user " + dbUser + " --password='" + dbPasswd + "'" + " --database " + dbName + " < " + initSql)
+    cmd = (
+        "/usr/bin/mysql -h "
+        + dbHost
+        + " --port="
+        + str(dbPort)
+        + " --user "
+        + dbUser
+        + " --password='"
+        + dbPasswd
+        + "'"
+        + " --database "
+        + dbName
+        + " < "
+        + initSql
+    )
     os.system(cmd)
-    cmd = ("/usr/bin/mysql -h " + dbHost + " --port=" + str(
-        dbPort) + " --user " + dbUser + " --password='" + dbPasswd + "'" + " --database " + dbName + " < " + procsSql)
+    cmd = (
+        "/usr/bin/mysql -h "
+        + dbHost
+        + " --port="
+        + str(dbPort)
+        + " --user "
+        + dbUser
+        + " --password='"
+        + dbPasswd
+        + "'"
+        + " --database "
+        + dbName
+        + " < "
+        + procsSql
+    )
     os.system(cmd)
 
 
@@ -76,34 +104,67 @@ def createDefaults(rootDir, dbHost, dbPort, dbUser, dbPasswd, dbName):
     dbName = canonicalDbName(dbName)
     srcDir = rootDir + "/sql"
     defaultSql = srcDir + "/default.sql"
-    cmd = ("/usr/bin/mysql -h " + dbHost + " --port=" + str(
-        dbPort) + " --user " + dbUser + " --password='" + dbPasswd + "'" + " --database " + dbName + " < " + defaultSql)
+    cmd = (
+        "/usr/bin/mysql -h "
+        + dbHost
+        + " --port="
+        + str(dbPort)
+        + " --user "
+        + dbUser
+        + " --password='"
+        + dbPasswd
+        + "'"
+        + " --database "
+        + dbName
+        + " < "
+        + defaultSql
+    )
     os.system(cmd)
 
 
 def runAdminCommands(adminPasswd, dbHost, dbPort, stmts, adminUser="root"):
     try:
-        rootConn = MySQLdb.connect(host=dbHost, port=int(dbPort), user=adminUser, passwd=adminPasswd)
+        rootConn = MySQLdb.connect(
+            host=dbHost, port=int(dbPort), user=adminUser, passwd=adminPasswd
+        )
         rootCursor = rootConn.cursor()
         for stmt in stmts:
             rootCursor.execute(stmt)
         rootCursor.close()
         rootConn.close()
     except DatabaseError as e:
-        exceptionText = ('MySQL error running "' + ", ".join(stmts) + '": message:' + format(e))
+        exceptionText = (
+            'MySQL error running "' + ", ".join(stmts) + '": message:' + format(e)
+        )
         raise DatabaseProxyException(exceptionText)
 
 
 def createDatabaseAccount(rPasswd, dbHost, dbPort, email, dbUser, dbPasswd):
-    stmts = ["drop user if exists " + dbUser,
-             "create user if not exists '" + dbUser + "'@'" + "%' identified by '" + dbPasswd + "'", "flush privileges",
-             'insert into cairis_user.db_token(email,token) values("' + email + '","' + dbPasswd + '")', "commit", ]
+    stmts = [
+        "drop user if exists " + dbUser,
+        "create user if not exists '"
+        + dbUser
+        + "'@'"
+        + "%' identified by '"
+        + dbPasswd
+        + "'",
+        "flush privileges",
+        'insert into cairis_user.db_token(email,token) values("'
+        + email
+        + '","'
+        + dbPasswd
+        + '")',
+        "commit",
+    ]
     runAdminCommands(rPasswd, dbHost, dbPort, stmts)
 
 
 def createDbOwnerDatabase(rPasswd, dbHost, dbPort):
-    stmts = ["drop database if exists `cairis_owner`", "create database cairis_owner",
-        "create table cairis_owner.db_owner(db varchar(64), owner varchar(32), primary key(db,owner)) engine=innodb", ]
+    stmts = [
+        "drop database if exists `cairis_owner`",
+        "create database cairis_owner",
+        "create table cairis_owner.db_owner(db varchar(64), owner varchar(32), primary key(db,owner)) engine=innodb",
+    ]
     runAdminCommands(rPasswd, dbHost, dbPort, stmts)
 
 
@@ -111,12 +172,25 @@ def createDatabaseAndPrivileges(rPasswd, dbHost, dbPort, email, dbPasswd, dbName
     collationString = "general"
     dbUser = canonicalDbUser(email)
     dbName = canonicalDbName(dbName)
-    stmts = ["drop database if exists `" + dbName + "`",
-             'delete from cairis_owner.db_owner where db = "' + dbName + '"', "create database " + dbName,
-             "grant all privileges on `" + dbName + "`.* TO '" + dbUser + "'@'%'",
-             "alter database " + dbName + " default character set utf8mb4",
-             "alter database " + dbName + " default collate utf8mb4_" + collationString + "_ci", "flush privileges",
-             'insert into cairis_owner.db_owner(db,owner) values("' + dbName + '","' + dbUser + '")', "commit", ]
+    stmts = [
+        "drop database if exists `" + dbName + "`",
+        'delete from cairis_owner.db_owner where db = "' + dbName + '"',
+        "create database " + dbName,
+        "grant all privileges on `" + dbName + "`.* TO '" + dbUser + "'@'%'",
+        "alter database " + dbName + " default character set utf8mb4",
+        "alter database "
+        + dbName
+        + " default collate utf8mb4_"
+        + collationString
+        + "_ci",
+        "flush privileges",
+        'insert into cairis_owner.db_owner(db,owner) values("'
+        + dbName
+        + '","'
+        + dbUser
+        + '")',
+        "commit",
+    ]
     runAdminCommands(rPasswd, dbHost, dbPort, stmts)
 
 
@@ -126,27 +200,49 @@ def dropCairisUserDatabase(rPasswd, dbHost, dbPort):
 
 
 def createCairisUserDatabase(rPasswd, dbHost, dbPort):
-    stmts = ["create database if not exists cairis_user", "set global max_sp_recursion_depth = 255", "flush privileges",
-        "create table cairis_user.db_token(email varchar(255), token varchar(255), primary key(email)) engine=innodb", ]
+    stmts = [
+        "create database if not exists cairis_user",
+        "set global max_sp_recursion_depth = 255",
+        "flush privileges",
+        "create table cairis_user.db_token(email varchar(255), token varchar(255), primary key(email)) engine=innodb",
+    ]
     runAdminCommands(rPasswd, dbHost, dbPort, stmts)
 
 
 def grantDatabaseAccess(rPasswd, dbHost, dbPort, dbName, dbUser):
     owner = dbOwner(dbName)
-    stmts = ["grant all privileges on " + owner + "_" + dbName + ".* to '" + canonicalDbUser(dbUser) + "'@'%'"]
+    stmts = [
+        "grant all privileges on "
+        + owner
+        + "_"
+        + dbName
+        + ".* to '"
+        + canonicalDbUser(dbUser)
+        + "'@'%'"
+    ]
     runAdminCommands(rPasswd, dbHost, dbPort, stmts)
 
 
 def revokeDatabaseAccess(rPasswd, dbHost, dbPort, dbName, dbUser):
     owner = dbOwner(dbName)
-    stmts = ["revoke all privileges on " + owner + "_" + dbName + ".* from '" + canonicalDbUser(dbUser) + "'@'%'"]
+    stmts = [
+        "revoke all privileges on "
+        + owner
+        + "_"
+        + dbName
+        + ".* from '"
+        + canonicalDbUser(dbUser)
+        + "'@'%'"
+    ]
     runAdminCommands(rPasswd, dbHost, dbPort, stmts)
 
 
 def rootResponseList(sqlTxt):
     b = Borg()
     try:
-        rootConn = MySQLdb.connect(host=b.dbHost, port=int(b.dbPort), user="root", passwd=b.rPasswd)
+        rootConn = MySQLdb.connect(
+            host=b.dbHost, port=int(b.dbPort), user="root", passwd=b.rPasswd
+        )
         rootCursor = rootConn.cursor()
         rs = rootCursor.execute(sqlTxt)
         responseList = []
@@ -183,12 +279,17 @@ def isOwner(dbUser, dbName):
 
 def databases(dbUser):
     sqlTxt = (
-            'select m.Db, co.owner from mysql.db m, cairis_owner.db_owner co where m.User = "' + dbUser + '" and m.Db = co.db')
+        'select m.Db, co.owner from mysql.db m, cairis_owner.db_owner co where m.User = "'
+        + dbUser
+        + '" and m.Db = co.db'
+    )
     return rootResponseList(sqlTxt)
 
 
 def existingAccount(userId):
-    sqlTxt = ("select count(email) from cairis_user.auth_user where email = '" + userId + "'")
+    sqlTxt = (
+        "select count(email) from cairis_user.auth_user where email = '" + userId + "'"
+    )
     return rootResponseList(sqlTxt)[0]
 
 
@@ -199,7 +300,12 @@ def dbExists(dbName):
 
 def dbUsers(dbName):
     sqlTxt = (
-            "select au.email from mysql.db db, cairis_user.auth_user au where db.Db = '" + dbName + "' and db.User = au.account and db.User not in (select owner from cairis_owner.db_owner where db ='" + dbName + "')")
+        "select au.email from mysql.db db, cairis_user.auth_user au where db.Db = '"
+        + dbName
+        + "' and db.User = au.account and db.User not in (select owner from cairis_owner.db_owner where db ='"
+        + dbName
+        + "')"
+    )
     rows = rootResponseList(sqlTxt)
     if len(rows) == 0:
         return []
@@ -255,6 +361,14 @@ def emailHashes(rPasswd, dbHost, dbPort):
 
 def updateEmailHashes(rPasswd, dbHost, dbPort, ehs):
     stmts = list(
-        map(lambda x: 'update cairis_user.auth_user set password = "' + x[1] + '" where email = "' + x[0] + '"', ehs, ))
+        map(
+            lambda x: 'update cairis_user.auth_user set password = "'
+            + x[1]
+            + '" where email = "'
+            + x[0]
+            + '"',
+            ehs,
+        )
+    )
     stmts.append("commit")
     runAdminCommands(rPasswd, dbHost, dbPort, stmts)

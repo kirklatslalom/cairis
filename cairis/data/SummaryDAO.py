@@ -16,14 +16,13 @@
 #  specific language governing permissions and limitations
 #  under the License.
 
-from cairis.core.ARM import *
-from cairis.core.Trace import Trace
 from cairis.daemon.CairisHTTPError import ARMHTTPError
-import cairis.core.armid
 from cairis.data.CairisDAO import CairisDAO
 from cairis.tools.ModelDefinitions import SummaryModel
 
 __author__ = "Shamal Faily"
+
+from cairis.cairis.core.ARM import ARMException, DatabaseProxyException
 
 
 class SummaryDAO(CairisDAO):

@@ -16,38 +16,31 @@
 #  specific language governing permissions and limitations
 #  under the License.
 
-from cairis.core.ARM import *
+import cairis.core.AssetParametersFactory
+from cairis.core.ComponentParameters import ComponentParameters
+from cairis.core.ComponentViewParameters import ComponentViewParameters
+from cairis.core.ConnectorParameters import ConnectorParameters
+
+# from cairis.core.ARM import *
 from cairis.daemon.CairisHTTPError import (
-    ObjectNotFoundHTTPError,
     ARMHTTPError,
-    MalformedJSONHTTPError,
-    MissingParameterHTTPError,
-    SilentHTTPError,
 )
 from cairis.data.CairisDAO import CairisDAO
-from cairis.tools.JsonConverter import json_deserialize
+from cairis.misc.AssetModel import AssetModel as GraphicalAssetModel
+from cairis.misc.ComponentModel import ComponentModel as GraphicalComponentModel
+from cairis.misc.KaosModel import KaosModel
 from cairis.tools.ModelDefinitions import (
-    ArchitecturalPatternModel,
-    ComponentModel,
-    ConnectorModel,
-    InterfaceModel,
-    ComponentGoalAssociationModel,
-    ComponentStructureModel,
     WeaknessTargetModel,
     PersonaImpactModel,
     CandidateGoalObstacleModel,
     WeaknessAnalysisModel,
 )
-from cairis.tools.SessionValidator import check_required_keys, get_fonts
-from cairis.core.ComponentParameters import ComponentParameters
-from cairis.core.ConnectorParameters import ConnectorParameters
-from cairis.core.ComponentViewParameters import ComponentViewParameters
-from cairis.misc.AssetModel import AssetModel as GraphicalAssetModel
-from cairis.misc.ComponentModel import ComponentModel as GraphicalComponentModel
-from cairis.misc.KaosModel import KaosModel
-import cairis.core.AssetParametersFactory
+from cairis.tools.SessionValidator import get_fonts
 
 __author__ = "Shamal Faily"
+
+from cairis.cairis.core.ARM import ARMException, DatabaseProxyException
+from cairis.cairis.daemon.CairisHTTPError import OverwriteNotAllowedHTTPError
 
 
 class ArchitecturalPatternDAO(CairisDAO):

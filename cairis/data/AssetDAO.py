@@ -16,12 +16,13 @@
 #  specific language governing permissions and limitations
 #  under the License.
 
+import cairis.core.armid
 import numpy
-from numpy.core.multiarray import array
-from cairis.core.ARM import *
 from cairis.core.Asset import Asset
 from cairis.core.AssetEnvironmentProperties import AssetEnvironmentProperties
 from cairis.core.AssetParameters import AssetParameters
+from cairis.core.ValueType import ValueType
+from cairis.core.ValueTypeParameters import ValueTypeParameters
 from cairis.daemon.CairisHTTPError import (
     ObjectNotFoundHTTPError,
     MalformedJSONHTTPError,
@@ -29,20 +30,21 @@ from cairis.daemon.CairisHTTPError import (
     MissingParameterHTTPError,
     OverwriteNotAllowedHTTPError,
 )
-from cairis.core.ValueType import ValueType
-from cairis.core.ValueTypeParameters import ValueTypeParameters
-import cairis.core.armid
 from cairis.data.CairisDAO import CairisDAO
-from cairis.tools.JsonConverter import json_serialize, json_deserialize
+from cairis.misc.AssetModel import AssetModel as GraphicalAssetModel
+from cairis.tools.JsonConverter import json_deserialize
 from cairis.tools.ModelDefinitions import (
     AssetEnvironmentPropertiesModel,
     SecurityAttribute,
     AssetModel,
 )
 from cairis.tools.SessionValidator import check_required_keys, get_fonts
-from cairis.misc.AssetModel import AssetModel as GraphicalAssetModel
+from numpy.core.multiarray import array
 
 __author__ = "Robin Quetin, Shamal Faily"
+
+from cairis.cairis.core.ARM import ARMException, DatabaseProxyException, ObjectNotFound
+from cairis.cairis.core.ClassAssociationParameters import ClassAssociationParameters
 
 
 class AssetDAO(CairisDAO):

@@ -16,7 +16,7 @@
 #  specific language governing permissions and limitations
 #  under the License.
 
-from cairis.core.ARM import *
+from cairis.core.Requirement import Requirement
 from cairis.daemon.CairisHTTPError import (
     ARMHTTPError,
     ObjectNotFoundHTTPError,
@@ -24,14 +24,15 @@ from cairis.daemon.CairisHTTPError import (
     handle_exception,
     MissingParameterHTTPError,
 )
-from cairis.core.Requirement import Requirement
 from cairis.data.CairisDAO import CairisDAO
-from cairis.tools.JsonConverter import json_serialize, json_deserialize
-from cairis.tools.ModelDefinitions import RequirementModel, check_required_keys
-from cairis.tools.SessionValidator import check_required_keys, get_fonts
 from cairis.misc.ConceptMapModel import ConceptMapModel as GraphicalConceptMapModel
+from cairis.tools.JsonConverter import json_serialize, json_deserialize
+from cairis.tools.ModelDefinitions import RequirementModel
+from cairis.tools.SessionValidator import check_required_keys, get_fonts
 
 __author__ = "Robin Quetin, Shamal Faily"
+
+from cairis.cairis.core.ARM import DatabaseProxyException, ObjectNotFound, ARMException
 
 
 class RequirementDAO(CairisDAO):

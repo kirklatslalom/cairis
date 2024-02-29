@@ -18,15 +18,15 @@
 
 
 import pydot
-
 from cairis.core.Borg import Borg
-from cairis.core.ARM import *
+from cairis.core.colourcodes import obstacleColourCode
+from cairis.core.colourcodes import probabilityTextColourCode
+from cairis.core.colourcodes import riskTextColourCode
+from cairis.core.colourcodes import threatColourCode
 from cairis.core.colourcodes import usabilityColourCode
 from cairis.core.colourcodes import usabilityTextColourCode
-from cairis.core.colourcodes import probabilityTextColourCode
-from cairis.core.colourcodes import threatColourCode
-from cairis.core.colourcodes import riskTextColourCode
-from cairis.core.colourcodes import obstacleColourCode
+
+from cairis.cairis.core.ARM import DatabaseProxyException, ARMException, UnknownNodeType
 
 
 class KaosModel:

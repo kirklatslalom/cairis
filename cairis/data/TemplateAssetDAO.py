@@ -16,9 +16,8 @@
 #  specific language governing permissions and limitations
 #  under the License.
 
+import cairis.core.armid
 import numpy
-from numpy.core.multiarray import array
-from cairis.core.ARM import *
 from cairis.core.TemplateAsset import TemplateAsset
 from cairis.core.TemplateAssetParameters import TemplateAssetParameters
 from cairis.daemon.CairisHTTPError import (
@@ -26,15 +25,16 @@ from cairis.daemon.CairisHTTPError import (
     MalformedJSONHTTPError,
     ARMHTTPError,
     MissingParameterHTTPError,
-    OverwriteNotAllowedHTTPError,
 )
-import cairis.core.armid
 from cairis.data.CairisDAO import CairisDAO
+from cairis.tools.JsonConverter import json_serialize, json_deserialize
 from cairis.tools.ModelDefinitions import TemplateAssetModel, SecurityAttribute
 from cairis.tools.SessionValidator import check_required_keys
-from cairis.tools.JsonConverter import json_serialize, json_deserialize
+from numpy.core.multiarray import array
 
 __author__ = "Shamal Faily"
+
+from cairis.cairis.core.ARM import ARMException, DatabaseProxyException, ObjectNotFound
 
 
 class TemplateAssetDAO(CairisDAO):

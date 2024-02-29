@@ -16,23 +16,21 @@
 #  specific language governing permissions and limitations
 #  under the License.
 
-from cairis.core.ARM import *
+import cairis.core.MisuseCaseFactory
+from cairis.core.MisuseCase import MisuseCase
+from cairis.core.MisuseCaseEnvironmentProperties import MisuseCaseEnvironmentProperties
+from cairis.core.MisuseCaseParameters import MisuseCaseParameters
+from cairis.core.Risk import Risk
+from cairis.core.RiskParameters import RiskParameters
 from cairis.daemon.CairisHTTPError import (
     ARMHTTPError,
     ObjectNotFoundHTTPError,
     MalformedJSONHTTPError,
     MissingParameterHTTPError,
-    OverwriteNotAllowedHTTPError,
     SilentHTTPError,
 )
-import cairis.core.MisuseCaseFactory
-from cairis.core.MisuseCaseParameters import MisuseCaseParameters
-from cairis.core.MisuseCase import MisuseCase
-from cairis.core.MisuseCaseEnvironmentProperties import MisuseCaseEnvironmentProperties
-from cairis.core.RiskParameters import RiskParameters
 from cairis.data.AssetDAO import AssetDAO
 from cairis.data.CairisDAO import CairisDAO
-from cairis.core.Risk import Risk
 from cairis.misc.EnvironmentModel import EnvironmentModel
 from cairis.tools.JsonConverter import json_deserialize
 from cairis.tools.ModelDefinitions import (
@@ -44,6 +42,8 @@ from cairis.tools.PseudoClasses import RiskScore, RiskRating
 from cairis.tools.SessionValidator import check_required_keys, get_fonts
 
 __author__ = "Robin Quetin, Shamal Faily"
+
+from cairis.cairis.core.ARM import ARMException, DatabaseProxyException
 
 
 class RiskDAO(CairisDAO):

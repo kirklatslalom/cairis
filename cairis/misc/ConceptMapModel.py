@@ -16,11 +16,8 @@
 #  specific language governing permissions and limitations
 #  under the License.
 
-from cairis.core.Borg import Borg
-import cairis.core.DotTrace
 import pydot
-import os
-from cairis.core.ARM import *
+from cairis.core.Borg import Borg
 
 __author__ = "Shamal Faily"
 

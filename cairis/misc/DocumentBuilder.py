@@ -18,28 +18,74 @@
 #  under the License.
 
 
-from cairis.core.Borg import Borg
-from cairis.core.Requirement import Requirement
-from optparse import OptionParser
+import io
 import os
-import sys
+import shutil
+from base64 import b64decode
 from subprocess import check_output as cmd
 from tempfile import mkstemp as make_tempfile
+
+# from cairis.core.armid import *
+import requests
+from cairis.core.Borg import Borg
+from cairis.core.PropertyHolder import PropertyHolder
+
+from .AssetModel import AssetModel
+from .AssumptionPersonaModel import AssumptionPersonaModel
+from .ComponentModel import ComponentModel
+from .DataFlowDiagram import DataFlowDiagram
 from .EnvironmentModel import EnvironmentModel
 from .KaosModel import KaosModel
-from .AssetModel import AssetModel
-from .DataFlowDiagram import DataFlowDiagram
 from .LocationModel import LocationModel
-from .ComponentModel import ComponentModel
-from .AssumptionPersonaModel import AssumptionPersonaModel
-from cairis.core.PropertyHolder import PropertyHolder
-from cairis.core.armid import *
-import requests
-from base64 import b64decode
-import io
-import shutil
 
 __author__ = "Shamal Faily"
+
+from ..core.armid import (
+    REQDOC_DEPENDENCIES_ID,
+    REQDOC_TEMPLATEASSETS_ID,
+    REQDOC_TEMPLATEGOALS_ID,
+    REQDOC_TEMPLATEREQUIREMENTS_ID,
+    REQDOC_SECURITYPATTERNS_ID,
+    REQDOC_ARCHITECTURALPATTERNS_ID,
+    PERDOC_PROJECTPURPOSE_ID,
+    PERDOC_PROJECTSCOPE_ID,
+    PERDOC_ENVIRONMENTS_ID,
+    PERDOC_STAKEHOLDERS_ID,
+    PERDOC_TASKS_ID,
+    DPIA_NEED_ID,
+    DPIA_PROCESSING_ID,
+    DPIA_CONSULTATION_ID,
+    DPIA_NECESSITY_ID,
+    DPIA_RISKS_ID,
+    DPIA_MEASURES_ID,
+    DOCOPT_HTML_ID,
+    DOCOPT_RTF_ID,
+    DOCOPT_PDF_ID,
+    DOCOPT_ODT_ID,
+    DOCOPT_DOCX_ID,
+    REQDOC_REQUIREMENTS_ID,
+    REQDOC_COUNTERMEASURES_ID,
+    REQDOC_RESPONSES_ID,
+    REQDOC_MISUSECASES_ID,
+    REQDOC_LOCATIONS_ID,
+    REQDOC_RISKS_ID,
+    REQDOC_THREATS_ID,
+    REQDOC_ATTACKERS_ID,
+    REQDOC_VULNERABILITIES_ID,
+    REQDOC_OBSTACLES_ID,
+    REQDOC_RESPONSIBILITIES_ID,
+    REQDOC_GOALS_ID,
+    REQDOC_DATAFLOWS_ID,
+    REQDOC_USECASES_ID,
+    REQDOC_TASKS_ID,
+    REQDOC_ASSETS_ID,
+    REQDOC_NAMINGCONVENTIONS_ID,
+    REQDOC_MANDATEDCONSTRAINTS_ID,
+    REQDOC_STAKEHOLDERS_ID,
+    REQDOC_ENVIRONMENTS_ID,
+    REQDOC_PROJECTSCOPE_ID,
+    REQDOC_PROJECTPURPOSE_ID,
+)
 
 
 def dictToRows(dict):

@@ -37,7 +37,6 @@ from flask_security import Security, SQLAlchemyUserDatastore
 # from cairis.bin.add_cairis_user import addAdditionalUserData
 from flask_cors import CORS
 from cairis.core.Borg import Borg
-from cairis.daemon.WebConfig import *
 from .cdb import db
 from .models import User, Role
 

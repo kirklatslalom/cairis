@@ -16,22 +16,21 @@
 #  specific language governing permissions and limitations
 #  under the License.
 
-from cairis.core.ARM import *
+from cairis.core.Role import Role
+from cairis.core.RoleParameters import RoleParameters
 from cairis.daemon.CairisHTTPError import (
     ARMHTTPError,
     MalformedJSONHTTPError,
-    MissingParameterHTTPError,
     ObjectNotFoundHTTPError,
 )
-from cairis.core.Role import Role
-from cairis.core.RoleEnvironmentProperties import RoleEnvironmentProperties
-from cairis.core.RoleParameters import RoleParameters
 from cairis.data.CairisDAO import CairisDAO
 from cairis.tools.JsonConverter import json_serialize, json_deserialize
 from cairis.tools.ModelDefinitions import RoleModel
 from cairis.tools.SessionValidator import check_required_keys
 
 __author__ = "Robin Quetin, Shamal Faily"
+
+from cairis.cairis.core.ARM import ARMException, DatabaseProxyException, ObjectNotFound
 
 
 class RoleDAO(CairisDAO):

@@ -16,23 +16,21 @@
 #  specific language governing permissions and limitations
 #  under the License.
 
-from cairis.core.ARM import *
 from cairis.core.TemplateGoal import TemplateGoal
 from cairis.core.TemplateGoalParameters import TemplateGoalParameters
 from cairis.daemon.CairisHTTPError import (
     ObjectNotFoundHTTPError,
     MalformedJSONHTTPError,
     ARMHTTPError,
-    MissingParameterHTTPError,
-    OverwriteNotAllowedHTTPError,
 )
-import cairis.core.armid
 from cairis.data.CairisDAO import CairisDAO
+from cairis.tools.JsonConverter import json_serialize, json_deserialize
 from cairis.tools.ModelDefinitions import TemplateGoalModel
 from cairis.tools.SessionValidator import check_required_keys
-from cairis.tools.JsonConverter import json_serialize, json_deserialize
 
 __author__ = "Shamal Faily"
+
+from cairis.cairis.core.ARM import ARMException, DatabaseProxyException, ObjectNotFound
 
 
 class TemplateGoalDAO(CairisDAO):

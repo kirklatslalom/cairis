@@ -16,20 +16,21 @@
 #  specific language governing permissions and limitations
 #  under the License.
 
-from cairis.core.ARM import *
+from cairis.core.Dependency import Dependency
+from cairis.core.DependencyParameters import DependencyParameters
 from cairis.daemon.CairisHTTPError import (
     ARMHTTPError,
     ObjectNotFoundHTTPError,
     MalformedJSONHTTPError,
 )
-from cairis.core.DependencyParameters import DependencyParameters
 from cairis.data.CairisDAO import CairisDAO
-from cairis.core.Dependency import Dependency
 from cairis.tools.JsonConverter import json_deserialize, json_serialize
 from cairis.tools.ModelDefinitions import DependencyModel
 from cairis.tools.SessionValidator import check_required_keys
 
 __author__ = "Robin Quetin, Shamal Faily"
+
+from cairis.cairis.core.ARM import ARMException, DatabaseProxyException, ObjectNotFound
 
 
 class DependencyDAO(CairisDAO):

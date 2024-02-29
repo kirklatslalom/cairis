@@ -16,20 +16,16 @@
 #  specific language governing permissions and limitations
 #  under the License.
 
-from cairis.core.ARM import *
 from cairis.daemon.CairisHTTPError import (
     ARMHTTPError,
-    MalformedJSONHTTPError,
-    MissingParameterHTTPError,
-    SilentHTTPError,
 )
 from cairis.data.CairisDAO import CairisDAO
-from cairis.tools.JsonConverter import json_deserialize
-from cairis.tools.PseudoClasses import ObjectDependency
 from cairis.tools.ModelDefinitions import ObjectDependencyModel
-from cairis.tools.SessionValidator import check_required_keys
+from cairis.tools.PseudoClasses import ObjectDependency
 
 __author__ = "Shamal Faily"
+
+from cairis.cairis.core.ARM import ARMException, DatabaseProxyException
 
 
 class ObjectDependencyDAO(CairisDAO):

@@ -16,7 +16,6 @@
 #  specific language governing permissions and limitations
 #  under the License.
 
-from cairis.core.ARM import *
 from cairis.daemon.CairisHTTPError import (
     ObjectNotFoundHTTPError,
     ARMHTTPError,
@@ -26,17 +25,14 @@ from cairis.daemon.CairisHTTPError import (
 )
 from cairis.data.CairisDAO import CairisDAO
 from cairis.tools.JsonConverter import json_deserialize
-from cairis.tools.ModelDefinitions import (
-    SecurityPatternStructureModel,
-    PatternRequirementModel,
-    SecurityPatternModel,
-)
-from cairis.tools.SessionValidator import check_required_keys, get_fonts
 from cairis.core.SecurityPatternParameters import SecurityPatternParameters
 from cairis.core.TemplateRequirementParameters import TemplateRequirementParameters
 import cairis.core.AssetParametersFactory
 
 __author__ = "Shamal Faily"
+
+from cairis.cairis.core.ARM import ARMException, DatabaseProxyException
+from cairis.cairis.daemon.CairisHTTPError import OverwriteNotAllowedHTTPError
 
 
 class SecurityPatternDAO(CairisDAO):

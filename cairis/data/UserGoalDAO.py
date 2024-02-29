@@ -16,7 +16,6 @@
 #  specific language governing permissions and limitations
 #  under the License.
 
-from cairis.core.ARM import *
 from cairis.core.ReferenceSynopsis import ReferenceSynopsis
 from http.client import BAD_REQUEST
 from cairis.daemon.CairisHTTPError import (
@@ -36,6 +35,8 @@ from cairis.misc.UserGoalModel import UserGoalModel
 import re
 
 __author__ = "Shamal Faily"
+
+from cairis.cairis.core.ARM import ARMException, DatabaseProxyException
 
 
 class UserGoalDAO(CairisDAO):

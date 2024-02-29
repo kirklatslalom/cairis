@@ -16,30 +16,28 @@
 #  specific language governing permissions and limitations
 #  under the License.
 
-from cairis.core.ARM import *
 from cairis.core.PersonaCharacteristic import PersonaCharacteristic
-from cairis.core.ReferenceSynopsis import ReferenceSynopsis
-from cairis.core.ReferenceContribution import ReferenceContribution
 from cairis.core.PersonaCharacteristicParameters import PersonaCharacteristicParameters
+from cairis.core.ReferenceContribution import ReferenceContribution
+from cairis.core.ReferenceSynopsis import ReferenceSynopsis
 from cairis.daemon.CairisHTTPError import (
     ObjectNotFoundHTTPError,
     MalformedJSONHTTPError,
     ARMHTTPError,
-    MissingParameterHTTPError,
-    OverwriteNotAllowedHTTPError,
 )
-import cairis.core.armid
 from cairis.data.CairisDAO import CairisDAO
-from cairis.tools.ModelDefinitions import PersonaCharacteristicModel
-from cairis.tools.SessionValidator import check_required_keys
 from cairis.tools.JsonConverter import json_serialize, json_deserialize
+from cairis.tools.ModelDefinitions import PersonaCharacteristicModel
 from cairis.tools.PseudoClasses import (
     CharacteristicReference,
     CharacteristicReferenceSynopsis,
     CharacteristicReferenceContribution,
 )
+from cairis.tools.SessionValidator import check_required_keys
 
 __author__ = "Shamal Faily"
+
+from cairis.cairis.core.ARM import ARMException, DatabaseProxyException
 
 
 class PersonaCharacteristicDAO(CairisDAO):

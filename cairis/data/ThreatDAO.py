@@ -16,9 +16,11 @@
 #  specific language governing permissions and limitations
 #  under the License.
 
+import cairis.core.armid
 import numpy.core
-from numpy.core.multiarray import array
-from cairis.core.ARM import *
+from cairis.core.Threat import Threat
+from cairis.core.ThreatEnvironmentProperties import ThreatEnvironmentProperties
+from cairis.core.ThreatParameters import ThreatParameters
 from cairis.daemon.CairisHTTPError import (
     ARMHTTPError,
     ObjectNotFoundHTTPError,
@@ -26,12 +28,6 @@ from cairis.daemon.CairisHTTPError import (
     MissingParameterHTTPError,
     OverwriteNotAllowedHTTPError,
 )
-from cairis.core.Threat import Threat
-from cairis.core.ThreatEnvironmentProperties import ThreatEnvironmentProperties
-from cairis.core.ThreatParameters import ThreatParameters
-from cairis.core.ValueType import ValueType
-from cairis.core.ValueTypeParameters import ValueTypeParameters
-import cairis.core.armid
 from cairis.data.CairisDAO import CairisDAO
 from cairis.tools.JsonConverter import json_serialize, json_deserialize
 from cairis.tools.ModelDefinitions import (
@@ -43,8 +39,11 @@ from cairis.tools.ModelDefinitions import (
 )
 from cairis.tools.PseudoClasses import SecurityAttribute
 from cairis.tools.SessionValidator import check_required_keys
+from numpy.core.multiarray import array
 
 __author__ = "Robin Quetin, Shamal Faily"
+
+from cairis.cairis.core.ARM import ARMException, DatabaseProxyException
 
 
 class ThreatDAO(CairisDAO):

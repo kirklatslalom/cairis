@@ -16,8 +16,14 @@
 #  specific language governing permissions and limitations
 #  under the License.
 
-from cairis.core.ARM import *
+import http.client
+
+from cairis.core.ReferenceContribution import ReferenceContribution
+from cairis.core.Step import Step
+from cairis.core.Steps import Steps
+from cairis.core.UseCase import UseCase
 from cairis.core.UseCaseEnvironmentProperties import UseCaseEnvironmentProperties
+from cairis.core.UseCaseParameters import UseCaseParameters
 from cairis.daemon.CairisHTTPError import (
     CairisHTTPError,
     ARMHTTPError,
@@ -26,13 +32,6 @@ from cairis.daemon.CairisHTTPError import (
     MissingParameterHTTPError,
     OverwriteNotAllowedHTTPError,
 )
-from cairis.core.UseCase import UseCase
-from cairis.core.Steps import Steps
-from cairis.core.Step import Step
-from cairis.core.UseCaseParameters import UseCaseParameters
-from cairis.core.ValueType import ValueType
-from cairis.core.ValueTypeParameters import ValueTypeParameters
-from cairis.core.ReferenceContribution import ReferenceContribution
 from cairis.data.CairisDAO import CairisDAO
 from cairis.tools.JsonConverter import json_serialize, json_deserialize
 from cairis.tools.ModelDefinitions import (
@@ -40,16 +39,16 @@ from cairis.tools.ModelDefinitions import (
     UseCaseEnvironmentPropertiesModel,
     UseCaseContributionModel,
 )
-from cairis.tools.SessionValidator import check_required_keys, get_fonts
 from cairis.tools.PseudoClasses import (
     StepAttributes,
-    StepsAttributes,
     ExceptionAttributes,
     CharacteristicReferenceContribution,
 )
-import http.client
+from cairis.tools.SessionValidator import check_required_keys
 
 __author__ = "Shamal Faily"
+
+from cairis.cairis.core.ARM import DatabaseProxyException, ARMException
 
 
 class UseCaseDAO(CairisDAO):

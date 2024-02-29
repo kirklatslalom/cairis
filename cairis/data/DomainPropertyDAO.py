@@ -16,25 +16,22 @@
 #  specific language governing permissions and limitations
 #  under the License.
 
-from cairis.core.ARM import *
+from cairis.core.DomainProperty import DomainProperty
+from cairis.core.DomainPropertyParameters import DomainPropertyParameters
 from cairis.daemon.CairisHTTPError import (
     ARMHTTPError,
     ObjectNotFoundHTTPError,
     MalformedJSONHTTPError,
-    MissingParameterHTTPError,
     OverwriteNotAllowedHTTPError,
 )
-from cairis.core.DomainProperty import DomainProperty
-from cairis.core.DomainPropertyParameters import DomainPropertyParameters
-from cairis.core.ValueType import ValueType
-from cairis.core.ValueTypeParameters import ValueTypeParameters
-from cairis.misc.KaosModel import KaosModel
 from cairis.data.CairisDAO import CairisDAO
 from cairis.tools.JsonConverter import json_serialize, json_deserialize
 from cairis.tools.ModelDefinitions import DomainPropertyModel
-from cairis.tools.SessionValidator import check_required_keys, get_fonts
+from cairis.tools.SessionValidator import check_required_keys
 
 __author__ = "Shamal Faily"
+
+from cairis.cairis.core.ARM import ARMException, DatabaseProxyException, ObjectNotFound
 
 
 class DomainPropertyDAO(CairisDAO):

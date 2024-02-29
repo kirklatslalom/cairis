@@ -16,24 +16,22 @@
 #  specific language governing permissions and limitations
 #  under the License.
 
-from cairis.core.ARM import *
 from cairis.core.TaskCharacteristic import TaskCharacteristic
 from cairis.core.TaskCharacteristicParameters import TaskCharacteristicParameters
 from cairis.daemon.CairisHTTPError import (
     ObjectNotFoundHTTPError,
     MalformedJSONHTTPError,
     ARMHTTPError,
-    MissingParameterHTTPError,
-    OverwriteNotAllowedHTTPError,
 )
-import cairis.core.armid
 from cairis.data.CairisDAO import CairisDAO
-from cairis.tools.ModelDefinitions import TaskCharacteristicModel
-from cairis.tools.SessionValidator import check_required_keys
 from cairis.tools.JsonConverter import json_serialize, json_deserialize
+from cairis.tools.ModelDefinitions import TaskCharacteristicModel
 from cairis.tools.PseudoClasses import CharacteristicReference
+from cairis.tools.SessionValidator import check_required_keys
 
 __author__ = "Shamal Faily"
+
+from cairis.cairis.core.ARM import ARMException, ObjectNotFound, DatabaseProxyException
 
 
 class TaskCharacteristicDAO(CairisDAO):

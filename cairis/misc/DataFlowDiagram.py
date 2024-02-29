@@ -18,9 +18,9 @@
 
 
 import pydot
-
 from cairis.core.Borg import Borg
-from cairis.core.ARM import *
+
+from cairis.cairis.core.ARM import UnknownNodeType, ARMException, DatabaseProxyException
 
 
 class DataFlowDiagram:

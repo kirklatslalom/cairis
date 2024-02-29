@@ -18,18 +18,19 @@
 
 
 import pydot
-from cairis.core.ARM import *
 from cairis.core.Borg import Borg
+from cairis.core.colourcodes import obstacleColourCode
+from cairis.core.colourcodes import probabilityTextColourCode
+from cairis.core.colourcodes import riskTextColourCode
 from cairis.core.colourcodes import threatColourCode
 from cairis.core.colourcodes import threatLikelihoodColourCode
-from cairis.core.colourcodes import vulnerabilitySeverityColourCode
+from cairis.core.colourcodes import threatTextColour
 from cairis.core.colourcodes import usabilityColourCode
 from cairis.core.colourcodes import usabilityTextColourCode
-from cairis.core.colourcodes import probabilityTextColourCode
-from cairis.core.colourcodes import obstacleColourCode
-from cairis.core.colourcodes import riskTextColourCode
-from cairis.core.colourcodes import threatTextColour
+from cairis.core.colourcodes import vulnerabilitySeverityColourCode
 from cairis.core.colourcodes import vulnerabilityTextColour
+
+from cairis.cairis.core.ARM import UnknownNodeType
 
 USECASE_TYPE = 0
 MISUSECASE_TYPE = 1

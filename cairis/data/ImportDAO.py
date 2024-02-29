@@ -17,11 +17,10 @@
 #  under the License.
 
 import pydot
-from cairis.core.ARM import *
-from cairis.daemon.CairisHTTPError import CairisHTTPError, ARMHTTPError
-from cairis.data.CairisDAO import CairisDAO
-from cairis.bin.cimport import file_import, package_import
 from cairis.bin.at2om import dotToObstacleModel
+from cairis.bin.cimport import file_import, package_import
+from cairis.daemon.CairisHTTPError import ARMHTTPError
+from cairis.data.CairisDAO import CairisDAO
 from cairis.mio.ModelImport import importAttackTreeString
 from cairis.mio.ModelImport import (
     importDiagramsNetDFD,
@@ -29,13 +28,10 @@ from cairis.mio.ModelImport import (
     importUserGoalWorkbook,
     importPersonaCharacteristicsWorkbook,
 )
-from cairis.core.Borg import Borg
-from zipfile import ZipFile
-import magic
-import io
-import os
 
 __author__ = "Shamal Faily"
+
+from cairis.cairis.core.ARM import DatabaseProxyException, ARMException
 
 
 class ImportDAO(CairisDAO):

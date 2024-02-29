@@ -18,15 +18,16 @@
 
 import sys
 
+from cairis.cairis.core.ARM import ARMException
+from cairis.cairis.daemon.CairisHTTPError import ARMHTTPError
+
 if sys.version_info > (3,):
     import http.client
 else:
-    import httplib
+    pass
 import imghdr
 import os
 import io
-from cairis.core.ARM import *
-from werkzeug.datastructures import FileStorage
 from cairis.core.Borg import Borg
 from cairis.daemon.CairisHTTPError import CairisHTTPError
 from cairis.data.CairisDAO import CairisDAO

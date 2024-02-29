@@ -18,7 +18,7 @@
 
 
 from .AssetParameters import AssetParameters
-from numpy import array
+from numpy import array, acMitigate
 
 __author__ = "Shamal Faily"
 

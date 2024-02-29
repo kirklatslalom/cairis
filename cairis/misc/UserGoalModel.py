@@ -18,11 +18,11 @@
 
 
 import pydot
-
 from cairis.core.Borg import Borg
-from cairis.core.ARM import *
 from cairis.core.colourcodes import goalSatisfactionColourCode
 from cairis.core.colourcodes import goalSatisfactionFontColourCode
+
+from cairis.cairis.core.ARM import DatabaseProxyException, ARMException, UnknownNodeType
 
 
 def contLabel(contName):

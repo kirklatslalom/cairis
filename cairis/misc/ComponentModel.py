@@ -18,7 +18,6 @@
 
 
 import pydot
-from cairis.core.ARM import *
 from cairis.core.Borg import Borg
 
 __author__ = "Shamal Faily"
