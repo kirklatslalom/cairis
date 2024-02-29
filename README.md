@@ -17,6 +17,5 @@ CAIRIS (Computer Aided Integration of Requirements and Information Security) is 
 
 See [the CAIRIS website](https://cairis.org) for more information, and details on how to get started.
 
-
 ## License
 [![FOSSA Status](https://app.fossa.com/api/projects/git%2Bgithub.com%2Fcairis-platform%2Fcairis.svg?type=large)](https://app.fossa.com/projects/git%2Bgithub.com%2Fcairis-platform%2Fcairis?ref=badge_large)
