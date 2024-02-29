@@ -16,8 +16,8 @@
 #  specific language governing permissions and limitations
 #  under the License.
 
-
 import pydot
+import gtk
 from cairis.core.Borg import Borg
 
 __author__ = "Shamal Faily"

@@ -613,7 +613,7 @@ def importAssociationsString(buf, session_id=None):
             session_id=session_id,
         )
     except xml.sax.SAXException as e:
-        raise ARMException("Error parsing" + importFile + ": " + e.getMessage())
+        raise ARMException("Error parsing" + session_id + ": " + e.getMessage())
 
 
 def importAssociations(maParameterSet, gaParameterSet, depParameterSet, session_id):
@@ -1149,7 +1149,7 @@ def importAttackTreeString(buf, session_id=None):
         modelTxt += importAssociationsString(buf, session_id) + " "
         return modelTxt
     except xml.sax.SAXException as e:
-        raise ARMException("Error parsing" + importFile + ": " + e.getMessage())
+        raise ARMException("Error parsing" + session_id + ": " + e.getMessage())
 
 
 def importDiagramsNetFile(importFile, modelType):

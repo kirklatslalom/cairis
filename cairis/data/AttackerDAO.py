@@ -350,7 +350,7 @@ class AttackerDAO(CairisDAO):
             raise ARMHTTPError(ex)
 
     def delete_attacker_motivation(self, name):
-        environment_name = pathValues[0]
+        environment_name = self.pathValues[0]
         found_motivation = self.get_attacker_motivation_by_name(name, environment_name)
         try:
             self.db_proxy.deleteAssetType(found_motivation.theId)

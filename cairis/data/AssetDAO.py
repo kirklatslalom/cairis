@@ -573,6 +573,7 @@ class AssetDAO(CairisDAO):
         raise ObjectNotFoundHTTPError("The provided asset association parameters")
 
     def add_asset_assocition(self, assoc):
+
         assocParams = ClassAssociationParameters(
             envName=assoc.theEnvironmentName,
             headName=assoc.theHeadAsset,
@@ -587,7 +588,7 @@ class AssetDAO(CairisDAO):
             tailNav=assoc.theTailNav,
             tailDim="asset",
             tailName=assoc.theTailAsset,
-            rationale=asset.theRationale,
+            rationale=self.asset.theRationale,
         )
         try:
             self.db_proxy.addClassAssociation(assocParams)
@@ -613,7 +614,7 @@ class AssetDAO(CairisDAO):
             tailNav=assoc.theTailNav,
             tailDim="asset",
             tailName=assoc.theTailAsset,
-            rationale=asset.theRationale,
+            rationale=self.asset.theRationale,
         )
         assocParams.setId(id)
         try:

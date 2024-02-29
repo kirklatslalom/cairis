@@ -289,12 +289,12 @@ class ObstacleDAO(CairisDAO):
         assert isinstance(obstacle_value, ValueType)
         found_value = self.get_obstacle_value_by_name(name, environment_name)
         params = ValueTypeParameters(
-            vtName=obstacle_type.theName,
-            vtDesc=obstacle_type.theDescription,
+            vtName=obstacle_value.theName,
+            vtDesc=obstacle_value.theDescription,
             vType="obstacle_type",
             envName=environment_name,
-            vtScore=obstacle_type.theScore,
-            vtRat=obstacle_type.theRationale,
+            vtScore=obstacle_value.theScore,
+            vtRat=obstacle_value.theRationale,
         )
         params.setId(found_value.theId)
         try:

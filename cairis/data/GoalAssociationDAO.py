@@ -68,7 +68,7 @@ class GoalAssociationDAO(CairisDAO):
             raise CairisHTTPError(
                 status_code=http.client.BAD_REQUEST,
                 status="Server error",
-                message="Error unpacking " + key + ": " + format(ex),
+                message="Error unpacking " + self.key + ": " + format(ex),
             )
         except Exception as ex:
             self.close()
