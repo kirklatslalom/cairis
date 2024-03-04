@@ -16,13 +16,13 @@ with open("requirements.txt") as f:
 
 setup(
     name="cairis",
-    version="2.3.8",
+    version="2.3.9",
     author="Shamal Faily",
     author_email="admin@cairis.org",
     description="A security design tool",
     license="Apache Software License",
     url="https://github.com/cairis-platform/cairis",
-    download_url="https://github.com/cairis-platform/cairis/tarball/2.3.8",
+    download_url="https://github.com/cairis-platform/cairis/tarball/2.3.9",
     packages=["cairis"],
     include_package_data=True,
     data_files=[("cairis/examples", egFiles)],
