@@ -4,22 +4,35 @@
 # vi: set ft=ruby :
 
 require 'yaml'
-conf = YAML.load_file("vagrant_conf.yaml")
+conf = YAML.load_file('vagrant_conf.yaml')
 
-def configure_parallels_provider(config, name, ip, memory = 2048)
-    config.vm.provider :parallels do |parallels, override|
-      # override box url
-      override.vm.box = "bento/ubuntu-20.04-arm64"
-    end
+def configure_shell(config, conf)
+  config.vm.provision 'shell',
+                      args: [conf['root_db_passwd'].to_s, conf['default_user'].to_s, conf['default_passwd'].to_s, '/home/vagrant'], inline: <<-SHELL
+    sudo apt-get update && sudo apt-get upgrade -y && \
+    sudo apt-get dist-upgrade -y && sudo apt install curl -y && \
+    sudo apt install net-tools -y
+    sudo -s -u vagrant \
+    sudo curl -s https://cairis.org/quickInstall.sh | bash -s -- $1 $2 $3 $4
+                      SHELL
 end
 
-def configure_vbox_provider(config, name, ip, memory = 2048)
-    config.vm.provider :virtualbox do |vbox, override|
-      # override box url
-      override.vm.box = "bento/ubuntu-22.04"
-      # enable cachier for local vbox vms
-      override.cache.auto_detect = true
-    end
+def configure_parallels_provider(config, memory = 2048)
+  config.vm.provider :parallels do |_parallels, override|
+    # override box url
+    override.vm.box = 'bento/ubuntu-20.04-arm64'
+    override.parallels.memory = memory
+  end
+end
+
+def configure_vbox_provider(config, memory = 2048)
+  config.vm.provider :virtualbox do |_vbox, override|
+    # override box url
+    override.vm.box = 'bento/ubuntu-22.04'
+    # enable cachier for local vbox vms
+    override.cache.auto_detect = true
+    override.vb.memory = memory
+  end
 end
 
 def provision_ubuntu(config)
@@ -59,11 +72,19 @@ def provider_linux(config)
 end
 
 Vagrant.configure('2') do |config|
-  config.vm.define 'cairis-ubuntu-22', autostart: false do |ubuntu|
-    ubuntu.vm.box = 'bento/ubuntu-22.04'
-    ubuntu.vm.hostname = 'cairis-ubuntu-22'
-
-    provision_ubuntu ubuntu
-    provider_linux ubuntu
+  [:parallels, :vbox].each do |provider|
+    #
+    # VM per provider
+    #
+    config.vm.define :"cairis-#{provider}" do |cairis_config|
+      case provider
+      when :vbox
+        configure_vbox_provider(cairis_config)
+        configure_shell(cairis_config, conf)
+      when :parallels
+        configure_parallels_provider(cairis_config)
+        configure_shell(cairis_config, conf)
+      end
+    end
   end
 end
